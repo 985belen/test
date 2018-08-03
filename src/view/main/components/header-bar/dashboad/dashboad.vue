@@ -17,7 +17,7 @@
                   </ul>
                 </Col>
                 <Col span=6>
-                <DropdownItem style="font-size:20px!important;"></DropdownItem>
+                <DropdownItem style="font-size:20px!important;">实打实的</DropdownItem>
                   <Icon style=" margin-left: 30px;"  size="64" type="ios-contacts" />
                   <ul class="submenu">
                     <li>Profit Margin Analysis by Account, Regions, Products etc</li>
