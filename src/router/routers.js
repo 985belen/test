@@ -52,6 +52,22 @@ export default [
     }
   },
   {
+    path: '/sale',
+    name: 'sale',
+    component: Main,
+    children: [
+      {
+        path: 'sale_index',
+        name: 'sale_index',
+        meta: {
+          icon: '_qq',
+          title: 'sale'
+        },
+        component: () => import('@/view/sale/index.vue')
+      }
+    ]
+  },
+  {
     path: '/join',
     name: 'join',
     component: Main,

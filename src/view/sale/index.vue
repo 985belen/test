@@ -1,32 +1,10 @@
 <template>
   <div>
     <Row :gutter="20">
-     <tables ref="tables" editable searchable search-place="top" v-model="tableData" :columns="columns" @on-delete="handleDelete"/></tables>
-     <!--  <i-col span="4" v-for="(infor, i) in inforCardData" :key="`infor-${i}`" style="height: 120px;">
-        <infor-card shadow :color="infor.color" :icon="infor.icon" :icon-size="36">
-          <count-to :end="infor.count" count-class="count-style"/>
-          <p>{{ infor.title }}</p>
-        </infor-card>
-      </i-col> -->
 
+      2121
+     <tables ref="tables" editable searchable search-place="top" v-model="tableData" :columns="columns" @on-delete="handleDelete"/></tables>
     </Row>
-<!--     <Row :gutter="20" style="margin-top: 20px;">
-      <i-col span="8">
-        <Card shadow>
-          <chart-pie style="height: 300px;" :value="pieData" text="用户访问来源"></chart-pie>
-        </Card>
-      </i-col>
-      <i-col span="16">
-        <Card shadow>
-          <chart-bar style="height: 300px;" :value="barData" text="每周用户活跃量"/>
-        </Card>
-      </i-col>
-    </Row>
-    <Row style="margin-top: 20px;">
-      <Card shadow>
-        <example style="height: 310px;"/>
-      </Card>
-    </Row> -->
   </div>
 </template>
 
@@ -34,7 +12,6 @@
 import InforCard from '_c/info-card'
 import CountTo from '_c/count-to'
 import { ChartPie, ChartBar } from '_c/charts'
-import Example from './example.vue'
 import Tables from '_c/tables'
 import { getTableData } from '@/api/data'
 export default {
@@ -44,7 +21,6 @@ export default {
     CountTo,
     ChartPie,
     ChartBar,
-    Example,
     Tables
   },
   data () {
@@ -83,22 +59,21 @@ export default {
           // options: ['delete'],
           button: [
             (h, params, vm) => {
-              return h('Button', {
-                // props: {
-                //   confirm: true,
-                //   title: '你确定要删除吗?'
-                // },
+              return h('Poptip', {
+                props: {
+                  confirm: true,
+                  title: '你确定要删除吗?'
+                },
                 style: {
                   'text-decoration': 'underline'
                 },
                 on: {
                   'on-ok': () => {
-                    alert()
                     // vm.$router.push({
-                    //   name: 'sale'
+
                     // })
-                    // vm.$emit('on-delete', params)
-                    // vm.$emit('input', params.tableData.filter((item, index) => index !== params.row.initRowIndex))
+                    vm.$emit('on-delete', params)
+                    vm.$emit('input', params.tableData.filter((item, index) => index !== params.row.initRowIndex))
                   }
                 }
               }, [
@@ -107,7 +82,7 @@ export default {
                     'text-decoration': 'underline',
                     'cursor': 'pointer'
                   }
-                }, 'detail')
+                }, '删除')
               ])
             }
           ]

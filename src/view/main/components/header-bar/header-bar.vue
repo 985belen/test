@@ -1,7 +1,8 @@
 <template>
   <div class="header-bar">
     <sider-trigger :collapsed="collapsed" icon="md-menu" @on-change="handleCollpasedChange"></sider-trigger>
-    <custom-bread-crumb show-icon style="margin-left: 30px;" :list="breadCrumbList"></custom-bread-crumb>
+    <dashBoad></dashBoad>
+    <!-- <custom-bread-crumb show-icon style="margin-left: 30px;" :list="breadCrumbList"></custom-bread-crumb> -->
     <div class="custom-content-con">
       <slot></slot>
     </div>
@@ -10,12 +11,14 @@
 <script>
 import siderTrigger from './sider-trigger'
 import customBreadCrumb from './custom-bread-crumb'
+import dashBoad from './dashboad'
 import './header-bar.less'
 export default {
   name: 'HeaderBar',
   components: {
     siderTrigger,
-    customBreadCrumb
+    customBreadCrumb,
+    dashBoad
   },
   props: {
     collapsed: Boolean

@@ -3,7 +3,7 @@ import { doCustomTimes } from '@/libs/util'
 
 export const getTableData = req => {
   let tableData = []
-  doCustomTimes(5, () => {
+  doCustomTimes(15, () => {
     tableData.push(Mock.mock({
       name: '@name',
       email: '@email',

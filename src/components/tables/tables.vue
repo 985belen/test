@@ -1,11 +1,37 @@
 <template>
   <div>
     <div v-if="searchable && searchPlace === 'top'" class="search-con search-con-top">
-      <Select v-model="searchKey" class="search-col">
-        <Option v-for="item in columns" v-if="item.key !== 'handle'" :value="item.key" :key="`search-col-${item.key}`">{{ item.title }}</Option>
-      </Select>
-      <Input @on-change="handleClear" clearable placeholder="输入关键字搜索" class="search-input" v-model="searchValue"/>
-      <Button @click="handleSearch" class="search-btn" type="primary"><Icon type="search"/>&nbsp;&nbsp;搜索</Button>
+
+      <Row>
+        <Col span=5>
+          <Label>Quotation ID : </Label><Input @on-change="handleClear" clearable placeholder="输入关键字搜索" class="search-input" v-model="searchValue"/>
+        </Col>
+        <Col span=5>
+          <Label>Country : </Label>
+          <Select v-model="searchKey" class="search-col">
+            <Option v-for="item in columns" v-if="item.key !== 'handle'" :value="item.key" :key="`search-col-${item.key}`">{{ item.title }}</Option>
+          </Select>
+        </Col>
+        <Col span=5>
+          <Label>End Customer : </Label>
+          <Select v-model="searchKey" class="search-col">
+            <Option v-for="item in columns" v-if="item.key !== 'handle'" :value="item.key" :key="`search-col-${item.key}`">{{ item.title }}</Option>
+          </Select>
+        </Col>
+        <Col span=5>
+          <Label>Created Date : </Label>
+          <DatePicker type="daterange" placement="bottom-end" placeholder="Select date" style="width: 200px"></DatePicker>
+        </Col>
+        <Col span=2>
+          <Button @click="handleSearch" class="search-btn" type="primary"><Icon type="search"/>&nbsp;&nbsp;Pricing Simulation</Button>
+        </Col>
+        <Col span=1>
+          <Button @click="handleSearch" class="search-btn" type="primary"><Icon type="search"/>&nbsp;&nbsp;search</Button>
+        </Col>
+      </Row>
+
+     <!--  <Input @on-change="handleClear" clearable placeholder="输入关键字搜索" class="search-input" v-model="searchValue"/>
+      <Button @click="handleSearch" class="search-btn" type="primary"><Icon type="search"/>&nbsp;&nbsp;搜索</Button> -->
     </div>
     <Table
       ref="tablesMain"
@@ -46,6 +72,11 @@
       <Button class="search-btn" type="primary"><Icon type="search"/>&nbsp;&nbsp;搜索</Button>
     </div>
     <a id="hrefToExportTable" style="display: none;width: 0px;height: 0px;"></a>
+    <div style="margin: 10px;overflow: hidden">
+        <div style="float: right;">
+            <Page :total="100" :current="1" @on-change="changePage"></Page>
+        </div>
+    </div>
   </div>
 </template>
 
@@ -152,6 +183,10 @@ export default {
     }
   },
   methods: {
+    changePage () {
+      // The simulated data is changed directly here, and the actual usage scenario should fetch the data from the server
+      // this.tableData1 = this.mockTableData1();
+    },
     suportEdit (item, index) {
       item.render = (h, params) => {
         return h(TablesEdit, {
