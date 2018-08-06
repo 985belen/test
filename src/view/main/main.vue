@@ -15,7 +15,7 @@
             <!-- <div>Pricing Portal</div> -->
         </Menu>
         <header-bar :collapsed="collapsed" @on-coll-change="handleCollapsedChange">
-          <user :user-avator="userAvator"/>
+          <!-- <user :user-avator="userAvator"/> -->
           <language @on-lang-change="setLocal" style="margin-right: 10px;" :lang="local"/>
           <fullscreen v-model="isFullscreen" style="margin-right: 10px;"/>
         </header-bar>
@@ -72,9 +72,9 @@ export default {
     tagRouter () {
       return this.$store.state.app.tagRouter
     },
-    userAvator () {
-      return this.$store.state.user.avatorImgPath
-    },
+    // userAvator () {
+    //   return this.$store.state.user.avatorImgPath
+    // },
     cacheList () {
       return this.tagNavList.length ? this.tagNavList.filter(item => !(item.meta && item.meta.notCache)).map(item => item.name) : []
     },
