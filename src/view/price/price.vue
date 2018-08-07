@@ -1,7 +1,9 @@
 <template>
 <div class="price-box">
   <h2>LPA-Lenovo Price Analysis</h2>
-  <h3>Quotation Infomation<Icon slot="append" type="md-arrow-dropdown" /><a href="#"></a></h3>
+  <h3>Quotation Infomation<Icon slot="append" type="md-arrow-dropdown" />
+    <a href="javascript:;" class="fold" @click="toggleList" v-text="toggle ? '折叠' : '展开'"></a>
+  </h3>
   <ul class="item-box">
     <li><span>Quotation ID:</span><i>{{form.QuotationID}}</i></li>
     <li><span>Description:</span><i>{{form.Description}}</i></li>
