@@ -1,20 +1,49 @@
 <template>
   <div>
     <Row :gutter="20">
-     <tables ref="tables" editable searchable search-place="top" v-model="tableData" :columns="columns" @on-delete="handleDelete"/></tables>
+      <ag-grid-vue style="width: 500px; height: 500px;"
+                 class="ag-theme-balham"
+                 :columnDefs="columnDefs"
+                 :rowData="rowData">
+    </ag-grid-vue>
+     <!-- <tables ref="tables" editable searchable search-place="top" v-model="tableData" :columns="columns" @on-delete="handleDelete"/></tables> -->
+     <!--  <i-col span="4" v-for="(infor, i) in inforCardData" :key="`infor-${i}`" style="height: 120px;">
+        <infor-card shadow :color="infor.color" :icon="infor.icon" :icon-size="36">
+          <count-to :end="infor.count" count-class="count-style"/>
+          <p>{{ infor.title }}</p>
+        </infor-card>
+      </i-col> -->
+
     </Row>
+<!--     <Row :gutter="20" style="margin-top: 20px;">
+      <i-col span="8">
+        <Card shadow>
+          <chart-pie style="height: 300px;" :value="pieData" text="用户访问来源"></chart-pie>
+        </Card>
+      </i-col>
+      <i-col span="16">
+        <Card shadow>
+          <chart-bar style="height: 300px;" :value="barData" text="每周用户活跃量"/>
+        </Card>
+      </i-col>
+    </Row>
+    <Row style="margin-top: 20px;">
+      <Card shadow>
+        <example style="height: 310px;"/>
+      </Card>
+    </Row> -->
   </div>
 </template>
 
 <script>
 import Tables from '_c/tables'
-import { AgGridVue } from 'ag-grid-vue'
+import {AgGridVue} from 'ag-grid-vue'
 import { getTableData } from '@/api/data'
 export default {
   name: 'sale',
   components: {
-    Tables
-    
+    Tables,
+    AgGridVue
   },
   data () {
     return {

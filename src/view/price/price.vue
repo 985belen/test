@@ -191,7 +191,7 @@
         <Button size="small" style="margin:20px">Execute Summary</Button>
       </TabPane>
     </Tabs>
-  <div>
+  <div style="margin:10px">
     <ag-grid-vue
       style="width: 100%"
       class="ag-theme-balham"
@@ -251,11 +251,13 @@ export default {
       formcolumns: [
         {
           title: ' ',
-          key: 'hedgerife'
+          key: 'hedgerife',
+          width: 120
         },
         {
           title: 'CQ',
           key: 'CQ',
+          width: 120,
           render: (h, params) => {
             return h('div', [
               h('Input', {
@@ -273,6 +275,7 @@ export default {
         {
           title: 'CQ+1',
           key: 'CQ1',
+          width: 120,
           render: (h, params) => {
             return h('div', [
               h('Input', {
@@ -1336,82 +1339,145 @@ export default {
       ],
       tableNumShow: 1,
       columnDefs: [
-        {checkboxSelection: true, width: 60},
-        {headerName: 'Flag', field: 'Flag', width: 90, editable: false},
-        {headerName: 'HL Mem', field: 'HL Mem', width: 90},
-        {headerName: 'Item NO', field: 'Item NO', width: 90},
-        {headerName: 'Part Number', field: 'Part Number', width: 120},
-        {headerName: 'Description', field: 'Description', width: 108},
-        {headerName: 'Standard Price', field: 'Standard Price', width: 120},
-        {headerName: 'List Price', field: 'List Price', width: 100},
-        {headerName: 'Discount', field: 'Discount', width: 90},
-        {headerName: 'Requested DisCount', field: 'Requested DisCount', width: 120},
-        {headerName: 'Margin', field: 'Margin', width: 90},
-        {headerName: 'Sales Price', field: 'Sales Price', width: 110},
-        {headerName: 'Discount', field: 'Discount', width: 90},
-        {headerName: 'Price', field: 'Price', width: 80},
-        {headerName: 'Margin%', field: 'Margin%', width: 90}
+        {headerName: ' ',
+          children: [
+            {checkboxSelection: true, width: 60},
+            {headerName: 'Flag', field: 'Flag', editable: false, width: 100},
+            {headerName: 'Make', field: 'make', width: 100, cellEditor: 'agSelectCellEditor', cellEditorParams: {values: ['AAA', 'BBB', 'CCC']}},
+            {headerName: 'HL Mem', field: 'HL Mem', width: 100},
+            {headerName: 'Item NO', field: 'Item NO', width: 100},
+            {headerName: 'Part Number', field: 'Part Number', width: 100},
+            {headerName: 'Description', field: 'Description', width: 100},
+            {headerName: 'Standard Price', field: 'Standard Price', width: 100},
+            {headerName: 'List Price', field: 'List Price', width: 100}
+          ]
+        },
+        {headerName: 'Discount',
+          children: [
+            {headerName: 'Requested DisCount', field: 'Requested DisCount', width: 100},
+            {headerName: 'Margin', field: 'Margin', width: 100},
+            {headerName: 'Sales Price', field: 'Sales Price', width: 100}
+          ]
+        },
+        {headerName: 'Active Price',
+          children: [
+            {headerName: 'Discount', field: 'Discount', width: 100},
+            {headerName: 'Price', field: 'Price', width: 100},
+            {headerName: 'Margin%', field: 'Margin%', width: 100}
+          ]
+        },
+        {headerName: 'Entitied',
+          children: [
+            {headerName: 'PRICE', field: 'PRICE', width: 100},
+            {headerName: 'CQ Margin%', field: 'CQ Margin%', width: 100},
+            {headerName: 'weighted Margin%', field: 'weighted Margin%', width: 100}
+          ]
+        },
+        {headerName: 'Quantity',
+          children: [
+            {headerName: 'CQ', field: 'CQ', width: 100},
+            {headerName: 'CQ+1', field: 'CQ+1', width: 100},
+            {headerName: 'CQ+2', field: 'CQ+2', width: 100}
+          ]
+        }
       ],
       rowData: [
         {
           Flag: '343',
           'HL Mem': 'sdfv',
+          make: 'sdsd',
           'Item NO': 'sdfv',
           'Part Number': 'sdfv',
           Description: 'sdfv',
           'Standard Price': '1000',
           'List Price': '343',
-          'Requested DisCount': '324',
+          'Requested DisCount': 'sdv',
           'Sales Price': 78,
           Margin: 'dfv',
-          Discount: 89,
+          Discount: 'sdc',
           Price: 90,
-          'Margin%': 'huh'
+          'Margin%': '1200',
+          PRICE: 12,
+          'CQ Margin%': 12,
+          'weighted Margin%': 23,
+          CQ: '1000',
+          'CQ+1': '100',
+          'CQ+2': '1000'
         },
         {
           Flag: '34',
           'HL Mem': 'sdfv',
+          make: '23sd',
           'Item NO': 'sdfv',
           'Part Number': 'sdfv',
           Description: 'sdfv',
           'Standard Price': '1000',
           'List Price': '343',
-          'Requested DisCount': '324',
+          'Requested DisCount': 100,
+          id: '324',
+          makes: 'sdvcd',
+          pricenum: 2445,
           'Sales Price': 78,
           Margin: 'dfv',
           Discount: 89,
           Price: 90,
-          'Margin%': 'huh'
+          'Margin%': '1200',
+          PRICE: 12,
+          'CQ Margin%': 12,
+          'weighted Margin%': 23,
+          CQ: '1000',
+          'CQ+1': '100',
+          'CQ+2': '1000'
         },
         {
           Flag: '34',
           'HL Mem': 'sdfv',
+          make: 'assd',
           'Item NO': 'sdfv',
           'Part Number': 'sdfv',
+          'Requested DisCount': 100,
           Description: 'sdfv',
           'Standard Price': '1000',
           'List Price': '343',
-          'Requested DisCount': '324',
+          id: '324',
+          makes: 'sdvcd',
+          pricenum: 2445,
           'Sales Price': 78,
           Margin: 'dfv',
           Discount: 89,
           Price: 90,
-          'Margin%': 'huh'
+          'Margin%': '1200',
+          PRICE: 12,
+          'CQ Margin%': 12,
+          'weighted Margin%': 23,
+          CQ: '1000',
+          'CQ+1': '100',
+          'CQ+2': '1000'
         },
         {
           Flag: '34',
           'HL Mem': 'sdfv',
+          make: 'sddddsd',
           'Item NO': 'sdfv',
           'Part Number': 'sdfv',
           Description: 'sdfv',
+          'Requested DisCount': 100,
           'Standard Price': '1000',
+          PRICE: 12,
+          'CQ Margin%': 12,
+          'weighted Margin%': 23,
           'List Price': '343',
-          'Requested DisCount': '324',
+          id: '324',
+          makes: 'sdvcd',
+          pricenum: 2445,
           'Sales Price': 78,
           Margin: 'dfv',
           Discount: 89,
           Price: 90,
-          'Margin%': 'huh'
+          'Margin%': '1200',
+          CQ: '1000',
+          'CQ+1': '100',
+          'CQ+2': '1000'
         }
       ]
     }
