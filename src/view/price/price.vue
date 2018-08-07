@@ -1,8 +1,9 @@
 <template>
 <div class="price-box">
   <h2>LPA-Lenovo Price Analysis</h2>
-  <h3>Quotation Infomation<Icon slot="append" type="md-arrow-dropdown" />
-    <a href="javascript:;" class="fold" @click="toggleList" v-text="toggle ? '折叠' : '展开'"></a>
+  <h3>Quotation Infomation
+    <a href="javascript:;" class="fold" @click="toggleList1" v-text="toggle1 ? '收起' : '展开'"></a>
+    <a href="javascript:;" class="fold" @click="toggleList" v-text="toggle ? '收起' : '展开'"></a>
   </h3>
   <ul class="item-box">
     <li><span>Quotation ID:</span><i>{{form.QuotationID}}</i></li>
@@ -25,6 +26,7 @@
     <li><span>RTM:</span><i>{{form.RTM}}</i></li>
     <li><span>Sub Type:</span><i>{{form.SubType}}</i></li>
   </ul>
+  <Table width="600" class="table" border :columns="formcolumns" style="margin: 10px" :data="formdata"></Table>
   <!-- <Form ref="form" :model="form" style="margin:20px;">
     <row type="flex" justify="space-between" :gutter="15">
       <col span="4">
@@ -122,9 +124,6 @@
         </FormItem>
       </col>
     </row> -->
-    <row>
-      <Table width="600" border :columns="formcolumns" style="margin: 10px" :data="formdata"></Table>
-    </row>
     <!-- <row type="flex" justify="space-between">
       <col span="6">
         <FormItem label="Sales Comments" prop="SalesComments">
@@ -163,72 +162,35 @@
     </row>
   </Form> -->
   <!-- <Divider></Divider> -->
-  <Row>
-    <Col span="24" class="demo-tabs-style" style="background: #e3e8ee;padding:16px;">
-      <Tabs type="card" :animated="false">
-        <TabPane label="Data">
-          <Table border :columns="tablecolumns1" style="margin:10px" :data="tabledata1"></Table>
-          <Page :total="tableDatalen1" show-sizer show-total class="pull-right" />
-        </TabPane>
-        <TabPane label="CTO Config">
-          <Table border :columns="tablecolumns2" style="margin: 10px" :data="tabledata2"></Table>
-          <Page :total="tableDatalen2" show-sizer show-total class="pull-right" />
-        </TabPane>
-        <TabPane label="CTO LIST Price">
-          <Table border :columns="tablecolumns3" style="margin: 10px" :data="tabledata3"></Table>
-          <Page :total="tableDatalen3" show-sizer show-total class="pull-right" />
-        </TabPane>
-        <TabPane label="grouping Conditions">
-           <div class="check-box">
-            <CheckboxGroup v-model="groupConSelect">
-              <Checkbox style="width:200px;" v-for="(item, index) in groupingConditions" :key="index" :label="item">{{item}}</Checkbox>
-              <Button size="small">Group</Button>
-            </CheckboxGroup>
-          </div>
-        </TabPane>
-        <TabPane label="FX Rate">
-          <Table border :columns="tablecolumns51" style="margin: 10px" :data="tabledata51"></Table>
-          <Table border :columns="tablecolumns5" style="margin: 10px" :data="tabledata5"></Table>
-        </TabPane>
-        <TabPane label="Exec Summary">
-          <Button size="small" style="margin:20px">Execute Summary</Button>
-        </TabPane>
-      </Tabs>
-    </Col>
-  </Row>
-  <!-- <div style="width:800px;margin: 0 auto">
-    <ButtonGroup>
-      <Button @click="changeTableNumShow(1)">Data</Button>
-      <Button @click="changeTableNumShow(2)">CTO Config</Button>
-      <Button @click="changeTableNumShow(3)">CTO LIST Price</Button>
-      <Button @click="changeTableNumShow(4)">grouping Conditions</Button>
-      <Button @click="changeTableNumShow(5)">FX Rate</Button>
-      <Button @click="changeTableNumShow(6)">Exec Summary</Button>
-    </ButtonGroup>
-  </div> -->
-  <!-- <div class="box"> -->
-    <!-- Data -->
-    <!-- <Table v-show="tableNumShow == 1" border ref="selection" :columns="tablecolumns1" style="margin: 10px" :data="tabledata1"></Table>
-    <Page v-show="tableNumShow == 1" :total="tableDatalen1" show-sizer show-total class="pull-right" /> -->
-    <!-- CTO Config -->
-    <!-- <Table v-show="tableNumShow == 2" border :columns="tablecolumns2" style="margin: 10px" :data="tabledata2"></Table>
-    <Page v-show="tableNumShow == 2" :total="tableDatalen2" show-sizer show-total class="pull-right" /> -->
-    <!-- CTO LIST Price -->
-    <!-- <Table v-show="tableNumShow == 3" border ref="selection" :columns="tablecolumns3" style="margin: 10px" :data="tabledata3"></Table>
-    <Page v-show="tableNumShow == 3" :total="tableDatalen3" show-sizer show-total class="pull-right" /> -->
-    <!-- grouping Conditions -->
-    <!-- <div class="check-box" v-show="tableNumShow == 4">
-      <CheckboxGroup v-model="groupConSelect">
-        <Checkbox style="width:200px;" v-for="(item, index) in groupingConditions" :key="index" :label="item">{{item}}</Checkbox>
-        <Button size="small">Group</Button>
-      </CheckboxGroup>
-    </div> -->
-    <!-- FX Rate -->
-    <!-- <Table v-show="tableNumShow == 5" border :columns="tablecolumns51" style="margin: 10px" :data="tabledata51"></Table>
-    <Table v-show="tableNumShow == 5" border :columns="tablecolumns5" style="margin: 10px" :data="tabledata5"></Table> -->
-    <!-- Exec Summary -->
-    <!-- <Button v-show="tableNumShow == 6" size="small" style="margin:20px">Execute Summary</Button> -->
-  <!-- </div> -->
+    <Tabs type="card" style="margin:20px" :animated="false">
+      <TabPane label="Data">
+        <Table border :columns="tablecolumns1" style="margin:10px" :data="tabledata1"></Table>
+        <Page :total="tableDatalen1" show-sizer show-total class="pull-right" />
+      </TabPane>
+      <TabPane label="CTO Config">
+        <Table border :columns="tablecolumns2" style="margin: 10px" :data="tabledata2"></Table>
+        <Page :total="tableDatalen2" show-sizer show-total class="pull-right" />
+      </TabPane>
+      <TabPane label="CTO LIST Price">
+        <Table border :columns="tablecolumns3" style="margin: 10px" :data="tabledata3"></Table>
+        <Page :total="tableDatalen3" show-sizer show-total class="pull-right" />
+      </TabPane>
+      <TabPane label="grouping Conditions">
+          <div class="check-box">
+          <CheckboxGroup v-model="groupConSelect">
+            <Checkbox style="width:200px;" v-for="(item, index) in groupingConditions" :key="index" :label="item">{{item}}</Checkbox>
+            <Button size="small">Group</Button>
+          </CheckboxGroup>
+        </div>
+      </TabPane>
+      <TabPane label="FX Rate">
+        <Table border :columns="tablecolumns51" style="margin: 10px" :data="tabledata51"></Table>
+        <Table border :columns="tablecolumns5" style="margin: 10px" :data="tabledata5"></Table>
+      </TabPane>
+      <TabPane label="Exec Summary">
+        <Button size="small" style="margin:20px">Execute Summary</Button>
+      </TabPane>
+    </Tabs>
   <div>
     <ag-grid-vue
       style="width: 100%"
@@ -238,7 +200,7 @@
       :gridAutoHeight="true"
       :enableSorting="true"
       :enableFilter="true"
-      :editable="true"
+      :defaultColDef='{editable: true}'
       :suppressSizeToFit="true"
       :suppressResize="true"
       rowSelection="multiple">
@@ -280,6 +242,8 @@ export default {
         CQ2: '341',
         CQ3: '1223'
       },
+      toggle: true,
+      toggle1: true,
       formcolumns: [
         {
           title: ' ',
@@ -1368,45 +1332,56 @@ export default {
       ],
       tableNumShow: 1,
       columnDefs: [
-        {headerName: 'Make', field: 'make', checkboxSelection: true},
-        {headerName: 'Model', field: 'model'},
-        {headerName: 'Model1', field: 'model1'},
-        {headerName: 'Model2', field: 'model2'},
-        {headerName: 'Model3', field: 'model3'},
-        {headerName: 'Price', field: 'price'},
-        {headerName: 'Price1', field: 'price1'},
-        {headerName: 'Price2', field: 'price2'}
+        {checkboxSelection: true, width: 60},
+        {headerName: 'Flag', field: 'Flag', width: 100},
+        {headerName: 'HL Mem', field: 'HL Mem', width: 100},
+        {headerName: 'Item NO', field: 'Item NO', width: 100},
+        {headerName: 'Part Number', field: 'Part Number', width: 100},
+        {headerName: 'Description', field: 'Description', width: 100},
+        {headerName: 'Standard Price', field: 'Standard Price', width: 100},
+        {headerName: 'List Price', field: 'List Price', width: 100},
+        {headerName: 'Requested', chidren: [
+          {headerName: 'Requested DisCount', field: 'Requested DisCount', width: 100},
+          {headerName: 'Sales Price', field: 'Sales Price', width: 100},
+          {headerName: 'Margin', field: 'Margin', width: 100}]
+        },
+        {
+          headerName: 'Active Price', chidren: [
+          {headerName: 'Discount', field: 'Discount', width: 100},
+          {headerName: 'Price', field: 'Price', width: 100},
+          {headerName: 'Margin%', field: 'Margin%', width: 100}]
+        }
       ],
       rowData: [
         {
-          make: '34',
-          model: 'sdfv',
-          model1: 'sdfv',
-          model2: 'sdfv',
-          model3: 'sdfv',
-          price: '1000',
-          price1: '343',
-          price2: '324'
+          Flag: '34',
+          'HL Mem': 'sdfv',
+          'Item NO': 'sdfv',
+          'Part Number': 'sdfv',
+          Description: 'sdfv',
+          'Standard Price': '1000',
+          'List Price': '343',
+          'Requested DisCount': '324',
+          'Sales Price': 78,
+          Margin: 'dfv',
+          Discount: 89,
+          Price: 90,
+          'Margin%': 'huh'
         },
         {
-          make: '314',
-          model: 'sdfv',
-          model1: 'sdfv',
-          model2: 'sdfv',
-          model3: 'sdfv',
-          price: '1000',
-          price1: '1343',
-          price2: '1324'
-        },
-        {
-          make: '334',
-          model: 'sdfv',
-          model1: 'sdfv',
-          model2: 'sdfv',
-          model3: 'sdfv',
-          price: '100',
-          price1: '3343',
-          price2: '8324'
+          Flag: '34',
+          'HL Mem': 'sdfv',
+          'Item NO': 'sdfv',
+          'Part Number': 'sdfv',
+          Description: 'sdfv',
+          'Standard Price': '1000',
+          'List Price': '343',
+          'Requested DisCount': '324',
+          'Sales Price': 78,
+          Margin: 'dfv',
+          Discount: 89,
+          Price: 90,
+          'Margin%': 'huh'
         }
       ]
     }
@@ -1419,7 +1394,31 @@ export default {
     this.Datalength2()
     this.Datalength3()
   },
+  mounted () {
+    this.$nextTick(() => {
+      this.toggleList()
+      this.toggleList1()
+    }, 3000)
+  },
   methods: {
+    toggleList () {
+      let itembox = document.getElementsByClassName('item-box')[0]
+      if (this.toggle) {
+        itembox.style.display = 'none'
+      } else {
+        itembox.style.display = 'block'
+      }
+      this.toggle = !this.toggle
+    },
+    toggleList1 () {
+      let table = document.getElementsByClassName('table')[0]
+      if (this.toggle1) {
+        table.style.display = 'none'
+      } else {
+        table.style.display = 'block'
+      }
+      this.toggle1 = !this.toggle1
+    },
     handleReset (name) {
       this.$refs[name].resetFields()
     },
@@ -1470,7 +1469,22 @@ h3{
   line-height: 30px;
   margin-bottom: 10px;
   background: #eee;
-  padding: 0 10px
+  padding: 0 20px;
+  .fold{
+    width: 60px;
+    height: 22px;
+    line-height: 22px;
+    margin-top: 4px;
+    margin-right: 10px;
+    border-radius: 6px;
+    text-align: center;
+    float: right;
+    color: #fff;
+    border-radius: 6px;
+    background: #ff9933;
+    font-size: 12px;
+    box-sizing:border-box;
+  }
 }
 .box{
   width:100%;
@@ -1490,7 +1504,7 @@ h3{
     float: left;
     width: 25%;
     height: 28px;
-    font-size: 12px;
+    font-size: 13px;
     list-style: none;
     margin-bottom: 10px;
     span{
