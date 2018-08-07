@@ -1,7 +1,12 @@
 <template>
   <div>
     <Row :gutter="20">
-     <tables ref="tables" editable searchable search-place="top" v-model="tableData" :columns="columns" @on-delete="handleDelete"/></tables>
+      <ag-grid-vue style="width: 500px; height: 500px;"
+                 class="ag-theme-balham"
+                 :columnDefs="columnDefs"
+                 :rowData="rowData">
+    </ag-grid-vue>
+     <!-- <tables ref="tables" editable searchable search-place="top" v-model="tableData" :columns="columns" @on-delete="handleDelete"/></tables> -->
      <!--  <i-col span="4" v-for="(infor, i) in inforCardData" :key="`infor-${i}`" style="height: 120px;">
         <infor-card shadow :color="infor.color" :icon="infor.icon" :icon-size="36">
           <count-to :end="infor.count" count-class="count-style"/>
@@ -31,20 +36,12 @@
 </template>
 
 <script>
-import InforCard from '_c/info-card'
-import CountTo from '_c/count-to'
-import { ChartPie, ChartBar } from '_c/charts'
-import Example from './example.vue'
 import Tables from '_c/tables'
+import {AgGridVue} from "ag-grid-vue";
 import { getTableData } from '@/api/data'
 export default {
   name: 'sale',
   components: {
-    InforCard,
-    CountTo,
-    ChartPie,
-    ChartBar,
-    Example,
     Tables
   },
   data () {
