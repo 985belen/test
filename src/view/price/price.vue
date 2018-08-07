@@ -1340,19 +1340,45 @@ export default {
         {headerName: 'Description', field: 'Description', width: 100},
         {headerName: 'Standard Price', field: 'Standard Price', width: 100},
         {headerName: 'List Price', field: 'List Price', width: 100},
-        {headerName: 'Requested', chidren: [
-          {headerName: 'Requested DisCount', field: 'Requested DisCount', width: 100},
-          {headerName: 'Sales Price', field: 'Sales Price', width: 100},
-          {headerName: 'Margin', field: 'Margin', width: 100}]
-        },
-        {
-          headerName: 'Active Price', chidren: [
-          {headerName: 'Discount', field: 'Discount', width: 100},
-          {headerName: 'Price', field: 'Price', width: 100},
-          {headerName: 'Margin%', field: 'Margin%', width: 100}]
-        }
+        {headerName: 'Discount', field: 'Discount', width: 100},
+        {headerName: 'Requested DisCount', field: 'Requested DisCount', width: 100},
+        {headerName: 'Margin', field: 'Margin', width: 100},
+        {headerName: 'Sales Price', field: 'Sales Price', width: 100},
+        {headerName: 'Discount', field: 'Discount', width: 100},
+        {headerName: 'Price', field: 'Price'},
+        {headerName: 'Margin%', field: 'Margin%'}
       ],
       rowData: [
+        {
+          Flag: '343',
+          'HL Mem': 'sdfv',
+          'Item NO': 'sdfv',
+          'Part Number': 'sdfv',
+          Description: 'sdfv',
+          'Standard Price': '1000',
+          'List Price': '343',
+          'Requested DisCount': '324',
+          'Sales Price': 78,
+          Margin: 'dfv',
+          Discount: 89,
+          Price: 90,
+          'Margin%': 'huh'
+        },
+        {
+          Flag: '34',
+          'HL Mem': 'sdfv',
+          'Item NO': 'sdfv',
+          'Part Number': 'sdfv',
+          Description: 'sdfv',
+          'Standard Price': '1000',
+          'List Price': '343',
+          'Requested DisCount': '324',
+          'Sales Price': 78,
+          Margin: 'dfv',
+          Discount: 89,
+          Price: 90,
+          'Margin%': 'huh'
+        },
         {
           Flag: '34',
           'HL Mem': 'sdfv',

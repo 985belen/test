@@ -37,12 +37,13 @@
 
 <script>
 import Tables from '_c/tables'
-import {AgGridVue} from "ag-grid-vue";
+import { AgGridVue } from 'ag-grid-vue'
 import { getTableData } from '@/api/data'
 export default {
   name: 'sale',
   components: {
-    Tables
+    Tables,
+    AgGridVue
   },
   data () {
     return {
