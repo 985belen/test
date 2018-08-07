@@ -1350,6 +1350,36 @@ export default {
       ],
       rowData: [
         {
+          Flag: '343',
+          'HL Mem': 'sdfv',
+          'Item NO': 'sdfv',
+          'Part Number': 'sdfv',
+          Description: 'sdfv',
+          'Standard Price': '1000',
+          'List Price': '343',
+          'Requested DisCount': '324',
+          'Sales Price': 78,
+          Margin: 'dfv',
+          Discount: 89,
+          Price: 90,
+          'Margin%': 'huh'
+        },
+        {
+          Flag: '34',
+          'HL Mem': 'sdfv',
+          'Item NO': 'sdfv',
+          'Part Number': 'sdfv',
+          Description: 'sdfv',
+          'Standard Price': '1000',
+          'List Price': '343',
+          'Requested DisCount': '324',
+          'Sales Price': 78,
+          Margin: 'dfv',
+          Discount: 89,
+          Price: 90,
+          'Margin%': 'huh'
+        },
+        {
           Flag: '34',
           'HL Mem': 'sdfv',
           'Item NO': 'sdfv',
