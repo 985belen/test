@@ -31,5 +31,21 @@ export default [
         component: () => import('@/view/single-page/home')
       }
     ]
+  },
+  {
+    path: '/price',
+    name: 'price',
+    component: Main,
+    children: [
+      {
+        path: 'price_index',
+        name: 'price_index',
+        meta: {
+          icon: '_price',
+          title: 'price'
+        },
+        component: () => import('@/view/price/price.vue')
+      }
+    ]
   }
 ]
