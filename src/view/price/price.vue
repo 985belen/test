@@ -200,7 +200,11 @@
       :gridAutoHeight="true"
       :enableSorting="true"
       :enableFilter="true"
+      :components='{
+        numericCellEditor: NumericCellEditor,
+        moodEditor: MoodEditor}'
       :defaultColDef='{editable: true}'
+      :singleClickEdit="true"
       :suppressSizeToFit="true"
       :suppressResize="true"
       rowSelection="multiple">
@@ -1333,20 +1337,20 @@ export default {
       tableNumShow: 1,
       columnDefs: [
         {checkboxSelection: true, width: 60},
-        {headerName: 'Flag', field: 'Flag', width: 100},
-        {headerName: 'HL Mem', field: 'HL Mem', width: 100},
-        {headerName: 'Item NO', field: 'Item NO', width: 100},
-        {headerName: 'Part Number', field: 'Part Number', width: 100},
-        {headerName: 'Description', field: 'Description', width: 100},
-        {headerName: 'Standard Price', field: 'Standard Price', width: 100},
+        {headerName: 'Flag', field: 'Flag', width: 90, editable: false},
+        {headerName: 'HL Mem', field: 'HL Mem', width: 90},
+        {headerName: 'Item NO', field: 'Item NO', width: 90},
+        {headerName: 'Part Number', field: 'Part Number', width: 120},
+        {headerName: 'Description', field: 'Description', width: 108},
+        {headerName: 'Standard Price', field: 'Standard Price', width: 120},
         {headerName: 'List Price', field: 'List Price', width: 100},
-        {headerName: 'Discount', field: 'Discount', width: 100},
-        {headerName: 'Requested DisCount', field: 'Requested DisCount', width: 100},
-        {headerName: 'Margin', field: 'Margin', width: 100},
-        {headerName: 'Sales Price', field: 'Sales Price', width: 100},
-        {headerName: 'Discount', field: 'Discount', width: 100},
-        {headerName: 'Price', field: 'Price'},
-        {headerName: 'Margin%', field: 'Margin%'}
+        {headerName: 'Discount', field: 'Discount', width: 90},
+        {headerName: 'Requested DisCount', field: 'Requested DisCount', width: 120},
+        {headerName: 'Margin', field: 'Margin', width: 90},
+        {headerName: 'Sales Price', field: 'Sales Price', width: 110},
+        {headerName: 'Discount', field: 'Discount', width: 90},
+        {headerName: 'Price', field: 'Price', width: 80},
+        {headerName: 'Margin%', field: 'Margin%', width: 90}
       ],
       rowData: [
         {
@@ -1427,6 +1431,9 @@ export default {
     }, 3000)
   },
   methods: {
+    // onGridReady (params) {
+    //   params.api.sizeColumnsToFit()
+    // },
     toggleList () {
       let itembox = document.getElementsByClassName('item-box')[0]
       if (this.toggle) {
