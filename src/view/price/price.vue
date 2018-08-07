@@ -1340,17 +1340,13 @@ export default {
         {headerName: 'Description', field: 'Description', width: 100},
         {headerName: 'Standard Price', field: 'Standard Price', width: 100},
         {headerName: 'List Price', field: 'List Price', width: 100},
-        {headerName: 'Requested', chidren: [
-          {headerName: 'Requested DisCount', field: 'Requested DisCount', width: 100},
-          {headerName: 'Sales Price', field: 'Sales Price', width: 100},
-          {headerName: 'Margin', field: 'Margin', width: 100}]
-        },
-        {
-          headerName: 'Active Price', chidren: [
-          {headerName: 'Discount', field: 'Discount', width: 100},
-          {headerName: 'Price', field: 'Price', width: 100},
-          {headerName: 'Margin%', field: 'Margin%', width: 100}]
-        }
+        {headerName: 'Discount', field: 'Discount', width: 100},
+        {headerName: 'Requested DisCount', field: 'Requested DisCount', width: 100},
+        {headerName: 'Margin', field: 'Margin', width: 100},
+        {headerName: 'Sales Price', field: 'Sales Price', width: 100},
+        {headerName: 'Discount', field: 'Discount', width: 100},
+        {headerName: 'Price', field: 'Price'},
+        {headerName: 'Margin%', field: 'Margin%'}
       ],
       rowData: [
         {
