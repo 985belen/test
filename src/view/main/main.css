@@ -1,0 +1,53 @@
+.main .header-con a {
+  color: #fff;
+}
+.main .logo-con {
+  height: 64px;
+  padding: 10px;
+}
+.main .logo-con img {
+  height: 44px;
+  width: auto;
+  display: block;
+  margin: 0 auto;
+}
+.main .header-con {
+  background: #fff;
+  padding: 0 20px;
+}
+.main .tag-nav-wrapper {
+  padding: 0;
+  height: 40px;
+  background: #F0F0F0;
+  overflow: hidden;
+}
+.main .content-wrapper {
+  padding: 5px 10px;
+}
+.ivu-menu-item > i {
+  margin-right: 12px !important;
+}
+.ivu-menu-submenu > .ivu-menu > .ivu-menu-item > i {
+  margin-right: 8px !important;
+}
+.main .header-con {
+  background: #000;
+}
+.tools {
+  color: #fff;
+}
+.tools span {
+  padding: 0 10px;
+  display: inline-block;
+}
+.tools i {
+  font-style: normal;
+  color: #cc000;
+}
+.search:hover {
+  width: 200px!important;
+}
+.ivu-input-search-icon:hover {
+  color: #000!important;
+  margin-right: 10px!important;
+}

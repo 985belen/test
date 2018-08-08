@@ -40,14 +40,14 @@
     <li><span>RTM:</span><i :title="form.RTM">{{form.RTM}}</i></li>
     <li><span>Sub Type:</span><i :title="form.SubType">{{form.SubType}}</i></li>
   </ul>
-  <h3><a href="javascript:;" style="display:block" @click="toggleList1">CQ</a></h3>
+  <h3 class="marginBottom"><a href="javascript:;" style="display:block" @click="toggleList1">CQ</a></h3>
   <div  class="table-CQ">
     <Table border :columns="formcolumns" :data="formdata"></Table>
   </div>
-  <Tabs type="card" style="margin:20px" :animated="false">
+  <Tabs type="card" style="margin:10px" :animated="false">
     <TabPane label="Data">
       <ag-grid-vue
-        style="width: 100%"
+        style="width: 100%; height:100%;"
         class="ag-theme-balham"
         :columnDefs="columnDefs"
         :rowData="rowData"
@@ -85,23 +85,6 @@
       <Button size="small" style="margin:20px">Execute Summary</Button>
     </TabPane>
   </Tabs>
-  <!-- <div style="margin:10px">
-    <ag-grid-vue
-      style="width: 100%"
-      class="ag-theme-balham"
-      :columnDefs="columnDefs"
-      :rowData="rowData"
-      :gridAutoHeight="true"
-      :enableSorting="true"
-      :enableFilter="true"
-      :defaultColDef='{editable: true}'
-      :singleClickEdit="true"
-      :suppressSizeToFit="true"
-      :suppressResize="true"
-      :enableColResize="true"
-      rowSelection="multiple">
-    </ag-grid-vue>
-  </div> -->
 </div>
 </template>
 <script>
@@ -139,7 +122,7 @@ export default {
         CQ3: '1223'
       },
       toggle: true,
-      toggle1: true,
+      toggle1: false,
       formcolumns: [
         {
           title: ' ',
@@ -1241,10 +1224,10 @@ export default {
             {checkboxSelection: true, width: 60, cellStyle: {'text-align': 'center'}},
             {headerName: 'Flag', field: 'Flag', editable: false, width: 100, cellStyle: {'text-align': 'center'}},
             // {headerName: 'Make', field: 'make', width: 100, cellEditor: 'agSelectCellEditor', cellEditorParams: {values: ['AAA', 'BBB', 'CCC']}},
-            {headerName: 'HL Mem', field: 'HL Mem', cellStyle: {'text-align': 'center'}, width: 100},
-            {headerName: 'Item NO', field: 'Item NO', cellStyle: {'text-align': 'center'}, width: 100},
-            {headerName: 'Part Number', field: 'Part Number', cellStyle: {'text-align': 'center'}, width: 100},
-            {headerName: 'Description', field: 'Description', cellStyle: {'text-align': 'center'}, width: 100},
+            {headerName: 'HL Mem', field: 'HL Mem', editable: false, cellStyle: {'text-align': 'center'}, width: 100},
+            {headerName: 'Item NO', field: 'Item NO', editable: false, cellStyle: {'text-align': 'center'}, width: 100},
+            {headerName: 'Part Number', field: 'Part Number', editable: false, cellStyle: {'text-align': 'center', color: '#fff', backgroundColor: 'green'}, width: 100},
+            {headerName: 'Description', field: 'Description', editable: false, cellStyle: {'text-align': 'center'}, width: 100},
             {headerName: 'Standard Price', field: 'Standard Price', cellStyle: {'text-align': 'center'}, width: 100},
             {headerName: 'List Price', field: 'List Price', cellStyle: {'text-align': 'center'}, width: 100}
           ]
@@ -1252,7 +1235,7 @@ export default {
         {headerName: 'Discount',
           children: [
             {headerName: 'Requested DisCount', cellStyle: {'text-align': 'center'}, field: 'Requested DisCount', width: 100},
-            {headerName: 'Margin', field: 'Margin', cellStyle: {'text-align': 'center'}, width: 100},
+            {headerName: 'Margin', field: 'Margin', cellStyle: {'text-align': 'center', color: '#fff', backgroundColor: 'red'}, width: 100},
             {headerName: 'Sales Price', field: 'Sales Price', cellStyle: {'text-align': 'center'}, width: 100}
           ]
         },
@@ -1486,9 +1469,12 @@ export default {
     toggleList () {
       let itembox = document.getElementsByClassName('item-box')[0]
       if (this.toggle) {
-        itembox.style.display = 'none'
+        itembox.style.height = '24px'
+        itembox.style.border='0'
       } else {
-        itembox.style.display = 'block'
+        itembox.style.height = 'auto'
+        itembox.style.border='1px solid #ccc'
+        itembox.style.borderTop='0'
       }
       this.toggle = !this.toggle
     },
@@ -1535,14 +1521,12 @@ export default {
     }
   }
 }
-
+// .ag-row{
+//   height:27px !important;
+// }
 .ivu-table th, .ivu-table td{
   height:30px
 }
-// .ivu-tabs-content{
-//   height:auto;
-//   padding-bottom:20px
-// }
 h2{
   height:30px;
   line-height: 30px;
@@ -1552,9 +1536,11 @@ h2{
 h3{
   height:30px;
   line-height: 30px;
-  margin-bottom: 10px;
   background: #eee;
   padding: 0 20px;
+  &.marginBottom{
+    margin-bottom: 10px;
+  }
   .fold{
     width: 60px;
     height: 22px;
@@ -1583,19 +1569,20 @@ h3{
 .item-box{
   width:100%;
   height:auto;
-  margin:10px auto;
+  margin-bottom:5px;
   overflow: hidden;
+  border:1px solid #ccc;
+  border-top:0;
   li {
     float: left;
     width: 20%;
-    height: 25px;
+    height: 24px;
     font-size: 13px;
     list-style: none;
-    margin-bottom: 3px;
     span{
       width: 135px;
-      height:25px;
-      line-height: 25px;
+      height:24px;
+      line-height: 24px;
       color:#000;
       float: left;
       display: block;
@@ -1607,8 +1594,8 @@ h3{
     i{
       font-style: normal;
       width: 100px;
-      height:25px;
-      line-height: 25px;
+      height:24px;
+      line-height: 24px;
       margin-left:5px;
       color: #666;
       float: left;
