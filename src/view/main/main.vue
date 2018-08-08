@@ -11,9 +11,8 @@
     </Sider> -->
     <Layout>
       <Header class="header-con">
-        <Menu>
-            <!-- <div>Pricing Portal</div> -->
-        </Menu>
+        <!-- <Menu>
+        </Menu> -->
         <header-bar :collapsed="collapsed" @on-coll-change="handleCollapsedChange">
           <span style="color:#fff;">退出登录</span>
           <language @on-lang-change="setLocal" style="margin-right: 10px;" :lang="local"/>

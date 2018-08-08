@@ -1,10 +1,24 @@
 <template>
 <div class="price-box">
-  <h2>LPA-Lenovo Price Analysis</h2>
-  <h3>Quotation Infomation
-    <a href="javascript:;" class="fold" @click="toggle1=true" v-text="toggle1 ? '隐藏' : '弹出'"></a>
-    <a href="javascript:;" class="fold" @click="toggleList" v-text="toggle ? '收起' : '展开'"></a>
-  </h3>
+  <div class="tool-bar">
+    <a href="#" class="item"><Icon class="icon" size=16 type="md-add" />新建</a>
+    <Divider type="vertical" />
+    <a href="#" class="item"><Icon class="icon" size=16 type="md-trash"/>删除</a>
+    <Divider type="vertical" />
+    <a href="#" class="item"><Icon class="icon" size=16 type="md-link" />通过电子邮件发送链接</a>
+    <Divider type="vertical" />
+    <a href="#" class="item"><Icon class="icon" size=16 type="md-appstore" />运行报表</a>
+    <Divider type="vertical" />
+    <a href="#" class="item"><Icon class="icon" size=16 type="md-list-box" />EXCEL模板</a>
+    <Divider type="vertical" />
+    <a href="#" class="item"><Icon class="icon" size=16 type="md-notifications" />导出至EXCEL</a>
+    <Divider type="vertical" />
+    <a href="#" class="item"><Icon class="icon" size=16 type="md-exit" />导入数据</a>
+    <Divider type="vertical" />
+    <a href="#" class="item"><Icon class="icon" size=16 type="md-stats" />图表窗格</a>
+  </div>
+  <!-- <h2>LPA-Lenovo Price Analysis</h2> -->
+  <h3><a href="javascript:;" style="display:block" @click="toggleList">Quotation Infomation</a></h3>
   <ul class="item-box">
     <li><span>Quotation ID:</span><i :title="form.QuotationID">{{form.QuotationID}}</i></li>
     <li><span>Description:</span><i :title="form.Description">{{form.Description}}</i></li>
@@ -26,174 +40,52 @@
     <li><span>RTM:</span><i :title="form.RTM">{{form.RTM}}</i></li>
     <li><span>Sub Type:</span><i :title="form.SubType">{{form.SubType}}</i></li>
   </ul>
-  <!-- <Button type="primary" @click="toggle1 = true">Display dialog box</Button> -->
-    <Modal
-      v-model="toggle1"
-      width="800"
-      title="This is a table">
-      <Table border :columns="formcolumns" :data="formdata"></Table>
-    </Modal>
-   <Form ref="form" :model="form" style="margin:20px;">
-    <!--<row type="flex" justify="space-between" :gutter="15">
-      <col span="4">
-        <FormItem label="Quotation ID" prop="QuotationID">
-          <Input readonly placeholder="请输入Quotation ID..." v-model="form.QuotationID"/>
-        </FormItem>
-      </col>
-      <col span="4">
-        <FormItem label="Description" prop="Description">
-          <Input readonly placeholder="请输入Description..." v-model="form.Description"/>
-        </FormItem>
-      </col>
-      <col span="4">
-        <FormItem label="Status" prop="Status">
-          <Input readonly placeholder="请输入Status..." v-model="form.Status"/>
-        </FormItem>
-      </col>
-      <col span="4">
-        <FormItem label="Country(S)" prop="Country">
-          <Input readonly placeholder="请输入Country(S)..." v-model="form.Country"/>
-        </FormItem>
-      </col>
-      <col span="4">
-        <FormItem label="Currency" prop="Currency">
-          <Input readonly placeholder="请输入Currency..." v-model="form.Currency"/>
-        </FormItem>
-      </col>
-      <col span="4">
-        <FormItem label="Valid From Date" prop="FromDate">
-          <Input readonly placeholder="请输入Valid From Date..." v-model="form.FromDate"/>
-        </FormItem>
-      </col>
-    </row>
-    <row type="flex" justify="space-between" :gutter="15">
-      <col span="4">
-        <FormItem label="End Customer(DMU)" prop="EndCustomer">
-          <Input readonly placeholder="请输入End Customer(DMU)..." v-model="form.Customer"/>
-        </FormItem>
-      </col>
-      <col span="4">
-        <FormItem label="Sales Representative" prop="SalesRepresentative">
-          <Input readonly placeholder="请输入Sales Representative..." v-model="form.SalesRepresentative"/>
-        </FormItem>
-      </col>
-      <col span="4">
-        <FormItem label="Bid Approver" prop="BidApprover">
-          <Input readonly placeholder="请输入Requested Bid Approver..." v-model="form.Approver"/>
-        </FormItem>
-      </col>
-      <col span="4">
-        <FormItem label="BU" prop="BU">
-          <Input readonly placeholder="请输入BU..." v-model="form.BU"/>
-        </FormItem>
-      </col>
-      <col span="4">
-        <FormItem label="Current Date" prop="CurrentDate">
-          <Input readonly placeholder="请输入Current Date..." v-model="form.CurrentDate"/>
-        </FormItem>
-      </col>
-      <col span="4">
-        <FormItem label="Valid To Date" prop="toDate">
-          <Input readonly placeholder="请输入Valid To Date..." v-model="form.toDate"/>
-        </FormItem>
-      </col>
-    </row>
-    <row type="flex" justify="space-between" :gutter="15">
-      <col span="4">
-        <FormItem label="Opportunity ID" prop="OpportunityID">
-          <Input readonly placeholder="请输入End Opportunity ID..." v-model="form.OpportunityID"/>
-        </FormItem>
-      </col>
-      <col span="4">
-        <FormItem label="Deal Reg Indicator" prop="DealRegIndicator">
-          <Input readonly placeholder="请输入Deal Reg Indicator..." v-model="form.DealRegIndicator"/>
-        </FormItem>
-      </col>
-      <col span="4">
-        <FormItem label="MOT" prop="MOT">
-          <Input readonly placeholder="请输入MOT..." v-model="form.MOT"/>
-        </FormItem>
-      </col>
-      <col span="4">
-        <FormItem label="Bid Funding" prop="BidFunding">
-          <Input readonly placeholder="请输入Bid Funding..." v-model="form.BidFunding"/>
-        </FormItem>
-      </col>
-      <col span="4">
-        <FormItem label="RTM" prop="RTM">
-          <Input readonly placeholder="请输入RTM..." v-model="form.RTM"/>
-        </FormItem>
-      </col>
-      <col span="4">
-        <FormItem label="Sub Type" prop="SubType">
-          <Input readonly placeholder="请输入Sub Type..." v-model="form.SubType"/>
-        </FormItem>
-      </col>
-    </row> -->
-    <!-- <row type="flex" justify="space-between">
-      <col span="6">
-        <FormItem label="Sales Comments" prop="SalesComments">
-          <Input readonly type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="请输入Sales Comments..." v-model="form.SalesComments"/>
-        </FormItem>
-      </col>
-      <col span="6">
-        <FormItem label="Price Notes" prop="PriceNotes">
-          <Input readonly type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="请输入Price Notes..." v-model="form.PriceNotes"/>
-        </FormItem>
-      </col>
-      <col span="6">
-        <FormItem label="Special Ts & Cs" prop="SpecialTSCs">
-          <Input readonly  type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="请输入Special Ts & Cs..." v-model="form.SpecialTSCs"/>
-        </FormItem>
-      </col>
-      <col span="6">
-        <FormItem label="Approval Comments" prop="ApprovalComments">
-          <Input readonly type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="请输入Approval Comments..." v-model="form.ApprovalComments"/>
-        </FormItem>
-      </col>
-    </row>-->
-    <row type="flex" justify="start" style="margin:10px 0">
-      <col span="4" >
-        <FormItem>
-          <Button @click="handleReset('form')" size="small" style="margin-left: 8px">Reset</Button>
-        </FormItem>
-      </col>
-      <col span="4">
-        <FormItem>
-          <Button size="small" @click="''" style="margin-left: 8px">Round Up</Button>
-          <Button size="small" @click="''" style="margin-left: 8px">Setting</Button>
-          <Button size="small" @click="''" style="margin-left: 8px">Excel</Button>
-        </FormItem>
-      </col>
-    </row>
- </Form>
-    <Tabs type="card" style="margin:20px" :animated="false">
-      <TabPane label="Data">
-        <Table border :columns="tablecolumns1" style="margin:10px" :data="tabledata1"></Table>
-      </TabPane>
-      <TabPane label="CTO Config">
-        <Table border :columns="tablecolumns2" style="margin: 10px" :data="tabledata2"></Table>
-      </TabPane>
-      <TabPane label="CTO LIST Price">
-        <Table border :columns="tablecolumns3" style="margin: 10px" :data="tabledata3"></Table>
-      </TabPane>
-      <TabPane label="grouping Conditions">
-          <div class="check-box">
-          <CheckboxGroup v-model="groupConSelect">
-            <Checkbox style="width:200px;" v-for="(item, index) in groupingConditions" :key="index" :label="item">{{item}}</Checkbox>
-            <Button size="small">Group</Button>
-          </CheckboxGroup>
-        </div>
-      </TabPane>
-      <TabPane label="FX Rate">
-        <Table border :columns="tablecolumns51" style="margin: 10px" :data="tabledata51"></Table>
-        <Table border :columns="tablecolumns5" style="margin: 10px" :data="tabledata5"></Table>
-      </TabPane>
-      <TabPane label="Exec Summary">
-        <Button size="small" style="margin:20px">Execute Summary</Button>
-      </TabPane>
-    </Tabs>
-  <div style="margin:10px">
+  <h3><a href="javascript:;" style="display:block" @click="toggleList1">CQ</a></h3>
+  <div  class="table-CQ">
+    <Table border :columns="formcolumns" :data="formdata"></Table>
+  </div>
+  <Tabs type="card" style="margin:20px" :animated="false">
+    <TabPane label="Data">
+      <ag-grid-vue
+        style="width: 100%"
+        class="ag-theme-balham"
+        :columnDefs="columnDefs"
+        :rowData="rowData"
+        :gridAutoHeight="true"
+        :enableSorting="true"
+        :enableFilter="true"
+        :defaultColDef='{editable: true}'
+        :singleClickEdit="true"
+        :suppressSizeToFit="true"
+        :suppressResize="true"
+        :enableColResize="true"
+        rowSelection="multiple">
+      </ag-grid-vue>
+      <!-- <Table border :columns="tablecolumns1" style="margin:10px" :data="tabledata1"></Table> -->
+    </TabPane>
+    <TabPane label="CTO Config">
+      <Table border :columns="tablecolumns2" style="margin: 10px" :data="tabledata2"></Table>
+    </TabPane>
+    <TabPane label="CTO LIST Price">
+      <Table border :columns="tablecolumns3" style="margin: 10px" :data="tabledata3"></Table>
+    </TabPane>
+    <TabPane label="grouping Conditions">
+        <div class="check-box">
+        <CheckboxGroup v-model="groupConSelect">
+          <Checkbox style="width:200px;" v-for="(item, index) in groupingConditions" :key="index" :label="item">{{item}}</Checkbox>
+          <Button size="small">Group</Button>
+        </CheckboxGroup>
+      </div>
+    </TabPane>
+    <TabPane label="FX Rate">
+      <Table border :columns="tablecolumns51" style="margin: 10px" :data="tabledata51"></Table>
+      <Table border :columns="tablecolumns5" style="margin: 10px" :data="tabledata5"></Table>
+    </TabPane>
+    <TabPane label="Exec Summary">
+      <Button size="small" style="margin:20px">Execute Summary</Button>
+    </TabPane>
+  </Tabs>
+  <!-- <div style="margin:10px">
     <ag-grid-vue
       style="width: 100%"
       class="ag-theme-balham"
@@ -209,7 +101,7 @@
       :enableColResize="true"
       rowSelection="multiple">
     </ag-grid-vue>
-  </div>
+  </div> -->
 </div>
 </template>
 <script>
@@ -247,7 +139,7 @@ export default {
         CQ3: '1223'
       },
       toggle: true,
-      toggle1: false,
+      toggle1: true,
       formcolumns: [
         {
           title: ' ',
@@ -257,7 +149,6 @@ export default {
         {
           title: 'CQ',
           key: 'CQ',
-          width: 120,
           render: (h, params) => {
             return h('div', [
               h('Input', {
@@ -275,7 +166,6 @@ export default {
         {
           title: 'CQ+1',
           key: 'CQ1',
-          width: 120,
           render: (h, params) => {
             return h('div', [
               h('Input', {
@@ -1392,7 +1282,6 @@ export default {
         {
           Flag: '343',
           'HL Mem': 'sdfv',
-          make: 'sdsd',
           'Item NO': 'sdfv',
           'Part Number': 'sdfv',
           Description: 'sdfv',
@@ -1414,7 +1303,6 @@ export default {
         {
           Flag: '34',
           'HL Mem': 'sdfv',
-          make: '23sd',
           'Item NO': 'sdfv',
           'Part Number': 'sdfv',
           Description: 'sdfv',
@@ -1439,7 +1327,6 @@ export default {
         {
           Flag: '34',
           'HL Mem': 'sdfv',
-          make: 'assd',
           'Item NO': 'sdfv',
           'Part Number': 'sdfv',
           'Requested DisCount': 100,
@@ -1464,7 +1351,102 @@ export default {
         {
           Flag: '34',
           'HL Mem': 'sdfv',
-          make: 'sddddsd',
+          'Item NO': 'sdfv',
+          'Part Number': 'sdfv',
+          'Requested DisCount': 100,
+          Description: 'sdfv',
+          'Standard Price': '1000',
+          'List Price': '343',
+          id: '324',
+          makes: 'sdvcd',
+          pricenum: 2445,
+          'Sales Price': 78,
+          Margin: 'dfv',
+          Discount: 89,
+          Price: 90,
+          'Margin%': '1200',
+          PRICE: 12,
+          'CQ Margin%': 12,
+          'weighted Margin%': 23,
+          CQ: '1000',
+          'CQ+1': '100',
+          'CQ+2': '1000'
+        },
+        {
+          Flag: '34',
+          'HL Mem': 'sdfv',
+          'Item NO': 'sdfv',
+          'Part Number': 'sdfv',
+          'Requested DisCount': 100,
+          Description: 'sdfv',
+          'Standard Price': '1000',
+          'List Price': '343',
+          id: '324',
+          makes: 'sdvcd',
+          pricenum: 2445,
+          'Sales Price': 78,
+          Margin: 'dfv',
+          Discount: 89,
+          Price: 90,
+          'Margin%': '1200',
+          PRICE: 12,
+          'CQ Margin%': 12,
+          'weighted Margin%': 23,
+          CQ: '1000',
+          'CQ+1': '100',
+          'CQ+2': '1000'
+        },
+        {
+          Flag: '34',
+          'HL Mem': 'sdfv',
+          'Item NO': 'sdfv',
+          'Part Number': 'sdfv',
+          'Requested DisCount': 100,
+          Description: 'sdfv',
+          'Standard Price': '1000',
+          'List Price': '343',
+          id: '324',
+          makes: 'sdvcd',
+          pricenum: 2445,
+          'Sales Price': 78,
+          Margin: 'dfv',
+          Discount: 89,
+          Price: 90,
+          'Margin%': '1200',
+          PRICE: 12,
+          'CQ Margin%': 12,
+          'weighted Margin%': 23,
+          CQ: '1000',
+          'CQ+1': '100',
+          'CQ+2': '1000'
+        },
+        {
+          Flag: '34',
+          'HL Mem': 'sdfv',
+          'Item NO': 'sdfv',
+          'Part Number': 'sdfv',
+          'Requested DisCount': 100,
+          Description: 'sdfv',
+          'Standard Price': '1000',
+          'List Price': '343',
+          id: '324',
+          makes: 'sdvcd',
+          pricenum: 2445,
+          'Sales Price': 78,
+          Margin: 'dfv',
+          Discount: 89,
+          Price: 90,
+          'Margin%': '1200',
+          PRICE: 12,
+          'CQ Margin%': 12,
+          'weighted Margin%': 23,
+          CQ: '1000',
+          'CQ+1': '100',
+          'CQ+2': '1000'
+        },
+        {
+          Flag: '34',
+          'HL Mem': 'sdfv',
           'Item NO': 'sdfv',
           'Part Number': 'sdfv',
           Description: 'sdfv',
@@ -1497,6 +1479,7 @@ export default {
   mounted () {
     this.$nextTick(() => {
       this.toggleList()
+      this.toggleList1()
     }, 3000)
   },
   methods: {
@@ -1508,6 +1491,15 @@ export default {
         itembox.style.display = 'block'
       }
       this.toggle = !this.toggle
+    },
+    toggleList1 () {
+      let tableCQ = document.getElementsByClassName('table-CQ')[0]
+      if (this.toggle1) {
+        tableCQ.style.display = 'none'
+      } else {
+        tableCQ.style.display = 'block'
+      }
+      this.toggle1 = !this.toggle1
     },
     handleReset (name) {
       this.$refs[name].resetFields()
@@ -1523,19 +1515,34 @@ export default {
   padding-bottom:20px;
   background: #fff
 }
-.pull-right {
-  float: right;
+.tool-bar{
+  width:100%;
+  height:32px;
+  box-shadow: 0 0 5px #ccc;
+  margin-bottom:10px;
+  padding: 0 10px;
+  .item{
+    color:#666;
+    height:32px;
+    line-height: 32px;
+    &:hover{
+      color:rgb(40, 122, 245);
+    }
+    .icon{
+      padding: 0 2px;
+      height:32px;
+      line-height: 32px;
+    }
+  }
 }
-.ivu-form-item {
-  margin-bottom: 0px;
-}
+
 .ivu-table th, .ivu-table td{
   height:30px
 }
-.ivu-tabs-content{
-  height:auto;
-  padding-bottom:20px
-}
+// .ivu-tabs-content{
+//   height:auto;
+//   padding-bottom:20px
+// }
 h2{
   height:30px;
   line-height: 30px;
@@ -1612,5 +1619,10 @@ h3{
       overflow: hidden;
     }
   }
+}
+.table-CQ{
+  width: 100%;
+  height:auto;
+  padding: 0 10px;
 }
 </style>
