@@ -2,33 +2,39 @@
 <div class="price-box">
   <h2>LPA-Lenovo Price Analysis</h2>
   <h3>Quotation Infomation
-    <a href="javascript:;" class="fold" @click="toggleList1" v-text="toggle1 ? '收起' : '展开'"></a>
+    <a href="javascript:;" class="fold" @click="toggle1=true" v-text="toggle1 ? '隐藏' : '弹出'"></a>
     <a href="javascript:;" class="fold" @click="toggleList" v-text="toggle ? '收起' : '展开'"></a>
   </h3>
   <ul class="item-box">
-    <li><span>Quotation ID:</span><i>{{form.QuotationID}}</i></li>
-    <li><span>Description:</span><i>{{form.Description}}</i></li>
-    <li><span>Status:</span><i>{{form.Status}}</i></li>
-    <li><span>Country(S):</span><i>{{form.Country}}</i></li>
-    <li><span>Currency:</span><i>{{form.Currency}}</i></li>
-    <li><span>Customer:</span><i>{{form.Customer}}</i></li>
-    <li><span>Valid From Date:</span><i>{{form.FromDate}}</i></li>
-    <li><span>End Customer(DMU):</span><i>{{form.EndCustomer}}</i></li>
-    <li><span>Sales Representative:</span><i>{{form.SalesRepresentative}}</i></li>
-    <li><span>Bid Approver:</span><i>{{form.BidApprover}}</i></li>
-    <li><span>BU:</span><i>{{form.BU}}</i></li>
-    <li><span>Current Date:</span><i>{{form.CurrentDate}}</i></li>
-    <li><span>Valid To Date:</span><i>{{form.toDate}}</i></li>
-    <li><span>Opportunity ID:</span><i>{{form.OpportunityID}}</i></li>
-    <li><span>Deal Reg Indicator:</span><i>{{form.DealRegIndicator}}</i></li>
-    <li><span>MOT:</span><i>{{form.MOT}}</i></li>
-    <li><span>Bid Funding:</span><i>{{form.BidFunding}}</i></li>
-    <li><span>RTM:</span><i>{{form.RTM}}</i></li>
-    <li><span>Sub Type:</span><i>{{form.SubType}}</i></li>
+    <li><span>Quotation ID:</span><i :title="form.QuotationID">{{form.QuotationID}}</i></li>
+    <li><span>Description:</span><i :title="form.Description">{{form.Description}}</i></li>
+    <li><span>Status:</span><i :title="form.Status">{{form.Status}}</i></li>
+    <li><span>Country(S):</span><i :title="form.Country">{{form.Country}}</i></li>
+    <li><span>Currency:</span><i :title="form.Currency">{{form.Currency}}</i></li>
+    <li><span>Customer:</span><i :title="form.Customer">{{form.Customer}}</i></li>
+    <li><span>Valid From Date:</span><i :title="form.FromDate">{{form.FromDate}}</i></li>
+    <li><span>End Customer(DMU):</span><i :title="form.EndCustomer">{{form.EndCustomer}}</i></li>
+    <li><span>Sales Representative:</span><i :title="form.SalesRepresentative">{{form.SalesRepresentative}}</i></li>
+    <li><span>Bid Approver:</span><i :title="form.BidApprover">{{form.BidApprover}}</i></li>
+    <li><span>BU:</span><i :title="form.BU">{{form.BU}}</i></li>
+    <li><span>Current Date:</span><i :title="form.CurrentDate">{{form.CurrentDate}}</i></li>
+    <li><span>Valid To Date:</span><i :title="form.toDate">{{form.toDate}}</i></li>
+    <li><span>Opportunity ID:</span><i :title="form.OpportunityID">{{form.OpportunityID}}</i></li>
+    <li><span>Deal Reg Indicator:</span><i :title="form.DealRegIndicator">{{form.DealRegIndicator}}</i></li>
+    <li><span>MOT:</span><i :title="form.MOT">{{form.MOT}}</i></li>
+    <li><span>Bid Funding:</span><i :title="form.BidFunding">{{form.BidFunding}}</i></li>
+    <li><span>RTM:</span><i :title="form.RTM">{{form.RTM}}</i></li>
+    <li><span>Sub Type:</span><i :title="form.SubType">{{form.SubType}}</i></li>
   </ul>
-  <Table width="600" class="table" border :columns="formcolumns" style="margin: 10px" :data="formdata"></Table>
-  <!-- <Form ref="form" :model="form" style="margin:20px;">
-    <row type="flex" justify="space-between" :gutter="15">
+  <!-- <Button type="primary" @click="toggle1 = true">Display dialog box</Button> -->
+    <Modal
+      v-model="toggle1"
+      width="800"
+      title="This is a table">
+      <Table border :columns="formcolumns" :data="formdata"></Table>
+    </Modal>
+   <Form ref="form" :model="form" style="margin:20px;">
+    <!--<row type="flex" justify="space-between" :gutter="15">
       <col span="4">
         <FormItem label="Quotation ID" prop="QuotationID">
           <Input readonly placeholder="请输入Quotation ID..." v-model="form.QuotationID"/>
@@ -145,35 +151,31 @@
           <Input readonly type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="请输入Approval Comments..." v-model="form.ApprovalComments"/>
         </FormItem>
       </col>
-    </row>
+    </row>-->
     <row type="flex" justify="start" style="margin:10px 0">
       <col span="4" >
         <FormItem>
-          <Button @click="handleReset('form')" style="margin-left: 8px">Reset</Button>
+          <Button @click="handleReset('form')" size="small" style="margin-left: 8px">Reset</Button>
         </FormItem>
       </col>
       <col span="4">
         <FormItem>
-          <Button @click="''" style="margin-left: 8px">Round Up</Button>
-          <Button @click="''" style="margin-left: 8px">Setting</Button>
-          <Button @click="''" style="margin-left: 8px">Excel</Button>
+          <Button size="small" @click="''" style="margin-left: 8px">Round Up</Button>
+          <Button size="small" @click="''" style="margin-left: 8px">Setting</Button>
+          <Button size="small" @click="''" style="margin-left: 8px">Excel</Button>
         </FormItem>
       </col>
     </row>
-  </Form> -->
-  <!-- <Divider></Divider> -->
+ </Form>
     <Tabs type="card" style="margin:20px" :animated="false">
       <TabPane label="Data">
         <Table border :columns="tablecolumns1" style="margin:10px" :data="tabledata1"></Table>
-        <Page :total="tableDatalen1" show-sizer show-total class="pull-right" />
       </TabPane>
       <TabPane label="CTO Config">
         <Table border :columns="tablecolumns2" style="margin: 10px" :data="tabledata2"></Table>
-        <Page :total="tableDatalen2" show-sizer show-total class="pull-right" />
       </TabPane>
       <TabPane label="CTO LIST Price">
         <Table border :columns="tablecolumns3" style="margin: 10px" :data="tabledata3"></Table>
-        <Page :total="tableDatalen3" show-sizer show-total class="pull-right" />
       </TabPane>
       <TabPane label="grouping Conditions">
           <div class="check-box">
@@ -200,13 +202,11 @@
       :gridAutoHeight="true"
       :enableSorting="true"
       :enableFilter="true"
-      :components='{
-        numericCellEditor: NumericCellEditor,
-        moodEditor: MoodEditor}'
       :defaultColDef='{editable: true}'
       :singleClickEdit="true"
       :suppressSizeToFit="true"
       :suppressResize="true"
+      :enableColResize="true"
       rowSelection="multiple">
     </ag-grid-vue>
   </div>
@@ -247,7 +247,7 @@ export default {
         CQ3: '1223'
       },
       toggle: true,
-      toggle1: true,
+      toggle1: false,
       formcolumns: [
         {
           title: ' ',
@@ -326,6 +326,13 @@ export default {
         }
       ],
       formdata: [
+        {
+          hedgerife: 'hedgerife',
+          CQ: '',
+          CQ1: '',
+          CQ2: '',
+          CQ3: ''
+        },
         {
           hedgerife: 'hedgerife',
           CQ: '',
@@ -1341,43 +1348,43 @@ export default {
       columnDefs: [
         {headerName: ' ',
           children: [
-            {checkboxSelection: true, width: 60},
-            {headerName: 'Flag', field: 'Flag', editable: false, width: 100},
-            {headerName: 'Make', field: 'make', width: 100, cellEditor: 'agSelectCellEditor', cellEditorParams: {values: ['AAA', 'BBB', 'CCC']}},
-            {headerName: 'HL Mem', field: 'HL Mem', width: 100},
-            {headerName: 'Item NO', field: 'Item NO', width: 100},
-            {headerName: 'Part Number', field: 'Part Number', width: 100},
-            {headerName: 'Description', field: 'Description', width: 100},
-            {headerName: 'Standard Price', field: 'Standard Price', width: 100},
-            {headerName: 'List Price', field: 'List Price', width: 100}
+            {checkboxSelection: true, width: 60, cellStyle: {'text-align': 'center'}},
+            {headerName: 'Flag', field: 'Flag', editable: false, width: 100, cellStyle: {'text-align': 'center'}},
+            // {headerName: 'Make', field: 'make', width: 100, cellEditor: 'agSelectCellEditor', cellEditorParams: {values: ['AAA', 'BBB', 'CCC']}},
+            {headerName: 'HL Mem', field: 'HL Mem', cellStyle: {'text-align': 'center'}, width: 100},
+            {headerName: 'Item NO', field: 'Item NO', cellStyle: {'text-align': 'center'}, width: 100},
+            {headerName: 'Part Number', field: 'Part Number', cellStyle: {'text-align': 'center'}, width: 100},
+            {headerName: 'Description', field: 'Description', cellStyle: {'text-align': 'center'}, width: 100},
+            {headerName: 'Standard Price', field: 'Standard Price', cellStyle: {'text-align': 'center'}, width: 100},
+            {headerName: 'List Price', field: 'List Price', cellStyle: {'text-align': 'center'}, width: 100}
           ]
         },
         {headerName: 'Discount',
           children: [
-            {headerName: 'Requested DisCount', field: 'Requested DisCount', width: 100},
-            {headerName: 'Margin', field: 'Margin', width: 100},
-            {headerName: 'Sales Price', field: 'Sales Price', width: 100}
+            {headerName: 'Requested DisCount', cellStyle: {'text-align': 'center'}, field: 'Requested DisCount', width: 100},
+            {headerName: 'Margin', field: 'Margin', cellStyle: {'text-align': 'center'}, width: 100},
+            {headerName: 'Sales Price', field: 'Sales Price', cellStyle: {'text-align': 'center'}, width: 100}
           ]
         },
         {headerName: 'Active Price',
           children: [
-            {headerName: 'Discount', field: 'Discount', width: 100},
-            {headerName: 'Price', field: 'Price', width: 100},
-            {headerName: 'Margin%', field: 'Margin%', width: 100}
+            {headerName: 'Discount', field: 'Discount', cellStyle: {'text-align': 'center'}, width: 100},
+            {headerName: 'Price', field: 'Price', cellStyle: {'text-align': 'center'}, width: 100},
+            {headerName: 'Margin%', field: 'Margin%', cellStyle: {'text-align': 'center'}, width: 100}
           ]
         },
         {headerName: 'Entitied',
           children: [
-            {headerName: 'PRICE', field: 'PRICE', width: 100},
-            {headerName: 'CQ Margin%', field: 'CQ Margin%', width: 100},
-            {headerName: 'weighted Margin%', field: 'weighted Margin%', width: 100}
+            {headerName: 'PRICE', field: 'PRICE', cellStyle: {'text-align': 'center'}, width: 100},
+            {headerName: 'CQ Margin%', field: 'CQ Margin%', cellStyle: {'text-align': 'center'}, width: 100},
+            {headerName: 'weighted Margin%', field: 'weighted Margin%', cellStyle: {'text-align': 'center'}, width: 100}
           ]
         },
         {headerName: 'Quantity',
           children: [
-            {headerName: 'CQ', field: 'CQ', width: 100},
-            {headerName: 'CQ+1', field: 'CQ+1', width: 100},
-            {headerName: 'CQ+2', field: 'CQ+2', width: 100}
+            {headerName: 'CQ', field: 'CQ', cellStyle: {'text-align': 'center'}, width: 100},
+            {headerName: 'CQ+1', field: 'CQ+1', cellStyle: {'text-align': 'center'}, width: 100},
+            {headerName: 'CQ+2', field: 'CQ+2', cellStyle: {'text-align': 'center'}, width: 100}
           ]
         }
       ],
@@ -1486,20 +1493,13 @@ export default {
     AgGridVue
   },
   created () {
-    this.Datalength1()
-    this.Datalength2()
-    this.Datalength3()
   },
   mounted () {
     this.$nextTick(() => {
       this.toggleList()
-      this.toggleList1()
     }, 3000)
   },
   methods: {
-    // onGridReady (params) {
-    //   params.api.sizeColumnsToFit()
-    // },
     toggleList () {
       let itembox = document.getElementsByClassName('item-box')[0]
       if (this.toggle) {
@@ -1509,29 +1509,8 @@ export default {
       }
       this.toggle = !this.toggle
     },
-    toggleList1 () {
-      let table = document.getElementsByClassName('table')[0]
-      if (this.toggle1) {
-        table.style.display = 'none'
-      } else {
-        table.style.display = 'block'
-      }
-      this.toggle1 = !this.toggle1
-    },
     handleReset (name) {
       this.$refs[name].resetFields()
-    },
-    Datalength1 () {
-      this.tableDatalen1 = this.tabledata1.length
-    },
-    Datalength2 () {
-      this.tableDatalen2 = this.tabledata2.length
-    },
-    Datalength3 () {
-      this.tableDatalen3 = this.tabledata3.length
-    },
-    changeTableNumShow (n) {
-      this.tableNumShow = n
     }
   }
 }
@@ -1580,7 +1559,7 @@ h3{
     float: right;
     color: #fff;
     border-radius: 6px;
-    background: #ff9933;
+    background: #2d8cf0;
     font-size: 12px;
     box-sizing:border-box;
   }
@@ -1601,48 +1580,37 @@ h3{
   overflow: hidden;
   li {
     float: left;
-    width: 25%;
-    height: 28px;
+    width: 20%;
+    height: 25px;
     font-size: 13px;
     list-style: none;
-    margin-bottom: 10px;
+    margin-bottom: 3px;
     span{
       width: 135px;
-      height:28px;
-      line-height: 28px;
+      height:25px;
+      line-height: 25px;
       color:#000;
       float: left;
-      display: inline-block;
+      display: block;
       text-align: right;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
     }
     i{
       font-style: normal;
-      height:28px;
-      line-height: 28px;
-      margin-left:10px;
+      width: 100px;
+      height:25px;
+      line-height: 25px;
+      margin-left:5px;
       color: #666;
       float: left;
-      display: inline-block;
+      display: block;
       text-align: left;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
     }
   }
 }
-.demo-tabs-style > .ivu-tabs-card > .ivu-tabs-content {
-    height: 120px;
-    margin-top: -16px;
-}
-
-.demo-tabs-style > .ivu-tabs-card > .ivu-tabs-content > .ivu-tabs-tabpane {
-    background: #fff;
-    padding: 16px;
-}
-
-.demo-tabs-style > .ivu-tabs.ivu-tabs-card > .ivu-tabs-bar .ivu-tabs-tab {
-    border-color: transparent;
-}
-
-.demo-tabs-style > .ivu-tabs-card > .ivu-tabs-bar .ivu-tabs-tab-active {
-    border-color: #fff;
-}
-
 </style>
