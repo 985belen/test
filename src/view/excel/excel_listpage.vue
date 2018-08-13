@@ -9,45 +9,6 @@
     <Divider type="vertical" />
     <a href="#" class="item"><Icon class="icon" size=16 type="md-search" />Export</a>
   </div>
-  <!-- <h3 class="marginBottom"><a href="javascript:;" style="display:block;color: #333;" @click="toggleList"><Icon type="ios-podium" /> CQ</a></h3>
-  <div class="table-CQ">
-    <Form :model="FormItem" ref="FormItem" >
-      <Row type="flex" justify="start" :gutter="10">
-        <Col span=6>
-          <Form-item label="DMU Number" :label-width="100">
-            <Input v-model="FormItem.DMUNumber" placeholder="Enter something..."></Input>
-          </Form-item>
-        </Col>
-        <Col span=6>
-          <Form-item label="Pricing Estimation Number" :label-width="176">
-            <Input v-model="FormItem.PricingEstimationNumber" placeholder="Enter something..."></Input>
-          </Form-item>
-        </Col>
-        <Col span=6>
-          <Form-item label="Country" :label-width="100">
-            <Input v-model="FormItem.Country" placeholder="Enter something..."></Input>
-          </Form-item>
-        </Col>
-      </row>
-      <Row type="flex" justify="start" :gutter="10">
-        <Col span=6>
-          <Form-item label="DMU Name" :label-width="100">
-            <Input v-model="FormItem.DMUName" placeholder="Enter something..."></Input>
-          </Form-item>
-        </Col>
-        <Col span=6>
-          <Form-item label="Pricing Estimation Description" :label-width="176">
-            <Input v-model="FormItem.PricingEstimationDescription" placeholder="Enter something..."></Input>
-          </Form-item>
-        </Col>
-        <Col span=6>
-          <Form-item label="Created By" :label-width="100">
-            <Input v-model="FormItem.CreatedBy" placeholder="Enter something..."></Input>
-          </Form-item>
-        </Col>
-      </Row>
-    </Form>
-  </div> -->
   <div class="split-pane-page-wrapper">
     <split-pane v-model="offset" @on-moving="handleMoving">
       <div slot="left" class="pane left-pane">
@@ -60,6 +21,7 @@
             :gridAutoHeight="true"
             :enableSorting="true"
             :enableFilter="true"
+            :showToolPanel="true"
             :defaultColDef='{editable: true}'
             :singleClickEdit="true"
             :suppressSizeToFit="true"
@@ -82,7 +44,8 @@
     v-model="modelnew"
     :styles="{width:'800px'}"
     title="create New PE"
-    ok-text="OK"
+    ok-text="Create"
+    @on-ok="topage"
     cancel-text="Cancel">
     <Form :model="FormNewpE" :label-width="120" :rules="ruleValidate">
       <Row>
@@ -93,41 +56,41 @@
       <Row>
         <Col span=8>
           <Form-item label="ID">
-            <Input v-model="FormItem.id" placeholder="Enter something..."></Input>
+            <Input size="small" v-model="FormItem.id" placeholder="Enter something..."></Input>
           </Form-item>
         </Col>
         <Col span=8>
           <Form-item label="Created Date">
-            <Input v-model="FormItem.CreatedDate" placeholder="Enter something..."></Input>
+            <Input size="small" v-model="FormItem.CreatedDate" placeholder="Enter something..."></Input>
           </Form-item>
         </Col>
         <Col span=8>
           <Form-item label="Last Modified">
-            <Input v-model="FormItem.LastModified" placeholder="Enter something..."></Input>
+            <Input size="small" v-model="FormItem.LastModified" placeholder="Enter something..."></Input>
           </Form-item>
         </Col>
       </Row>
       <Row>
         <Col span=8>
           <Form-item label="Original Rmap ID">
-            <Input v-model="FormItem.OriginalRmapID" placeholder="Enter something..."></Input>
+            <Input size="small" v-model="FormItem.OriginalRmapID" placeholder="Enter something..."></Input>
           </Form-item>
         </Col>
         <Col span=8>
           <Form-item label="Created By">
-            <Input v-model="FormItem.CreatedBy" placeholder="Enter something..."></Input>
+            <Input size="small" v-model="FormItem.CreatedBy" placeholder="Enter something..."></Input>
           </Form-item>
         </Col>
         <Col span=8>
           <Form-item label="Last Modified by">
-            <Input v-model="FormItem.LastModifiedby" placeholder="Enter something..."></Input>
+            <Input size="small" v-model="FormItem.LastModifiedby" placeholder="Enter something..."></Input>
           </Form-item>
         </Col>
       </Row>
       <Row>
         <Col span=24>
           <Form-item label="Description" prop="Description">
-            <Input v-model="FormItem.Description" type="textarea" placeholder="Enter something..."></Input>
+            <Input size="small" v-model="FormItem.Description" type="textarea" placeholder="Enter something..."></Input>
           </Form-item>
         </Col>
       </Row>
@@ -136,30 +99,30 @@
           <h3 class="marginBottom">DMU Information</h3>
         </Col>
         <Col span=12>
-          <h3 class="marginBottom">Sales Information</h3>
+          <h3 class="marginBottom">| Sales Information</h3>
         </Col>
       </Row>
       <Row>
         <Col span=12>
           <Form-item label="DMU Name"  prop="DMUName">
-            <Input v-model="FormItem.DMUName" placeholder="Enter something..."></Input>
+            <Input size="small" v-model="FormItem.DMUName" placeholder="Enter something..."></Input>
           </Form-item>
         </Col>
         <Col span=12>
           <Form-item label="Channel" prop="Channel">
-            <Input v-model="FormItem.Channel" placeholder="Enter something..."></Input>
+            <Input size="small" v-model="FormItem.Channel" placeholder="Enter something..."></Input>
           </Form-item>
         </Col>
       </Row>
       <Row>
         <Col span=12>
           <Form-item label="Business Group">
-            <Input v-model="FormItem.BusinessGroup" placeholder="Enter something..."></Input>
+            <Input size="small" v-model="FormItem.BusinessGroup" placeholder="Enter something..."></Input>
           </Form-item>
         </Col>
         <Col span=12>
           <Form-item label="Pricing Group" prop="PricingGroup">
-            <Input v-model="FormItem.PricingGroup" placeholder="Enter something..."></Input>
+            <Input size="small" v-model="FormItem.PricingGroup" placeholder="Enter something..."></Input>
           </Form-item>
         </Col>
         </Col>
@@ -167,30 +130,30 @@
       <Row>
         <Col span=12>
           <Form-item label="Country">
-            <Input v-model="FormItem.Country" placeholder="Enter something..."></Input>
+            <Input size="small" v-model="FormItem.Country" placeholder="Enter something..."></Input>
           </Form-item>
         </Col>
         <Col span=12>
           <Form-item label="Validity Period">
-            <Input v-model="FormItem.ValidityPeriod" placeholder="Enter something..."></Input>
+            <Input size="small" v-model="FormItem.ValidityPeriod" placeholder="Enter something..."></Input>
           </Form-item>
         </Col>
       </Row>
       <Row>
         <Col span=12>
           <Form-item label="Sub Region">
-            <Input v-model="FormItem.SubRegion" placeholder="Enter something..."></Input>
+            <Input size="small" v-model="FormItem.SubRegion" placeholder="Enter something..."></Input>
           </Form-item>
           <Form-item label="Region">
-            <Input v-model="FormItem.Region" placeholder="Enter something..."></Input>
+            <Input size="small" v-model="FormItem.Region" placeholder="Enter something..."></Input>
           </Form-item>
           <Form-item label="Geo">
-            <Input v-model="FormItem.Geo" placeholder="Enter something..."></Input>
+            <Input size="small" v-model="FormItem.Geo" placeholder="Enter something..."></Input>
           </Form-item>
         </Col>
         <Col span=12>
           <Form-item label="Comments">
-            <Input v-model="FormItem.Comments" type="textarea" :rows="6" placeholder="Enter something..."></Input>
+            <Input size="small" v-model="FormItem.Comments" type="textarea" :rows="4" placeholder="Enter something..."></Input>
           </Form-item>
         </Col>
       </Row>
@@ -232,16 +195,16 @@ export default {
       },
       ruleValidate: {
         Description: [
-          { required: true, message: 'The name cannot be empty', trigger: 'blur' }
+          { required: true, message: 'The Description cannot be empty', trigger: 'blur' }
         ],
         DMUName: [
-          { required: true, message: 'Mailbox cannot be empty', trigger: 'blur' }
+          { required: true, message: 'The DMUName cannot be empty', trigger: 'blur' }
         ],
         Channel: [
-          { required: true, message: 'Mailbox cannot be empty', trigger: 'blur' }
+          { required: true, message: 'The Channel cannot be empty', trigger: 'blur' }
         ],
         PricingGroup: [
-          { required: true, message: 'Mailbox cannot be empty', trigger: 'blur' }
+          { required: true, message: 'The PricingGroup cannot be empty', trigger: 'blur' }
         ]
       },
       modelnew: false,
@@ -251,11 +214,15 @@ export default {
       toggle: false,
       columnDefs: [
         {
-          checkboxSelection: true, width: 60, cellStyle: {'text-align': 'center'}
+          headerCheckboxSelection: true,
+          headerCheckboxSelectionFilteredOnly: false,
+          editable: false,
+          checkboxSelection: true, width: 60
         },
         {
           headerName: 'PE Number',
           cellStyle: {'text-align': 'center'},
+          cellRenderer: (params)=>{ return '<a href="/excel/excel_PEsale">'+params.value+'</a>'},
           field: 'peNum',
           width: 135
         },
@@ -370,62 +337,62 @@ export default {
           currency: 'USD'
         },
         {
-          peNum: 'PE-20176807001',
-          dmuNum: '1212263935',
-          dmuName: 'IPSOS HQ',
-          desc: 'RX-DCG-NIMS PRNS',
-          country: 'Germany',
-          region: 'WE',
-          channel: 'Direct',
-          status: 'Draft',
-          createdBy: 'arijn',
-          createdTime: '2018/08/06 10:00:00',
-          modifiedBy: 'jofeytout',
-          modyfiedTime: '2018/08/07 10:00:00',
-          pricer: 'jmose',
-          grRev: '347100',
-          margi: '18.7',
+          peNum: 'PE-20180807002',
+          dmuNum: '1213420209',
+          dmuName: 'CSC WE RMC DMU',
+          desc: 'RX_Tchibo',
+          country: 'Italy',
+          region: 'EMEA',
+          channel: 'Indirect',
+          status: 'Submitted',
+          createdBy: 'skeskin',
+          createdTime: '2018-08-06 0:00',
+          modifiedBy: 'skeskin',
+          modyfiedTime: '2018-08-07 0:00',
+          pricer: 'yanm2',
+          grRev: '2,102,080',
+          margi: '4.2',
           currency: 'USD'
         },
         {
-          peNum: 'PE-20180807001',
-          dmuNum: '1212263935',
-          dmuName: 'IPSOS HQ',
-          desc: 'RX-DCG-NIMS PRNS',
-          country: 'Germany',
-          region: 'WE',
+          peNum: 'PE-20180807003',
+          dmuNum: '1213431990',
+          dmuName: 'Evonik MC DMU',
+          desc: 'DXC - UHH',
+          country: 'France',
+          region: 'EMEA',
           channel: 'Direct',
-          status: 'Draft',
-          createdBy: 'arijn',
-          createdTime: '2018/08/06 10:00:00',
+          status: 'Approved',
+          createdBy: 'jbruesse',
+          createdTime: '2018/08/06 0:00:00',
           modifiedBy: 'jofeytout',
-          modyfiedTime: '2018/08/07 10:00:00',
-          pricer: 'jmose',
-          grRev: '347100',
-          margi: '18.7',
+          modyfiedTime: '2018/08/07 0:00:00',
+          pricer: 'zhanghq3',
+          grRev: '35,283,244',
+          margi: '-9.6',
           currency: 'USD'
         },
         {
-          peNum: 'PE-20180807001',
-          dmuNum: '1212263935',
-          dmuName: 'IPSOS HQ',
-          desc: 'RX-DCG-NIMS PRNS',
-          country: 'Germany',
-          region: 'WE',
-          channel: 'Direct',
-          status: 'Draft',
+          peNum: 'PE-20180807004',
+          dmuNum: '1213445570',
+          dmuName: 'CRH MC DMU',
+          desc: 'GA Evonik - P52 (incl. Services)',
+          country: 'France',
+          region: 'EMEA',
+          channel: 'Indirect',
+          status: 'Rejected',
           createdBy: 'arijn',
-          createdTime: '2018/08/06 10:00:00',
+          createdTime: '2018/08/06 0:00:00',
           modifiedBy: 'jofeytout',
-          modyfiedTime: '2018/08/07 10:00:00',
-          pricer: 'jmose',
-          grRev: '347100',
-          margi: '18.7',
+          modyfiedTime: '2018/08/07 0:00:00',
+          pricer: 'jbruesse',
+          grRev: '0',
+          margi: '-21.3',
           currency: 'USD'
         },
         {
-          peNum: 'PE-20180807001',
-          dmuNum: '1212263935',
+          peNum: 'PE-20180807005',
+          dmuNum: '1214029598',
           dmuName: 'IPSOS HQ',
           desc: 'RX-DCG-NIMS PRNS',
           country: 'Germany',
@@ -433,12 +400,12 @@ export default {
           channel: 'Direct',
           status: 'Draft',
           createdBy: 'arijn',
-          createdTime: '2018/08/06 10:00:00',
+          createdTime: '2018/08/06 0:00:00',
           modifiedBy: 'jofeytout',
-          modyfiedTime: '2018/08/07 10:00:00',
+          modyfiedTime: '2018/08/07 0:00:00',
           pricer: 'jmose',
-          grRev: '347100',
-          margi: '18.7',
+          grRev: '17,468,07',
+          margi: '-35.4',
           currency: 'USD'
         },
         {
@@ -585,6 +552,10 @@ export default {
     off(window, 'resize', this.resize())
   },
   methods: {
+    topage () {
+      alert(23)
+      this.$router.push('/excel/excel_PEsale')
+    },
     resize () {
       this.dom.resize()
     },

@@ -1,12 +1,12 @@
 <template>
 <div class="newpage">
   <div class="tool-bar">
-    <!-- <a href="#" class="item" @click="modeldetail = true" ><Icon class="icon" size=16 type="md-add" />Summary Detail</a>
+    <a href="#" class="item" @click="resize, modeldetail = true" ><Icon class="icon" size=16 type="md-add" />Summary Detail</a>
     <Divider type="vertical" />
-    <a href="#" class="item" @click="modelProduct = true"><Icon class="icon" size=16 type="md-stats" />Summary By Product</a>
+    <a href="#" class="item" @click="resize,modelProduct = true"><Icon class="icon" size=16 type="md-stats" />Summary By Product</a>
     <Divider type="vertical" />
-    <a href="#" class="item" @click="modelBrand = true"><Icon class="icon" size=16 type="md-search" />Summary By Brand</a>
-    <Divider type="vertical" /> -->
+    <a href="#" class="item" @click="resize,modelBrand = true"><Icon class="icon" size=16 type="md-search" />Summary By Brand</a>
+    <Divider type="vertical" />
     <a href="#" class="item" @click="importTransaction"><Icon class="icon" size=16 type="md-add" />Import Transaction</a>
   </div>
   <h3 class="marginBottom"><a href="javascript:;" style="display:block;color: #333;" @click="toggleList1"><Icon type="ios-podium" />PE Information</a></h3>
@@ -222,7 +222,21 @@
           </li>
         </ul>
       </div>
-      <Table style="margin:10px auto" height='300' width="100%" :columns="Brandcolumns" :data="Branddata"></Table>
+      <ag-grid-vue
+        style="width: 100%; height:100%;"
+        class="ag-theme-balham"
+        :columnDefs="Brandcolumns"
+        :rowData="Branddata"
+        :gridAutoHeight="true"
+        :enableSorting="true"
+        :enableFilter="true"
+        :defaultColDef='{editable: true}'
+        :singleClickEdit="true"
+        :suppressSizeToFit="true"
+        :suppressResize="true"
+        :enableColResize="true"
+        rowSelection="multiple">
+      </ag-grid-vue>
     </Modal>
 </div>
 </template>
@@ -310,7 +324,7 @@ export default {
           width: 120,
           field: 'prono',
           cellStyle: {'text-align': 'center'},
-          cellRenderer: () => { return '<a href="/excel/excel_listpage">PE-20176807001</a>'}
+          cellRenderer: (params) => { return '<a href="/excel/excel_listpage">'+params.value+'</a>'}
         },
         {
           headerName: 'Product Desc',
@@ -1804,11 +1818,11 @@ export default {
         },
         {
           f0q: 'Total Services/Other',
-          f1q: '',
-          f2q: '',
-          f3q: '',
-          f4q: '',
-          total: ''
+          f1q: 'sd',
+          f2q: 'sdsd',
+          f3q: 'sd',
+          f4q: 'sd',
+          total: 'sdvc'
         },
         {
           f0q: 'Revenue',
@@ -1836,11 +1850,11 @@ export default {
         },
         {
           f0q: 'Total Branded',
-          f1q: '',
-          f2q: '',
-          f3q: '',
-          f4q: '',
-          total: ''
+          f1q: 'sds',
+          f2q: '213',
+          f3q: '12',
+          f4q: '1111',
+          total: '12332'
         },
         {
           f0q: 'Revenue',
@@ -1868,11 +1882,11 @@ export default {
         },
         {
           f0q: 'Non Branded',
-          f1q: '',
-          f2q: '',
-          f3q: '',
-          f4q: '',
-          total: ''
+          f1q: '34',
+          f2q: '23',
+          f3q: '232',
+          f4q: '23',
+          total: '2323'
         },
         {
           f0q: 'Revenue',
@@ -1968,8 +1982,9 @@ ul{
   width: 48%;
   float: left;
   padding: 0 20px;
+  margin: 10px 0;
   &:nth-child(1) {
-    border-right:1px solid blue;
+    border-right:1px solid #ccc;
   }
   li{
     list-style: none;

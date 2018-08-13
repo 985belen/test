@@ -2,31 +2,53 @@
 <div class="listpage">
   <Form :model="FormItem" ref="FormItem" >
     <Row>
-      <Col span=8>
+      <Col span=7>
         <Form-item label="Business Partner">
-          <Input v-model="FormItem.BusinessPartner" placeholder="Enter something..."></Input>
+          <Input size="small" v-model="FormItem.BusinessPartner" placeholder="Enter something..."></Input>
         </Form-item>
       </Col>
-      <Col span=8>
+      <Col span=7>
         <Form-item label="select">
-          <Select v-model="select" style="width:200px">
-            <Option v-for="(item, index) in selects" :value="item.value" :key="index">{{item}}</Option>
+          <Select size="small" v-model="select" style="width:200px">
+            <Option v-for="(item, index) in FormItem.selects" :value="item" :key="index">{{item}}</Option>
         </Select>
         </Form-item>
       </Col>
-      <Col span=8>
+      <Col span=7>
         <Form-item label="Transaction ID">
-          <Input v-model="FormItem.TransactionID" placeholder="Enter something..."></Input>
+          <Input size="small" v-model="FormItem.TransactionID" placeholder="Enter something..."></Input>
+        </Form-item>
+      </Col>
+      <Col span=3>
+        <Form-item>
+          <Button size="small" type="primary">Search</Button>
+          <Button size="small" type="primary">Attach</Button>
         </Form-item>
       </Col>
     </row>
   </Form>
   <div class="table-box">
-    <Table height="500" border stripe :columns="Columns" :data="data"></Table>
+    <ag-grid-vue
+      style="width: 100%; height:100%;"
+      class="ag-theme-balham"
+      :columnDefs="Columns"
+      :rowData="data"
+      :gridAutoHeight="true"
+      :enableSorting="true"
+      :enableFilter="true"
+      :showToolPanel="true"
+      :defaultColDef='{editable: true}'
+      :singleClickEdit="true"
+      :suppressSizeToFit="true"
+      :suppressResize="true"
+      :enableColResize="true"
+      rowSelection="multiple">
+    </ag-grid-vue>
   </div>
 </div>
 </template>
 <script>
+import {AgGridVue} from 'ag-grid-vue'
 export default {
   data () {
     return {
@@ -41,326 +63,129 @@ export default {
       },
       Columns: [
         {
-          type: 'selection',
-          align: 'center',
+          headerCheckboxSelection: true,
+          headerCheckboxSelectionFilteredOnly: false,
+          editable: false,
+          checkboxSelection: true,
           width: 60
         },
         {
-          title: 'PE Number',
-          key: 'peNum',
-          align: 'center',
-          width: 135
+          headerName: 'Transaction ID',
+          field: 'TransactionID',
+          cellStyle: {'text-align': 'center'}
         },
         {
-          title: 'DMU Number',
-          key: 'dmuNum',
-          align: 'center',
-          width: 120
+          headerName: 'Description',
+          field: 'Description',
+          cellStyle: {'text-align': 'center'}
         },
         {
-          title: 'DMU Name',
-          key: 'dmuName',
-          align: 'center',
-          width: 120
+          headerName: 'Product ID',
+          field: 'ProductID',
+          cellStyle: {'text-align': 'center'}
         },
         {
-          title: 'Description',
-          key: 'desc',
-          align: 'center',
-          width: 120
+          headerName: 'Product Desc',
+          field: 'ProductDesc',
+          cellStyle: {'text-align': 'center'}
         },
         {
-          title: 'Country',
-          key: 'country',
-          align: 'center',
-          width: 120
+          headerName: 'Start Date',
+          field: 'StartDate',
+          cellStyle: {'text-align': 'center'}
         },
         {
-          title: 'Region',
-          key: 'region',
-          align: 'center',
-          width: 120
-        },
-        {
-          title: 'Channel',
-          key: 'channel',
-          align: 'center',
-          width: 120
-        },
-        {
-          title: 'Status',
-          key: 'status',
-          align: 'center',
-          width: 120
-        },
-        {
-          title: 'Created By',
-          key: 'createdBy',
-          align: 'center',
-          width: 120
-        },
-        {
-          title: 'Created Time',
-          key: 'createdTime',
-          align: 'center',
-          width: 120
-        },
-        {
-          title: 'Modified By',
-          key: 'modifiedBy',
-          align: 'center',
-          width: 120
-        },
-        {
-          title: 'Modyfied Time',
-          key: 'modyfiedTime',
-          align: 'center',
-          width: 120
-        },
-        {
-          title: 'Pricer',
-          key: 'pricer',
-          align: 'center',
-          width: 120
-        },
-        {
-          title: 'Gr Rev',
-          key: 'grRev',
-          align: 'center',
-          width: 120
-        },
-        {
-          title: 'Margin %',
-          key: 'margi',
-          align: 'center',
-          width: 120
-        },
-        {
-          title: 'Currency',
-          key: 'currency',
-          align: 'center',
-          width: 120
+          headerName: 'Currency',
+          field: 'Currency',
+          cellStyle: {'text-align': 'center'}
         }
       ],
       data: [
         {
-          peNum: 'PE-20176807001',
-          dmuNum: '1212263935',
-          dmuName: 'IPSOS HQ',
-          desc: 'RX-DCG-NIMS PRNS',
-          country: 'Germany',
-          region: 'WE',
-          channel: 'Direct',
-          status: 'Draft',
-          createdBy: 'arijn',
-          createdTime: '2018/08/06 10:00:00',
-          modifiedBy: 'jofeytout',
-          modyfiedTime: '2018/08/07 10:00:00',
-          pricer: 'jmose',
-          grRev: '347100',
-          margi: '18.7',
-          currency: 'USD'
+          TransactionID: '0002223182',
+          Description: 'RX - KPMG - Norway - M910q',
+          ProductID: 'Desktop TC M910q_Intel Q270_TINY_ES_R',
+          ProductDesc: '10MUCTO1WW',
+          StartDate: 'Thu Jan 25 00:00:00 CST 2018',
+          Currency: 'USD'
         },
         {
-          peNum: 'PE-20176807001',
-          dmuNum: '1212263935',
-          dmuName: 'IPSOS HQ',
-          desc: 'RX-DCG-NIMS PRNS',
-          country: 'Germany',
-          region: 'WE',
-          channel: 'Direct',
-          status: 'Draft',
-          createdBy: 'arijn',
-          createdTime: '2018/08/06 10:00:00',
-          modifiedBy: 'jofeytout',
-          modyfiedTime: '2018/08/07 10:00:00',
-          pricer: 'jmose',
-          grRev: '347100',
-          margi: '18.7',
-          currency: 'USD'
+          TransactionID: '0002102225',
+          Description: 'CAT:KPMG - KBY NB Turkey T470 v1.0',
+          ProductID: 'Notebook ThinkPad T470 20HECTO1WW Rx',
+          ProductDesc: '20HECTO1WW',
+          StartDate: 'Mon Aug 21 00:00:00 CST 2017',
+          Currency: 'USD'
         },
         {
-          peNum: 'PE-20180807001',
-          dmuNum: '1212263935',
-          dmuName: 'IPSOS HQ',
-          desc: 'RX-DCG-NIMS PRNS',
-          country: 'Germany',
-          region: 'WE',
-          channel: 'Direct',
-          status: 'Draft',
-          createdBy: 'arijn',
-          createdTime: '2018/08/06 10:00:00',
-          modifiedBy: 'jofeytout',
-          modyfiedTime: '2018/08/07 10:00:00',
-          pricer: 'jmose',
-          grRev: '347100',
-          margi: '18.7',
-          currency: 'USD'
+          TransactionID: '0002175497',
+          Description: 'NonCAT:KPMG - Forensic NB',
+          ProductID: 'Notebook ThinkPad X1 Yoga 2G 20JECTO1WW	20JECTO1WW',
+          ProductDesc: '20JECTO1WW',
+          StartDate: 'Wed Nov 08 00:00:00 CST 2017',
+          Currency: 'USD'
         },
         {
-          peNum: 'PE-20180807001',
-          dmuNum: '1212263935',
-          dmuName: 'IPSOS HQ',
-          desc: 'RX-DCG-NIMS PRNS',
-          country: 'Germany',
-          region: 'WE',
-          channel: 'Direct',
-          status: 'Draft',
-          createdBy: 'arijn',
-          createdTime: '2018/08/06 10:00:00',
-          modifiedBy: 'jofeytout',
-          modyfiedTime: '2018/08/07 10:00:00',
-          pricer: 'jmose',
-          grRev: '347100',
-          margi: '18.7',
-          currency: 'USD'
+          TransactionID: '0002260500',
+          Description: 'CAT:KPMG-KBY-R T480s Yoga380 Canada',
+          ProductID: 'Notebook ThinkPad X380 Yoga 20LJCTO1WW R',
+          ProductDesc: '20LJCTO1WW',
+          StartDate: 'Thu Apr 05 00:00:00 CST 2018',
+          Currency: 'USD'
         },
         {
-          peNum: 'PE-20180807001',
-          dmuNum: '1212263935',
-          dmuName: 'IPSOS HQ',
-          desc: 'RX-DCG-NIMS PRNS',
-          country: 'Germany',
-          region: 'WE',
-          channel: 'Direct',
-          status: 'Draft',
-          createdBy: 'arijn',
-          createdTime: '2018/08/06 10:00:00',
-          modifiedBy: 'jofeytout',
-          modyfiedTime: '2018/08/07 10:00:00',
-          pricer: 'jmose',
-          grRev: '347100',
-          margi: '18.7',
-          currency: 'USD'
+          TransactionID: '0002297646',
+          Description: 'CAT:KPMG _ RFP Turkey',
+          ProductID: 'Notebook ThinkPad T480 20L6CTO1WW Rx',
+          ProductDesc: '20L6CTO1WW',
+          StartDate: 'Mon Jul 23 00:00:00 CST 2018',
+          Currency: 'USD'
         },
         {
-          peNum: 'PE-20180807001',
-          dmuNum: '1212263935',
-          dmuName: 'IPSOS HQ',
-          desc: 'RX-DCG-NIMS PRNS',
-          country: 'Germany',
-          region: 'WE',
-          channel: 'Direct',
-          status: 'Draft',
-          createdBy: 'arijn',
-          createdTime: '2018/08/06 10:00:00',
-          modifiedBy: 'jofeytout',
-          modyfiedTime: '2018/08/07 10:00:00',
-          pricer: 'jmose',
-          grRev: '347100',
-          margi: '18.7',
-          currency: 'USD'
+          TransactionID: '0002223182',
+          Description: 'RX - KPMG - Norway - M910q',
+          ProductID: 'Desktop TC M910q_Intel Q270_TINY_ES_R',
+          ProductDesc: '10MUCTO1WW',
+          StartDate: 'Thu Jan 25 00:00:00 CST 2018',
+          Currency: 'USD'
         },
         {
-          peNum: 'PE-20180807001',
-          dmuNum: '1212263935',
-          dmuName: 'IPSOS HQ',
-          desc: 'RX-DCG-NIMS PRNS',
-          country: 'Germany',
-          region: 'WE',
-          channel: 'Direct',
-          status: 'Draft',
-          createdBy: 'arijn',
-          createdTime: '2018/08/06 10:00:00',
-          modifiedBy: 'jofeytout',
-          modyfiedTime: '2018/08/07 10:00:00',
-          pricer: 'jmose',
-          grRev: '347100',
-          margi: '18.7',
-          currency: 'USD'
+          TransactionID: '0002102225',
+          Description: 'CAT:KPMG - KBY NB Turkey T470 v1.0',
+          ProductID: 'Notebook ThinkPad T470 20HECTO1WW Rx',
+          ProductDesc: '20HECTO1WW',
+          StartDate: 'Mon Aug 21 00:00:00 CST 2017',
+          Currency: 'USD'
         },
         {
-          peNum: 'PE-20180807001',
-          dmuNum: '1212263935',
-          dmuName: 'IPSOS HQ',
-          desc: 'RX-DCG-NIMS PRNS',
-          country: 'Germany',
-          region: 'WE',
-          channel: 'Direct',
-          status: 'Draft',
-          createdBy: 'arijn',
-          createdTime: '2018/08/06 10:00:00',
-          modifiedBy: 'jofeytout',
-          modyfiedTime: '2018/08/07 10:00:00',
-          pricer: 'jmose',
-          grRev: '347100',
-          margi: '18.7',
-          currency: 'USD'
+          TransactionID: '0002175497',
+          Description: 'NonCAT:KPMG - Forensic NB',
+          ProductID: 'Notebook ThinkPad X1 Yoga 2G 20JECTO1WW	20JECTO1WW',
+          ProductDesc: '20JECTO1WW',
+          StartDate: 'Wed Nov 08 00:00:00 CST 2017',
+          Currency: 'USD'
         },
         {
-          peNum: 'PE-20180807001',
-          dmuNum: '1212263935',
-          dmuName: 'IPSOS HQ',
-          desc: 'RX-DCG-NIMS PRNS',
-          country: 'Germany',
-          region: 'WE',
-          channel: 'Direct',
-          status: 'Draft',
-          createdBy: 'arijn',
-          createdTime: '2018/08/06 10:00:00',
-          modifiedBy: 'jofeytout',
-          modyfiedTime: '2018/08/07 10:00:00',
-          pricer: 'jmose',
-          grRev: '347100',
-          margi: '18.7',
-          currency: 'USD'
+          TransactionID: '0002260500',
+          Description: 'CAT:KPMG-KBY-R T480s Yoga380 Canada',
+          ProductID: 'Notebook ThinkPad X380 Yoga 20LJCTO1WW R',
+          ProductDesc: '20LJCTO1WW',
+          StartDate: 'Thu Apr 05 00:00:00 CST 2018',
+          Currency: 'USD'
         },
         {
-          peNum: 'PE-20180807001',
-          dmuNum: '1212263935',
-          dmuName: 'IPSOS HQ',
-          desc: 'RX-DCG-NIMS PRNS',
-          country: 'Germany',
-          region: 'WE',
-          channel: 'Direct',
-          status: 'Draft',
-          createdBy: 'arijn',
-          createdTime: '2018/08/06 10:00:00',
-          modifiedBy: 'jofeytout',
-          modyfiedTime: '2018/08/07 10:00:00',
-          pricer: 'jmose',
-          grRev: '347100',
-          margi: '18.7',
-          currency: 'USD'
-        },
-        {
-          peNum: 'PE-20180807001',
-          dmuNum: '1212263935',
-          dmuName: 'IPSOS HQ',
-          desc: 'RX-DCG-NIMS PRNS',
-          country: 'Germany',
-          region: 'WE',
-          channel: 'Direct',
-          status: 'Draft',
-          createdBy: 'arijn',
-          createdTime: '2018/08/06 10:00:00',
-          modifiedBy: 'jofeytout',
-          modyfiedTime: '2018/08/07 10:00:00',
-          pricer: 'jmose',
-          grRev: '347100',
-          margi: '18.7',
-          currency: 'USD'
-        },
-        {
-          peNum: 'PE-20180807001',
-          dmuNum: '1212263935',
-          dmuName: 'IPSOS HQ',
-          desc: 'RX-DCG-NIMS PRNS',
-          country: 'Germany',
-          region: 'WE',
-          channel: 'Direct',
-          status: 'Draft',
-          createdBy: 'arijn',
-          createdTime: '2018/08/06 10:00:00',
-          modifiedBy: 'jofeytout',
-          modyfiedTime: '2018/08/07 10:00:00',
-          pricer: 'jmose',
-          grRev: '347100',
-          margi: '18.7',
-          currency: 'USD'
+          TransactionID: '0002297646',
+          Description: 'CAT:KPMG _ RFP Turkey',
+          ProductID: 'Notebook ThinkPad T480 20L6CTO1WW Rx',
+          ProductDesc: '20L6CTO1WW',
+          StartDate: 'Mon Jul 23 00:00:00 CST 2018',
+          Currency: 'USD'
         }
       ]
     }
+  },
+  components: {
+    AgGridVue
   },
   methods: {
     gonewpage () {

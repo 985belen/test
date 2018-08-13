@@ -1295,9 +1295,8 @@ export default {
       columnDefs: [
         {headerName: ' ',
           children: [
-            {checkboxSelection: true, width: 60, cellStyle: {'text-align': 'center'}},
+            {headerCheckboxSelection: true, headerCheckboxSelectionFilteredOnly:false, checkboxSelection: true, width: 60},
             {headerName: 'Flag', field: 'Flag', editable: false, width: 100, cellStyle: {'text-align': 'center'}},
-            // {headerName: 'Make', field: 'make', width: 100, cellEditor: 'agSelectCellEditor', cellEditorParams: {values: ['AAA', 'BBB', 'CCC']}},
             {headerName: 'HL Mem', field: 'HL Mem', editable: false, cellStyle: {'text-align': 'center'}, width: 100},
             {headerName: 'Item NO', field: 'Item NO', editable: false, cellStyle: {'text-align': 'center'}, width: 100},
             {headerName: 'Part Number', field: 'Part Number', editable: false, cellStyle: {'text-align': 'center', color: '#fff', backgroundColor: 'green'}, width: 100},
