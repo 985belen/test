@@ -1470,11 +1470,11 @@ export default {
       let itembox = document.getElementsByClassName('item-box')[0]
       if (this.toggle) {
         itembox.style.height = '24px'
-        itembox.style.border='0'
+        itembox.style.border = '0'
       } else {
         itembox.style.height = 'auto'
-        itembox.style.border='1px solid #ccc'
-        itembox.style.borderTop='0'
+        itembox.style.border = '1px solid #ccc'
+        // itembox.style.borderTop = '0'
       }
       this.toggle = !this.toggle
     },
