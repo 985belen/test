@@ -44,7 +44,7 @@ export default {
       columnDefs: [
         {checkboxSelection: true, width: 60, cellStyle: {'text-align': 'center'}},
         {headerName: 'Quotation ID', field: 'QuotationID', editable: false, width: 150, cellStyle: {'text-align': 'center'},
-          cellRenderer:()=>{ return '<a href="#/price/price_list">PE-20176807001</a>'}
+          cellRenderer:()=>{ return '<a href="/price/price_index">PE-20176807001</a>'}
         },
         {headerName: 'Opportunity', field: 'Opportunity', cellStyle: {'text-align': 'center'}, width: 100},
         {headerName: 'Account', field: 'Account', cellStyle: {'text-align': 'center'}, width: 100},

@@ -43,7 +43,7 @@ export default {
         {headerName: ' ',
           children: [
             {checkboxSelection: true, width: 60, cellStyle: {'text-align': 'center'}},
-            {headerName: 'Flag', field: 'Flag', editable: false, width: 100, cellStyle: {'text-align': 'center'}},
+            {headerName: 'Flag', field: 'Flag', editable: false, width: 100, cellStyle: {'text-align': 'center'},cellRenderer:()=>{ return '<a href="/price/price_index">PE-20176807001</a>'}},
             // {headerName: 'Make', field: 'make', width: 100, cellEditor: 'agSelectCellEditor', cellEditorParams: {values: ['AAA', 'BBB', 'CCC']}},
             {headerName: 'HL Mem', field: 'HL Mem', cellStyle: {'text-align': 'center'}, width: 100},
             {headerName: 'Item NO', field: 'Item NO', cellStyle: {'text-align': 'center'}, width: 100},
