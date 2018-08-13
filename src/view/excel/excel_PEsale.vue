@@ -321,7 +321,7 @@ export default {
           width: 120,
           field: 'prono',
           cellStyle: {'text-align': 'center'},
-          cellRenderer: (params) => { return '<a href="/excel/excel_listpage">'+params.value+'</a>'}
+          cellRenderer: (params) => { return '<a href="#/excel/excel_listpage">'+params.value+'</a>'}
         },
         {
           headerName: 'Product Desc',

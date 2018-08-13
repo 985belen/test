@@ -311,7 +311,7 @@ export default {
           width: 120,
           field: 'prono',
           cellStyle: {'text-align': 'center'},
-          cellRenderer: () => { return '<a href="/excel/excel_listpage">PE-20176807001</a>'}
+          cellRenderer: () => { return '<a href="#/excel/excel_listpage">PE-20176807001</a>'}
         },
         {
           headerName: 'Product Desc',
