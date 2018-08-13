@@ -14,12 +14,11 @@
         <!-- <Menu>
         </Menu> -->
         <header-bar :collapsed="collapsed" @on-coll-change="handleCollapsedChange">
-          <span style="color:#fff;">退出登录</span>
-          <language @on-lang-change="setLocal" style="margin-right: 10px;" :lang="local"/>
+          <span style="color:#fff;"><Icon size=18  type="md-power" /></span>
           <div class="tools">
-            <Input class="search" search placeholder="search Key"  size="small" style="width: 30px; margin-right: 10px;" />
-            <span >消息<Icon size=18 type="md-notifications" /></span>
-            <span>帮助说明<Icon size=18 type="md-help-circle" /></span>
+            <!-- <Input class="search" search placeholder="search Key"  size="small" style="width: 200px; margin-right: 10px;" /> -->
+            <span style="margin-right: 0;"><Icon size=18 type="md-notifications" /></span>
+            <span style="margin-right: 15px"><Icon size=18 type="md-help-circle" /></span>
           </div>
         </header-bar>
       </Header>

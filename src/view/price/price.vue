@@ -1,30 +1,35 @@
 <template>
 <div class="price-box">
   <div class="tool-bar">
-    <a href="#" class="item"><Icon class="icon" size=16 type="md-add" />新建</a>
+    <a href="#" class="item"><Icon class="icon" size=16 type="md-add" />New</a>
     <Divider type="vertical" />
-    <a href="#" class="item"><Icon class="icon" size=16 type="md-trash"/>删除</a>
+    <a href="#" class="item"><Icon class="icon" size=16 type="md-trash"/>Delete</a>
     <Divider type="vertical" />
-    <a href="#" class="item"><Icon class="icon" size=16 type="md-link" />通过电子邮件发送链接</a>
+    <a href="#" class="item"><Icon class="icon" size=16 type="md-link" />Email</a>
     <Divider type="vertical" />
-    <a href="#" class="item"><Icon class="icon" size=16 type="md-appstore" />运行报表</a>
+    <a href="#" class="item"><Icon class="icon" size=16 type="md-appstore" />Generate Report</a>
     <Divider type="vertical" />
-    <a href="#" class="item"><Icon class="icon" size=16 type="md-list-box" />EXCEL模板</a>
+    <a href="#" class="item"><Icon class="icon" size=16 type="md-list-box" />Export Template</a>
     <Divider type="vertical" />
-    <a href="#" class="item"><Icon class="icon" size=16 type="md-notifications" />导出至EXCEL</a>
+    <a href="#" class="item"><Icon class="icon" size=16 type="md-notifications" />Import Template</a>
     <Divider type="vertical" />
-    <a href="#" class="item"><Icon class="icon" size=16 type="md-exit" />导入数据</a>
+    <a href="#" class="item"><Icon class="icon" size=16 type="md-exit" />Upload Data</a>
     <Divider type="vertical" />
-    <a href="#" class="item"><Icon class="icon" size=16 type="md-stats" />图表窗格</a>
+    <a href="#" class="item"><Icon class="icon" size=16 type="md-stats" />Summary Report</a>
   </div>
-  <!-- <h2>LPA-Lenovo Price Analysis</h2> -->
-  <h3><a href="javascript:;" style="display:block" @click="toggleList">Quotation Infomation</a></h3>
-  <ul class="item-box">
-    <li><span>Quotation ID:</span><i :title="form.QuotationID">{{form.QuotationID}}</i></li>
-    <li><span>Description:</span><i :title="form.Description">{{form.Description}}</i></li>
-    <li><span>Status:</span><i :title="form.Status">{{form.Status}}</i></li>
-    <li><span>Country(S):</span><i :title="form.Country">{{form.Country}}</i></li>
-    <li><span>Currency:</span><i :title="form.Currency">{{form.Currency}}</i></li>
+  <h3><a href="javascript:;" style="display:block;color: #333;" @click="toggleList"><Icon type="md-pricetags" /> Quotation Infomation <span style="float: right; font-weight: normal; font-size: 12px;">More</span></a></h3>
+  <ul class="item-box" v-if="isStatus">
+    <li style="padding-left: 20px; width: 120px;">{{form.QuotationID}}</li>
+    <li style="width: 120px;">{{form.Description}}</li>
+    <li style="width: 120px;">{{form.Status}}</li>
+    <li style="width: 120px;">{{form.Country}}</li>
+  </ul>
+  <ul class="item-box" v-else>
+    <li><span>Quotation ID:</span><i class="blue" :title="form.QuotationID">{{form.QuotationID}}</i></li>
+    <li><span>Description:</span><i class="blue" :title="form.Description">{{form.Description}}</i></li>
+    <li><span>Status:</span><i class="blue" :title="form.Status">{{form.Status}}</i></li>
+    <li><span>Country(S):</span><i class="blue" :title="form.Country">{{form.Country}}</i></li>
+    <li><span>Currency:</span><i class="blue" :title="form.Currency">{{form.Currency}}</i></li>
     <li><span>Customer:</span><i :title="form.Customer">{{form.Customer}}</i></li>
     <li><span>Valid From Date:</span><i :title="form.FromDate">{{form.FromDate}}</i></li>
     <li><span>End Customer(DMU):</span><i :title="form.EndCustomer">{{form.EndCustomer}}</i></li>
@@ -40,58 +45,119 @@
     <li><span>RTM:</span><i :title="form.RTM">{{form.RTM}}</i></li>
     <li><span>Sub Type:</span><i :title="form.SubType">{{form.SubType}}</i></li>
   </ul>
-  <h3 class="marginBottom"><a href="javascript:;" style="display:block" @click="toggleList1">CQ</a></h3>
+  <h3 class="marginBottom" style="margin-bottom: 0;"><a href="javascript:;" style="display:block;color: #333;" @click="toggleList1"><Icon type="ios-podium" /> CQ</a></h3>
   <div  class="table-CQ">
     <Table border :columns="formcolumns" :data="formdata"></Table>
   </div>
-  <Tabs type="card" style="margin:10px" :animated="false">
-    <TabPane label="Data">
-      <ag-grid-vue
-        style="width: 100%; height:100%;"
-        class="ag-theme-balham"
-        :columnDefs="columnDefs"
-        :rowData="rowData"
-        :gridAutoHeight="true"
-        :enableSorting="true"
-        :enableFilter="true"
-        :defaultColDef='{editable: true}'
-        :singleClickEdit="true"
-        :suppressSizeToFit="true"
-        :suppressResize="true"
-        :enableColResize="true"
-        rowSelection="multiple">
-      </ag-grid-vue>
-      <!-- <Table border :columns="tablecolumns1" style="margin:10px" :data="tabledata1"></Table> -->
-    </TabPane>
-    <TabPane label="CTO Config">
-      <Table border :columns="tablecolumns2" style="margin: 10px" :data="tabledata2"></Table>
-    </TabPane>
-    <TabPane label="CTO LIST Price">
-      <Table border :columns="tablecolumns3" style="margin: 10px" :data="tabledata3"></Table>
-    </TabPane>
-    <TabPane label="grouping Conditions">
-        <div class="check-box">
-        <CheckboxGroup v-model="groupConSelect">
-          <Checkbox style="width:200px;" v-for="(item, index) in groupingConditions" :key="index" :label="item">{{item}}</Checkbox>
-          <Button size="small">Group</Button>
-        </CheckboxGroup>
+      
+      <div class="split-pane-page-wrapper">
+        <split-pane v-model="offset" @on-moving="handleMoving">
+          <!-- <split-pane v-model="offsetVertical" mode="vertical" @on-moving="handleMoving"> -->
+          <div slot="left" class="pane left-pane">
+            <div slot="top" class="pane top-pane">
+                <ag-grid-vue
+                  style="width: 100%; height:100%;"
+                  class="ag-theme-balham"
+                  :columnDefs="columnDefs"
+                  :rowData="rowData"
+                  :gridAutoHeight="true"
+                  :enableSorting="true"
+                  :enableFilter="true"
+                  :defaultColDef='{editable: true}'
+                  :singleClickEdit="true"
+                  :suppressSizeToFit="true"
+                  :suppressResize="true"
+                  :enableColResize="true"
+                  rowSelection="multiple">
+                </ag-grid-vue>
+            </div>
+            <!-- <split-pane v-model="offsetVertical" mode="vertical" @on-moving="handleMoving">
+              <div slot="top" class="pane top-pane"></div>
+              <div slot="bottom" class="pane bottom-pane"></div>
+              <div slot="trigger" class="custom-trigger">
+                <icons class="trigger-icon" :size="22" type="resize-vertical" color="#fff"/>
+              </div>
+            </split-pane> -->
+          </div>
+          <!-- </split-pane> -->
+          <div slot="right" class="pane right-pane">
+              <h3 @click="pullFnc()" style="cursor: pointer;">
+                <div v-if="!pullFlag">
+                <Icon type="ios-arrow-forward" /><Icon style="margin-left: -10px;" type="ios-arrow-forward" />
+                  <Icon @click="one()" style="margin-left: 20px;" size=20 type="ios-stats" />
+                  <Icon @click="two()" style="margin-left: 10px;" size=20 type="md-reorder" />
+                </div>
+                <div v-else>
+                    <Icon  type="ios-arrow-back" /><Icon style="margin-left: -10px;" type="ios-arrow-back" />
+                    <Icon style="margin-left: 10px; margin-top: 20px;" size=20 type="ios-stats" />
+                    <Icon style="margin-left: 10px;" size=20 type="md-reorder" />
+                </div>
+              </h3>
+              <div v-if="tab1" style="width: 100%; padding:10px; border-collapse: collapse; height: 500px;">
+                  <Card shadow>
+                    <chart-pie style="height: 300px;" :value="pieData" text="用户访问来源"></chart-pie>
+                  </Card> 
+                  <h3><a href="javascript:;" style="display:block;color: #333;" @click="toggleList"><Icon type="md-pricetags" />Summary </a> </h3>
+                  <ag-grid-vue
+                  style="width: 100%; height:100%;"
+                  class="ag-theme-balham"
+                  :columnDefs="columnDefs1"
+                  :rowData="rowData1"
+                  :gridAutoHeight="true"
+                  :enableSorting="true"
+                  :enableFilter="true"
+                  :defaultColDef='{editable: true}'
+                  :singleClickEdit="true"
+                  :suppressSizeToFit="true"
+                  :suppressResize="true"
+                  :enableColResize="true"
+                  rowSelection="multiple">
+                </ag-grid-vue>
+              </div>
+              <div v-if="tab2" style="width: 500px;height: 500px; display: none;">
+                  <Card shadow>
+                    <chart-pie style="height: 300px;" :value="pieData" text="用户访问来源"></chart-pie>
+                  </Card> 
+                  <h3><a href="javascript:;" style="display:block;color: #333;" @click="toggleList"><Icon type="md-pricetags" />Summary by product series level </a> </h3>
+                  <ag-grid-vue
+                  style="width: 100%; height:100%;"
+                  class="ag-theme-balham"
+                  :columnDefs="columnDefs1"
+                  :rowData="rowData1"
+                  :gridAutoHeight="true"
+                  :enableSorting="true"
+                  :enableFilter="true"
+                  :defaultColDef='{editable: true}'
+                  :singleClickEdit="true"
+                  :suppressSizeToFit="true"
+                  :suppressResize="true"
+                  :enableColResize="true"
+                  rowSelection="multiple">
+                </ag-grid-vue>
+
+              </div>
+
+          </div>
+        </split-pane>
       </div>
-    </TabPane>
-    <TabPane label="FX Rate">
-      <Table border :columns="tablecolumns51" style="margin: 10px" :data="tabledata51"></Table>
-      <Table border :columns="tablecolumns5" style="margin: 10px" :data="tabledata5"></Table>
-    </TabPane>
-    <TabPane label="Exec Summary">
-      <Button size="small" style="margin:20px">Execute Summary</Button>
-    </TabPane>
-  </Tabs>
+    </split-pane>
+  </div>
 </div>
 </template>
 <script>
 import {AgGridVue} from 'ag-grid-vue'
+import SplitPane from '_c/split-pane'
+import { ChartPie, ChartBar } from '_c/charts'
 export default {
   data () {
     return {
+      dom: null,
+      offset: 0.96,
+      pullFlag:true,
+      tab1:false,
+      tab2:false,
+      offsetVertical: '250px',
+      isStatus: true,
       form: {
         QuotationID: 'Q-00105395',
         Status: 'Approved',
@@ -123,6 +189,13 @@ export default {
       },
       toggle: true,
       toggle1: false,
+      pieData: [
+        {value: 335, name: '直接访问'},
+        {value: 310, name: '邮件营销'},
+        {value: 234, name: '联盟广告'},
+        {value: 135, name: '视频广告'},
+        {value: 1548, name: '搜索引擎'}
+      ],
       formcolumns: [
         {
           title: ' ',
@@ -199,13 +272,6 @@ export default {
         }
       ],
       formdata: [
-        {
-          hedgerife: 'hedgerife',
-          CQ: '',
-          CQ1: '',
-          CQ2: '',
-          CQ3: ''
-        },
         {
           hedgerife: 'hedgerife',
           CQ: '',
@@ -1261,18 +1327,57 @@ export default {
           ]
         }
       ],
+      columnDefs1: [
+        {headerName: '',
+          field:'first',
+          editable: false},
+        {headerName: 'CQ',
+          field:'CQ',
+          editable: false},
+        {headerName: 'CQ+1',
+          field:'CQ+1',
+          editable: false},
+        {headerName: 'CQ+2',
+          field:'CQ+2',
+          editable: false},
+        {headerName: 'CQ+3',
+          field:'CQ+3',
+          editable: false},
+        {headerName: 'Total',
+       field:'Total',
+     editable: false}
+      ],
+      rowData1: [
+        {
+          first: 'Part Number',
+          CQ: '1000',
+          'CQ+1': '100',
+          'CQ+2': '1000',
+          'CQ+3': '100',
+          Total: '1000'
+         },
+         {
+          first: 'Part Number',
+          CQ: '1000',
+          'CQ+1': '100',
+          'CQ+2': '1000',
+          'CQ+3': '100',
+          Total: '1000'
+         }
+       
+      ],
       rowData: [
         {
           Flag: '343',
-          'HL Mem': 'sdfv',
-          'Item NO': 'sdfv',
-          'Part Number': 'sdfv',
-          Description: 'sdfv',
+          'HL Mem': 'Part Number',
+          'Item NO': 'Part Number',
+          'Part Number': 'Part Number',
+          Description: 'Part Number',
           'Standard Price': '1000',
           'List Price': '343',
           'Requested DisCount': 'sdv',
           'Sales Price': 78,
-          Margin: 'dfv',
+          Margin: 'Sales Price',
           Discount: 'sdc',
           Price: 90,
           'Margin%': '1200',
@@ -1285,10 +1390,10 @@ export default {
         },
         {
           Flag: '34',
-          'HL Mem': 'sdfv',
-          'Item NO': 'sdfv',
-          'Part Number': 'sdfv',
-          Description: 'sdfv',
+          'HL Mem': 'Part Number',
+          'Item NO': 'Part Number',
+          'Part Number': 'Part Number',
+          Description: 'Part Number',
           'Standard Price': '1000',
           'List Price': '343',
           'Requested DisCount': 100,
@@ -1296,7 +1401,7 @@ export default {
           makes: 'sdvcd',
           pricenum: 2445,
           'Sales Price': 78,
-          Margin: 'dfv',
+          Margin: 'Sales Price',
           Discount: 89,
           Price: 90,
           'Margin%': '1200',
@@ -1309,18 +1414,18 @@ export default {
         },
         {
           Flag: '34',
-          'HL Mem': 'sdfv',
-          'Item NO': 'sdfv',
-          'Part Number': 'sdfv',
-          'Requested DisCount': 100,
-          Description: 'sdfv',
+          'HL Mem': 'Part Number',
+          'Item NO': 'Part Number',
+          'Part Number': 'Part Number',
+          Description: 'Part Number',
           'Standard Price': '1000',
           'List Price': '343',
+          'Requested DisCount': 100,
           id: '324',
           makes: 'sdvcd',
           pricenum: 2445,
           'Sales Price': 78,
-          Margin: 'dfv',
+          Margin: 'Sales Price',
           Discount: 89,
           Price: 90,
           'Margin%': '1200',
@@ -1333,18 +1438,18 @@ export default {
         },
         {
           Flag: '34',
-          'HL Mem': 'sdfv',
-          'Item NO': 'sdfv',
-          'Part Number': 'sdfv',
-          'Requested DisCount': 100,
-          Description: 'sdfv',
+          'HL Mem': 'Part Number',
+          'Item NO': 'Part Number',
+          'Part Number': 'Part Number',
+          Description: 'Part Number',
           'Standard Price': '1000',
           'List Price': '343',
+          'Requested DisCount': 100,
           id: '324',
           makes: 'sdvcd',
           pricenum: 2445,
           'Sales Price': 78,
-          Margin: 'dfv',
+          Margin: 'Sales Price',
           Discount: 89,
           Price: 90,
           'Margin%': '1200',
@@ -1357,18 +1462,18 @@ export default {
         },
         {
           Flag: '34',
-          'HL Mem': 'sdfv',
-          'Item NO': 'sdfv',
-          'Part Number': 'sdfv',
-          'Requested DisCount': 100,
-          Description: 'sdfv',
+          'HL Mem': 'Part Number',
+          'Item NO': 'Part Number',
+          'Part Number': 'Part Number',
+          Description: 'Part Number',
           'Standard Price': '1000',
           'List Price': '343',
+          'Requested DisCount': 100,
           id: '324',
           makes: 'sdvcd',
           pricenum: 2445,
           'Sales Price': 78,
-          Margin: 'dfv',
+          Margin: 'Sales Price',
           Discount: 89,
           Price: 90,
           'Margin%': '1200',
@@ -1381,18 +1486,18 @@ export default {
         },
         {
           Flag: '34',
-          'HL Mem': 'sdfv',
-          'Item NO': 'sdfv',
-          'Part Number': 'sdfv',
-          'Requested DisCount': 100,
-          Description: 'sdfv',
+          'HL Mem': 'Part Number',
+          'Item NO': 'Part Number',
+          'Part Number': 'Part Number',
+          Description: 'Part Number',
           'Standard Price': '1000',
           'List Price': '343',
+          'Requested DisCount': 100,
           id: '324',
           makes: 'sdvcd',
           pricenum: 2445,
           'Sales Price': 78,
-          Margin: 'dfv',
+          Margin: 'Sales Price',
           Discount: 89,
           Price: 90,
           'Margin%': '1200',
@@ -1405,18 +1510,18 @@ export default {
         },
         {
           Flag: '34',
-          'HL Mem': 'sdfv',
-          'Item NO': 'sdfv',
-          'Part Number': 'sdfv',
-          'Requested DisCount': 100,
-          Description: 'sdfv',
+          'HL Mem': 'Part Number',
+          'Item NO': 'Part Number',
+          'Part Number': 'Part Number',
+          Description: 'Part Number',
           'Standard Price': '1000',
           'List Price': '343',
+          'Requested DisCount': 100,
           id: '324',
           makes: 'sdvcd',
           pricenum: 2445,
           'Sales Price': 78,
-          Margin: 'dfv',
+          Margin: 'Sales Price',
           Discount: 89,
           Price: 90,
           'Margin%': '1200',
@@ -1429,10 +1534,298 @@ export default {
         },
         {
           Flag: '34',
-          'HL Mem': 'sdfv',
-          'Item NO': 'sdfv',
-          'Part Number': 'sdfv',
-          Description: 'sdfv',
+          'HL Mem': 'Part Number',
+          'Item NO': 'Part Number',
+          'Part Number': 'Part Number',
+          Description: 'Part Number',
+          'Standard Price': '1000',
+          'List Price': '343',
+          'Requested DisCount': 100,
+          id: '324',
+          makes: 'sdvcd',
+          pricenum: 2445,
+          'Sales Price': 78,
+          Margin: 'Sales Price',
+          Discount: 89,
+          Price: 90,
+          'Margin%': '1200',
+          PRICE: 12,
+          'CQ Margin%': 12,
+          'weighted Margin%': 23,
+          CQ: '1000',
+          'CQ+1': '100',
+          'CQ+2': '1000'
+        },
+        {
+          Flag: '34',
+          'HL Mem': 'Part Number',
+          'Item NO': 'Part Number',
+          'Part Number': 'Part Number',
+          Description: 'Part Number',
+          'Standard Price': '1000',
+          'List Price': '343',
+          'Requested DisCount': 100,
+          id: '324',
+          makes: 'sdvcd',
+          pricenum: 2445,
+          'Sales Price': 78,
+          Margin: 'Sales Price',
+          Discount: 89,
+          Price: 90,
+          'Margin%': '1200',
+          PRICE: 12,
+          'CQ Margin%': 12,
+          'weighted Margin%': 23,
+          CQ: '1000',
+          'CQ+1': '100',
+          'CQ+2': '1000'
+        },
+        {
+          Flag: '34',
+          'HL Mem': 'Part Number',
+          'Item NO': 'Part Number',
+          'Part Number': 'Part Number',
+          Description: 'Part Number',
+          'Standard Price': '1000',
+          'List Price': '343',
+          'Requested DisCount': 100,
+          id: '324',
+          makes: 'sdvcd',
+          pricenum: 2445,
+          'Sales Price': 78,
+          Margin: 'Sales Price',
+          Discount: 89,
+          Price: 90,
+          'Margin%': '1200',
+          PRICE: 12,
+          'CQ Margin%': 12,
+          'weighted Margin%': 23,
+          CQ: '1000',
+          'CQ+1': '100',
+          'CQ+2': '1000'
+        },
+        {
+          Flag: '34',
+          'HL Mem': 'Part Number',
+          'Item NO': 'Part Number',
+          'Part Number': 'Part Number',
+          Description: 'Part Number',
+          'Standard Price': '1000',
+          'List Price': '343',
+          'Requested DisCount': 100,
+          id: '324',
+          makes: 'sdvcd',
+          pricenum: 2445,
+          'Sales Price': 78,
+          Margin: 'Sales Price',
+          Discount: 89,
+          Price: 90,
+          'Margin%': '1200',
+          PRICE: 12,
+          'CQ Margin%': 12,
+          'weighted Margin%': 23,
+          CQ: '1000',
+          'CQ+1': '100',
+          'CQ+2': '1000'
+        },
+        {
+          Flag: '34',
+          'HL Mem': 'Part Number',
+          'Item NO': 'Part Number',
+          'Part Number': 'Part Number',
+          Description: 'Part Number',
+          'Standard Price': '1000',
+          'List Price': '343',
+          'Requested DisCount': 100,
+          id: '324',
+          makes: 'sdvcd',
+          pricenum: 2445,
+          'Sales Price': 78,
+          Margin: 'Sales Price',
+          Discount: 89,
+          Price: 90,
+          'Margin%': '1200',
+          PRICE: 12,
+          'CQ Margin%': 12,
+          'weighted Margin%': 23,
+          CQ: '1000',
+          'CQ+1': '100',
+          'CQ+2': '1000'
+        },
+        {
+          Flag: '34',
+          'HL Mem': 'Part Number',
+          'Item NO': 'Part Number',
+          'Part Number': 'Part Number',
+          Description: 'Part Number',
+          'Standard Price': '1000',
+          'List Price': '343',
+          'Requested DisCount': 100,
+          id: '324',
+          makes: 'sdvcd',
+          pricenum: 2445,
+          'Sales Price': 78,
+          Margin: 'Sales Price',
+          Discount: 89,
+          Price: 90,
+          'Margin%': '1200',
+          PRICE: 12,
+          'CQ Margin%': 12,
+          'weighted Margin%': 23,
+          CQ: '1000',
+          'CQ+1': '100',
+          'CQ+2': '1000'
+        },
+        {
+          Flag: '34',
+          'HL Mem': 'Part Number',
+          'Item NO': 'Part Number',
+          'Part Number': 'Part Number',
+          Description: 'Part Number',
+          'Standard Price': '1000',
+          'List Price': '343',
+          'Requested DisCount': 100,
+          id: '324',
+          makes: 'sdvcd',
+          pricenum: 2445,
+          'Sales Price': 78,
+          Margin: 'Sales Price',
+          Discount: 89,
+          Price: 90,
+          'Margin%': '1200',
+          PRICE: 12,
+          'CQ Margin%': 12,
+          'weighted Margin%': 23,
+          CQ: '1000',
+          'CQ+1': '100',
+          'CQ+2': '1000'
+        },
+        {
+          Flag: '34',
+          'HL Mem': 'Part Number',
+          'Item NO': 'Part Number',
+          'Part Number': 'Part Number',
+          'Requested DisCount': 100,
+          Description: 'Part Number',
+          'Standard Price': '1000',
+          'List Price': '343',
+          id: '324',
+          makes: 'sdvcd',
+          pricenum: 2445,
+          'Sales Price': 78,
+          Margin: 'Sales Price',
+          Discount: 89,
+          Price: 90,
+          'Margin%': '1200',
+          PRICE: 12,
+          'CQ Margin%': 12,
+          'weighted Margin%': 23,
+          CQ: '1000',
+          'CQ+1': '100',
+          'CQ+2': '1000'
+        },
+        {
+          Flag: '34',
+          'HL Mem': 'Part Number',
+          'Item NO': 'Part Number',
+          'Part Number': 'Part Number',
+          'Requested DisCount': 100,
+          Description: 'Part Number',
+          'Standard Price': '1000',
+          'List Price': '343',
+          id: '324',
+          makes: 'sdvcd',
+          pricenum: 2445,
+          'Sales Price': 78,
+          Margin: 'Sales Price',
+          Discount: 89,
+          Price: 90,
+          'Margin%': '1200',
+          PRICE: 12,
+          'CQ Margin%': 12,
+          'weighted Margin%': 23,
+          CQ: '1000',
+          'CQ+1': '100',
+          'CQ+2': '1000'
+        },
+        {
+          Flag: '34',
+          'HL Mem': 'Part Number',
+          'Item NO': 'Part Number',
+          'Part Number': 'Part Number',
+          'Requested DisCount': 100,
+          Description: 'Part Number',
+          'Standard Price': '1000',
+          'List Price': '343',
+          id: '324',
+          makes: 'sdvcd',
+          pricenum: 2445,
+          'Sales Price': 78,
+          Margin: 'Sales Price',
+          Discount: 89,
+          Price: 90,
+          'Margin%': '1200',
+          PRICE: 12,
+          'CQ Margin%': 12,
+          'weighted Margin%': 23,
+          CQ: '1000',
+          'CQ+1': '100',
+          'CQ+2': '1000'
+        },
+        {
+          Flag: '34',
+          'HL Mem': 'Part Number',
+          'Item NO': 'Part Number',
+          'Part Number': 'Part Number',
+          'Requested DisCount': 100,
+          Description: 'Part Number',
+          'Standard Price': '1000',
+          'List Price': '343',
+          id: '324',
+          makes: 'sdvcd',
+          pricenum: 2445,
+          'Sales Price': 78,
+          Margin: 'Sales Price',
+          Discount: 89,
+          Price: 90,
+          'Margin%': '1200',
+          PRICE: 12,
+          'CQ Margin%': 12,
+          'weighted Margin%': 23,
+          CQ: '1000',
+          'CQ+1': '100',
+          'CQ+2': '1000'
+        },
+        {
+          Flag: '34',
+          'HL Mem': 'Part Number',
+          'Item NO': 'Part Number',
+          'Part Number': 'Part Number',
+          'Requested DisCount': 100,
+          Description: 'Part Number',
+          'Standard Price': '1000',
+          'List Price': '343',
+          id: '324',
+          makes: 'sdvcd',
+          pricenum: 2445,
+          'Sales Price': 78,
+          Margin: 'Sales Price',
+          Discount: 89,
+          Price: 90,
+          'Margin%': '1200',
+          PRICE: 12,
+          'CQ Margin%': 12,
+          'weighted Margin%': 23,
+          CQ: '1000',
+          'CQ+1': '100',
+          'CQ+2': '1000'
+        },
+        {
+          Flag: '34',
+          'HL Mem': 'Part Number',
+          'Item NO': 'Part Number',
+          'Part Number': 'Part Number',
+          Description: 'Part Number',
           'Requested DisCount': 100,
           'Standard Price': '1000',
           PRICE: 12,
@@ -1443,7 +1836,7 @@ export default {
           makes: 'sdvcd',
           pricenum: 2445,
           'Sales Price': 78,
-          Margin: 'dfv',
+          Margin: 'Sales Price',
           Discount: 89,
           Price: 90,
           'Margin%': '1200',
@@ -1455,26 +1848,70 @@ export default {
     }
   },
   components: {
-    AgGridVue
+    AgGridVue,
+    SplitPane,
+    ChartPie,
+    ChartBar
   },
   created () {
   },
   mounted () {
     this.$nextTick(() => {
-      this.toggleList()
+      // this.toggleList()
       this.toggleList1()
     }, 3000)
   },
+  beforeDestroy () {
+    off(window, 'resize', this.resize())
+  },
   methods: {
+    one(){
+      this.tab1 = true
+      this.tab2 = false
+      return false
+    },
+    two(){
+      this.tab1 = false
+      this.tab2 = true
+      return false
+    },
+    resize () {
+      this.dom.resize()
+    },
+    pullFnc(){
+      if(this.pullFlag){
+        this.pullFlag = false;
+        this.offset = .4
+        this.tab1 = true
+        this.tab2 = false
+      }else{
+        this.pullFlag = true;
+        this.offset = .96
+        this.tab1 = false
+        this.tab2 = false
+      }
+    },
+    handleMoving (e) {
+      console.log(e.atMin, e.atMax)
+    },
     toggleList () {
       let itembox = document.getElementsByClassName('item-box')[0]
       if (this.toggle) {
+<<<<<<< HEAD
         itembox.style.height = '24px'
+=======
+        this.isStatus = false
+        // itembox.style.height = '24px'
+>>>>>>> 2e23953b5d8be3a0d7c53f1bfa00455f23da3740
         itembox.style.border = '0'
       } else {
+        this.isStatus = true
         itembox.style.height = 'auto'
         itembox.style.border = '1px solid #ccc'
+<<<<<<< HEAD
         // itembox.style.borderTop = '0'
+=======
+>>>>>>> 2e23953b5d8be3a0d7c53f1bfa00455f23da3740
       }
       this.toggle = !this.toggle
     },
@@ -1572,11 +2009,12 @@ h3{
   margin-bottom:5px;
   overflow: hidden;
   border:1px solid #ccc;
-  border-top:0;
+  padding-top: 3px;
   li {
     float: left;
     width: 20%;
     height: 24px;
+    line-height: 24px;
     font-size: 13px;
     list-style: none;
     span{
@@ -1610,6 +2048,49 @@ h3{
 .table-CQ{
   width: 100%;
   height:auto;
-  padding: 0 10px;
+  // padding: 0 10px;
+}
+.ivu-tabs-bar{
+  margin-bottom: 2px;
+}
+.item-box .blue{
+  color:#cc0000;
+}
+.center-middle{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.split-pane-page-wrapper{
+  height: 630px;
+  .pane{
+    width: 100%;
+    height: 100%;
+    &.left-pane{
+      background: sandybrown;
+    }
+    &.right-pane{
+      background: #fff;
+    }
+    &.top-pane{
+      background: sandybrown;
+    }
+    &.bottom-pane{
+      background: #fff;
+    }
+  }
+  .custom-trigger{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #000000;
+    position: absolute;
+    .center-middle;
+    box-shadow: 0 0 6px 0 rgba(28, 36, 56, 0.4);
+    i.trigger-icon{
+      .center-middle;
+    }
+  }
 }
 </style>
