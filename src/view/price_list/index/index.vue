@@ -1,7 +1,7 @@
 <template>
 <div class="price-box">
   <div class="tool-bar">
-    <a href="#" class="item"><Icon class="icon" size=16 type="md-add" />New</a>
+    <a href="#" class="item" @click="modelnew = true"><Icon class="icon" size=16 type="md-add" />New</a>
     <Divider type="vertical" />
     <a href="#" class="item"><Icon class="icon" size=16 type="md-trash"/>Delete</a>
     <Divider type="vertical" />
@@ -32,6 +32,127 @@
     :enableColResize="true"
     rowSelection="multiple">
   </ag-grid-vue>
+
+
+    <Modal
+    v-model="modelnew"
+    :styles="{width:'800px'}"
+    title="create New PE"
+    ok-text="Ok"
+    @on-ok="ok"
+    cancel-text="Cancel">
+    <Form :model="FormNewpE" :label-width="120" :rules="ruleValidate">
+      <Row>
+        <Col span=24>
+          <h3 class="marginBottom">Base Information</h3>
+        </Col>
+      </Row>
+      <Row>
+        <Col span=8>
+          <Form-item label="ID">
+            <Input v-model="FormItem.id" placeholder="Enter something..."></Input>
+          </Form-item>
+        </Col>
+        <Col span=8>
+          <Form-item label="Created Date">
+            <Input v-model="FormItem.CreatedDate" placeholder="Enter something..."></Input>
+          </Form-item>
+        </Col>
+        <Col span=8>
+          <Form-item label="Last Modified">
+            <Input v-model="FormItem.LastModified" placeholder="Enter something..."></Input>
+          </Form-item>
+        </Col>
+      </Row>
+      <Row>
+        <Col span=8>
+          <Form-item label="Original Rmap ID">
+            <Input v-model="FormItem.OriginalRmapID" placeholder="Enter something..."></Input>
+          </Form-item>
+        </Col>
+        <Col span=8>
+          <Form-item label="Created By">
+            <Input v-model="FormItem.CreatedBy" placeholder="Enter something..."></Input>
+          </Form-item>
+        </Col>
+        <Col span=8>
+          <Form-item label="Last Modified by">
+            <Input v-model="FormItem.LastModifiedby" placeholder="Enter something..."></Input>
+          </Form-item>
+        </Col>
+      </Row>
+      <Row>
+        <Col span=24>
+          <Form-item label="Description" prop="Description">
+            <Input v-model="FormItem.Description" type="textarea" placeholder="Enter something..."></Input>
+          </Form-item>
+        </Col>
+      </Row>
+      <Row>
+        <Col span=12 >
+          <h3 class="marginBottom">DMU Information</h3>
+        </Col>
+        <Col span=12>
+          <h3 class="marginBottom">Sales Information</h3>
+        </Col>
+      </Row>
+      <Row>
+        <Col span=12>
+          <Form-item label="DMU Name"  prop="DMUName">
+            <Input v-model="FormItem.DMUName" placeholder="Enter something..."></Input>
+          </Form-item>
+        </Col>
+        <Col span=12>
+          <Form-item label="Channel" prop="Channel">
+            <Input v-model="FormItem.Channel" placeholder="Enter something..."></Input>
+          </Form-item>
+        </Col>
+      </Row>
+      <Row>
+        <Col span=12>
+          <Form-item label="Business Group">
+            <Input v-model="FormItem.BusinessGroup" placeholder="Enter something..."></Input>
+          </Form-item>
+        </Col>
+        <Col span=12>
+          <Form-item label="Pricing Group" prop="PricingGroup">
+            <Input v-model="FormItem.PricingGroup" placeholder="Enter something..."></Input>
+          </Form-item>
+        </Col>
+        </Col>
+      </Row>
+      <Row>
+        <Col span=12>
+          <Form-item label="Country">
+            <Input v-model="FormItem.Country" placeholder="Enter something..."></Input>
+          </Form-item>
+        </Col>
+        <Col span=12>
+          <Form-item label="Validity Period">
+            <Input v-model="FormItem.ValidityPeriod" placeholder="Enter something..."></Input>
+          </Form-item>
+        </Col>
+      </Row>
+      <Row>
+        <Col span=12>
+          <Form-item label="Sub Region">
+            <Input v-model="FormItem.SubRegion" placeholder="Enter something..."></Input>
+          </Form-item>
+          <Form-item label="Region">
+            <Input v-model="FormItem.Region" placeholder="Enter something..."></Input>
+          </Form-item>
+          <Form-item label="Geo">
+            <Input v-model="FormItem.Geo" placeholder="Enter something..."></Input>
+          </Form-item>
+        </Col>
+        <Col span=12>
+          <Form-item label="Comments">
+            <Input v-model="FormItem.Comments" type="textarea" :rows="6" placeholder="Enter something..."></Input>
+          </Form-item>
+        </Col>
+      </Row>
+    </Form>
+  </Modal>
 </div>
 </template>
 <script>
@@ -39,11 +160,64 @@ import {AgGridVue} from 'ag-grid-vue'
 export default {
   data () {
     return {
+       FormNewpE: {
+        id: '',
+        CreatedDate: '2018/8/8 11:05:51',
+        LastModified: '2018/8/8 11:05:51',
+        OriginalRmapID: '',
+        CreatedBy: 'sumer',
+        LastModifiedby: 'sumer',
+        Description: '',
+        DMUName: '',
+        Channel: '',
+        Comments: '',
+        SubRegion: '',
+        Country: '',
+        ValidityPeriod: '',
+        PricingGroup: '',
+        BusinessGroup: '',
+        Geo: '',
+        Region: ''
+      },
+      FormItem: {
+        id: '',
+        CreatedDate: '2018/8/8 11:05:51',
+        LastModified: '2018/8/8 11:05:51',
+        OriginalRmapID: '',
+        CreatedBy: 'sumer',
+        LastModifiedby: 'sumer',
+        Description: '',
+        DMUName: '',
+        Channel: '',
+        Comments: '',
+        SubRegion: '',
+        Country: '',
+        ValidityPeriod: '',
+        PricingGroup: '',
+        BusinessGroup: '',
+        Geo: '',
+        Region: ''
+      },
+      ruleValidate: {
+        Description: [
+          { required: true, message: 'The name cannot be empty', trigger: 'blur' }
+        ],
+        DMUName: [
+          { required: true, message: 'Mailbox cannot be empty', trigger: 'blur' }
+        ],
+        Channel: [
+          { required: true, message: 'Mailbox cannot be empty', trigger: 'blur' }
+        ],
+        PricingGroup: [
+          { required: true, message: 'Mailbox cannot be empty', trigger: 'blur' }
+        ]
+      },
+      modelnew:false,
       columnDefs: [
         {headerName: ' ',
           children: [
             {checkboxSelection: true, width: 60, cellStyle: {'text-align': 'center'}},
-            {headerName: 'Flag', field: 'Flag', editable: false, width: 100, cellStyle: {'text-align': 'center'},cellRenderer:()=>{ return '<a href="/price/price_index">PE-20176807001</a>'}},
+            {headerName: 'Flag', field: 'Flag', editable: false, width: 100, cellStyle: {'text-align': 'center'},cellRenderer:()=>{ return '<a href="#/excel/excel_PEsale">PE-20176807001</a>'}},
             // {headerName: 'Make', field: 'make', width: 100, cellEditor: 'agSelectCellEditor', cellEditorParams: {values: ['AAA', 'BBB', 'CCC']}},
             {headerName: 'HL Mem', field: 'HL Mem', cellStyle: {'text-align': 'center'}, width: 100},
             {headerName: 'Item NO', field: 'Item NO', cellStyle: {'text-align': 'center'}, width: 100},
@@ -573,6 +747,11 @@ export default {
     }, 3000)
   },
   methods: {
+    ok(){
+     this.$router.push({
+      name:'excel_empty'
+     })
+    }
   }
 }
 </script>

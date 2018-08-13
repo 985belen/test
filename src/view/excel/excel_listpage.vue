@@ -204,12 +204,31 @@ import SplitPane from '_c/split-pane'
 export default {
   data () {
     return {
+      // FormItem: {
+      //   DMUNumber: '',
+      //   DMUName: '',
+      //   PricingEstimationNumber: '',
+      //   CreatedBy: '',
+      //   Country: ''
+      // },
       FormItem: {
-        DMUNumber: '',
+        id: '',
+        CreatedDate: '2018/8/8 11:05:51',
+        LastModified: '2018/8/8 11:05:51',
+        OriginalRmapID: '',
+        CreatedBy: 'sumer',
+        LastModifiedby: 'sumer',
+        Description: '',
         DMUName: '',
-        PricingEstimationNumber: '',
-        CreatedBy: '',
-        Country: ''
+        Channel: '',
+        Comments: '',
+        SubRegion: '',
+        Country: '',
+        ValidityPeriod: '',
+        PricingGroup: '',
+        BusinessGroup: '',
+        Geo: '',
+        Region: ''
       },
       FormNewpE: {
         id: '',
