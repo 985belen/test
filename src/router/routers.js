@@ -124,7 +124,8 @@ export default [
       }
     ]
   },
-   {
+
+  {
     path: '/excel',
     name: 'excel',
     component: Main,

@@ -1,4 +1,74 @@
 <template>
+<<<<<<< HEAD
+<div class="listpage">
+  <Form :model="FormItem" ref="FormItem" >
+    <Row type="flex" justify="center">
+      <Col span=6>
+        <Form-item label="DMU Number" :label-width="100">
+          <Input v-model="FormItem.DMUNumber" placeholder="Enter something..."></Input>
+        </Form-item>
+      </Col>
+      <Col span=6>
+        <Form-item label="Pricing Estimation Number" :label-width="176">
+          <Input v-model="FormItem.PricingEstimationNumber" placeholder="Enter something..."></Input>
+        </Form-item>
+      </Col>
+      <Col span=6>
+        <Form-item label="Country" :label-width="100">
+          <Input v-model="FormItem.Country" placeholder="Enter something..."></Input>
+        </Form-item>
+      </Col>
+      <Col span=6>
+        <Form-item>
+          <Button type="primary">Search</Button>
+          <Button style="margin-left: 8px">Export</Button>
+        </Form-item>
+      </col>
+    </row>
+    <Row type="flex" justify="center">
+      <Col span=6>
+        <Form-item label="DMU Name" :label-width="100">
+          <Input v-model="FormItem.DMUName" placeholder="Enter something..."></Input>
+        </Form-item>
+      </Col>
+      <Col span=6>
+        <Form-item label="Pricing Estimation Description" :label-width="176">
+          <Input v-model="FormItem.PricingEstimationDescription" placeholder="Enter something..."></Input>
+        </Form-item>
+      </Col>
+      <Col span=6>
+        <Form-item label="Created By" :label-width="100">
+          <Input v-model="FormItem.CreatedBy" placeholder="Enter something..."></Input>
+        </Form-item>
+      </Col>
+      <Col span=6>
+        <Form-item>
+          <Button type="primary" @click="gonewpage">Create new PE</Button>
+          <Button style="margin-left: 8px">Copy</Button>
+          <Button type="primary" style="margin-left: 8px" @click="gopricer">Price</Button>
+        </Form-item>
+      </Col>
+    </Row>
+  </Form>
+  <div class="table-box">
+    <ag-grid-vue
+      style="width: 100%; height:100%;"
+      class="ag-theme-balham"
+      :columnDefs="Columns"
+      :rowData="data"
+      :gridAutoHeight="true"
+      :enableSorting="true"
+      :enableFilter="true"
+      :defaultColDef='{editable: true}'
+      :singleClickEdit="true"
+      :suppressSizeToFit="true"
+      :suppressResize="true"
+      :enableColResize="true"
+      rowSelection="multiple">
+    </ag-grid-vue>
+    <!-- <Table height="500" border stripe :columns="Columns" :data="data"></Table> -->
+  </div>
+=======
 <div class="price-box">
   <div class="tool-bar">
     <a href="#" class="item" @click="modelnew = true" ><Icon class="icon" size=16 type="md-add" />Create new PE</a>
@@ -196,11 +266,15 @@
       </Row>
     </Form>
   </Modal>
+>>>>>>> 2e23953b5d8be3a0d7c53f1bfa00455f23da3740
 </div>
 </template>
 <script>
 import {AgGridVue} from 'ag-grid-vue'
+<<<<<<< HEAD
+=======
 import SplitPane from '_c/split-pane'
+>>>>>>> 2e23953b5d8be3a0d7c53f1bfa00455f23da3740
 export default {
   data () {
     return {
@@ -230,6 +304,13 @@ export default {
         Geo: '',
         Region: ''
       },
+<<<<<<< HEAD
+      Columns: [
+        {
+          type: 'selection',
+          cellStyle: {'text-align': 'center'},
+          width: 60
+=======
       FormNewpE: {
         id: '',
         CreatedDate: '2018/8/8 11:05:51',
@@ -271,6 +352,7 @@ export default {
       columnDefs: [
         {
           checkboxSelection: true, width: 60, cellStyle: {'text-align': 'center'}
+>>>>>>> 2e23953b5d8be3a0d7c53f1bfa00455f23da3740
         },
         {
           headerName: 'PE Number',
@@ -369,7 +451,11 @@ export default {
           width: 120
         }
       ],
+<<<<<<< HEAD
+      data: [
+=======
       rowData: [
+>>>>>>> 2e23953b5d8be3a0d7c53f1bfa00455f23da3740
         {
           peNum: 'PE-20176807001',
           dmuNum: '1212263935',
@@ -589,6 +675,14 @@ export default {
       ]
     }
   },
+<<<<<<< HEAD
+  methods: {
+    gonewpage () {
+      this.$router.push('/excel/excel_newpe')
+    },
+    gopricer () {
+      this.$router.push('/excel/excel_PEpricer')
+=======
   components: {
     AgGridVue,
     SplitPane
@@ -621,11 +715,35 @@ export default {
         tableCQ.style.display = 'block'
       }
       this.toggle = !this.toggle
+>>>>>>> 2e23953b5d8be3a0d7c53f1bfa00455f23da3740
     }
   }
 }
 </script>
 <style lang="less">
+<<<<<<< HEAD
+.listpage{
+  width:100%;
+  height: 100%;
+  overflow:hidden;
+  padding: 10px 0;
+  background: #fff;
+}
+.table-box{
+  width:100%;
+  height: 100%;
+  padding: 10px;
+}
+.ivu-form-item-label{
+  float: left;
+}
+.ivu-form-item-content{
+  float: left;
+  margin-left: -8px !important;
+}
+.ivu-form-item{
+  margin-bottom:5px;
+=======
 .price-box{
   width: 100%;
   height: 100%;
@@ -719,5 +837,6 @@ h3{
       .center-middle;
     }
   }
+>>>>>>> 2e23953b5d8be3a0d7c53f1bfa00455f23da3740
 }
 </style>

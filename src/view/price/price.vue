@@ -1897,13 +1897,21 @@ export default {
     toggleList () {
       let itembox = document.getElementsByClassName('item-box')[0]
       if (this.toggle) {
+<<<<<<< HEAD
+        itembox.style.height = '24px'
+=======
         this.isStatus = false
         // itembox.style.height = '24px'
+>>>>>>> 2e23953b5d8be3a0d7c53f1bfa00455f23da3740
         itembox.style.border = '0'
       } else {
         this.isStatus = true
         itembox.style.height = 'auto'
         itembox.style.border = '1px solid #ccc'
+<<<<<<< HEAD
+        // itembox.style.borderTop = '0'
+=======
+>>>>>>> 2e23953b5d8be3a0d7c53f1bfa00455f23da3740
       }
       this.toggle = !this.toggle
     },
