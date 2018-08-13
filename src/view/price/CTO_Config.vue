@@ -47,7 +47,7 @@ export default {
           editable: false,
           checkboxSelection: true, width: 60},
         {headerName: 'Quotation ID', field: 'QuotationID', width: 150, cellStyle: {'text-align': 'center'},
-          cellRenderer:(params)=>{ return '<a href="/price/price_index">'+params.value+'</a>'}
+          cellRenderer:(params)=>{ return '<a href="#/price/price_index">'+params.value+'</a>'}
         },
         {headerName: 'Opportunity', field: 'Opportunity', cellStyle: {'text-align': 'center'}, width: 100},
         {headerName: 'Account', field: 'Account', cellStyle: {'text-align': 'center'}, width: 100},
