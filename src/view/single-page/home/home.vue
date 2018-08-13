@@ -9,12 +9,48 @@
         </infor-card>
       </i-col>
     </Row>
-    <Row :gutter="20" style="margin-top: 20px;">
-    <Col span="12">
+    <Row :gutter="20" style="margin-top: 10px;">
+	  <Col span="6">
+		<Card>
+			<p slot="title">
+	            <Icon type="md-attach" />
+	            Fast Link
+	        </p>
+	        <a class="setting" href="#" slot="extra" @click.prevent="changeLimit">
+	            <Icon type="md-settings" />
+	            <Icon type="md-remove" />
+	            <Icon type="ios-close-circle" />
+        	</a>
+        	<ul class="fast_link">
+        		<li v-for="item in randomMovieList">
+	                <a :href="item.url" target="_blank">{{ item.name }}</a>
+	            </li>
+        	</ul>
+		</Card>
+	  </Col>
+	  <Col span="6">
+			<Card>
+			<p slot="title">
+	            <Icon type="ios-book" />
+	            To Do
+	        </p>
+	        <a class="setting" href="#" slot="extra" @click.prevent="changeLimit">
+	            <Icon type="md-settings" />
+	            <Icon type="md-remove" />
+	            <Icon type="ios-close-circle" />
+        	</a>
+        	<ul class="fast_link">
+        		<li v-for="item in randomMovieList">
+	                <a :href="item.url" target="_blank">{{ item.name }}</a>
+	            </li>
+        	</ul>
+		</Card>
+	  </Col>
+    <Col span="6">
     <Card>
       <p slot="title">
               <Icon type="md-attach" />
-              Fast Link
+              My Active
           </p>
           <a class="setting" href="#" slot="extra" @click.prevent="changeLimit">
               <Icon type="md-settings" />
@@ -28,11 +64,11 @@
           </ul>
     </Card>
     </Col>
-    <Col span="12">
+    <Col span="6">
       <Card>
       <p slot="title">
               <Icon type="ios-book" />
-              To Do
+              Notices
           </p>
           <a class="setting" href="#" slot="extra" @click.prevent="changeLimit">
               <Icon type="md-settings" />
@@ -47,7 +83,7 @@
     </Card>
     </Col>
   </Row>
-    <Row :gutter="20" style="margin-top: 20px;">
+    <Row :gutter="20" style="margin-top: 10px;">
       <i-col span="8">
         <Card shadow>
           <chart-pie style="height: 300px;" :value="pieData" text="用户访问来源"></chart-pie>

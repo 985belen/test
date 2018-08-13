@@ -49,26 +49,96 @@
   <div  class="table-CQ">
     <Table border :columns="formcolumns" :data="formdata"></Table>
   </div>
-  <div class="split-pane-page-wrapper">
-    <split-pane v-model="offset" @on-moving="handleMoving">
-      <div slot="left" class="pane left-pane">
-        <div slot="top" class="pane top-pane">
-            <ag-grid-vue
-              style="width: 100%; height:100%;"
-              class="ag-theme-balham"
-              :columnDefs="columnDefs"
-              :rowData="rowData"
-              :gridAutoHeight="true"
-              :enableSorting="true"
-              :enableFilter="true"
-              :defaultColDef='{editable: true}'
-              :singleClickEdit="true"
-              :suppressSizeToFit="true"
-              :suppressResize="true"
-              :enableColResize="true"
-              rowSelection="multiple">
-            </ag-grid-vue>
-        </div>
+      
+      <div class="split-pane-page-wrapper">
+        <split-pane v-model="offset" @on-moving="handleMoving">
+          <!-- <split-pane v-model="offsetVertical" mode="vertical" @on-moving="handleMoving"> -->
+          <div slot="left" class="pane left-pane">
+            <div slot="top" class="pane top-pane">
+                <ag-grid-vue
+                  style="width: 100%; height:100%;"
+                  class="ag-theme-balham"
+                  :columnDefs="columnDefs"
+                  :rowData="rowData"
+                  :gridAutoHeight="true"
+                  :enableSorting="true"
+                  :enableFilter="true"
+                  :defaultColDef='{editable: true}'
+                  :singleClickEdit="true"
+                  :suppressSizeToFit="true"
+                  :suppressResize="true"
+                  :enableColResize="true"
+                  rowSelection="multiple">
+                </ag-grid-vue>
+            </div>
+            <!-- <split-pane v-model="offsetVertical" mode="vertical" @on-moving="handleMoving">
+              <div slot="top" class="pane top-pane"></div>
+              <div slot="bottom" class="pane bottom-pane"></div>
+              <div slot="trigger" class="custom-trigger">
+                <icons class="trigger-icon" :size="22" type="resize-vertical" color="#fff"/>
+              </div>
+            </split-pane> -->
+          </div>
+          <!-- </split-pane> -->
+          <div slot="right" class="pane right-pane">
+              <h3 @click="pullFnc()" style="cursor: pointer;">
+                <div v-if="!pullFlag">
+                <Icon type="ios-arrow-forward" /><Icon style="margin-left: -10px;" type="ios-arrow-forward" />
+                  <Icon @click="one()" style="margin-left: 20px;" size=20 type="ios-stats" />
+                  <Icon @click="two()" style="margin-left: 10px;" size=20 type="md-reorder" />
+                </div>
+                <div v-else>
+                    <Icon  type="ios-arrow-back" /><Icon style="margin-left: -10px;" type="ios-arrow-back" />
+                    <Icon style="margin-left: 10px; margin-top: 20px;" size=20 type="ios-stats" />
+                    <Icon style="margin-left: 10px;" size=20 type="md-reorder" />
+                </div>
+              </h3>
+              <div v-if="tab1" style="width: 100%; padding:10px; border-collapse: collapse; height: 500px;">
+                  <Card shadow>
+                    <chart-pie style="height: 300px;" :value="pieData" text="用户访问来源"></chart-pie>
+                  </Card> 
+                  <h3><a href="javascript:;" style="display:block;color: #333;" @click="toggleList"><Icon type="md-pricetags" />Summary </a> </h3>
+                  <ag-grid-vue
+                  style="width: 100%; height:100%;"
+                  class="ag-theme-balham"
+                  :columnDefs="columnDefs1"
+                  :rowData="rowData1"
+                  :gridAutoHeight="true"
+                  :enableSorting="true"
+                  :enableFilter="true"
+                  :defaultColDef='{editable: true}'
+                  :singleClickEdit="true"
+                  :suppressSizeToFit="true"
+                  :suppressResize="true"
+                  :enableColResize="true"
+                  rowSelection="multiple">
+                </ag-grid-vue>
+              </div>
+              <div v-if="tab2" style="width: 500px;height: 500px;">
+                  <Card shadow>
+                    <chart-pie style="height: 300px;" :value="pieData" text="用户访问来源"></chart-pie>
+                  </Card> 
+                  <h3><a href="javascript:;" style="display:block;color: #333;" @click="toggleList"><Icon type="md-pricetags" />Summary by product series level </a> </h3>
+                  <ag-grid-vue
+                  style="width: 100%; height:100%;"
+                  class="ag-theme-balham"
+                  :columnDefs="columnDefs1"
+                  :rowData="rowData1"
+                  :gridAutoHeight="true"
+                  :enableSorting="true"
+                  :enableFilter="true"
+                  :defaultColDef='{editable: true}'
+                  :singleClickEdit="true"
+                  :suppressSizeToFit="true"
+                  :suppressResize="true"
+                  :enableColResize="true"
+                  rowSelection="multiple">
+                </ag-grid-vue>
+
+              </div>
+
+          </div>
+        </split-pane>
       </div>
       <div slot="right" class="pane right-pane">
           <h3 @click="pullFnc" style="cursor: pointer;"><Icon type="ios-arrow-back" /><Icon style="margin-left: -10px;" type="ios-arrow-back" /></h3>
@@ -90,7 +160,10 @@ export default {
   data () {
     return {
       dom: null,
-      offset: 0.95,
+      offset: 0.96,
+      pullFlag:true,
+      tab1:false,
+      tab2:false,
       offsetVertical: '250px',
       isStatus: true,
       form: {
@@ -1262,6 +1335,45 @@ export default {
           ]
         }
       ],
+      columnDefs1: [
+        {headerName: '',
+          field:'first',
+          editable: false},
+        {headerName: 'CQ',
+          field:'CQ',
+          editable: false},
+        {headerName: 'CQ+1',
+          field:'CQ+1',
+          editable: false},
+        {headerName: 'CQ+2',
+          field:'CQ+2',
+          editable: false},
+        {headerName: 'CQ+3',
+          field:'CQ+3',
+          editable: false},
+        {headerName: 'Total',
+       field:'Total',
+     editable: false}
+      ],
+      rowData1: [
+        {
+          first: 'Part Number',
+          CQ: '1000',
+          'CQ+1': '100',
+          'CQ+2': '1000',
+          'CQ+3': '100',
+          Total: '1000'
+         },
+         {
+          first: 'Part Number',
+          CQ: '1000',
+          'CQ+1': '100',
+          'CQ+2': '1000',
+          'CQ+3': '100',
+          Total: '1000'
+         }
+       
+      ],
       rowData: [
         {
           Flag: '343',
@@ -1761,11 +1873,31 @@ export default {
     off(window, 'resize', this.resize())
   },
   methods: {
+    one(){
+      this.tab1 = true
+      this.tab2 = false
+      return false
+    },
+    two(){
+      this.tab1 = false
+      this.tab2 = true
+      return false
+    },
     resize () {
       this.dom.resize()
     },
-    pullFnc () {
-      this.offset = 0.4
+    pullFnc(){
+      if(this.pullFlag){
+        this.pullFlag = false;
+        this.offset = .4
+        this.tab1 = true
+        this.tab2 = false
+      }else{
+        this.pullFlag = true;
+        this.offset = .96
+        this.tab1 = false
+        this.tab2 = false
+      }
     },
     handleMoving (e) {
       console.log(e.atMin, e.atMax)
