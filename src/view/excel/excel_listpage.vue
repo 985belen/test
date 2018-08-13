@@ -222,7 +222,7 @@ export default {
         {
           headerName: 'PE Number',
           cellStyle: {'text-align': 'center'},
-          cellRenderer: (params)=>{ return '<a href="/excel/excel_PEsale">'+params.value+'</a>'},
+          cellRenderer: (params)=>{ return '<a href="/excel/excel_PEsale">PE-20180807006</a>'},
           field: 'peNum',
           width: 135
         },

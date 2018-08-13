@@ -114,7 +114,7 @@
                   rowSelection="multiple">
                 </ag-grid-vue>
               </div>
-              <div v-if="tab2" style="width: 500px;height: 500px;">
+              <div v-if="tab2" style="width: 500px;height: 500px; display: none;">
                   <Card shadow>
                     <chart-pie style="height: 300px;" :value="pieData" text="用户访问来源"></chart-pie>
                   </Card> 
@@ -139,14 +139,6 @@
 
           </div>
         </split-pane>
-      </div>
-      <div slot="right" class="pane right-pane">
-          <h3 @click="pullFnc" style="cursor: pointer;"><Icon type="ios-arrow-back" /><Icon style="margin-left: -10px;" type="ios-arrow-back" /></h3>
-          <div style="width: 500px;height: 500px">
-              <Card shadow>
-                <chart-pie style="height: 300px;" :value="pieData" text="用户访问来源"></chart-pie>
-              </Card>
-          </div>
       </div>
     </split-pane>
   </div>

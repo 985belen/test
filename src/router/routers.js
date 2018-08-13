@@ -33,6 +33,99 @@ export default [
     ]
   },
   {
+    path: '/price',
+    name: 'price',
+    component: Main,
+    children: [{
+        path: 'price_index',
+        name: 'price_index',
+        meta: {
+          icon: '_price',
+          title: 'price'
+        },
+        component: () =>
+          import ('@/view/price/price.vue')
+      },
+      {
+        path: 'Portal',
+        name: 'Portal',
+        meta: {
+          icon: 'Portal',
+          title: 'Portal'
+        },
+        component: () =>
+          import ('@/view/price/Portal.vue')
+      },
+      {
+        path: 'CTO_Config',
+        name: 'CTO_Config',
+        meta: {
+          icon: 'CTO_Config',
+          title: 'CTO_Config'
+        },
+        component: () =>
+          import ('@/view/price/CTO_Config.vue')
+      },
+      {
+        path: 'CTO_ListPrice',
+        name: 'CTO_ListPrice',
+        meta: {
+          icon: 'CTO_ListPrice',
+          title: 'CTO_ListPrice'
+        },
+        component: () =>
+          import ('@/view/price/CTO_ListPrice.vue')
+      },
+      {
+        path: 'Exec_Summary',
+        name: 'Exec_Summary',
+        meta: {
+          icon: 'Exec_Summary',
+          title: 'Exec_Summary'
+        },
+        component: () =>
+          import ('@/view/price/Exec_Summary.vue')
+      },
+      {
+        path: 'Pricing_Simulation',
+        name: 'Pricing_Simulation',
+        meta: {
+          icon: 'Pricing_Simulation',
+          title: 'Pricing_Simulation'
+        },
+        component: () =>
+          import ('@/view/price/Pricing_Simulation.vue')
+      },
+      {
+        path: 'Tx_Rate',
+        name: 'Tx_Rate',
+        meta: {
+          icon: 'Tx_Rate',
+          title: 'Tx_Rate'
+        },
+        component: () =>
+          import ('@/view/price/Tx_Rate.vue')
+      }
+    ]
+  },
+  {
+    path: '/price_lists',
+    name: 'price_lists',
+    component: Main,
+    children: [
+      {
+        path: 'price_list',
+        name: 'price_list',
+        meta: {
+          icon: '_price',
+          title: 'price_list'
+        },
+        component: () => import('@/view/price_list/index/index.vue')
+      }
+    ]
+  },
+
+  {
     path: '/excel',
     name: 'excel',
     component: Main,
@@ -81,39 +174,16 @@ export default [
           title: 'excel_listpage'
         },
         component: () => import('@/view/excel/excel_listpage.vue')
-      }
-    ]
-  },
-  {
-    path: '/price',
-    name: 'price',
-    component: Main,
-    children: [
-      {
-        path: 'price_index',
-        name: 'price_index',
+      },
+       {
+        path: 'excel_empty',
+        name: 'excel_empty',
         meta: {
-          icon: '_price',
-          title: 'price'
+          icon: 'excel_PEsale',
+          title: 'excel_PEsale'
         },
-        component: () => import('@/view/price/price.vue')
-      }
-    ]
-  },
-  {
-    path: '/price_lists',
-    name: 'price_lists',
-    component: Main,
-    children: [
-      {
-        path: 'price_list',
-        name: 'price_list',
-        meta: {
-          icon: '_price',
-          title: 'price_list'
-        },
-        component: () => import('@/view/price_list/index/index.vue')
-      }
+        component: () => import('@/view/excel/excel_PEsales.vue')
+      },
     ]
   }
 ]

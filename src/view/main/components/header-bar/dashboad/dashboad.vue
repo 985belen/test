@@ -12,8 +12,8 @@
             <DropdownItem style="font-size: 20px!important;">Pricing Portal</DropdownItem>
             <Icon style=" margin-left: 30px;"  size="64" type="ios-cog" />
             <ul class="submenu">
-              <li><router-link style="color: #515a6e" to="/price_lists/price_list">Price Simulation</router-link></li>
-              <li ><router-link style="color: #515a6e" to="/price/price_index">Price Evaluation</router-link></li>
+              <li><router-link style="color: #515a6e" to="/price/CTO_Config">Price Simulation</router-link></li>
+              <li ><router-link style="color: #515a6e" to="/price_lists/price_list">Price Evaluation</router-link></li>
               <li><router-link style="color: #515a6e" to="/">Price recommendation</router-link></li>
             </ul>
           </Col>

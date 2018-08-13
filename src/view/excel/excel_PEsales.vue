@@ -1,12 +1,12 @@
 <template>
 <div class="newpage">
   <div class="tool-bar">
-    <a href="#" class="item" @click="resize, modeldetail = true" ><Icon class="icon" size=16 type="md-add" />Summary Detail</a>
+    <!-- <a href="#" class="item" @click="modeldetail = true" ><Icon class="icon" size=16 type="md-add" />Summary Detail</a>
     <Divider type="vertical" />
-    <a href="#" class="item" @click="resize,modelProduct = true"><Icon class="icon" size=16 type="md-stats" />Summary By Product</a>
+    <a href="#" class="item" @click="modelProduct = true"><Icon class="icon" size=16 type="md-stats" />Summary By Product</a>
     <Divider type="vertical" />
-    <a href="#" class="item" @click="resize,modelBrand = true"><Icon class="icon" size=16 type="md-search" />Summary By Brand</a>
-    <Divider type="vertical" />
+    <a href="#" class="item" @click="modelBrand = true"><Icon class="icon" size=16 type="md-search" />Summary By Brand</a>
+    <Divider type="vertical" /> -->
     <a href="#" class="item" @click="importTransaction"><Icon class="icon" size=16 type="md-add" />Import Transaction</a>
   </div>
   <h3 class="marginBottom"><a href="javascript:;" style="display:block;color: #333;" @click="toggleList1"><Icon type="ios-podium" />PE Information</a></h3>
@@ -222,21 +222,7 @@
           </li>
         </ul>
       </div>
-      <ag-grid-vue
-        style="width: 100%; height:100%;"
-        class="ag-theme-balham"
-        :columnDefs="Brandcolumns"
-        :rowData="Branddata"
-        :gridAutoHeight="true"
-        :enableSorting="true"
-        :enableFilter="true"
-        :defaultColDef='{editable: true}'
-        :singleClickEdit="true"
-        :suppressSizeToFit="true"
-        :suppressResize="true"
-        :enableColResize="true"
-        rowSelection="multiple">
-      </ag-grid-vue>
+      <Table style="margin:10px auto" height='300' width="100%" :columns="Brandcolumns" :data="Branddata"></Table>
     </Modal>
 </div>
 </template>
@@ -244,6 +230,7 @@
 import {AgGridVue} from 'ag-grid-vue'
 import SplitPane from '_c/split-pane'
 export default {
+  name:"excel_PEsales",
   data () {
     return {
       toggle: true,
@@ -324,7 +311,7 @@ export default {
           width: 120,
           field: 'prono',
           cellStyle: {'text-align': 'center'},
-          cellRenderer: (params) => { return '<a href="/excel/excel_listpage">'+params.value+'</a>'}
+          cellRenderer: () => { return '<a href="/excel/excel_listpage">PE-20176807001</a>'}
         },
         {
           headerName: 'Product Desc',
@@ -448,426 +435,6 @@ export default {
         }
       ],
       data: [
-        {
-          id: 1,
-          quarter: 'F1Q 18/19',
-          brand: 'ThinkPad Classic',
-          brsum: 'Notebook',
-          subser: 'X280',
-          prono: '20KECTO1WW config',
-          prodesc: 'Notebook ThinkPad X280 20KECTO1WW Rx',
-          vol: '300',
-          listpri: '10641.64',
-          stndpri: '10641.64',
-          respri: '817',
-          estpri: '850',
-          finalpri: '0',
-          disc: '1',
-          bmc: '786.03',
-          tmc: '801.7',
-          bmcmar: '19.69',
-          tmcmar: '19.69',
-          bmcb: '2.00',
-          tmcb: '2.00',
-          gr: '4875',
-          grre: '0',
-          netre: '4875',
-          pti: '1075.23',
-          ptipro: '-100.23',
-          ptimar: '-10.30%'
-        },
-        {
-          id: 1,
-          quarter: 'F1Q 18/19',
-          brand: 'ThinkPad Classic',
-          brsum: 'Notebook',
-          subser: 'X280',
-          prono: '20KECTO1WW config',
-          prodesc: 'Notebook ThinkPad X280 20KECTO1WW Rx',
-          vol: '300',
-          listpri: '10641.64',
-          stndpri: '10641.64',
-          respri: '817',
-          estpri: '850',
-          finalpri: '0',
-          disc: '1',
-          bmc: '786.03',
-          tmc: '801.7',
-          bmcmar: '19.69',
-          tmcmar: '19.69',
-          bmcb: '2.00',
-          tmcb: '2.00',
-          gr: '4875',
-          grre: '0',
-          netre: '4875',
-          pti: '1075.23',
-          ptipro: '-100.23',
-          ptimar: '-10.30%'
-        },
-        {
-          id: 1,
-          quarter: 'F1Q 18/19',
-          brand: 'ThinkPad Classic',
-          brsum: 'Notebook',
-          subser: 'X280',
-          prono: '20KECTO1WW config',
-          prodesc: 'Notebook ThinkPad X280 20KECTO1WW Rx',
-          vol: '300',
-          listpri: '10641.64',
-          stndpri: '10641.64',
-          respri: '817',
-          estpri: '850',
-          finalpri: '0',
-          disc: '1',
-          bmc: '786.03',
-          tmc: '801.7',
-          bmcmar: '19.69',
-          tmcmar: '19.69',
-          bmcb: '2.00',
-          tmcb: '2.00',
-          gr: '4875',
-          grre: '0',
-          netre: '4875',
-          pti: '1075.23',
-          ptipro: '-100.23',
-          ptimar: '-10.30%'
-        },
-        {
-          id: 1,
-          quarter: 'F1Q 18/19',
-          brand: 'ThinkPad Classic',
-          brsum: 'Notebook',
-          subser: 'X280',
-          prono: '20KECTO1WW config',
-          prodesc: 'Notebook ThinkPad X280 20KECTO1WW Rx',
-          vol: '300',
-          listpri: '10641.64',
-          stndpri: '10641.64',
-          respri: '817',
-          estpri: '850',
-          finalpri: '0',
-          disc: '1',
-          bmc: '786.03',
-          tmc: '801.7',
-          bmcmar: '19.69',
-          tmcmar: '19.69',
-          bmcb: '2.00',
-          tmcb: '2.00',
-          gr: '4875',
-          grre: '0',
-          netre: '4875',
-          pti: '1075.23',
-          ptipro: '-100.23',
-          ptimar: '-10.30%'
-        },
-        {
-          id: 1,
-          quarter: 'F1Q 18/19',
-          brand: 'ThinkPad Classic',
-          brsum: 'Notebook',
-          subser: 'X280',
-          prono: '20KECTO1WW config',
-          prodesc: 'Notebook ThinkPad X280 20KECTO1WW Rx',
-          vol: '300',
-          listpri: '10641.64',
-          stndpri: '10641.64',
-          respri: '817',
-          estpri: '850',
-          finalpri: '0',
-          disc: '1',
-          bmc: '786.03',
-          tmc: '801.7',
-          bmcmar: '19.69',
-          tmcmar: '19.69',
-          bmcb: '2.00',
-          tmcb: '2.00',
-          gr: '4875',
-          grre: '0',
-          netre: '4875',
-          pti: '1075.23',
-          ptipro: '-100.23',
-          ptimar: '-10.30%'
-        },
-        {
-          id: 1,
-          quarter: 'F1Q 18/19',
-          brand: 'ThinkPad Classic',
-          brsum: 'Notebook',
-          subser: 'X280',
-          prono: '20KECTO1WW config',
-          prodesc: 'Notebook ThinkPad X280 20KECTO1WW Rx',
-          vol: '300',
-          listpri: '10641.64',
-          stndpri: '10641.64',
-          respri: '817',
-          estpri: '850',
-          finalpri: '0',
-          disc: '1',
-          bmc: '786.03',
-          tmc: '801.7',
-          bmcmar: '19.69',
-          tmcmar: '19.69',
-          bmcb: '2.00',
-          tmcb: '2.00',
-          gr: '4875',
-          grre: '0',
-          netre: '4875',
-          pti: '1075.23',
-          ptipro: '-100.23',
-          ptimar: '-10.30%'
-        },
-        {
-          id: 1,
-          quarter: 'F1Q 18/19',
-          brand: 'ThinkPad Classic',
-          brsum: 'Notebook',
-          subser: 'X280',
-          prono: '20KECTO1WW config',
-          prodesc: 'Notebook ThinkPad X280 20KECTO1WW Rx',
-          vol: '300',
-          listpri: '10641.64',
-          stndpri: '10641.64',
-          respri: '817',
-          estpri: '850',
-          finalpri: '0',
-          disc: '1',
-          bmc: '786.03',
-          tmc: '801.7',
-          bmcmar: '19.69',
-          tmcmar: '19.69',
-          bmcb: '2.00',
-          tmcb: '2.00',
-          gr: '4875',
-          grre: '0',
-          netre: '4875',
-          pti: '1075.23',
-          ptipro: '-100.23',
-          ptimar: '-10.30%'
-        },
-        {
-          id: 1,
-          quarter: 'F1Q 18/19',
-          brand: 'ThinkPad Classic',
-          brsum: 'Notebook',
-          subser: 'X280',
-          prono: '20KECTO1WW config',
-          prodesc: 'Notebook ThinkPad X280 20KECTO1WW Rx',
-          vol: '300',
-          listpri: '10641.64',
-          stndpri: '10641.64',
-          respri: '817',
-          estpri: '850',
-          finalpri: '0',
-          disc: '1',
-          bmc: '786.03',
-          tmc: '801.7',
-          bmcmar: '19.69',
-          tmcmar: '19.69',
-          bmcb: '2.00',
-          tmcb: '2.00',
-          gr: '4875',
-          grre: '0',
-          netre: '4875',
-          pti: '1075.23',
-          ptipro: '-100.23',
-          ptimar: '-10.30%'
-        },
-        {
-          id: 1,
-          quarter: 'F1Q 18/19',
-          brand: 'ThinkPad Classic',
-          brsum: 'Notebook',
-          subser: 'X280',
-          prono: '20KECTO1WW config',
-          prodesc: 'Notebook ThinkPad X280 20KECTO1WW Rx',
-          vol: '300',
-          listpri: '10641.64',
-          stndpri: '10641.64',
-          respri: '817',
-          estpri: '850',
-          finalpri: '0',
-          disc: '1',
-          bmc: '786.03',
-          tmc: '801.7',
-          bmcmar: '19.69',
-          tmcmar: '19.69',
-          bmcb: '2.00',
-          tmcb: '2.00',
-          gr: '4875',
-          grre: '0',
-          netre: '4875',
-          pti: '1075.23',
-          ptipro: '-100.23',
-          ptimar: '-10.30%'
-        },
-        {
-          id: 1,
-          quarter: 'F1Q 18/19',
-          brand: 'ThinkPad Classic',
-          brsum: 'Notebook',
-          subser: 'X280',
-          prono: '20KECTO1WW config',
-          prodesc: 'Notebook ThinkPad X280 20KECTO1WW Rx',
-          vol: '300',
-          listpri: '10641.64',
-          stndpri: '10641.64',
-          respri: '817',
-          estpri: '850',
-          finalpri: '0',
-          disc: '1',
-          bmc: '786.03',
-          tmc: '801.7',
-          bmcmar: '19.69',
-          tmcmar: '19.69',
-          bmcb: '2.00',
-          tmcb: '2.00',
-          gr: '4875',
-          grre: '0',
-          netre: '4875',
-          pti: '1075.23',
-          ptipro: '-100.23',
-          ptimar: '-10.30%'
-        },
-        {
-          id: 1,
-          quarter: 'F1Q 18/19',
-          brand: 'ThinkPad Classic',
-          brsum: 'Notebook',
-          subser: 'X280',
-          prono: '20KECTO1WW config',
-          prodesc: 'Notebook ThinkPad X280 20KECTO1WW Rx',
-          vol: '300',
-          listpri: '10641.64',
-          stndpri: '10641.64',
-          respri: '817',
-          estpri: '850',
-          finalpri: '0',
-          disc: '1',
-          bmc: '786.03',
-          tmc: '801.7',
-          bmcmar: '19.69',
-          tmcmar: '19.69',
-          bmcb: '2.00',
-          tmcb: '2.00',
-          gr: '4875',
-          grre: '0',
-          netre: '4875',
-          pti: '1075.23',
-          ptipro: '-100.23',
-          ptimar: '-10.30%'
-        },
-        {
-          id: 1,
-          quarter: 'F1Q 18/19',
-          brand: 'ThinkPad Classic',
-          brsum: 'Notebook',
-          subser: 'X280',
-          prono: '20KECTO1WW config',
-          prodesc: 'Notebook ThinkPad X280 20KECTO1WW Rx',
-          vol: '300',
-          listpri: '10641.64',
-          stndpri: '10641.64',
-          respri: '817',
-          estpri: '850',
-          finalpri: '0',
-          disc: '1',
-          bmc: '786.03',
-          tmc: '801.7',
-          bmcmar: '19.69',
-          tmcmar: '19.69',
-          bmcb: '2.00',
-          tmcb: '2.00',
-          gr: '4875',
-          grre: '0',
-          netre: '4875',
-          pti: '1075.23',
-          ptipro: '-100.23',
-          ptimar: '-10.30%'
-        },
-        {
-          id: 1,
-          quarter: 'F1Q 18/19',
-          brand: 'ThinkPad Classic',
-          brsum: 'Notebook',
-          subser: 'X280',
-          prono: '20KECTO1WW config',
-          prodesc: 'Notebook ThinkPad X280 20KECTO1WW Rx',
-          vol: '300',
-          listpri: '10641.64',
-          stndpri: '10641.64',
-          respri: '817',
-          estpri: '850',
-          finalpri: '0',
-          disc: '1',
-          bmc: '786.03',
-          tmc: '801.7',
-          bmcmar: '19.69',
-          tmcmar: '19.69',
-          bmcb: '2.00',
-          tmcb: '2.00',
-          gr: '4875',
-          grre: '0',
-          netre: '4875',
-          pti: '1075.23',
-          ptipro: '-100.23',
-          ptimar: '-10.30%'
-        },
-        {
-          id: 1,
-          quarter: 'F1Q 18/19',
-          brand: 'ThinkPad Classic',
-          brsum: 'Notebook',
-          subser: 'X280',
-          prono: '20KECTO1WW config',
-          prodesc: 'Notebook ThinkPad X280 20KECTO1WW Rx',
-          vol: '300',
-          listpri: '10641.64',
-          stndpri: '10641.64',
-          respri: '817',
-          estpri: '850',
-          finalpri: '0',
-          disc: '1',
-          bmc: '786.03',
-          tmc: '801.7',
-          bmcmar: '19.69',
-          tmcmar: '19.69',
-          bmcb: '2.00',
-          tmcb: '2.00',
-          gr: '4875',
-          grre: '0',
-          netre: '4875',
-          pti: '1075.23',
-          ptipro: '-100.23',
-          ptimar: '-10.30%'
-        },
-        {
-          id: 1,
-          quarter: 'F1Q 18/19',
-          brand: 'ThinkPad Classic',
-          brsum: 'Notebook',
-          subser: 'X280',
-          prono: '20KECTO1WW config',
-          prodesc: 'Notebook ThinkPad X280 20KECTO1WW Rx',
-          vol: '300',
-          listpri: '10641.64',
-          stndpri: '10641.64',
-          respri: '817',
-          estpri: '850',
-          finalpri: '0',
-          disc: '1',
-          bmc: '786.03',
-          tmc: '801.7',
-          bmcmar: '19.69',
-          tmcmar: '19.69',
-          bmcb: '2.00',
-          tmcb: '2.00',
-          gr: '4875',
-          grre: '0',
-          netre: '4875',
-          pti: '1075.23',
-          ptipro: '-100.23',
-          ptimar: '-10.30%'
-        }
       ],
       detailcolumns1: [
         {
@@ -1818,11 +1385,11 @@ export default {
         },
         {
           f0q: 'Total Services/Other',
-          f1q: 'sd',
-          f2q: 'sdsd',
-          f3q: 'sd',
-          f4q: 'sd',
-          total: 'sdvc'
+          f1q: '',
+          f2q: '',
+          f3q: '',
+          f4q: '',
+          total: ''
         },
         {
           f0q: 'Revenue',
@@ -1850,11 +1417,11 @@ export default {
         },
         {
           f0q: 'Total Branded',
-          f1q: 'sds',
-          f2q: '213',
-          f3q: '12',
-          f4q: '1111',
-          total: '12332'
+          f1q: '',
+          f2q: '',
+          f3q: '',
+          f4q: '',
+          total: ''
         },
         {
           f0q: 'Revenue',
@@ -1882,11 +1449,11 @@ export default {
         },
         {
           f0q: 'Non Branded',
-          f1q: '34',
-          f2q: '23',
-          f3q: '232',
-          f4q: '23',
-          total: '2323'
+          f1q: '',
+          f2q: '',
+          f3q: '',
+          f4q: '',
+          total: ''
         },
         {
           f0q: 'Revenue',
@@ -1982,9 +1549,8 @@ ul{
   width: 48%;
   float: left;
   padding: 0 20px;
-  margin: 10px 0;
   &:nth-child(1) {
-    border-right:1px solid #ccc;
+    border-right:1px solid blue;
   }
   li{
     list-style: none;
@@ -2034,7 +1600,7 @@ h3{
   transform: translate(-50%, -50%);
 }
 .split-pane-page-wrapper{
-  height: 400px;
+  // height: 400px;
   .pane{
     width: 100%;
     height: 100%;
@@ -2065,5 +1631,4 @@ h3{
   }
 }
 }
-
 </style>
