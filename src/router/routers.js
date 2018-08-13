@@ -33,6 +33,58 @@ export default [
     ]
   },
   {
+    path: '/excel',
+    name: 'excel',
+    component: Main,
+    children: [
+      {
+        path: 'excel_newpe',
+        name: 'excel_newpe',
+        meta: {
+          icon: 'excel_newpe',
+          title: 'excel_newpe'
+        },
+        component: () => import('@/view/excel/excel_newpe.vue')
+      },
+      {
+        path: 'excel_PEsale',
+        name: 'excel_PEsale',
+        meta: {
+          icon: 'excel_PEsale',
+          title: 'excel_PEsale'
+        },
+        component: () => import('@/view/excel/excel_PEsale.vue')
+      },
+      {
+        path: 'excel_PEpricer',
+        name: 'excel_PEpricer',
+        meta: {
+          icon: 'excel_PEpricer',
+          title: 'excel_PEpricer'
+        },
+        component: () => import('@/view/excel/excel_PEpricer.vue')
+      },
+      {
+        path: 'excel_importTransaction',
+        name: 'excel_importTransaction',
+        meta: {
+          icon: 'excel_importTransaction',
+          title: 'excel_importTransaction'
+        },
+        component: () => import('@/view/excel/importTransaction.vue')
+      },
+      {
+        path: 'excel_listpage',
+        name: 'excel_listpage',
+        meta: {
+          icon: 'excel_listpage',
+          title: 'excel_listpage'
+        },
+        component: () => import('@/view/excel/excel_listpage.vue')
+      }
+    ]
+  },
+  {
     path: '/price',
     name: 'price',
     component: Main,
