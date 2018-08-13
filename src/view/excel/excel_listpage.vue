@@ -222,7 +222,7 @@ export default {
         {
           headerName: 'PE Number',
           cellStyle: {'text-align': 'center'},
-          cellRenderer: (params)=>{ return '<a href="/excel/excel_PEsale">PE-20180807006</a>'},
+          cellRenderer: (params)=>{ return '<a href="/excel/excel_PEsale">'+params.value+'</a>'},
           field: 'peNum',
           width: 135
         },
@@ -545,7 +545,6 @@ export default {
   },
   mounted () {
     this.$nextTick(() => {
-      this.toggleList()
     }, 3000)
   },
   beforeDestroy () {
@@ -564,15 +563,6 @@ export default {
     },
     handleMoving (e) {
       console.log(e.atMin, e.atMax)
-    },
-    toggleList () {
-      let tableCQ = document.getElementsByClassName('table-CQ')[0]
-      if (this.toggle) {
-        tableCQ.style.display = 'none'
-      } else {
-        tableCQ.style.display = 'block'
-      }
-      this.toggle = !this.toggle
     }
   }
 }

@@ -49,37 +49,26 @@
   <div  class="table-CQ">
     <Table border :columns="formcolumns" :data="formdata"></Table>
   </div>
-      
       <div class="split-pane-page-wrapper">
         <split-pane v-model="offset" @on-moving="handleMoving">
-          <!-- <split-pane v-model="offsetVertical" mode="vertical" @on-moving="handleMoving"> -->
           <div slot="left" class="pane left-pane">
             <div slot="top" class="pane top-pane">
-                <ag-grid-vue
-                  style="width: 100%; height:100%;"
-                  class="ag-theme-balham"
-                  :columnDefs="columnDefs"
-                  :rowData="rowData"
-                  :gridAutoHeight="true"
-                  :enableSorting="true"
-                  :enableFilter="true"
-                  :defaultColDef='{editable: true}'
-                  :singleClickEdit="true"
-                  :suppressSizeToFit="true"
-                  :suppressResize="true"
-                  :enableColResize="true"
-                  rowSelection="multiple">
-                </ag-grid-vue>
+              <ag-grid-vue
+                style="width: 100%; height:100%;"
+                class="ag-theme-balham"
+                :columnDefs="columnDefs"
+                :rowData="rowData"
+                :gridAutoHeight="true"
+                :enableSorting="true"
+                :enableFilter="true"
+                :singleClickEdit="true"
+                :suppressSizeToFit="true"
+                :suppressResize="true"
+                :enableColResize="true"
+                rowSelection="multiple">
+              </ag-grid-vue>
             </div>
-            <!-- <split-pane v-model="offsetVertical" mode="vertical" @on-moving="handleMoving">
-              <div slot="top" class="pane top-pane"></div>
-              <div slot="bottom" class="pane bottom-pane"></div>
-              <div slot="trigger" class="custom-trigger">
-                <icons class="trigger-icon" :size="22" type="resize-vertical" color="#fff"/>
-              </div>
-            </split-pane> -->
           </div>
-          <!-- </split-pane> -->
           <div slot="right" class="pane right-pane">
               <h3 @click="pullFnc()" style="cursor: pointer;">
                 <div v-if="!pullFlag">
@@ -134,9 +123,7 @@
                   :enableColResize="true"
                   rowSelection="multiple">
                 </ag-grid-vue>
-
               </div>
-
           </div>
         </split-pane>
       </div>
@@ -280,1071 +267,354 @@ export default {
           CQ3: ''
         }
       ],
-      // Data
-      tableDatalen1: 0,
-      tablecolumns1: [
-        {
-          type: 'selection',
-          width: 60,
-          align: 'center',
-          fixed: 'left'
-        },
-        {
-          title: 'Flag',
-          key: 'Flag',
-          align: 'center',
-          width: 110,
-          fixed: 'left'
-        },
-        {
-          title: 'HL Mem',
-          width: 110,
-          align: 'center',
-          key: 'HLMem'
-        },
-        {
-          title: 'Item NO',
-          width: 110,
-          align: 'center',
-          key: 'ItemNO'
-        },
-        {
-          title: 'Part Number',
-          width: 110,
-          align: 'center',
-          key: 'PartNumber'
-        },
-        {
-          title: 'Description',
-          width: 110,
-          align: 'center',
-          key: 'Description'
-        },
-        {
-          title: 'Standard Price',
-          width: 110,
-          align: 'center',
-          key: 'StandardPrice'
-        },
-        {
-          title: 'List Price',
-          width: 110,
-          align: 'center',
-          key: 'ListPrice'
-        },
-        {
-          title: 'Requested',
-          align: 'center',
-          children: [
-            {
-              title: 'Requested DisCount',
-              key: 'RequestedDisCount',
-              width: 110,
-              align: 'center'
-            },
-            {
-              title: 'Sales Price',
-              key: 'SalesPrice',
-              width: 110,
-              align: 'center'
-            },
-            {
-              title: 'Margin',
-              key: 'Margin',
-              width: 110,
-              align: 'center'
-            }
-          ]
-        },
-        {
-          title: 'Active Price',
-          align: 'center',
-          children: [
-            {
-              title: 'Discount',
-              key: 'Discount',
-              width: 100,
-              align: 'center'
-            },
-            {
-              title: 'Price',
-              key: 'Price',
-              width: 100,
-              align: 'center'
-            },
-            {
-              title: 'Margin%',
-              key: 'Margin%',
-              width: 100,
-              align: 'center'
-            }
-          ]
-        },
-        {
-          title: 'Entitied',
-          align: 'center',
-          children: [
-            {
-              title: 'Discount From List',
-              key: 'DiscountFromList',
-              width: 110,
-              align: 'center'
-            },
-            {
-              title: 'PRICE',
-              key: 'PRICE',
-              width: 100,
-              align: 'center'
-            },
-            {
-              title: 'CQ Margin%',
-              key: 'CQMargin%',
-              width: 100,
-              align: 'center'
-            },
-            {
-              title: 'weighted Margin%',
-              key: 'weightedMargin%',
-              width: 110,
-              align: 'center'
-            }
-          ]
-        },
-        {
-          title: 'Adjustied CQ Cost',
-          key: 'AdjustiedCQCost',
-          align: 'center',
-          width: 110
-        },
-        {
-          title: 'Unit Profit',
-          key: 'UnitProfit',
-          align: 'center',
-          width: 110
-        },
-        {
-          title: 'Quantity',
-          align: 'center',
-          children: [
-            {
-              title: 'CQ',
-              key: 'CQ',
-              width: 110,
-              align: 'center',
-              render: (h, params) => {
-                return h('div', [
-                  h('Input', {
-                    props: {
-                      size: 'small',
-                      value: '233'
-                    },
-                    style: {
-                      marginRight: '5px'
-                    }
-                  })
-                ])
-              }
-            },
-            {
-              title: 'CQ+1',
-              key: 'CQ+1',
-              width: 100,
-              align: 'center',
-              render: (h, params) => {
-                return h('div', [
-                  h('Input', {
-                    props: {
-                      size: 'small',
-                      value: '3'
-                    },
-                    style: {
-                      marginRight: '5px'
-                    }
-                  })
-                ])
-              }
-            },
-            {
-              title: 'CQ+2',
-              key: 'CQ+2',
-              width: 100,
-              align: 'center',
-              render: (h, params) => {
-                return h('div', [
-                  h('Input', {
-                    props: {
-                      size: 'small',
-                      value: '23'
-                    },
-                    style: {
-                      marginRight: '5px'
-                    }
-                  })
-                ])
-              }
-            }
-          ]
-        }
-      ],
-      tabledata1: [
-        {
-          Flag: 'asas',
-          HLMem: 18,
-          ItemNO: '223',
-          PartNumber: '12',
-          Description: 'dsvfdsv',
-          StandardPrice: '34',
-          ListPrice: '23',
-          RequestedDisCount: '12%',
-          SalesPrice: '345',
-          Margin: '23',
-          Discount: '45',
-          Price: '22',
-          'Margin%': '21',
-          DiscountFromList: '23',
-          PRICE: '23',
-          'CQMargin%': '23',
-          'weightedMargin%': '23',
-          AdjustiedCQCost: '23',
-          UnitProfit: '23',
-          CQ: '',
-          'CQ+1': '',
-          'CQ+2': ''
-        },
-        {
-          Flag: 'asas',
-          HLMem: 18,
-          ItemNO: '223',
-          PartNumber: '12',
-          Description: 'dsvfdsv',
-          StandardPrice: '34',
-          ListPrice: '23',
-          RequestedDisCount: '12%',
-          SalesPrice: '345',
-          Margin: '23',
-          Discount: '45',
-          Price: '22',
-          'Margin%': '21',
-          DiscountFromList: '23',
-          PRICE: '23',
-          'CQMargin%': '23',
-          'weightedMargin%': '23',
-          AdjustiedCQCost: '23',
-          UnitProfit: '23',
-          CQ: '',
-          'CQ+1': '',
-          'CQ+2': ''
-        },
-        {
-          Flag: 'asas',
-          HLMem: 18,
-          ItemNO: '223',
-          PartNumber: '12',
-          Description: 'dsvfdsv',
-          StandardPrice: '34',
-          ListPrice: '23',
-          RequestedDisCount: '12%',
-          SalesPrice: '345',
-          Margin: '23',
-          Discount: '45',
-          Price: '22',
-          'Margin%': '21',
-          DiscountFromList: '23',
-          PRICE: '23',
-          'CQMargin%': '23',
-          'weightedMargin%': '23',
-          AdjustiedCQCost: '23',
-          UnitProfit: '23',
-          CQ: '',
-          'CQ+1': '',
-          'CQ+2': ''
-        },
-        {
-          Flag: 'asas',
-          HLMem: 18,
-          ItemNO: '223',
-          PartNumber: '12',
-          Description: 'dsvfdsv',
-          StandardPrice: '34',
-          ListPrice: '23',
-          RequestedDisCount: '12%',
-          SalesPrice: '345',
-          Margin: '23',
-          Discount: '45',
-          Price: '22',
-          'Margin%': '21',
-          DiscountFromList: '23',
-          PRICE: '23',
-          'CQMargin%': '23',
-          'weightedMargin%': '23',
-          AdjustiedCQCost: '23',
-          UnitProfit: '23',
-          CQ: '',
-          'CQ+1': '',
-          'CQ+2': ''
-        },
-        {
-          Flag: 'asas',
-          HLMem: 18,
-          ItemNO: '223',
-          PartNumber: '12',
-          Description: 'dsvfdsv',
-          StandardPrice: '34',
-          ListPrice: '23',
-          RequestedDisCount: '12%',
-          SalesPrice: '345',
-          Margin: '23',
-          Discount: '45',
-          Price: '22',
-          'Margin%': '21',
-          DiscountFromList: '23',
-          PRICE: '23',
-          'CQMargin%': '23',
-          'weightedMargin%': '23',
-          AdjustiedCQCost: '23',
-          UnitProfit: '23',
-          CQ: '',
-          'CQ+1': '',
-          'CQ+2': ''
-        },
-        {
-          Flag: 'asas',
-          HLMem: 18,
-          ItemNO: '223',
-          PartNumber: '12',
-          Description: 'dsvfdsv',
-          StandardPrice: '34',
-          ListPrice: '23',
-          RequestedDisCount: '12%',
-          SalesPrice: '345',
-          Margin: '23',
-          Discount: '45',
-          Price: '22',
-          'Margin%': '21',
-          DiscountFromList: '23',
-          PRICE: '23',
-          'CQMargin%': '23',
-          'weightedMargin%': '23',
-          AdjustiedCQCost: '23',
-          UnitProfit: '23',
-          CQ: '',
-          'CQ+1': '',
-          'CQ+2': ''
-        },
-        {
-          Flag: 'asas',
-          HLMem: 18,
-          ItemNO: '223',
-          PartNumber: '12',
-          Description: 'dsvfdsv',
-          StandardPrice: '34',
-          ListPrice: '23',
-          RequestedDisCount: '12%',
-          SalesPrice: '345',
-          Margin: '23',
-          Discount: '45',
-          Price: '22',
-          'Margin%': '21',
-          DiscountFromList: '23',
-          PRICE: '23',
-          'CQMargin%': '23',
-          'weightedMargin%': '23',
-          AdjustiedCQCost: '23',
-          UnitProfit: '23',
-          CQ: '',
-          'CQ+1': '',
-          'CQ+2': ''
-        }
-      ],
-      // CTO Config
-      tableDatalen2: 0,
-      tablecolumns2: [
-        {
-          title: 'Item No',
-          key: 'ItemNo',
-          width: 100,
-          align: 'center',
-          fixed: 'left'
-        },
-        {
-          title: 'Product No',
-          key: 'ProductNo',
-          width: 110,
-          align: 'center',
-          fixed: 'left'
-        },
-        {
-          title: 'MTM/OFF No./P No./SB',
-          width: 170,
-          align: 'center',
-          key: 'MTMOF'
-        },
-        {
-          title: 'Description',
-          width: 100,
-          align: 'center',
-          key: 'Description'
-        },
-        {
-          title: 'Unit',
-          width: 100,
-          align: 'center',
-          key: 'Unit'
-        },
-        {
-          title: 'CQ',
-          width: 100,
-          align: 'center',
-          key: 'CQ'
-        },
-        {
-          title: 'CQ+1',
-          width: 100,
-          align: 'center',
-          key: 'CQ1'
-        },
-        {
-          title: 'CQ+2',
-          width: 100,
-          align: 'center',
-          key: 'CQ2'
-        },
-        {
-          title: 'CQ+3',
-          width: 100,
-          align: 'center',
-          key: 'CQ3'
-        },
-        {
-          title: 'Adjusted CQ | US',
-          width: 160,
-          align: 'center',
-          key: 'AdjustedCQ'
-        },
-        {
-          title: 'Adjusted CQ+1 | US',
-          width: 160,
-          key: 'AdjustedCQ1'
-        },
-        {
-          title: 'Adjusted CQ+2 | US',
-          width: 160,
-          align: 'center',
-          key: 'AdjustedCQ2'
-        },
-        {
-          title: 'Adjusted CQ+3 | US',
-          width: 160,
-          align: 'center',
-          key: 'AdjustedCQ3'
-        },
-        {
-          title: 'CQ Adjusted Note',
-          width: 160,
-          align: 'center',
-          key: 'CQAdjusted'
-        }
-      ],
-      tabledata2: [
-        {
-          ItemNo: '23',
-          ProductNo: '123',
-          MTMOF: '',
-          Description: 'sdc',
-          Unit: '12',
-          CQ: '1111',
-          CQ1: 348,
-          CQ2: '223',
-          CQ3: '12',
-          AdjustedCQ: 'dsvfdsv',
-          AdjustedCQ1: '34',
-          AdjustedCQ2: '23',
-          AdjustedCQ3: '12%',
-          CQAdjusted: '345'
-        },
-        {
-          ItemNo: '23',
-          ProductNo: '123',
-          MTMOF: '',
-          Description: 'sdc',
-          Unit: '12',
-          CQ: '1111',
-          CQ1: 348,
-          CQ2: '223',
-          CQ3: '12',
-          AdjustedCQ: 'dsvfdsv',
-          AdjustedCQ1: '34',
-          AdjustedCQ2: '23',
-          AdjustedCQ3: '12%',
-          CQAdjusted: '345'
-        },
-        {
-          ItemNo: '23',
-          ProductNo: '123',
-          MTMOF: '',
-          Description: 'sdc',
-          Unit: '12',
-          CQ: '1111',
-          CQ1: 348,
-          CQ2: '223',
-          CQ3: '12',
-          AdjustedCQ: 'dsvfdsv',
-          AdjustedCQ1: '34',
-          AdjustedCQ2: '23',
-          AdjustedCQ3: '12%',
-          CQAdjusted: '345'
-        }
-      ],
-      tableDatalen3: 0,
-      tablecolumns3: [
-        {
-          type: 'selection',
-          width: 60,
-          align: 'center',
-          fixed: 'left'
-        },
-        {
-          title: 'Flag',
-          key: 'Flag',
-          width: 110,
-          align: 'center',
-          fixed: 'left'
-        },
-        {
-          title: 'HL Mem',
-          width: 110,
-          align: 'center',
-          key: 'HLMem'
-        },
-        {
-          title: 'Item NO',
-          width: 110,
-          align: 'center',
-          key: 'ItemNO'
-        },
-        {
-          title: 'Part Number',
-          width: 110,
-          align: 'center',
-          key: 'PartNumber'
-        },
-        {
-          title: 'Description',
-          width: 110,
-          align: 'center',
-          key: 'Description'
-        },
-        {
-          title: 'Standard Price',
-          width: 110,
-          align: 'center',
-          key: 'StandardPrice'
-        },
-        {
-          title: 'List Price',
-          width: 110,
-          align: 'center',
-          key: 'ListPrice'
-        },
-        {
-          title: 'Requested',
-          align: 'center',
-          children: [
-            {
-              title: 'Requested DisCount',
-              key: 'RequestedDisCount',
-              width: 110,
-              align: 'center'
-            },
-            {
-              title: 'Sales Price',
-              key: 'SalesPrice',
-              width: 110,
-              align: 'center'
-            },
-            {
-              title: 'Margin',
-              key: 'Margin',
-              width: 110,
-              align: 'center'
-            }
-          ]
-        },
-        {
-          title: 'Active Price',
-          align: 'center',
-          children: [
-            {
-              title: 'Discount',
-              key: 'Discount',
-              width: 100,
-              align: 'center'
-            },
-            {
-              title: 'Price',
-              key: 'Price',
-              width: 100,
-              align: 'center'
-            },
-            {
-              title: 'Margin%',
-              key: 'Margin%',
-              width: 100,
-              align: 'center'
-            }
-          ]
-        },
-        {
-          title: 'Entitied',
-          align: 'center',
-          children: [
-            {
-              title: 'Discount From List',
-              key: 'DiscountFromList',
-              width: 110,
-              align: 'center'
-            },
-            {
-              title: 'PRICE',
-              key: 'PRICE',
-              width: 100,
-              align: 'center'
-            },
-            {
-              title: 'CQ Margin%',
-              key: 'CQMargin%',
-              width: 100,
-              align: 'center'
-            },
-            {
-              title: 'weighted Margin%',
-              key: 'weightedMargin%',
-              width: 110,
-              align: 'center'
-            }
-          ]
-        },
-        {
-          title: 'Adjustied CQ Cost',
-          key: 'AdjustiedCQCost',
-          align: 'center',
-          width: 110
-        },
-        {
-          title: 'Unit Profit',
-          key: 'UnitProfit',
-          align: 'center',
-          width: 110
-        },
-        {
-          title: 'Quantity',
-          align: 'center',
-          children: [
-            {
-              title: 'CQ',
-              key: 'CQ',
-              width: 110,
-              align: 'center',
-              render: (h, params) => {
-                return h('div', [
-                  h('Input', {
-                    props: {
-                      size: 'small',
-                      value: '233'
-                    },
-                    style: {
-                      marginRight: '5px'
-                    }
-                  })
-                ])
-              }
-            },
-            {
-              title: 'CQ+1',
-              key: 'CQ+1',
-              width: 100,
-              align: 'center',
-              render: (h, params) => {
-                return h('div', [
-                  h('Input', {
-                    props: {
-                      size: 'small',
-                      value: '3'
-                    },
-                    style: {
-                      marginRight: '5px'
-                    }
-                  })
-                ])
-              }
-            },
-            {
-              title: 'CQ+2',
-              key: 'CQ+2',
-              width: 100,
-              align: 'center',
-              render: (h, params) => {
-                return h('div', [
-                  h('Input', {
-                    props: {
-                      size: 'small',
-                      value: '23'
-                    },
-                    style: {
-                      marginRight: '5px'
-                    }
-                  })
-                ])
-              }
-            }
-          ]
-        }
-      ],
-      tabledata3: [
-        {
-          Flag: 'asas',
-          HLMem: 18,
-          ItemNO: '223',
-          PartNumber: '12',
-          Description: 'dsvfdsv',
-          StandardPrice: '34',
-          ListPrice: '23',
-          RequestedDisCount: '12%',
-          SalesPrice: '345',
-          Margin: '23',
-          Discount: '45',
-          Price: '22',
-          'Margin%': '21',
-          DiscountFromList: '23',
-          PRICE: '23',
-          'CQMargin%': '23',
-          'weightedMargin%': '23',
-          AdjustiedCQCost: '23',
-          UnitProfit: '23',
-          CQ: '',
-          'CQ+1': '',
-          'CQ+2': ''
-        },
-        {
-          Flag: 'asas',
-          HLMem: 18,
-          ItemNO: '223',
-          PartNumber: '12',
-          Description: 'dsvfdsv',
-          StandardPrice: '34',
-          ListPrice: '23',
-          RequestedDisCount: '12%',
-          SalesPrice: '345',
-          Margin: '23',
-          Discount: '45',
-          Price: '22',
-          'Margin%': '21',
-          DiscountFromList: '23',
-          PRICE: '23',
-          'CQMargin%': '23',
-          'weightedMargin%': '23',
-          AdjustiedCQCost: '23',
-          UnitProfit: '23',
-          CQ: '',
-          'CQ+1': '',
-          'CQ+2': ''
-        },
-        {
-          Flag: 'asas',
-          HLMem: 18,
-          ItemNO: '223',
-          PartNumber: '12',
-          Description: 'dsvfdsv',
-          StandardPrice: '34',
-          ListPrice: '23',
-          RequestedDisCount: '12%',
-          SalesPrice: '345',
-          Margin: '23',
-          Discount: '45',
-          Price: '22',
-          'Margin%': '21',
-          DiscountFromList: '23',
-          PRICE: '23',
-          'CQMargin%': '23',
-          'weightedMargin%': '23',
-          AdjustiedCQCost: '23',
-          UnitProfit: '23',
-          CQ: '',
-          'CQ+1': '',
-          'CQ+2': ''
-        },
-        {
-          Flag: 'asas',
-          HLMem: 18,
-          ItemNO: '223',
-          PartNumber: '12',
-          Description: 'dsvfdsv',
-          StandardPrice: '34',
-          ListPrice: '23',
-          RequestedDisCount: '12%',
-          SalesPrice: '345',
-          Margin: '23',
-          Discount: '45',
-          Price: '22',
-          'Margin%': '21',
-          DiscountFromList: '23',
-          PRICE: '23',
-          'CQMargin%': '23',
-          'weightedMargin%': '23',
-          AdjustiedCQCost: '23',
-          UnitProfit: '23',
-          CQ: '',
-          'CQ+1': '',
-          'CQ+2': ''
-        },
-        {
-          Flag: 'asas',
-          HLMem: 18,
-          ItemNO: '223',
-          PartNumber: '12',
-          Description: 'dsvfdsv',
-          StandardPrice: '34',
-          ListPrice: '23',
-          RequestedDisCount: '12%',
-          SalesPrice: '345',
-          Margin: '23',
-          Discount: '45',
-          Price: '22',
-          'Margin%': '21',
-          DiscountFromList: '23',
-          PRICE: '23',
-          'CQMargin%': '23',
-          'weightedMargin%': '23',
-          AdjustiedCQCost: '23',
-          UnitProfit: '23',
-          CQ: '',
-          'CQ+1': '',
-          'CQ+2': ''
-        },
-        {
-          Flag: 'asas',
-          HLMem: 18,
-          ItemNO: '223',
-          PartNumber: '12',
-          Description: 'dsvfdsv',
-          StandardPrice: '34',
-          ListPrice: '23',
-          RequestedDisCount: '12%',
-          SalesPrice: '345',
-          Margin: '23',
-          Discount: '45',
-          Price: '22',
-          'Margin%': '21',
-          DiscountFromList: '23',
-          PRICE: '23',
-          'CQMargin%': '23',
-          'weightedMargin%': '23',
-          AdjustiedCQCost: '23',
-          UnitProfit: '23',
-          CQ: '',
-          'CQ+1': '',
-          'CQ+2': ''
-        }
-      ],
-      groupConSelect: [],
-      groupingConditions: ['HardWare', 'Service', 'ESS', 'T Series', 'X Series', 'ThinkPad P Series', 'Others'],
-      tablecolumns51: [
-        {
-          title: ' ',
-          key: 'cc',
-          align: 'center'
-        },
-        {
-          title: 'CQ ',
-          key: 'CQ',
-          align: 'center'
-        },
-        {
-          title: 'CQ+1',
-          key: 'CQ1',
-          align: 'center'
-        },
-        {
-          title: 'CQ+2',
-          key: 'CQ2',
-          align: 'center'
-        },
-        {
-          title: 'CQ+3',
-          key: 'CQ3',
-          align: 'center'
-        }
-      ],
-      tabledata51: [
-        {
-          cc: 'Hedge OverRide',
-          CQ: 18,
-          CQ1: '10000',
-          CQ2: '1000',
-          CQ3: '1000'
-        },
-        {
-          cc: 'Inverse',
-          CQ: 18,
-          CQ1: '10000',
-          CQ2: '1000',
-          CQ3: '1000'
-        }
-      ],
-      tablecolumns5: [
-        {
-          title: 'M1 Rate',
-          key: 'M1Rate',
-          align: 'center'
-        },
-        {
-          title: 'M2 Rate',
-          key: 'M2Rate',
-          align: 'center'
-        },
-        {
-          title: 'M3 Rate',
-          key: 'M3Rate',
-          align: 'center'
-        },
-        {
-          title: 'M4 Rate',
-          key: 'M4Rate',
-          align: 'center'
-        },
-        {
-          title: 'M5 Rate',
-          key: 'M5Rate',
-          align: 'center'
-        },
-        {
-          title: 'M6 Rate',
-          key: 'M6Rate',
-          align: 'center'
-        },
-        {
-          title: 'M7 Rate',
-          key: 'M7Rate',
-          align: 'center'
-        },
-        {
-          title: 'M8 Rate',
-          key: 'M8Rate',
-          align: 'center'
-        },
-        {
-          title: 'M9 Rate',
-          key: 'M9Rate',
-          align: 'center'
-        },
-        {
-          title: 'M10 Rate',
-          key: 'M10Rate',
-          align: 'center'
-        },
-        {
-          title: 'M11 Rate',
-          key: 'M11Rate',
-          align: 'center'
-        },
-        {
-          title: 'M12 Rate',
-          key: 'M12Rate',
-          align: 'center'
-        }
-      ],
-      tabledata5: [
-        {
-          M1Rate: '1000',
-          M2Rate: 18,
-          M3Rate: '223',
-          M4Rate: '12',
-          M5Rate: 'dsvfdsv',
-          M6Rate: '34',
-          M7Rate: '23',
-          M8Rate: '12%',
-          M9Rate: '345',
-          M10Rate: '23',
-          M11Rate: '45',
-          M12Rate: '22'
-        },
-        {
-          M1Rate: '1000',
-          M2Rate: 18,
-          M3Rate: '223',
-          M4Rate: '12',
-          M5Rate: 'dsvfdsv',
-          M6Rate: '34',
-          M7Rate: '23',
-          M8Rate: '12%',
-          M9Rate: '345',
-          M10Rate: '23',
-          M11Rate: '45',
-          M12Rate: '22'
-        }
-      ],
-      tableNumShow: 1,
       columnDefs: [
-        {headerName: ' ',
-          children: [
-            {headerCheckboxSelection: true, headerCheckboxSelectionFilteredOnly:false, checkboxSelection: true, width: 60},
-            {headerName: 'Flag', field: 'Flag', editable: false, width: 100, cellStyle: {'text-align': 'center'}},
-            {headerName: 'HL Mem', field: 'HL Mem', editable: false, cellStyle: {'text-align': 'center'}, width: 100},
-            {headerName: 'Item NO', field: 'Item NO', editable: false, cellStyle: {'text-align': 'center'}, width: 100},
-            {headerName: 'Part Number', field: 'Part Number', editable: false, cellStyle: {'text-align': 'center', color: '#fff', backgroundColor: 'green'}, width: 100},
-            {headerName: 'Description', field: 'Description', editable: false, cellStyle: {'text-align': 'center'}, width: 100},
-            {headerName: 'Standard Price', field: 'Standard Price', cellStyle: {'text-align': 'center'}, width: 100},
-            {headerName: 'List Price', field: 'List Price', cellStyle: {'text-align': 'center'}, width: 100}
-          ]
+        {
+          headerCheckboxSelection: true,
+          headerCheckboxSelectionFilteredOnly: false,
+          editable: false,
+          checkboxSelection: true, width: 60
         },
-        {headerName: 'Discount',
-          children: [
-            {headerName: 'Requested DisCount', cellStyle: {'text-align': 'center'}, field: 'Requested DisCount', width: 100},
-            {headerName: 'Margin', field: 'Margin', cellStyle: {'text-align': 'center', color: '#fff', backgroundColor: 'red'}, width: 100},
-            {headerName: 'Sales Price', field: 'Sales Price', cellStyle: {'text-align': 'center'}, width: 100}
-          ]
+        {
+          headerName: 'PE Number',
+          cellStyle: {'text-align': 'center'},
+          cellRenderer: (params)=>{ return '<a href="/excel/excel_PEsale">'+params.value+'</a>'},
+          field: 'peNum',
+          width: 135
         },
-        {headerName: 'Active Price',
-          children: [
-            {headerName: 'Discount', field: 'Discount', cellStyle: {'text-align': 'center'}, width: 100},
-            {headerName: 'Price', field: 'Price', cellStyle: {'text-align': 'center'}, width: 100},
-            {headerName: 'Margin%', field: 'Margin%', cellStyle: {'text-align': 'center'}, width: 100}
-          ]
+        {
+          headerName: 'DMU Number',
+          cellStyle: {'text-align': 'center'},
+          field: 'dmuNum',
+          width: 120
         },
-        {headerName: 'Entitied',
-          children: [
-            {headerName: 'PRICE', field: 'PRICE', cellStyle: {'text-align': 'center'}, width: 100},
-            {headerName: 'CQ Margin%', field: 'CQ Margin%', cellStyle: {'text-align': 'center'}, width: 100},
-            {headerName: 'weighted Margin%', field: 'weighted Margin%', cellStyle: {'text-align': 'center'}, width: 100}
-          ]
+        {
+          headerName: 'DMU Name',
+          cellStyle: {'text-align': 'center'},
+          field: 'dmuName',
+          width: 120
         },
-        {headerName: 'Quantity',
-          children: [
-            {headerName: 'CQ', field: 'CQ', cellStyle: {'text-align': 'center'}, width: 100},
-            {headerName: 'CQ+1', field: 'CQ+1', cellStyle: {'text-align': 'center'}, width: 100},
-            {headerName: 'CQ+2', field: 'CQ+2', cellStyle: {'text-align': 'center'}, width: 100}
-          ]
+        {
+          headerName: 'Description',
+          cellStyle: {'text-align': 'center'},
+          field: 'desc',
+          width: 120
+        },
+        {
+          headerName: 'Country',
+          cellStyle: {'text-align': 'center'},
+          field: 'country',
+          width: 120
+        },
+        {
+          headerName: 'Region',
+          cellStyle: {'text-align': 'center'},
+          field: 'region',
+          width: 120
+        },
+        {
+          headerName: 'Channel',
+          cellStyle: {'text-align': 'center'},
+          field: 'channel',
+          width: 120
+        },
+        {
+          headerName: 'Status',
+          cellStyle: {'text-align': 'center'},
+          field: 'status',
+          width: 120
+        },
+        {
+          headerName: 'Created By',
+          cellStyle: {'text-align': 'center'},
+          field: 'createdBy',
+          width: 120
+        },
+        {
+          headerName: 'Created Time',
+          cellStyle: {'text-align': 'center'},
+          field: 'createdTime',
+          width: 120
+        },
+        {
+          headerName: 'Modified By',
+          cellStyle: {'text-align': 'center'},
+          field: 'modifiedBy',
+          width: 120
+        },
+        {
+          headerName: 'Modyfied Time',
+          cellStyle: {'text-align': 'center'},
+          field: 'modyfiedTime',
+          width: 120
+        },
+        {
+          headerName: 'Pricer',
+          cellStyle: {'text-align': 'center'},
+          field: 'pricer',
+          width: 120
+        },
+        {
+          headerName: 'Gr Rev',
+          cellStyle: {'text-align': 'center'},
+          field: 'grRev',
+          width: 120
+        },
+        {
+          headerName: 'Margin %',
+          cellStyle: {'text-align': 'center'},
+          field: 'margi',
+          width: 120
+        },
+        {
+          headerName: 'Currency',
+          cellStyle: {'text-align': 'center'},
+          field: 'currency',
+          width: 120
+        }
+      ],
+      rowData: [
+        {
+          peNum: 'PE-20176807001',
+          dmuNum: '1212263935',
+          dmuName: 'IPSOS HQ',
+          desc: 'RX-DCG-NIMS PRNS',
+          country: 'Germany',
+          region: 'WE',
+          channel: 'Direct',
+          status: 'Draft',
+          createdBy: 'arijn',
+          createdTime: '2018/08/06 10:00:00',
+          modifiedBy: 'jofeytout',
+          modyfiedTime: '2018/08/07 10:00:00',
+          pricer: 'jmose',
+          grRev: '347100',
+          margi: '18.7',
+          currency: 'USD'
+        },
+        {
+          peNum: 'PE-20180807002',
+          dmuNum: '1213420209',
+          dmuName: 'CSC WE RMC DMU',
+          desc: 'RX_Tchibo',
+          country: 'Italy',
+          region: 'EMEA',
+          channel: 'Indirect',
+          status: 'Submitted',
+          createdBy: 'skeskin',
+          createdTime: '2018-08-06 0:00',
+          modifiedBy: 'skeskin',
+          modyfiedTime: '2018-08-07 0:00',
+          pricer: 'yanm2',
+          grRev: '2,102,080',
+          margi: '4.2',
+          currency: 'USD'
+        },
+        {
+          peNum: 'PE-20180807003',
+          dmuNum: '1213431990',
+          dmuName: 'Evonik MC DMU',
+          desc: 'DXC - UHH',
+          country: 'France',
+          region: 'EMEA',
+          channel: 'Direct',
+          status: 'Approved',
+          createdBy: 'jbruesse',
+          createdTime: '2018/08/06 0:00:00',
+          modifiedBy: 'jofeytout',
+          modyfiedTime: '2018/08/07 0:00:00',
+          pricer: 'zhanghq3',
+          grRev: '35,283,244',
+          margi: '-9.6',
+          currency: 'USD'
+        },
+        {
+          peNum: 'PE-20180807004',
+          dmuNum: '1213445570',
+          dmuName: 'CRH MC DMU',
+          desc: 'GA Evonik - P52 (incl. Services)',
+          country: 'France',
+          region: 'EMEA',
+          channel: 'Indirect',
+          status: 'Rejected',
+          createdBy: 'arijn',
+          createdTime: '2018/08/06 0:00:00',
+          modifiedBy: 'jofeytout',
+          modyfiedTime: '2018/08/07 0:00:00',
+          pricer: 'jbruesse',
+          grRev: '0',
+          margi: '-21.3',
+          currency: 'USD'
+        },
+        {
+          peNum: 'PE-20180807005',
+          dmuNum: '1214029598',
+          dmuName: 'IPSOS HQ',
+          desc: 'RX-DCG-NIMS PRNS',
+          country: 'Germany',
+          region: 'WE',
+          channel: 'Direct',
+          status: 'Draft',
+          createdBy: 'arijn',
+          createdTime: '2018/08/06 0:00:00',
+          modifiedBy: 'jofeytout',
+          modyfiedTime: '2018/08/07 0:00:00',
+          pricer: 'jmose',
+          grRev: '17,468,07',
+          margi: '-35.4',
+          currency: 'USD'
+        },
+        {
+          peNum: 'PE-20180807001',
+          dmuNum: '1212263935',
+          dmuName: 'IPSOS HQ',
+          desc: 'RX-DCG-NIMS PRNS',
+          country: 'Germany',
+          region: 'WE',
+          channel: 'Direct',
+          status: 'Draft',
+          createdBy: 'arijn',
+          createdTime: '2018/08/06 10:00:00',
+          modifiedBy: 'jofeytout',
+          modyfiedTime: '2018/08/07 10:00:00',
+          pricer: 'jmose',
+          grRev: '347100',
+          margi: '18.7',
+          currency: 'USD'
+        },
+        {
+          peNum: 'PE-20180807001',
+          dmuNum: '1212263935',
+          dmuName: 'IPSOS HQ',
+          desc: 'RX-DCG-NIMS PRNS',
+          country: 'Germany',
+          region: 'WE',
+          channel: 'Direct',
+          status: 'Draft',
+          createdBy: 'arijn',
+          createdTime: '2018/08/06 10:00:00',
+          modifiedBy: 'jofeytout',
+          modyfiedTime: '2018/08/07 10:00:00',
+          pricer: 'jmose',
+          grRev: '347100',
+          margi: '18.7',
+          currency: 'USD'
+        },
+        {
+          peNum: 'PE-20180807001',
+          dmuNum: '1212263935',
+          dmuName: 'IPSOS HQ',
+          desc: 'RX-DCG-NIMS PRNS',
+          country: 'Germany',
+          region: 'WE',
+          channel: 'Direct',
+          status: 'Draft',
+          createdBy: 'arijn',
+          createdTime: '2018/08/06 10:00:00',
+          modifiedBy: 'jofeytout',
+          modyfiedTime: '2018/08/07 10:00:00',
+          pricer: 'jmose',
+          grRev: '347100',
+          margi: '18.7',
+          currency: 'USD'
+        },
+        {
+          peNum: 'PE-20180807001',
+          dmuNum: '1212263935',
+          dmuName: 'IPSOS HQ',
+          desc: 'RX-DCG-NIMS PRNS',
+          country: 'Germany',
+          region: 'WE',
+          channel: 'Direct',
+          status: 'Draft',
+          createdBy: 'arijn',
+          createdTime: '2018/08/06 10:00:00',
+          modifiedBy: 'jofeytout',
+          modyfiedTime: '2018/08/07 10:00:00',
+          pricer: 'jmose',
+          grRev: '347100',
+          margi: '18.7',
+          currency: 'USD'
+        },
+        {
+          peNum: 'PE-20180807001',
+          dmuNum: '1212263935',
+          dmuName: 'IPSOS HQ',
+          desc: 'RX-DCG-NIMS PRNS',
+          country: 'Germany',
+          region: 'WE',
+          channel: 'Direct',
+          status: 'Draft',
+          createdBy: 'arijn',
+          createdTime: '2018/08/06 10:00:00',
+          modifiedBy: 'jofeytout',
+          modyfiedTime: '2018/08/07 10:00:00',
+          pricer: 'jmose',
+          grRev: '347100',
+          margi: '18.7',
+          currency: 'USD'
+        },
+        {
+          peNum: 'PE-20180807001',
+          dmuNum: '1212263935',
+          dmuName: 'IPSOS HQ',
+          desc: 'RX-DCG-NIMS PRNS',
+          country: 'Germany',
+          region: 'WE',
+          channel: 'Direct',
+          status: 'Draft',
+          createdBy: 'arijn',
+          createdTime: '2018/08/06 10:00:00',
+          modifiedBy: 'jofeytout',
+          modyfiedTime: '2018/08/07 10:00:00',
+          pricer: 'jmose',
+          grRev: '347100',
+          margi: '18.7',
+          currency: 'USD'
+        },
+        {
+          peNum: 'PE-20180807001',
+          dmuNum: '1212263935',
+          dmuName: 'IPSOS HQ',
+          desc: 'RX-DCG-NIMS PRNS',
+          country: 'Germany',
+          region: 'WE',
+          channel: 'Direct',
+          status: 'Draft',
+          createdBy: 'arijn',
+          createdTime: '2018/08/06 10:00:00',
+          modifiedBy: 'jofeytout',
+          modyfiedTime: '2018/08/07 10:00:00',
+          pricer: 'jmose',
+          grRev: '347100',
+          margi: '18.7',
+          currency: 'USD'
         }
       ],
       columnDefs1: [
-        {headerName: '',
+        {
+          headerName: '',
           field:'first',
           editable: false},
-        {headerName: 'CQ',
+        {
+          headerName: 'CQ',
           field:'CQ',
           editable: false},
-        {headerName: 'CQ+1',
+        {
+          headerName: 'CQ+1',
           field:'CQ+1',
           editable: false},
-        {headerName: 'CQ+2',
+        {
+          headerName: 'CQ+2',
           field:'CQ+2',
           editable: false},
-        {headerName: 'CQ+3',
+        {
+          headerName: 'CQ+3',
           field:'CQ+3',
           editable: false},
-        {headerName: 'Total',
-       field:'Total',
-     editable: false}
+        {
+          headerName: 'Total',
+          field:'Total',
+          editable: false}
       ],
       rowData1: [
         {
