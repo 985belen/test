@@ -119,49 +119,50 @@ export default {
   },
   data () {
     return {
-    	  randomMovieList: [
-                    {
-                        name: 'The Shawshank Redemption',
-                        url: 'https://movie.douban.com/subject/1292052/',
-                    },
-                    {
-                        name: 'Leon:The Professional',
-                        url: 'https://movie.douban.com/subject/1295644/',
-                    },
-                    {
-                        name: 'Farewell to My Concubine',
-                        url: 'https://movie.douban.com/subject/1291546/',
-                    },
-                    {
-                        name: 'Forrest Gump',
-                        url: 'https://movie.douban.com/subject/1292720/',
-                    },
-                    {
-                        name: 'Life Is Beautiful',
-                        url: 'https://movie.douban.com/subject/1292063/',
-                    },
-                    {
-                        name: 'Spirited Away',
-                        url: 'https://movie.douban.com/subject/1291561/',
-                    },
-                    {
-                        name: 'Schindler`s List',
-                        url: 'https://movie.douban.com/subject/1295124/',
-                    },
-                    {
-                        name: 'The Legend of 1900',
-                        url: 'https://movie.douban.com/subject/1292001/',
-                    },
-                    {
-                        name: 'WALL·E',
-                        url: 'https://movie.douban.com/subject/2131459/',
-                    },
-                    {
-                        name: 'Inception',
-                        url: 'https://movie.douban.com/subject/3541415/',
-                    }
-                ],
-                movieList: [],
+      randomMovieList:
+        [
+          {
+            name: 'The Shawshank Redemption',
+            url: 'https://movie.douban.com/subject/1292052/'
+          },
+          {
+            name: 'Leon:The Professional',
+            url: 'https://movie.douban.com/subject/1295644/'
+          },
+          {
+            name: 'Farewell to My Concubine',
+            url: 'https://movie.douban.com/subject/1291546/'
+          },
+          {
+            name: 'Forrest Gump',
+            url: 'https://movie.douban.com/subject/1292720/'
+          },
+          {
+            name: 'Life Is Beautiful',
+            url: 'https://movie.douban.com/subject/1292063/'
+          },
+          {
+            name: 'Spirited Away',
+            url: 'https://movie.douban.com/subject/1291561/'
+          },
+          {
+            name: 'Schindler`s List',
+            url: 'https://movie.douban.com/subject/1295124/'
+          },
+          {
+            name: 'The Legend of 1900',
+            url: 'https://movie.douban.com/subject/1292001/'
+          },
+          {
+            name: 'WALL·E',
+            url: 'https://movie.douban.com/subject/2131459/'
+          },
+          {
+            name: 'Inception',
+            url: 'https://movie.douban.com/subject/3541415/'
+          }
+        ],
+      movieList: [],
       inforCardData: [
         { title: '新增用户', icon: 'md-person-add', count: 803, color: '#2d8cf0' },
         { title: '累计点击', icon: 'md-locate', count: 23432, color: '#19be6b' },
@@ -199,17 +200,17 @@ export default {
   font-size: 50px;
 }
 .setting .ivu-icon{
-	margin-left: 10px;
+  margin-left: 10px;
 }
 .fast_link,
 .fast_link li{
-	list-style: none;
+  list-style: none;
 }
 .fast_link li{
-	line-height: 22px;
-	a{
-		color:#333;
-	}
+  line-height: 22px;
+  a{
+    color:#333;
+  }
 }
 
 

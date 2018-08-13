@@ -17,8 +17,7 @@
     <Divider type="vertical" />
     <a href="#" class="item"><Icon class="icon" size=16 type="md-stats" />Summary Report</a>
   </div>
-  <!-- <h2>LPA-Lenovo Price Analysis</h2> -->
-  <h3><a href="javascript:;" style="display:block;color: #333;" @click="toggleList"><Icon type="md-pricetags" /> Quotation Infomation <span style="float: right; font-weight: normal; font-size: 12px;">More</span></a> </h3>
+  <h3><a href="javascript:;" style="display:block;color: #333;" @click="toggleList"><Icon type="md-pricetags" /> Quotation Infomation <span style="float: right; font-weight: normal; font-size: 12px;">More</span></a></h3>
   <ul class="item-box" v-if="isStatus">
     <li style="padding-left: 20px; width: 120px;">{{form.QuotationID}}</li>
     <li style="width: 120px;">{{form.Description}}</li>
@@ -50,8 +49,6 @@
   <div  class="table-CQ">
     <Table border :columns="formcolumns" :data="formdata"></Table>
   </div>
-  <!-- <Tabs type="card" style="margin:10px" :animated="false">
-    <TabPane label="Data"> -->
       
       <div class="split-pane-page-wrapper">
         <split-pane v-model="offset" @on-moving="handleMoving">
@@ -143,32 +140,16 @@
           </div>
         </split-pane>
       </div>
-      
-   
-      <!-- <Table border :columns="tablecolumns1" style="margin:10px" :data="tabledata1"></Table> -->
-    <!-- </TabPane> -->
-    <!-- <TabPane label="CTO Config">
-      <Table border :columns="tablecolumns2" style="margin: 10px" :data="tabledata2"></Table>
-    </TabPane> -->
-   <!--  <TabPane label="CTO LIST Price">
-      <Table border :columns="tablecolumns3" style="margin: 10px" :data="tabledata3"></Table>
-    </TabPane> -->
-   <!--  <TabPane label="grouping Conditions">
-        <div class="check-box">
-        <CheckboxGroup v-model="groupConSelect">
-          <Checkbox style="width:200px;" v-for="(item, index) in groupingConditions" :key="index" :label="item">{{item}}</Checkbox>
-          <Button size="small">Group</Button>
-        </CheckboxGroup>
+      <div slot="right" class="pane right-pane">
+          <h3 @click="pullFnc" style="cursor: pointer;"><Icon type="ios-arrow-back" /><Icon style="margin-left: -10px;" type="ios-arrow-back" /></h3>
+          <div style="width: 500px;height: 500px">
+              <Card shadow>
+                <chart-pie style="height: 300px;" :value="pieData" text="用户访问来源"></chart-pie>
+              </Card>
+          </div>
       </div>
-    </TabPane> -->
-   <!--  <TabPane label="FX Rate">
-      <Table border :columns="tablecolumns51" style="margin: 10px" :data="tabledata51"></Table>
-      <Table border :columns="tablecolumns5" style="margin: 10px" :data="tabledata5"></Table>
-    </TabPane> -->
-   <!--  <TabPane label="Exec Summary">
-      <Button size="small" style="margin:20px">Execute Summary</Button>
-    </TabPane> -->
-  <!-- </Tabs> -->
+    </split-pane>
+  </div>
 </div>
 </template>
 <script>
@@ -184,7 +165,7 @@ export default {
       tab1:false,
       tab2:false,
       offsetVertical: '250px',
-      isStatus:true,
+      isStatus: true,
       form: {
         QuotationID: 'Q-00105395',
         Status: 'Approved',
@@ -1917,7 +1898,6 @@ export default {
         this.tab1 = false
         this.tab2 = false
       }
-     
     },
     handleMoving (e) {
       console.log(e.atMin, e.atMax)
@@ -1925,16 +1905,15 @@ export default {
     toggleList () {
       let itembox = document.getElementsByClassName('item-box')[0]
       if (this.toggle) {
-         this.isStatus = false
+        this.isStatus = false
         // itembox.style.height = '24px'
-        itembox.style.border='0'
+        itembox.style.border = '0'
       } else {
-         this.isStatus = true
+        this.isStatus = true
         itembox.style.height = 'auto'
-        itembox.style.border='1px solid #ccc'
+        itembox.style.border = '1px solid #ccc'
       }
       this.toggle = !this.toggle
-
     },
     toggleList1 () {
       let tableCQ = document.getElementsByClassName('table-CQ')[0]
