@@ -120,7 +120,7 @@ export default {
         {
           TransactionID: '0002175497',
           Description: 'NonCAT:KPMG - Forensic NB',
-          ProductID: 'Notebook ThinkPad X1 Yoga 2G 20JECTO1WW	20JECTO1WW',
+          ProductID: 'Notebook ThinkPad X1 Yoga 2G 20JECTO1WW 20JECTO1WW',
           ProductDesc: '20JECTO1WW',
           StartDate: 'Wed Nov 08 00:00:00 CST 2017',
           Currency: 'USD'
@@ -160,7 +160,7 @@ export default {
         {
           TransactionID: '0002175497',
           Description: 'NonCAT:KPMG - Forensic NB',
-          ProductID: 'Notebook ThinkPad X1 Yoga 2G 20JECTO1WW	20JECTO1WW',
+          ProductID: 'Notebook ThinkPad X1 Yoga 2G 20JECTO1WW 20JECTO1WW',
           ProductDesc: '20JECTO1WW',
           StartDate: 'Wed Nov 08 00:00:00 CST 2017',
           Currency: 'USD'

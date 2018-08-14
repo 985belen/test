@@ -78,7 +78,7 @@
             style="width: 100%; height:100%;"
             class="ag-theme-balham"
             :columnDefs="columns"
-            :rowData="data"
+            :rowData="rowdata"
             :gridAutoHeight="true"
             :enableSorting="true"
             :enableFilter="true"
@@ -137,7 +137,6 @@
         :enableColResize="true"
         rowSelection="multiple">
       </ag-grid-vue>
-      <!-- <Table border :columns="detailcolumns2" :data="detaildata2"></Table> -->
       <Divider />
       <ag-grid-vue
         style="width: 100%; height:100%;"
@@ -434,8 +433,7 @@ export default {
           cellStyle: {'text-align': 'center'}
         }
       ],
-      data: [
-      ],
+      rowdata: [],
       detailcolumns1: [
         {
           headerName: ' ',

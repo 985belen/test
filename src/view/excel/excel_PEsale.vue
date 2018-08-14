@@ -91,11 +91,18 @@
         </div>
       </div>
       <div slot="right" class="pane right-pane">
-        <h3 @click="pullFnc()" style="cursor: pointer;"><Icon type="ios-arrow-back" /><Icon style="margin-left: -10px;" type="ios-arrow-back" /></h3>
-        <div style="width: 500px;height: 500px">
-          <Card shadow>
-          </Card>
-        </div>
+        <h3 @click="pullFnc" style="cursor: pointer;">
+          <div v-if="!pullFlag">
+          <Icon type="ios-arrow-forward" /><Icon style="margin-left: -10px;" type="ios-arrow-forward" />
+            <Icon @click="one" style="margin-left: 20px;" size=20 type="ios-stats" />
+            <Icon @click="two" style="margin-left: 10px;" size=20 type="md-reorder" />
+          </div>
+          <div v-else>
+              <Icon  type="ios-arrow-back" /><Icon style="margin-left: -10px;" type="ios-arrow-back" />
+              <Icon style="margin-left: 10px; margin-top: 20px;" size=20 type="ios-stats" />
+              <Icon style="margin-left: 10px;" size=20 type="md-reorder" />
+          </div>
+        </h3>
       </div>
     </split-pane>
   </div>
@@ -246,6 +253,7 @@ export default {
       toggle: true,
       toggle1: true,
       toggle2: true,
+      pullFlag: true,
       dom: null,
       offset: 0.95,
       FormItem: {
@@ -321,7 +329,7 @@ export default {
           width: 120,
           field: 'prono',
           cellStyle: {'text-align': 'center'},
-          cellRenderer: (params) => { return '<a href="#/excel/excel_listpage">'+params.value+'</a>'}
+          cellRenderer: (params) => { return '<a href="#/excel/excel_listpage">' + params.value + '</a>' }
         },
         {
           headerName: 'Product Desc',
@@ -1837,11 +1845,31 @@ export default {
     this.toggleList2()
   },
   methods: {
+    one () {
+      this.tab1 = true
+      this.tab2 = false
+      return false
+    },
+    two () {
+      this.tab1 = false
+      this.tab2 = true
+      return false
+    },
     resize () {
       this.dom.resize()
     },
     pullFnc () {
-      this.offset = 0.4
+      if(this.pullFlag){
+        this.pullFlag = false;
+        this.offset = .4
+        this.tab1 = true
+        this.tab2 = false
+      }else{
+        this.pullFlag = true;
+        this.offset = .96
+        this.tab1 = false
+        this.tab2 = false
+      }
     },
     handleMoving (e) {
       console.log(e.atMin, e.atMax)

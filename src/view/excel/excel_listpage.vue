@@ -32,11 +32,18 @@
         </div>
       </div>
       <div slot="right" class="pane right-pane">
-        <h3 @click="pullFnc()" style="cursor: pointer;"><Icon type="ios-arrow-back" /><Icon style="margin-left: -10px;" type="ios-arrow-back" /></h3>
-        <div style="width: 500px;height: 500px">
-          <Card shadow>
-          </Card>
-        </div>
+        <h3 @click="pullFnc" style="cursor: pointer;">
+          <div v-if="!pullFlag">
+          <Icon type="ios-arrow-forward" /><Icon style="margin-left: -10px;" type="ios-arrow-forward" />
+            <Icon @click="one" style="margin-left: 20px;" size=20 type="ios-stats" />
+            <Icon @click="two" style="margin-left: 10px;" size=20 type="md-reorder" />
+          </div>
+          <div v-else>
+            <Icon  type="ios-arrow-back" /><Icon style="margin-left: -10px;" type="ios-arrow-back" />
+            <Icon style="margin-left: 10px; margin-top: 20px;" size=20 type="ios-stats" />
+            <Icon style="margin-left: 10px;" size=20 type="md-reorder" />
+          </div>
+        </h3>
       </div>
     </split-pane>
   </div>
@@ -210,7 +217,8 @@ export default {
       modelnew: false,
       dom: null,
       offset: 0.95,
-      isStatus:true,
+      isStatus: true,
+      pullFlag: true,
       toggle: false,
       columnDefs: [
         {
@@ -222,7 +230,7 @@ export default {
         {
           headerName: 'PE Number',
           cellStyle: {'text-align': 'center'},
-          cellRenderer: (params)=>{ return '<a href="#/excel/excel_PEsale">'+params.value+'</a>'},
+          cellRenderer: (params) => { return '<a href="#/excel/excel_PEsale">' + params.value + '</a>' },
           field: 'peNum',
           width: 135
         },
@@ -551,15 +559,34 @@ export default {
     off(window, 'resize', this.resize())
   },
   methods: {
+    one () {
+      this.tab1 = true
+      this.tab2 = false
+      return false
+    },
+    two () {
+      this.tab1 = false
+      this.tab2 = true
+      return false
+    },
     topage () {
-      alert(23)
-      this.$router.push('/excel/excel_PEsale')
+      this.$router.push('#/excel/excel_PEsale')
     },
     resize () {
       this.dom.resize()
     },
     pullFnc () {
-      this.offset = 0.4
+      if(this.pullFlag){
+        this.pullFlag = false;
+        this.offset = .4
+        this.tab1 = true
+        this.tab2 = false
+      }else{
+        this.pullFlag = true;
+        this.offset = .96
+        this.tab1 = false
+        this.tab2 = false
+      }
     },
     handleMoving (e) {
       console.log(e.atMin, e.atMax)
