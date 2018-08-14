@@ -7,7 +7,7 @@
     <Divider type="vertical" />
     <a href="#" class="item" @click="modelBrand = true"><Icon class="icon" size=16 type="md-search" />Summary By Brand</a>
     <Divider type="vertical" /> -->
-    <a href="#" class="item" @click="importTransaction"><Icon class="icon" size=16 type="md-add" />Import Transaction</a>
+    <a href="#" class="item" @click="modeltransction = true"><Icon class="icon" size=16 type="md-add" />Import Transaction</a>
   </div>
   <h3 class="marginBottom"><a href="javascript:;" style="display:block;color: #333;" @click="toggleList1"><Icon type="ios-podium" />PE Information</a></h3>
   <div class="peinformation">
@@ -99,130 +99,182 @@
       </div>
     </split-pane>
   </div>
-   <Modal
-      v-model="modeldetail"
-      :styles="{width:'800px'}"
-      title="Financial Summary"
-      ok-text="OK"
-      cancel-text="Cancel">
+  <Modal
+    v-model="modeldetail"
+    :styles="{width:'800px'}"
+    title="Financial Summary"
+    ok-text="OK"
+    cancel-text="Cancel">
+    <ag-grid-vue
+      style="width: 100%; height:100%;"
+      class="ag-theme-balham"
+      :columnDefs="detailcolumns1"
+      :rowData="detaildata1"
+      :gridAutoHeight="true"
+      :enableSorting="true"
+      :enableFilter="true"
+      :defaultColDef='{editable: true}'
+      :singleClickEdit="true"
+      :suppressSizeToFit="true"
+      :suppressResize="true"
+      :enableColResize="true"
+      rowSelection="multiple">
+    </ag-grid-vue>
+    <!-- <Table border height="380" :columns="detailcolumns1" :data="detaildata1"></Table> -->
+    <Divider />
+    <ag-grid-vue
+      style="width: 100%; height:100%;"
+      class="ag-theme-balham"
+      :columnDefs="detailcolumns2"
+      :rowData="detaildata2"
+      :gridAutoHeight="true"
+      :enableSorting="true"
+      :enableFilter="true"
+      :defaultColDef='{editable: true}'
+      :singleClickEdit="true"
+      :suppressSizeToFit="true"
+      :suppressResize="true"
+      :enableColResize="true"
+      rowSelection="multiple">
+    </ag-grid-vue>
+    <Divider />
+    <ag-grid-vue
+      style="width: 100%; height:100%;"
+      class="ag-theme-balham"
+      :columnDefs="detailcolumns3"
+      :rowData="detaildata3"
+      :gridAutoHeight="true"
+      :enableSorting="true"
+      :enableFilter="true"
+      :defaultColDef='{editable: true}'
+      :singleClickEdit="true"
+      :suppressSizeToFit="true"
+      :suppressResize="true"
+      :enableColResize="true"
+      rowSelection="multiple">
+    </ag-grid-vue>
+    <!-- <Table border :columns="detailcolumns3" :data="detaildata3"></Table> -->
+  </Modal>
+  <Modal
+    v-model="modelProduct"
+    title="Summary by Product"
+    :styles="{width:'1250px'}"
+    ok-text="OK"
+    cancel-text="Cancel">
+    <ag-grid-vue
+      style="width: 100%; height:100%;"
+      class="ag-theme-balham"
+      :columnDefs="productcolumns1"
+      :rowData="productdata1"
+      :gridAutoHeight="true"
+      :enableSorting="true"
+      :enableFilter="true"
+      :defaultColDef='{editable: true}'
+      :singleClickEdit="true"
+      :suppressSizeToFit="true"
+      :suppressResize="true"
+      :enableColResize="true"
+      rowSelection="multiple">
+    </ag-grid-vue>
+  </Modal>
+  <Modal
+    v-model="modelBrand"
+    title="Summary by Brand"
+    :styles="{width:'800px'}"
+    ok-text="OK"
+    cancel-text="Cancel">
+    <div style="width:100%;height:auto;overflow:hidden;">
+      <ul>
+        <li>
+          <strong>Total Gross Revenue</strong>
+          <span>555,480</span>
+        </li>
+        <li>
+          <strong>Total Net Revenue</strong>
+          <span>555,480</span>
+        </li>
+        <li>
+          <strong>Total TMC Profit</strong>
+          <span>-2,954,341</span>
+        </li>
+        <li>
+          <strong>TMC Profit %</strong>
+          <span>-531.9%</span>
+        </li>
+      </ul>
+      <ul>
+        <li>
+        <strong>Notebook Option Attach Rate</strong>
+          <span>40.3%</span>
+        </li>
+        <li>
+          <strong>Desktop Option Attach Rate</strong>
+          <span>0.0%</span>
+        </li>
+        <li>
+          <strong>Services Pen Rate</strong>
+          <span>0.0%</span>
+        </li>
+        <li>
+          <strong>Mobile Mix</strong>
+          <span>98.6%</span>
+        </li>
+      </ul>
+    </div>
+    <Table style="margin:10px auto" height='300' width="100%" :columns="Brandcolumns" :data="Branddata"></Table>
+  </Modal>
+  <Modal
+    v-model="modeltransction"
+    title="Transaction"
+    :styles="{width:'1000px'}"
+    ok-text="OK"
+    cancel-text="Cancel">
+    <Form :model="transFormItem" label-position="left" ref="transFormItem" >
+      <Row type="flex" justify="start" :gutter="15">
+        <Col span=6>
+          <Form-item label="Business Partner">
+            <Input v-model="transFormItem.BusinessPartner" placeholder="Enter something..."></Input>
+          </Form-item>
+        </Col>
+        <Col span=6>
+          <Form-item label="Select">
+            <Select v-model="transFormItem.select" >
+              <Option v-for="(item, index) in transFormItem.selects" :value="item" :key="index">{{item}}</Option>
+          </Select>
+          </Form-item>
+        </Col>
+        <Col span=6>
+          <Form-item label="Transaction ID">
+            <Input v-model="transFormItem.TransactionID" placeholder="Enter something..."></Input>
+          </Form-item>
+        </Col>
+        <Col span=6>
+          <Form-item>
+            <br/>
+            <Button type="primary">Search</Button>
+            <Button type="primary">Attach</Button>
+          </Form-item>
+        </Col>
+      </Row>
+    </Form>
+    <div class="table-box">
       <ag-grid-vue
         style="width: 100%; height:100%;"
         class="ag-theme-balham"
-        :columnDefs="detailcolumns1"
-        :rowData="detaildata1"
+        :columnDefs="transColumns"
+        :rowData="transData"
         :gridAutoHeight="true"
         :enableSorting="true"
         :enableFilter="true"
-        :defaultColDef='{editable: true}'
+        :showToolPanel="true"
         :singleClickEdit="true"
         :suppressSizeToFit="true"
         :suppressResize="true"
         :enableColResize="true"
         rowSelection="multiple">
       </ag-grid-vue>
-      <!-- <Table border height="380" :columns="detailcolumns1" :data="detaildata1"></Table> -->
-      <Divider />
-      <ag-grid-vue
-        style="width: 100%; height:100%;"
-        class="ag-theme-balham"
-        :columnDefs="detailcolumns2"
-        :rowData="detaildata2"
-        :gridAutoHeight="true"
-        :enableSorting="true"
-        :enableFilter="true"
-        :defaultColDef='{editable: true}'
-        :singleClickEdit="true"
-        :suppressSizeToFit="true"
-        :suppressResize="true"
-        :enableColResize="true"
-        rowSelection="multiple">
-      </ag-grid-vue>
-      <Divider />
-      <ag-grid-vue
-        style="width: 100%; height:100%;"
-        class="ag-theme-balham"
-        :columnDefs="detailcolumns3"
-        :rowData="detaildata3"
-        :gridAutoHeight="true"
-        :enableSorting="true"
-        :enableFilter="true"
-        :defaultColDef='{editable: true}'
-        :singleClickEdit="true"
-        :suppressSizeToFit="true"
-        :suppressResize="true"
-        :enableColResize="true"
-        rowSelection="multiple">
-      </ag-grid-vue>
-      <!-- <Table border :columns="detailcolumns3" :data="detaildata3"></Table> -->
-    </Modal>
-   <Modal
-      v-model="modelProduct"
-      title="Summary by Product"
-      :styles="{width:'1250px'}"
-      ok-text="OK"
-      cancel-text="Cancel">
-      <ag-grid-vue
-        style="width: 100%; height:100%;"
-        class="ag-theme-balham"
-        :columnDefs="productcolumns1"
-        :rowData="productdata1"
-        :gridAutoHeight="true"
-        :enableSorting="true"
-        :enableFilter="true"
-        :defaultColDef='{editable: true}'
-        :singleClickEdit="true"
-        :suppressSizeToFit="true"
-        :suppressResize="true"
-        :enableColResize="true"
-        rowSelection="multiple">
-      </ag-grid-vue>
-    </Modal>
-   <Modal
-      v-model="modelBrand"
-      title="Summary by Brand"
-      :styles="{width:'800px'}"
-      ok-text="OK"
-      cancel-text="Cancel">
-      <div style="width:100%;height:auto;overflow:hidden;">
-        <ul>
-          <li>
-            <strong>Total Gross Revenue</strong>
-            <span>555,480</span>
-          </li>
-          <li>
-            <strong>Total Net Revenue</strong>
-            <span>555,480</span>
-          </li>
-          <li>
-            <strong>Total TMC Profit</strong>
-            <span>-2,954,341</span>
-          </li>
-          <li>
-            <strong>TMC Profit %</strong>
-            <span>-531.9%</span>
-          </li>
-        </ul>
-        <ul>
-          <li>
-          <strong>Notebook Option Attach Rate</strong>
-            <span>40.3%</span>
-          </li>
-          <li>
-            <strong>Desktop Option Attach Rate</strong>
-            <span>0.0%</span>
-          </li>
-          <li>
-            <strong>Services Pen Rate</strong>
-            <span>0.0%</span>
-          </li>
-          <li>
-            <strong>Mobile Mix</strong>
-            <span>98.6%</span>
-          </li>
-        </ul>
-      </div>
-      <Table style="margin:10px auto" height='300' width="100%" :columns="Brandcolumns" :data="Branddata"></Table>
-    </Modal>
+    </div>
+  </Modal>
 </div>
 </template>
 <script>
@@ -273,6 +325,7 @@ export default {
       modeldetail: false,
       modelProduct: false,
       modelBrand: false,
+      modeltransction: false,
       columns: [
         {
           headerName: 'ID',
@@ -1477,7 +1530,137 @@ export default {
           f4q: '100%',
           total: '100%'
         }
-      ]
+      ],
+      transColumns: [
+        {
+          headerCheckboxSelection: true,
+          headerCheckboxSelectionFilteredOnly: false,
+          editable: false,
+          checkboxSelection: true,
+          width: 60
+        },
+        {
+          headerName: 'Transaction ID',
+          field: 'TransactionID',
+          cellStyle: {'text-align': 'center'}
+        },
+        {
+          headerName: 'Description',
+          field: 'Description',
+          cellStyle: {'text-align': 'center'}
+        },
+        {
+          headerName: 'Product ID',
+          field: 'ProductID',
+          cellStyle: {'text-align': 'center'}
+        },
+        {
+          headerName: 'Product Desc',
+          field: 'ProductDesc',
+          cellStyle: {'text-align': 'center'}
+        },
+        {
+          headerName: 'Start Date',
+          field: 'StartDate',
+          cellStyle: {'text-align': 'center'}
+        },
+        {
+          headerName: 'Currency',
+          field: 'Currency',
+          cellStyle: {'text-align': 'center'}
+        }
+      ],
+      transData: [
+        {
+          TransactionID: '0002223182',
+          Description: 'RX - KPMG - Norway - M910q',
+          ProductID: 'Desktop TC M910q_Intel Q270_TINY_ES_R',
+          ProductDesc: '10MUCTO1WW',
+          StartDate: 'Thu Jan 25 00:00:00 CST 2018',
+          Currency: 'USD'
+        },
+        {
+          TransactionID: '0002102225',
+          Description: 'CAT:KPMG - KBY NB Turkey T470 v1.0',
+          ProductID: 'Notebook ThinkPad T470 20HECTO1WW Rx',
+          ProductDesc: '20HECTO1WW',
+          StartDate: 'Mon Aug 21 00:00:00 CST 2017',
+          Currency: 'USD'
+        },
+        {
+          TransactionID: '0002175497',
+          Description: 'NonCAT:KPMG - Forensic NB',
+          ProductID: 'Notebook ThinkPad X1 Yoga 2G 20JECTO1WW 20JECTO1WW',
+          ProductDesc: '20JECTO1WW',
+          StartDate: 'Wed Nov 08 00:00:00 CST 2017',
+          Currency: 'USD'
+        },
+        {
+          TransactionID: '0002260500',
+          Description: 'CAT:KPMG-KBY-R T480s Yoga380 Canada',
+          ProductID: 'Notebook ThinkPad X380 Yoga 20LJCTO1WW R',
+          ProductDesc: '20LJCTO1WW',
+          StartDate: 'Thu Apr 05 00:00:00 CST 2018',
+          Currency: 'USD'
+        },
+        {
+          TransactionID: '0002297646',
+          Description: 'CAT:KPMG _ RFP Turkey',
+          ProductID: 'Notebook ThinkPad T480 20L6CTO1WW Rx',
+          ProductDesc: '20L6CTO1WW',
+          StartDate: 'Mon Jul 23 00:00:00 CST 2018',
+          Currency: 'USD'
+        },
+        {
+          TransactionID: '0002223182',
+          Description: 'RX - KPMG - Norway - M910q',
+          ProductID: 'Desktop TC M910q_Intel Q270_TINY_ES_R',
+          ProductDesc: '10MUCTO1WW',
+          StartDate: 'Thu Jan 25 00:00:00 CST 2018',
+          Currency: 'USD'
+        },
+        {
+          TransactionID: '0002102225',
+          Description: 'CAT:KPMG - KBY NB Turkey T470 v1.0',
+          ProductID: 'Notebook ThinkPad T470 20HECTO1WW Rx',
+          ProductDesc: '20HECTO1WW',
+          StartDate: 'Mon Aug 21 00:00:00 CST 2017',
+          Currency: 'USD'
+        },
+        {
+          TransactionID: '0002175497',
+          Description: 'NonCAT:KPMG - Forensic NB',
+          ProductID: 'Notebook ThinkPad X1 Yoga 2G 20JECTO1WW 20JECTO1WW',
+          ProductDesc: '20JECTO1WW',
+          StartDate: 'Wed Nov 08 00:00:00 CST 2017',
+          Currency: 'USD'
+        },
+        {
+          TransactionID: '0002260500',
+          Description: 'CAT:KPMG-KBY-R T480s Yoga380 Canada',
+          ProductID: 'Notebook ThinkPad X380 Yoga 20LJCTO1WW R',
+          ProductDesc: '20LJCTO1WW',
+          StartDate: 'Thu Apr 05 00:00:00 CST 2018',
+          Currency: 'USD'
+        },
+        {
+          TransactionID: '0002297646',
+          Description: 'CAT:KPMG _ RFP Turkey',
+          ProductID: 'Notebook ThinkPad T480 20L6CTO1WW Rx',
+          ProductDesc: '20L6CTO1WW',
+          StartDate: 'Mon Jul 23 00:00:00 CST 2018',
+          Currency: 'USD'
+        }
+      ],
+      transFormItem: {
+        BusinessPartner: '',
+        DMUName: '',
+        PricingEstimationNumber: '',
+        CreatedBy: '',
+        Country: '',
+        select: '',
+        selects: ['opportunity', 'quotation', 'contract']
+      }
     }
   },
   beforeDestroy () {
