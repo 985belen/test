@@ -217,6 +217,8 @@ export default {
       modelnew: false,
       dom: null,
       offset: 0.95,
+      tab1: false,
+      tab2: false,
       isStatus: true,
       pullFlag: true,
       toggle: false,

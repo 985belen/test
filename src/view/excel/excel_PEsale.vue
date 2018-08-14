@@ -1,12 +1,12 @@
 <template>
 <div class="newpage">
   <div class="tool-bar">
-    <a href="#" class="item" @click="resize, modeldetail = true" ><Icon class="icon" size=16 type="md-barcode" />Summary Detail</a>
+    <!-- <a href="#" class="item" @click="resize, modeldetail = true" ><Icon class="icon" size=16 type="md-barcode" />Summary Detail</a>
     <Divider type="vertical" />
     <a href="#" class="item" @click="resize,modelProduct = true"><Icon class="icon" size=16 type="md-stats" />Summary By Product</a>
     <Divider type="vertical" />
     <a href="#" class="item" @click="resize,modelBrand = true"><Icon class="icon" size=16 type="md-search" />Summary By Brand</a>
-    <Divider type="vertical" />
+    <Divider type="vertical" /> -->
     <a href="#" class="item" @click="importTransaction"><Icon class="icon" size=16 type="md-add" />Import Transaction</a>
   </div>
   <h3 class="marginBottom"><a href="javascript:;" style="display:block;color: #333;" @click="toggleList1"><Icon type="ios-podium" />PE Information</a></h3>
@@ -103,6 +103,59 @@
               <Icon style="margin-left: 10px;" size=20 type="md-reorder" />
           </div>
         </h3>
+        <div v-if="tab1" style="width: 100%; padding:10px; border-collapse: collapse; height: 500px;">
+          <Card shadow>
+            <ag-grid-vue
+              style="width: 100%; height:100%;"
+              class="ag-theme-balham"
+              :columnDefs="detailcolumns1"
+              :rowData="detaildata1"
+              :gridAutoHeight="true"
+              :enableSorting="true"
+              :enableFilter="true"
+              :defaultColDef='{editable: true}'
+              :singleClickEdit="true"
+              :suppressSizeToFit="true"
+              :suppressResize="true"
+              :enableColResize="true"
+              rowSelection="multiple">
+            </ag-grid-vue>
+            <Divider />
+            <ag-grid-vue
+              style="width: 100%; height:100%;"
+              class="ag-theme-balham"
+              :columnDefs="detailcolumns2"
+              :rowData="detaildata2"
+              :gridAutoHeight="true"
+              :enableSorting="true"
+              :enableFilter="true"
+              :defaultColDef='{editable: true}'
+              :singleClickEdit="true"
+              :suppressSizeToFit="true"
+              :suppressResize="true"
+              :enableColResize="true"
+              rowSelection="multiple">
+            </ag-grid-vue>
+            <Divider />
+            <ag-grid-vue
+              style="width: 100%; height:100%;"
+              class="ag-theme-balham"
+              :columnDefs="detailcolumns3"
+              :rowData="detaildata3"
+              :gridAutoHeight="true"
+              :enableSorting="true"
+              :enableFilter="true"
+              :defaultColDef='{editable: true}'
+              :singleClickEdit="true"
+              :suppressSizeToFit="true"
+              :suppressResize="true"
+              :enableColResize="true"
+              rowSelection="multiple">
+            </ag-grid-vue>
+          </Card>
+        </div>
+        <div v-if="tab2" style="width: 500px;height: 500px; display: none;">
+        </div>
       </div>
     </split-pane>
   </div>
@@ -253,6 +306,8 @@ export default {
       toggle: true,
       toggle1: true,
       toggle2: true,
+      tab1: false,
+      tab2: false,
       pullFlag: true,
       dom: null,
       offset: 0.95,
