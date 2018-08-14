@@ -22,16 +22,16 @@
     <Form :model="FormItem" :label-width="120" :rules="ruleValidate">
       <Row>
         <Col span=5 offset="1">
-          <strong>System Volume: </strong><span>450</span>
+          <strong>PE ID: </strong><span>PE-20188081041-357</span>
         </Col>
         <Col span=5>
-          <strong>Gross Revenue: </strong><span>347100</span>
+          <strong>DMU Name: </strong><span>State Administration</span>
         </Col>
         <Col span=5>
-          <strong>Net Revenue: </strong><span>347100</span>
+          <strong>Country: </strong><span>Bulgaria</span>
         </Col>
         <Col span=5>
-          <strong>TMC Margin: </strong><span>35524</span>
+          <strong>Channel: </strong><span>Direct</span>
         </Col>
       </Row>
       <Row>
@@ -54,7 +54,7 @@
   <div class="SummaryInformation">
     <Row type="flex" justify="center">
       <Col span=5>
-        <strong>System Volume: </strong><span>440</span>
+        <strong>System Volume: </strong><span>450</span>
       </Col>
       <Col span=5>
         <strong>Gross Revenue: </strong><span>337100</span>
