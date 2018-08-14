@@ -31,8 +31,8 @@
     <ag-grid-vue
       style="width: 100%; height:100%;"
       class="ag-theme-balham"
-      :columnDefs="Columns"
-      :rowData="data"
+      :columnDefs="transColumns"
+      :rowData="transData"
       :gridAutoHeight="true"
       :enableSorting="true"
       :enableFilter="true"
@@ -61,7 +61,7 @@ export default {
         select: '',
         selects: ['opportunity', 'quotation', 'contract']
       },
-      Columns: [
+      transColumns: [
         {
           headerCheckboxSelection: true,
           headerCheckboxSelectionFilteredOnly: false,
@@ -100,7 +100,7 @@ export default {
           cellStyle: {'text-align': 'center'}
         }
       ],
-      data: [
+      transData: [
         {
           TransactionID: '0002223182',
           Description: 'RX - KPMG - Norway - M910q',
@@ -188,12 +188,6 @@ export default {
     AgGridVue
   },
   methods: {
-    gonewpage () {
-      this.$router.push('/excel/excel_newpe')
-    },
-    gopricer () {
-      this.$router.push('/excel/excel_PEpricer')
-    }
   }
 }
 </script>

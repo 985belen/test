@@ -49,7 +49,7 @@
   </div>
   <Modal
     v-model="modelnew"
-    :styles="{width:'800px'}"
+    :styles="{width:'1000px'}"
     title="create New PE"
     ok-text="Create"
     @on-ok="topage"

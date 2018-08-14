@@ -1499,7 +1499,7 @@ export default {
       console.log(e.atMin, e.atMax)
     },
     importTransaction () {
-      this.$router.push('/excel/excel_importTransaction')
+      this.$router.push('#/excel/excel_importTransaction')
     },
     toggleList () {
       let boxitem = document.getElementsByClassName('boxitem')[0]

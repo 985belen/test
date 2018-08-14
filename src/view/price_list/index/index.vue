@@ -33,7 +33,7 @@
   </ag-grid-vue>
     <Modal
     v-model="modelnew"
-    :styles="{width:'800px'}"
+    :styles="{width:'1000px'}"
     title="create New PE"
     ok-text="Ok"
     @on-ok="ok"
@@ -219,7 +219,7 @@ export default {
         {
           headerName: 'PE Number',
           cellStyle: {'text-align': 'center'},
-          cellRenderer: (params)=>{ return '<a href="#/excel/excel_PEsale">'+params.value+'</a>'},
+          cellRenderer: (params) => { return '<a href="#/excel/excel_PEsale">' + params.value + '</a>'},
           field: 'peNum',
           width: 135
         },
