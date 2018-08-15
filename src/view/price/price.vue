@@ -47,7 +47,21 @@
   </ul>
   <h3 class="marginBottom" style="margin-bottom: 10px;"><a href="javascript:;" style="display:block;color: #333;" @click="toggleList1"><Icon type="ios-podium" /> CQ</a></h3>
   <div  class="table-CQ">
-    <Table border :columns="formcolumns" :data="formdata"></Table>
+    <ag-grid-vue
+      style="width: 100%; height:100%;"
+      class="ag-theme-balham"
+      :columnDefs="formcolumns"
+      :rowData="formdata"
+      :gridAutoHeight="true"
+      :enableSorting="true"
+      :enableFilter="true"
+      :singleClickEdit="true"
+      :suppressSizeToFit="false"
+      :suppressResize="true"
+      :enableColResize="true"
+      rowSelection="multiple">
+    </ag-grid-vue>
+    <!-- <Table border :columns="formcolumns" :data="formdata"></Table> -->
   </div>
     <div class="split-pane-page-wrapper">
       <split-pane v-model="offset" @on-moving="handleMoving">
@@ -188,86 +202,45 @@ export default {
       ],
       formcolumns: [
         {
-          title: ' ',
-          key: 'hedgerife',
-          width: 120
+          headerName: ' ',
+          field: 'hedgerife',
+          editable: true
         },
         {
-          title: 'CQ',
-          key: 'CQ',
-          render: (h, params) => {
-            return h('div', [
-              h('Input', {
-                props: {
-                  size: 'small',
-                  value: '1.0000'
-                },
-                style: {
-                  marginRight: '5px'
-                }
-              })
-            ])
-          }
+          headerName: 'CQ',
+          field: 'CQ',
+          editable: true
         },
         {
-          title: 'CQ+1',
-          key: 'CQ1',
-          render: (h, params) => {
-            return h('div', [
-              h('Input', {
-                props: {
-                  size: 'small',
-                  value: '1.0000'
-                },
-                style: {
-                  marginRight: '5px'
-                }
-              })
-            ])
-          }
+          headerName: 'CQ+1',
+          field: 'CQ1',
+          editable: true
         },
         {
-          title: 'CQ+2',
-          key: 'CQ2',
-          render: (h, params) => {
-            return h('div', [
-              h('Input', {
-                props: {
-                  size: 'small',
-                  value: '1.0000'
-                },
-                style: {
-                  marginRight: '5px'
-                }
-              })
-            ])
-          }
+          headerName: 'CQ+2',
+          field: 'CQ2',
+          editable: true
         },
         {
-          title: 'CQ+3',
-          key: 'CQ3',
-          render: (h, params) => {
-            return h('div', [
-              h('Input', {
-                props: {
-                  size: 'small',
-                  value: '1.0000'
-                },
-                style: {
-                  marginRight: '5px'
-                }
-              })
-            ])
-          }
+          headerName: 'CQ+3',
+          field: 'CQ3',
+          editable: true
         }
       ],
       formdata: [
         {
           hedgerife: 'hedgerife',
-          CQ: '',
-          CQ1: '',
-          CQ2: '',
-          CQ3: ''
+          CQ: '1000',
+          CQ1: '1000',
+          CQ2: '1000',
+          CQ3: '10000'
+        },
+        {
+          hedgerife: 'hedge',
+          CQ: '1000',
+          CQ1: '1000',
+          CQ2: '1000',
+          CQ3: '10000'
         }
       ],
       columnDefs: [
@@ -1881,8 +1854,9 @@ h3{
 .table-CQ{
   width: 100%;
   height:auto;
-  margin: 10px;
-  // padding: 0 10px;
+  overflow: hidden;
+  padding: 0 10px;
+  margin-bottom: 10px;
 }
 .ivu-tabs-bar{
   margin-bottom: 2px;

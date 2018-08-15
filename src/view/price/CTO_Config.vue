@@ -20,21 +20,23 @@
     <Divider type="vertical" />
     <a href="#/price/Pricing_Simulation" class="item"><Icon class="icon" size=16 type="md-stats" />Pricing Simulation</a> -->
   </div>
-  <ag-grid-vue
-    style="width: 100%"
-    class="ag-theme-balham"
-    :columnDefs="columnDefs"
-    :rowData="rowData"
-    :gridAutoHeight="true"
-    :floatingFilter="true"
-    :enableSorting="true"
-    :enableFilter="true"
-    :singleClickEdit="true"
-    :suppressSizeToFit="true"
-    :suppressResize="true"
-    :enableColResize="true"
-    rowSelection="multiple">
-  </ag-grid-vue>
+  <div class="table-box">
+    <ag-grid-vue
+      style="width: 100%;height:100%;"
+      class="ag-theme-balham"
+      :columnDefs="columnDefs"
+      :rowData="rowData"
+      :gridAutoHeight="true"
+      :floatingFilter="true"
+      :enableSorting="true"
+      :enableFilter="true"
+      :singleClickEdit="true"
+      :suppressSizeToFit="true"
+      :suppressResize="true"
+      :enableColResize="true"
+      rowSelection="multiple">
+    </ag-grid-vue>
+  </div>
 </div>
 </template>
 <script>
@@ -67,6 +69,132 @@ export default {
         {headerName: 'Status', field: 'Status', cellStyle: {'text-align': 'center'}, width: 100},
       ],
       rowData: [
+        {
+          QuotationID: 'Q-00105395',
+          Opportunity: 'Arris Prices new',
+          Account: 'ARRIS',
+          EndCustomerDMU: '1214308296',
+          country: 'IN',
+          SoldtoParty: '1212528852',
+          SalesOrg: 'SG66',
+          SalesOffice: 'IN12',
+          MOT: 'Air(NON-HK/MO)',
+          FulfillmentRoute: 'Indirect',
+          DistributionChannel: '41',
+          ExpectedStartDate: '17.05.2018',
+          ValidUntilDate:'16.06.2018',
+          ExpectedEndDate: '16.06.2018',
+          CreateDate: '17.05.2018',
+          Status: 'Draft'
+        },
+        {
+          QuotationID: 'Q-00112086',
+          Opportunity: 'Allight Sykes',
+          Account: 'DATACOM AU WA',
+          EndCustomerDMU: '1212320246',
+          country: 'AU',
+          SoldtoParty: '1212459374',
+          SalesOrg: 'AU10',
+          SalesOffice: 'AU20',
+          MOT: 'Air(NON-HK/MO)',
+          FulfillmentRoute: 'Indirect',
+          DistributionChannel: '11',
+          ExpectedStartDate: '29.05.2018',
+          ValidUntilDate:'27.08.2018',
+          ExpectedEndDate: '27.08.2018',
+          CreateDate: '29.05.2018',
+          Status: 'Approved'
+        },
+        {
+          QuotationID: 'Q-00105395',
+          Opportunity: 'Arris Prices new',
+          Account: 'ARRIS',
+          EndCustomerDMU: '1214308296',
+          country: 'IN',
+          SoldtoParty: '1212528852',
+          SalesOrg: 'SG66',
+          SalesOffice: 'IN12',
+          MOT: 'Air(NON-HK/MO)',
+          FulfillmentRoute: 'Indirect',
+          DistributionChannel: '41',
+          ExpectedStartDate: '17.05.2018',
+          ValidUntilDate:'16.06.2018',
+          ExpectedEndDate: '16.06.2018',
+          CreateDate: '17.05.2018',
+          Status: 'Draft'
+        },
+        {
+          QuotationID: 'Q-00112086',
+          Opportunity: 'Allight Sykes',
+          Account: 'DATACOM AU WA',
+          EndCustomerDMU: '1212320246',
+          country: 'AU',
+          SoldtoParty: '1212459374',
+          SalesOrg: 'AU10',
+          SalesOffice: 'AU20',
+          MOT: 'Air(NON-HK/MO)',
+          FulfillmentRoute: 'Indirect',
+          DistributionChannel: '11',
+          ExpectedStartDate: '29.05.2018',
+          ValidUntilDate:'27.08.2018',
+          ExpectedEndDate: '27.08.2018',
+          CreateDate: '29.05.2018',
+          Status: 'Approved'
+        },
+        {
+          QuotationID: 'Q-00105395',
+          Opportunity: 'Arris Prices new',
+          Account: 'ARRIS',
+          EndCustomerDMU: '1214308296',
+          country: 'IN',
+          SoldtoParty: '1212528852',
+          SalesOrg: 'SG66',
+          SalesOffice: 'IN12',
+          MOT: 'Air(NON-HK/MO)',
+          FulfillmentRoute: 'Indirect',
+          DistributionChannel: '41',
+          ExpectedStartDate: '17.05.2018',
+          ValidUntilDate:'16.06.2018',
+          ExpectedEndDate: '16.06.2018',
+          CreateDate: '17.05.2018',
+          Status: 'Draft'
+        },
+        {
+          QuotationID: 'Q-00112086',
+          Opportunity: 'Allight Sykes',
+          Account: 'DATACOM AU WA',
+          EndCustomerDMU: '1212320246',
+          country: 'AU',
+          SoldtoParty: '1212459374',
+          SalesOrg: 'AU10',
+          SalesOffice: 'AU20',
+          MOT: 'Air(NON-HK/MO)',
+          FulfillmentRoute: 'Indirect',
+          DistributionChannel: '11',
+          ExpectedStartDate: '29.05.2018',
+          ValidUntilDate:'27.08.2018',
+          ExpectedEndDate: '27.08.2018',
+          CreateDate: '29.05.2018',
+          Status: 'Approved'
+        },
+        {
+          QuotationID: 'Q-00105395',
+          Opportunity: 'Arris Prices new',
+          Account: 'ARRIS',
+          EndCustomerDMU: '1214308296',
+          country: 'IN',
+          SoldtoParty: '1212528852',
+          SalesOrg: 'SG66',
+          SalesOffice: 'IN12',
+          MOT: 'Air(NON-HK/MO)',
+          FulfillmentRoute: 'Indirect',
+          DistributionChannel: '41',
+          ExpectedStartDate: '17.05.2018',
+          ValidUntilDate:'16.06.2018',
+          ExpectedEndDate: '16.06.2018',
+          CreateDate: '17.05.2018',
+          Status: 'Draft'
+        },
         {
           QuotationID: 'Q-00105395',
           Opportunity: 'Arris Prices new',
@@ -375,8 +503,7 @@ export default {
 .price-box{
   width: 100%;
   height: 100%;
-  overflow:auto;
-  padding-bottom:20px;
+  padding:10px;
   background: #fff
 }
 .tool-bar{
@@ -398,5 +525,10 @@ export default {
       line-height: 32px;
     }
   }
+}
+.table-box{
+  width: 100%;
+  height: 600px;
+  overflow: auto;
 }
 </style>
