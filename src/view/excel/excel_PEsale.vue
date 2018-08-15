@@ -77,6 +77,7 @@
           <ag-grid-vue
             style="width: 100%; height:100%;"
             class="ag-theme-balham"
+            v-if="columns"
             :columnDefs="columns"
             :rowData="rowData"
             :gridAutoHeight="true"
@@ -168,6 +169,7 @@
     <ag-grid-vue
       style="width: 100%; height:100%;"
       class="ag-theme-balham"
+      v-if="detailcolumns1"
       :columnDefs="detailcolumns1"
       :rowData="detaildata1"
       :gridAutoHeight="true"
@@ -221,6 +223,7 @@
     <ag-grid-vue
       style="width: 100%; height:100%;"
       class="ag-theme-balham"
+      v-if="productcolumns1"
       :columnDefs="productcolumns1"
       :rowData="productdata1"
       :gridAutoHeight="true"
@@ -330,6 +333,7 @@
       <ag-grid-vue
         style="width: 100%; height:100%;"
         class="ag-theme-balham"
+        v-if="transColumns"
         :columnDefs="transColumns"
         :rowData="transData"
         :gridAutoHeight="true"
@@ -354,6 +358,7 @@
       <ag-grid-vue
         style="width: 100%; height:100%;"
         class="ag-theme-balham"
+        v-if="ComponentsListcolumn"
         :columnDefs="ComponentsListcolumn"
         :rowData="ComponentsListData"
         :gridAutoHeight="true"
