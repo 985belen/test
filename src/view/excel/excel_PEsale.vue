@@ -173,7 +173,6 @@
       :gridAutoHeight="true"
       :enableSorting="true"
       :enableFilter="true"
-      :defaultColDef='{editable: true}'
       :singleClickEdit="true"
       :suppressSizeToFit="true"
       :suppressResize="true"
@@ -227,7 +226,6 @@
       :gridAutoHeight="true"
       :enableSorting="true"
       :enableFilter="true"
-      :defaultColDef='{editable: true}'
       :singleClickEdit="true"
       :suppressSizeToFit="true"
       :suppressResize="true"
@@ -287,7 +285,6 @@
       :gridAutoHeight="true"
       :enableSorting="true"
       :enableFilter="true"
-      :defaultColDef='{editable: true}'
       :singleClickEdit="true"
       :suppressSizeToFit="true"
       :suppressResize="true"
@@ -339,6 +336,32 @@
         :enableSorting="true"
         :enableFilter="true"
         :showToolPanel="true"
+        :singleClickEdit="true"
+        :suppressSizeToFit="true"
+        :suppressResize="true"
+        :enableColResize="true"
+        rowSelection="multiple">
+      </ag-grid-vue>
+    </div>
+  </Modal>
+  <Modal
+    v-model="modelComponentsList"
+    title="Components List-->20KECTO1WW"
+    :styles="{width:'800px'}"
+    ok-text="OK"
+    cancel-text="Cancel">
+    <div class="table-box">
+      <ag-grid-vue
+        style="width: 100%; height:100%;"
+        class="ag-theme-balham"
+        :columnDefs="ComponentsListcolumn"
+        :rowData="ComponentsListData"
+        :gridAutoHeight="true"
+        :enableSorting="true"
+        :enableFilter="true"
+        :showToolPanel="true"
+        :sizeColumnsToFit="true"
+        :floatingFilter="true"
         :singleClickEdit="true"
         :suppressSizeToFit="true"
         :suppressResize="true"
@@ -400,6 +423,7 @@ export default {
       modelProduct: false,
       modelBrand: false,
       modeltransction: false,
+      modelComponentsList: false,
       transColumns: [
         {
           headerCheckboxSelection: true,
@@ -533,7 +557,6 @@ export default {
       ComponentsListcolumn: [
         {
           headerName: 'Category ID',
-          width: 80,
           field: 'CategoryID',
           fixed: 'left',
           cellStyle: {'text-align': 'center'}
@@ -541,19 +564,16 @@ export default {
           headerName: 'Description',
           fixed: 'left',
           field: 'Description',
-          width: 100,
           cellStyle: {'text-align': 'center'}
         }, {
           headerName: 'QTY',
           fixed: 'left',
           field: 'QTY',
-          width: 100,
           cellStyle: {'text-align': 'center'}
         }, {
           headerName: 'TMC',
           fixed: 'left',
           field: 'TMC',
-          width: 100,
           cellStyle: {'text-align': 'center'}
         }
       ],
@@ -565,10 +585,70 @@ export default {
           TMC: ' 183.07'
         },
         {
-          CategoryID: 'SBB0M45830',
-          Description: ' Intel Core i5-7500T 2.7G 4C',
+          CategoryID: 'SBB0J05441',
+          Description: ' W10 Pro',
           QTY: '1',
-          TMC: ' 183.07'
+          TMC: '112.00'
+        },
+        {
+          CategoryID: 'SBB0L54434',
+          Description: 'Tiny B250 WW',
+          QTY: '1',
+          TMC: '88.87'
+        },
+        {
+          CategoryID: 'VK00028880',
+          Description: '8GB DDR4 2400 SoDIMM',
+          QTY: '1',
+          TMC: '72.44'
+        },
+        {
+          CategoryID: 'VK00008845',
+          Description: '3 Year On-site',
+          QTY: '1',
+          TMC: '7.70'
+        },
+        {
+          CategoryID: 'SBB0J04751',
+          Description: 'Intel 3165+BT 1x1ac Tiny',
+          QTY: '1',
+          TMC: '6.89'
+        },
+        {
+          CategoryID: 'SBB0L53089',
+          Description: 'USB Calliope KB BK 189 FRA',
+          QTY: '1',
+          TMC: '6.80'
+        },
+        {
+          CategoryID: 'SBB0J02811',
+          Description: 'Optional VGA Port',
+          QTY: '1',
+          TMC: '6.03'
+        },
+        {
+          CategoryID: 'SBB0J03380',
+          Description: 'Thermal Kit 35W Tiny',
+          QTY: '1',
+          TMC: '4.87'
+        },
+        {
+          CategoryID: 'SBB0J04752',
+          Description: 'Tiny 65W adapter',
+          QTY: '1',
+          TMC: '4.80'
+        },
+        {
+          CategoryID: 'VK00041036',
+          Description: 'Win10 Ready to Provision',
+          QTY: '1',
+          TMC: '3.18'
+        },
+        {
+          CategoryID: 'SBB0L52928',
+          Description: 'USB Calliope Mouse BK',
+          QTY: '1',
+          TMC: '2.14'
         }
       ],
       columns: [
@@ -608,7 +688,12 @@ export default {
           width: 120,
           field: 'prono',
           cellStyle: {'text-align': 'center'},
-          cellRenderer: (params) => { return '<a href="#/excel/excel_listpage">' + params.value + '</a>' }
+          cellRenderer: (params) => {
+            return '<a href="#">' + params.value + '</a>'
+          },
+          onCellClicked: () => {
+            this.modelComponentsList = true
+          }
         },
         {
           headerName: 'Product Desc',
