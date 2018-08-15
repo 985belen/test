@@ -63,87 +63,85 @@
     </ag-grid-vue>
     <!-- <Table border :columns="formcolumns" :data="formdata"></Table> -->
   </div>
-    <div class="split-pane-page-wrapper">
-      <split-pane v-model="offset" @on-moving="handleMoving">
-        <div slot="left" class="pane left-pane">
-          <div slot="top" class="pane top-pane">
-            <ag-grid-vue
-              style="width: 100%; height:500px;"
-              class="ag-theme-balham"
-              :columnDefs="columnDefs"
-              :rowData="rowData"
-              :floatingFilter="true"
-              :gridAutoHeight="true"
-              :enableSorting="true"
-              :enableFilter="true"
-              :singleClickEdit="true"
-              :suppressSizeToFit="true"
-              :suppressResize="true"
-              :enableColResize="true"
-              rowSelection="multiple">
-            </ag-grid-vue>
+  <div class="split-pane-page-wrapper">
+    <split-pane v-model="offset" @on-moving="handleMoving">
+      <div slot="left" class="pane left-pane">
+        <div slot="top" class="pane top-pane">
+          <ag-grid-vue
+            style="width: 100%; height:500px;"
+            class="ag-theme-balham"
+            :columnDefs="columnDefs"
+            :rowData="rowData"
+            :floatingFilter="true"
+            :gridAutoHeight="true"
+            :enableSorting="true"
+            :enableFilter="true"
+            :singleClickEdit="true"
+            :suppressSizeToFit="true"
+            :suppressResize="true"
+            :enableColResize="true"
+            rowSelection="multiple">
+          </ag-grid-vue>
+        </div>
+      </div>
+      <div slot="right" class="pane right-pane">
+        <h3 @click="pullFnc" style="cursor: pointer;">
+          <div v-if="!pullFlag">
+          <Icon type="ios-arrow-forward" /><Icon style="margin-left: -10px;" type="ios-arrow-forward" />
+            <Icon @click="one" style="margin-left: 20px;" size=20 type="ios-stats" />
+            <Icon @click="two" style="margin-left: 10px;" size=20 type="md-reorder" />
           </div>
+          <div v-else>
+            <Icon  type="ios-arrow-back" /><Icon style="margin-left: -10px;" type="ios-arrow-back" />
+            <Icon style="margin-left: 10px; margin-top: 20px;" size=20 type="ios-stats" />
+            <Icon style="margin-left: 10px;" size=20 type="md-reorder" />
+          </div>
+        </h3>
+        <div v-if="tab1" style="width: 100%; padding:10px; border-collapse: collapse; height: 500px;">
+          <Card shadow>
+            <chart-pie style="height: 300px;" :value="pieData" text="Customer Revenue"></chart-pie>
+          </Card>
+          <h3><a href="javascript:;" style="display:block;color: #333;" @click="toggleList"><Icon type="md-pricetags" />Summary </a> </h3>
+          <ag-grid-vue
+            style="width: 100%; height:100%;"
+            class="ag-theme-balham"
+            :columnDefs="columnDefs1"
+            :rowData="rowData1"
+            :gridAutoHeight="true"
+            :floatingFilter="true"
+            :enableSorting="true"
+            :enableFilter="true"
+            :defaultColDef='{editable: true}'
+            :singleClickEdit="true"
+            :suppressSizeToFit="true"
+            :suppressResize="true"
+            :enableColResize="true"
+            rowSelection="multiple">
+          </ag-grid-vue>
         </div>
-        <div slot="right" class="pane right-pane">
-            <h3 @click="pullFnc" style="cursor: pointer;">
-              <div v-if="!pullFlag">
-              <Icon type="ios-arrow-forward" /><Icon style="margin-left: -10px;" type="ios-arrow-forward" />
-                <Icon @click="one" style="margin-left: 20px;" size=20 type="ios-stats" />
-                <Icon @click="two" style="margin-left: 10px;" size=20 type="md-reorder" />
-              </div>
-              <div v-else>
-                <Icon  type="ios-arrow-back" /><Icon style="margin-left: -10px;" type="ios-arrow-back" />
-                <Icon style="margin-left: 10px; margin-top: 20px;" size=20 type="ios-stats" />
-                <Icon style="margin-left: 10px;" size=20 type="md-reorder" />
-              </div>
-            </h3>
-            <div v-if="tab1" style="width: 100%; padding:10px; border-collapse: collapse; height: 500px;">
-              <Card shadow>
-                <chart-pie style="height: 300px;" :value="pieData" text="Customer Revenue"></chart-pie>
-              </Card>
-              <h3><a href="javascript:;" style="display:block;color: #333;" @click="toggleList"><Icon type="md-pricetags" />Summary </a> </h3>
-              <ag-grid-vue
-                style="width: 100%; height:100%;"
-                class="ag-theme-balham"
-                :columnDefs="columnDefs1"
-                :rowData="rowData1"
-                :gridAutoHeight="true"
-                :floatingFilter="true"
-                :enableSorting="true"
-                :enableFilter="true"
-                :defaultColDef='{editable: true}'
-                :singleClickEdit="true"
-                :suppressSizeToFit="true"
-                :suppressResize="true"
-                :enableColResize="true"
-                rowSelection="multiple">
-              </ag-grid-vue>
-            </div>
-            <div v-if="tab2" style="width: 500px;height: 500px; display: none;">
-              <Card shadow>
-                <chart-pie style="height: 300px;" :value="pieData" text="Customer Revenue"></chart-pie>
-              </Card>
-              <h3><a href="javascript:;" style="display:block;color: #333;" @click="toggleList"><Icon type="md-pricetags" />Summary by product series level </a> </h3>
-              <ag-grid-vue
-                style="width: 100%; height:100%;"
-                class="ag-theme-balham"
-                :columnDefs="columnDefs1"
-                :rowData="rowData1"
-                :gridAutoHeight="true"
-                :floatingFilter="true"
-                :enableSorting="true"
-                :enableFilter="true"
-                :defaultColDef='{editable: true}'
-                :singleClickEdit="true"
-                :suppressSizeToFit="true"
-                :suppressResize="true"
-                :enableColResize="true"
-                rowSelection="multiple">
-              </ag-grid-vue>
-            </div>
+        <div v-if="tab2" style="width: 500px;height: 500px; display: none;">
+          <Card shadow>
+            <chart-pie style="height: 300px;" :value="pieData" text="Customer Revenue"></chart-pie>
+          </Card>
+          <h3><a href="javascript:;" style="display:block;color: #333;" @click="toggleList"><Icon type="md-pricetags" />Summary by product series level </a> </h3>
+          <ag-grid-vue
+            style="width: 100%; height:100%;"
+            class="ag-theme-balham"
+            :columnDefs="columnDefs1"
+            :rowData="rowData1"
+            :gridAutoHeight="true"
+            :floatingFilter="true"
+            :enableSorting="true"
+            :enableFilter="true"
+            :defaultColDef='{editable: true}'
+            :singleClickEdit="true"
+            :suppressSizeToFit="true"
+            :suppressResize="true"
+            :enableColResize="true"
+            rowSelection="multiple">
+          </ag-grid-vue>
         </div>
-      </split-pane>
-    </div>
+      </div>
     </split-pane>
   </div>
 </div>
