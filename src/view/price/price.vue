@@ -58,6 +58,7 @@
               class="ag-theme-balham"
               :columnDefs="columnDefs"
               :rowData="rowData"
+              :floatingFilter="true"
               :gridAutoHeight="true"
               :enableSorting="true"
               :enableFilter="true"
@@ -93,6 +94,7 @@
                 :columnDefs="columnDefs1"
                 :rowData="rowData1"
                 :gridAutoHeight="true"
+                :floatingFilter="true"
                 :enableSorting="true"
                 :enableFilter="true"
                 :defaultColDef='{editable: true}'
@@ -114,6 +116,7 @@
                 :columnDefs="columnDefs1"
                 :rowData="rowData1"
                 :gridAutoHeight="true"
+                :floatingFilter="true"
                 :enableSorting="true"
                 :enableFilter="true"
                 :defaultColDef='{editable: true}'

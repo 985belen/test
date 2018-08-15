@@ -77,8 +77,10 @@
           <ag-grid-vue
             style="width: 100%; height:100%;"
             class="ag-theme-balham"
+            v-if="columns"
             :columnDefs="columns"
             :rowData="rowdata"
+            :floatingFilter="true"
             :gridAutoHeight="true"
             :enableSorting="true"
             :enableFilter="true"
@@ -108,8 +110,10 @@
     <ag-grid-vue
       style="width: 100%; height:100%;"
       class="ag-theme-balham"
+      v-if="detailcolumns1"
       :columnDefs="detailcolumns1"
       :rowData="detaildata1"
+      :floatingFilter="true"
       :gridAutoHeight="true"
       :enableSorting="true"
       :enableFilter="true"
@@ -125,9 +129,11 @@
     <ag-grid-vue
       style="width: 100%; height:100%;"
       class="ag-theme-balham"
+      v-if="detailcolumns2"
       :columnDefs="detailcolumns2"
       :rowData="detaildata2"
       :gridAutoHeight="true"
+      :floatingFilter="true"
       :enableSorting="true"
       :enableFilter="true"
       :defaultColDef='{editable: true}'
@@ -141,8 +147,10 @@
     <ag-grid-vue
       style="width: 100%; height:100%;"
       class="ag-theme-balham"
+      v-if="detailcolumns3"
       :columnDefs="detailcolumns3"
       :rowData="detaildata3"
+      :floatingFilter="true"
       :gridAutoHeight="true"
       :enableSorting="true"
       :enableFilter="true"
@@ -166,6 +174,7 @@
       class="ag-theme-balham"
       :columnDefs="productcolumns1"
       :rowData="productdata1"
+      :floatingFilter="true"
       :gridAutoHeight="true"
       :enableSorting="true"
       :enableFilter="true"
@@ -261,8 +270,10 @@
       <ag-grid-vue
         style="width: 100%; height:100%;"
         class="ag-theme-balham"
+        v-if="transColumns"
         :columnDefs="transColumns"
         :rowData="transData"
+        :floatingFilter="true"
         :gridAutoHeight="true"
         :enableSorting="true"
         :enableFilter="true"

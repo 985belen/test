@@ -18,11 +18,11 @@
             class="ag-theme-balham"
             :columnDefs="columnDefs"
             :rowData="rowData"
+            :floatingFilter="true"
             :gridAutoHeight="true"
             :enableSorting="true"
             :enableFilter="true"
             :showToolPanel="true"
-            :defaultColDef='{editable: true}'
             :singleClickEdit="true"
             :suppressSizeToFit="true"
             :suppressResize="true"

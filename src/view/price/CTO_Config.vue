@@ -26,6 +26,7 @@
     :columnDefs="columnDefs"
     :rowData="rowData"
     :gridAutoHeight="true"
+    :floatingFilter="true"
     :enableSorting="true"
     :enableFilter="true"
     :singleClickEdit="true"

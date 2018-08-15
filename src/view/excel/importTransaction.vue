@@ -31,6 +31,7 @@
     <ag-grid-vue
       style="width: 100%; height:100%;"
       class="ag-theme-balham"
+      v-if="transColumns"
       :columnDefs="transColumns"
       :rowData="transData"
       :gridAutoHeight="true"
