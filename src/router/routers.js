@@ -185,5 +185,21 @@ export default [
         component: () => import('@/view/excel/excel_PEsales.vue')
       },
     ]
+  },
+  {
+    path: '/mtm',
+    name: 'mtm',
+    component: Main,
+    children: [
+      {
+        path: 'mtm_index',
+        name: 'mtm_index',
+        meta: {
+          icon: 'mtm_index',
+          title: 'mtm_index'
+        },
+        component: () => import('@/view/mtm/index.vue')
+      }
+    ]
   }
 ]
