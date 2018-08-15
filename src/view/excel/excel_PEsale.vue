@@ -530,6 +530,47 @@ export default {
         select: '',
         selects: ['opportunity', 'quotation', 'contract']
       },
+      ComponentsListcolumn: [
+        {
+          headerName: 'Category ID',
+          width: 80,
+          field: 'CategoryID',
+          fixed: 'left',
+          cellStyle: {'text-align': 'center'}
+        }, {
+          headerName: 'Description',
+          fixed: 'left',
+          field: 'Description',
+          width: 100,
+          cellStyle: {'text-align': 'center'}
+        }, {
+          headerName: 'QTY',
+          fixed: 'left',
+          field: 'QTY',
+          width: 100,
+          cellStyle: {'text-align': 'center'}
+        }, {
+          headerName: 'TMC',
+          fixed: 'left',
+          field: 'TMC',
+          width: 100,
+          cellStyle: {'text-align': 'center'}
+        }
+      ],
+      ComponentsListData: [
+        {
+          CategoryID: 'SBB0M45830',
+          Description: ' Intel Core i5-7500T 2.7G 4C',
+          QTY: '1',
+          TMC: ' 183.07'
+        },
+        {
+          CategoryID: 'SBB0M45830',
+          Description: ' Intel Core i5-7500T 2.7G 4C',
+          QTY: '1',
+          TMC: ' 183.07'
+        }
+      ],
       columns: [
         {
           headerName: 'ID',
@@ -2098,13 +2139,13 @@ export default {
     },
     pullFnc () {
       if(this.pullFlag){
-        this.pullFlag = false;
-        this.offset = .4
+        this.pullFlag = false
+        this.offset = 0.4
         this.tab1 = true
         this.tab2 = false
       }else{
-        this.pullFlag = true;
-        this.offset = .96
+        this.pullFlag = true
+        this.offset = 0.96
         this.tab1 = false
         this.tab2 = false
       }
