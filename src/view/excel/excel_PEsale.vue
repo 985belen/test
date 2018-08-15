@@ -2348,6 +2348,8 @@ h3{
     }
     &.right-pane{
       background: #fff;
+      height: 400px;
+      overflow-y: scroll;
     }
     &.top-pane{
       background: sandybrown;

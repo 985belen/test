@@ -1071,7 +1071,7 @@ h3{
   transform: translate(-50%, -50%);
 }
 .split-pane-page-wrapper{
-  height: 630px;
+  height: 400px;
   .pane{
     width: 100%;
     height: 100%;
@@ -1080,6 +1080,8 @@ h3{
     }
     &.right-pane{
       background: #fff;
+       height: 400px;
+      overflow-y: scroll;
     }
     &.top-pane{
       background: sandybrown;
