@@ -17,7 +17,7 @@
     <Divider type="vertical" />
     <a href="#" class="item"><Icon class="icon" size=16 type="md-stats" />Summary Report</a> -->
   </div>
-  <div class="agcontainer" style="width: 100%;height:600px;overflow:hidden;">
+  <div class="agcontainer" style="width: 100%;height:100%;overflow:hidden;">
     <ag-grid-vue
       style="width: 100%;height:100%;"
       class="ag-theme-balham"
