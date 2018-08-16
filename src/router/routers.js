@@ -233,6 +233,15 @@ export default [
           title: 'iframe_HistoricalSummary'
         },
         component: () => import('@/view/iframe/HistoricalSummary.vue')
+      },
+      {
+        path: 'iframe_PricingProfitMargin',
+        name: 'iframe_PricingProfitMargin',
+        meta: {
+          icon: 'iframe_PricingProfitMargin',
+          title: 'iframe_PricingProfitMargin'
+        },
+        component: () => import('@/view/iframe/PricingProfitMargin.vue')
       }
     ]
   }
