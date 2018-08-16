@@ -17,21 +17,23 @@
     <Divider type="vertical" />
     <a href="#" class="item"><Icon class="icon" size=16 type="md-stats" />Summary Report</a> -->
   </div>
-  <ag-grid-vue
-    style="width: 100%"
-    class="ag-theme-balham"
-    :columnDefs="columnDefs"
-    :rowData="rowData"
-    :gridAutoHeight="true"
-    :enableSorting="true"
-    :enableFilter="true"
-    :singleClickEdit="true"
-    :suppressSizeToFit="true"
-    :suppressResize="true"
-    :enableColResize="true"
-    rowSelection="multiple">
-  </ag-grid-vue>
-    <Modal
+  <div style="width: 100%;height:600px;overflow:hidden;">
+    <ag-grid-vue
+      style="width: 100%;height:600px;"
+      class="ag-theme-balham"
+      :columnDefs="columnDefs"
+      :rowData="rowData"
+      :gridAutoHeight="false"
+      :enableSorting="true"
+      :enableFilter="true"
+      :singleClickEdit="true"
+      :suppressSizeToFit="true"
+      :suppressResize="true"
+      :enableColResize="true"
+      rowSelection="multiple">
+    </ag-grid-vue>
+  </div>
+  <Modal
     v-model="modelnew"
     :styles="{width:'1000px'}"
     title="create New PE"

@@ -23,7 +23,7 @@
         </Row>
       </Form>
       <ag-grid-vue
-        style="width: 100%; height:100%;"
+        style="width: 100%; height:600px;overflow:hidden;"
         class="ag-theme-balham"
         v-if="pcgcolumn"
         :columnDefs="pcgcolumn"
@@ -67,24 +67,26 @@
          </Col>
         </Row>
       </Form>
-      <ag-grid-vue
-        style="width: 100%; height:100%;"
-        class="ag-theme-balham"
-        v-if="mbgcolumn"
-        :columnDefs="mbgcolumn"
-        :rowData="mbgdata"
-        :gridAutoHeight="true"
-        :enableSorting="true"
-        :enableFilter="true"
-        :showToolPanel="true"
-        :sizeColumnsToFit="true"
-        :floatingFilter="true"
-        :singleClickEdit="true"
-        :suppressSizeToFit="true"
-        :suppressResize="true"
-        :enableColResize="true"
-        rowSelection="multiple">
-      </ag-grid-vue>
+      <div style="width: 100%; height:600px;overflow:hidden;">
+        <ag-grid-vue
+          style="width: 100%; height:600px"
+          class="ag-theme-balham"
+          v-if="mbgcolumn"
+          :columnDefs="mbgcolumn"
+          :rowData="mbgdata"
+          :gridAutoHeight="true"
+          :enableSorting="true"
+          :enableFilter="true"
+          :showToolPanel="true"
+          :sizeColumnsToFit="true"
+          :floatingFilter="true"
+          :singleClickEdit="true"
+          :suppressSizeToFit="true"
+          :suppressResize="true"
+          :enableColResize="true"
+          rowSelection="multiple">
+        </ag-grid-vue>
+      </div>
     </TabPane>
   </Tabs>
 </div>
@@ -244,6 +246,7 @@ export default {
           cellStyle: {'text-align': 'center'}
         }
       ],
+      pcgdata: [],
       mbgcolumn: [
         {
           headerName: 'ID',

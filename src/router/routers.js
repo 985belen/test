@@ -201,5 +201,39 @@ export default [
         component: () => import('@/view/mtm/index.vue')
       }
     ]
+  },
+  {
+    path: '/iframe',
+    name: 'iframe',
+    component: Main,
+    children: [
+      {
+        path: 'iframe_clv',
+        name: 'iframe_clv',
+        meta: {
+          icon: 'iframe_clv',
+          title: 'iframe_clv'
+        },
+        component: () => import('@/view/iframe/clv.vue')
+      },
+      {
+        path: 'iframe_DealTracking',
+        name: 'iframe_DealTracking',
+        meta: {
+          icon: 'iframe_DealTracking',
+          title: 'iframe_DealTracking'
+        },
+        component: () => import('@/view/iframe/DealTracking.vue')
+      },
+      {
+        path: 'iframe_HistoricalSummary',
+        name: 'iframe_HistoricalSummary',
+        meta: {
+          icon: 'iframe_HistoricalSummary',
+          title: 'iframe_HistoricalSummary'
+        },
+        component: () => import('@/view/iframe/HistoricalSummary.vue')
+      }
+    ]
   }
 ]
