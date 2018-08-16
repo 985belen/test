@@ -1,33 +1,16 @@
 <template>
 <div class="price-box">
-  <div class="tool-bar">
+  <div class="tool-bar" ref="toolBar">
     <a href="#" class="item"><Icon class="icon" size=16 type="md-download" />Download</a>
-    <!-- <a href="#" class="item"><Icon class="icon" size=16 type="md-add" />New</a>
-    <Divider type="vertical" />
-    <a href="#" class="item"><Icon class="icon" size=16 type="md-trash"/>Delete</a>
-    <Divider type="vertical" />
-    <a href="#" class="item"><Icon class="icon" size=16 type="md-link" />Email</a>
-    <Divider type="vertical" />
-    <a href="#" class="item"><Icon class="icon" size=16 type="md-appstore" />Generate Report</a>
-    <Divider type="vertical" />
-    <a href="#" class="item"><Icon class="icon" size=16 type="md-list-box" />Export Template</a>
-    <Divider type="vertical" />
-    <a href="#" class="item"><Icon class="icon" size=16 type="md-notifications" />Import Template</a>
-    <Divider type="vertical" />
-    <a href="#" class="item"><Icon class="icon" size=16 type="md-exit" />Upload Data</a>
-    <Divider type="vertical" />
-    <a href="#" class="item"><Icon class="icon" size=16 type="md-stats" />Summary Report</a>
-    <Divider type="vertical" />
-    <a href="#/price/Pricing_Simulation" class="item"><Icon class="icon" size=16 type="md-stats" />Pricing Simulation</a> -->
   </div>
-  <div class="table-box">
+  <div class="agcontainer" style="width: 100%;height:100%;overflow:hidden;">
     <ag-grid-vue
       style="width: 100%;height:100%;"
       class="ag-theme-balham"
       :columnDefs="columnDefs"
       :rowData="rowData"
-      :gridAutoHeight="true"
       :floatingFilter="true"
+      :gridAutoHeight="false"
       :enableSorting="true"
       :enableFilter="true"
       :singleClickEdit="true"
@@ -492,10 +475,24 @@ export default {
   created () {
   },
   mounted () {
-    this.$nextTick(() => {
-    }, 3000)
+    this.calcGridHeight()
+    window.addEventListener('resize', () => {
+      window.clearTimeout(this.timer)
+      this.timer = window.setTimeout(() => {
+        this.calcGridHeight()
+      }, 100)
+    })
   },
   methods: {
+    calcGridHeight () {
+      var screenHeight = window.innerHeight
+      var topHeight = this.$refs.toolBar.offsetHeight
+      // console.log('topHeight:' + topHeight)
+      var ag = document.getElementsByClassName('ag-theme-balham')[0]
+      var acontainer = document.getElementsByClassName('agcontainer')[0]
+      ag.style.height = screenHeight - topHeight - 64 - 40 + 'px' // 64是头部的高度，10是padding
+      acontainer.style.height = screenHeight - topHeight - 64 - 40 + 'px'
+    }
   }
 }
 </script>
@@ -503,7 +500,8 @@ export default {
 .price-box{
   width: 100%;
   height: 100%;
-  padding:10px;
+  overflow:hidden;
+  padding-bottom:10px;
   background: #fff
 }
 .tool-bar{
@@ -525,10 +523,5 @@ export default {
       line-height: 32px;
     }
   }
-}
-.table-box{
-  width: 100%;
-  height: 600px;
-  overflow: auto;
 }
 </style>
