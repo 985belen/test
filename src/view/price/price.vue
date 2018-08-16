@@ -1,7 +1,7 @@
 <template>
 <div class="price-box">
   <div class="tool-bar">
-    <a href="#" class="item"><Icon class="icon" size=16 type="md-add" />New</a>
+    <a href="#" class="item"><Icon class="icon" size=16 type="md-add" />New{{windowHeight}}</a>
     <Divider type="vertical" />
     <a href="#" class="item"><Icon class="icon" size=16 type="md-trash"/>Delete</a>
     <Divider type="vertical" />
@@ -66,14 +66,13 @@
   <div class="split-pane-page-wrapper">
     <split-pane v-model="offset" @on-moving="handleMoving">
       <div slot="left" class="pane left-pane">
-        <div slot="top" class="pane top-pane">
-          <ag-grid-vue
-            style="width: 100%; height:500px;"
+        <div slot="top" class="pane top-pane" id ="ag-body-container">
+          <ag-grid-vue 
+            style="width: 100%; overflow:hidden;"
             class="ag-theme-balham"
             :columnDefs="columnDefs"
             :rowData="rowData"
             :floatingFilter="true"
-            :gridAutoHeight="true"
             :enableSorting="true"
             :enableFilter="true"
             :singleClickEdit="true"
@@ -153,6 +152,7 @@ import { ChartPie, ChartBar } from '_c/charts'
 export default {
   data () {
     return {
+      windowHeight:null,
       dom: null,
       offset: 0.96,
       pullFlag: true,
@@ -1684,8 +1684,17 @@ export default {
     ChartBar
   },
   created () {
+
+      this.windowHeight = window.innerHeight -330+'px'
+
   },
   mounted () {
+    var t1 = document.getElementsByClassName('split-pane-page-wrapper')[0]
+    var ag = document.getElementsByClassName('ag-theme-balham')[1]
+    var acontainer = document.getElementsByClassName('ag-body-container')[1]
+     ag.style.height = this.windowHeight
+    t1.style.height = this.windowHeight
+    acontainer.style.height = this.windowHeight
     this.$nextTick(() => {
       // this.toggleList()
       this.toggleList1()
@@ -1869,14 +1878,11 @@ h3{
   transform: translate(-50%, -50%);
 }
 .split-pane-page-wrapper{
-  height: 500px;
   .pane{
     width: 100%;
     height: 100%;
     &.left-pane{
       background: sandybrown;
-      height: 500px;
-      overflow-y: scroll;
     }
     &.right-pane{
       background: #fff;
