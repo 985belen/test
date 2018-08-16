@@ -73,7 +73,7 @@
   <div class="split-pane-page-wrapper">
     <split-pane v-model="offset" @on-moving="handleMoving">
       <div slot="left" class="pane left-pane">
-        <div slot="top" class="pane top-pane">
+        <div slot="top" class="pane top-pane agcontainer">
           <ag-grid-vue
             style="width: 100%; height:100%;"
             class="ag-theme-balham"
@@ -95,13 +95,13 @@
       <div slot="right" class="pane right-pane">
         <h3 @click="pullFnc" style="cursor: pointer;">
           <div v-if="!pullFlag">
-          <Icon type="ios-arrow-forward" /><Icon style="margin-left: -10px;" type="ios-arrow-forward" />
-            <Icon @click="one" style="margin-left: 20px;" size=20 type="ios-stats" />
+            <Icon type="md-swap" />
+            <Icon @click="one" style="margin-left: 10px; margin-top:0;line-height:30px" size=20 type="ios-stats" />
             <Icon @click="two" style="margin-left: 10px;" size=20 type="md-reorder" />
           </div>
           <div v-else>
-              <Icon  type="ios-arrow-back" /><Icon style="margin-left: -10px;" type="ios-arrow-back" />
-              <Icon style="margin-left: 10px; margin-top: 20px;" size=20 type="ios-stats" />
+              <Icon type="md-swap" />
+              <Icon style="margin-left: 10px; margin-top: 0;" size=20 type="ios-stats" />
               <Icon style="margin-left: 10px;" size=20 type="md-reorder" />
           </div>
         </h3>
@@ -2216,9 +2216,9 @@ export default {
       ]
     }
   },
-  beforeDestroy () {
-    off(window, 'resize', this.resize())
-  },
+  // beforeDestroy () {
+  //   off(window, 'resize', this.resize())
+  // },
   created () {
     this.toggleList()
     this.toggleList1()
@@ -2387,6 +2387,9 @@ h3{
     }
   }
 }
+}
+.SummaryInformation,.boxitem{
+  padding-bottom: 5px
 }
 
 </style>

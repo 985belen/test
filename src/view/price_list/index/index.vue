@@ -1,6 +1,6 @@
 <template>
 <div class="price-box">
-  <div class="tool-bar">
+  <div class="tool-bar" ref="toolBar">
     <a href="#" class="item" @click="modelnew = true"><Icon class="icon" size=16 type="md-add" />New</a>
     <Divider type="vertical" />
     <a href="#" class="item"><Icon class="icon" size=16 type="md-trash"/>Delete</a>
@@ -17,12 +17,13 @@
     <Divider type="vertical" />
     <a href="#" class="item"><Icon class="icon" size=16 type="md-stats" />Summary Report</a> -->
   </div>
-  <div style="width: 100%;height:600px;overflow:hidden;">
+  <div class="agcontainer" style="width: 100%;height:600px;overflow:hidden;">
     <ag-grid-vue
-      style="width: 100%;height:600px;"
+      style="width: 100%;height:100%;"
       class="ag-theme-balham"
       :columnDefs="columnDefs"
       :rowData="rowData"
+      :floatingFilter="true"
       :gridAutoHeight="false"
       :enableSorting="true"
       :enableFilter="true"
@@ -596,13 +597,27 @@ export default {
   created () {
   },
   mounted () {
-    this.$nextTick(() => {
-    }, 3000)
+    this.calcGridHeight()
+    window.addEventListener('resize', () => {
+      window.clearTimeout(this.timer)
+      this.timer = window.setTimeout(() => {
+        this.calcGridHeight()
+      }, 100)
+    })
   },
   methods: {
-    ok(){
+    calcGridHeight () {
+      var screenHeight = window.innerHeight
+      var topHeight = this.$refs.toolBar.offsetHeight
+      // console.log('topHeight:' + topHeight)
+      var ag = document.getElementsByClassName('ag-theme-balham')[0]
+      var acontainer = document.getElementsByClassName('agcontainer')[0]
+      ag.style.height = screenHeight - topHeight - 64 - 40 + 'px' // 64是头部的高度，10是padding
+      acontainer.style.height = screenHeight - topHeight - 64 - 40 + 'px'
+    },
+    ok () {
      this.$router.push({
-      name:'excel_empty'
+      name: 'excel_empty'
      })
     }
   }
@@ -612,8 +627,8 @@ export default {
 .price-box{
   width: 100%;
   height: 100%;
-  overflow:auto;
-  padding-bottom:20px;
+  overflow:hidden;
+  padding-bottom:10px;
   background: #fff
 }
 .tool-bar{

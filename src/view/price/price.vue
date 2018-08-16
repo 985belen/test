@@ -1,74 +1,75 @@
 <template>
-<div class="price-box">
-  <div class="tool-bar">
-    <a href="#" class="item"><Icon class="icon" size=16 type="md-add" />New{{windowHeight}}</a>
-    <Divider type="vertical" />
-    <a href="#" class="item"><Icon class="icon" size=16 type="md-trash"/>Delete</a>
-    <Divider type="vertical" />
-    <a href="#" class="item"><Icon class="icon" size=16 type="md-link" />Email</a>
-    <Divider type="vertical" />
-    <a href="#" class="item"><Icon class="icon" size=16 type="md-appstore" />Generate Report</a>
-    <Divider type="vertical" />
-    <a href="#" class="item"><Icon class="icon" size=16 type="md-list-box" />Export Template</a>
-    <Divider type="vertical" />
-    <a href="#" class="item"><Icon class="icon" size=16 type="md-notifications" />Import Template</a>
-    <Divider type="vertical" />
-    <a href="#" class="item"><Icon class="icon" size=16 type="md-exit" />Upload Data</a>
-    <Divider type="vertical" />
-    <a href="#" class="item"><Icon class="icon" size=16 type="md-stats" />Summary Report</a>
-  </div>
-  <h3><a href="javascript:;" style="display:block;color: #333;" @click="toggleList"><Icon type="md-pricetags" /> Quotation Infomation <span style="float: right; font-weight: normal; font-size: 12px;">More</span></a></h3>
-  <ul class="item-box" v-if="isStatus">
-    <li style="padding-left: 20px; width: 120px;">{{form.QuotationID}}</li>
-    <li style="width: 120px;">{{form.Description}}</li>
-    <li style="width: 120px;">{{form.Status}}</li>
-    <li style="width: 120px;">{{form.Country}}</li>
-  </ul>
-  <ul class="item-box" v-else>
-    <li><span>Quotation ID:</span><i class="blue" :title="form.QuotationID">{{form.QuotationID}}</i></li>
-    <li><span>Description:</span><i class="blue" :title="form.Description">{{form.Description}}</i></li>
-    <li><span>Status:</span><i class="blue" :title="form.Status">{{form.Status}}</i></li>
-    <li><span>Country(S):</span><i class="blue" :title="form.Country">{{form.Country}}</i></li>
-    <li><span>Currency:</span><i class="blue" :title="form.Currency">{{form.Currency}}</i></li>
-    <li><span>Customer:</span><i :title="form.Customer">{{form.Customer}}</i></li>
-    <li><span>Valid From Date:</span><i :title="form.FromDate">{{form.FromDate}}</i></li>
-    <li><span>End Customer(DMU):</span><i :title="form.EndCustomer">{{form.EndCustomer}}</i></li>
-    <li><span>Sales Representative:</span><i :title="form.SalesRepresentative">{{form.SalesRepresentative}}</i></li>
-    <li><span>Bid Approver:</span><i :title="form.BidApprover">{{form.BidApprover}}</i></li>
-    <li><span>BU:</span><i :title="form.BU">{{form.BU}}</i></li>
-    <li><span>Current Date:</span><i :title="form.CurrentDate">{{form.CurrentDate}}</i></li>
-    <li><span>Valid To Date:</span><i :title="form.toDate">{{form.toDate}}</i></li>
-    <li><span>Opportunity ID:</span><i :title="form.OpportunityID">{{form.OpportunityID}}</i></li>
-    <li><span>Deal Reg Indicator:</span><i :title="form.DealRegIndicator">{{form.DealRegIndicator}}</i></li>
-    <li><span>MOT:</span><i :title="form.MOT">{{form.MOT}}</i></li>
-    <li><span>Bid Funding:</span><i :title="form.BidFunding">{{form.BidFunding}}</i></li>
-    <li><span>RTM:</span><i :title="form.RTM">{{form.RTM}}</i></li>
-    <li><span>Sub Type:</span><i :title="form.SubType">{{form.SubType}}</i></li>
-  </ul>
-  <h3 class="marginBottom" style="margin-bottom: 10px;"><a href="javascript:;" style="display:block;color: #333;" @click="toggleList1"><Icon type="ios-podium" /> CQ</a></h3>
-  <div  class="table-CQ">
-    <ag-grid-vue
-      style="width: 100%; height:100%;"
-      class="ag-theme-balham"
-      :columnDefs="formcolumns"
-      :rowData="formdata"
-      :gridAutoHeight="true"
-      :enableSorting="true"
-      :enableFilter="true"
-      :singleClickEdit="true"
-      :suppressSizeToFit="false"
-      :suppressResize="true"
-      :enableColResize="true"
-      rowSelection="multiple">
-    </ag-grid-vue>
-    <!-- <Table border :columns="formcolumns" :data="formdata"></Table> -->
+<div class="price-box" ref="priceBox">
+  <div ref="topMain">
+    <div class="tool-bar" ref="toolBar">
+      <a href="#" class="item"><Icon class="icon" size=16 type="md-add" />New</a>
+      <Divider type="vertical" />
+      <a href="#" class="item"><Icon class="icon" size=16 type="md-trash"/>Delete</a>
+      <Divider type="vertical" />
+      <a href="#" class="item"><Icon class="icon" size=16 type="md-link" />Email</a>
+      <Divider type="vertical" />
+      <a href="#" class="item"><Icon class="icon" size=16 type="md-appstore" />Generate Report</a>
+      <Divider type="vertical" />
+      <a href="#" class="item"><Icon class="icon" size=16 type="md-list-box" />Export Template</a>
+      <Divider type="vertical" />
+      <a href="#" class="item"><Icon class="icon" size=16 type="md-notifications" />Import Template</a>
+      <Divider type="vertical" />
+      <a href="#" class="item"><Icon class="icon" size=16 type="md-exit" />Upload Data</a>
+      <Divider type="vertical" />
+      <a href="#" class="item"><Icon class="icon" size=16 type="md-stats" />Summary Report</a>
+    </div>
+    <h3 ref=""><a href="javascript:;" style="display:block;color: #333;" @click="toggleList"><Icon type="md-pricetags" /> Quotation Infomation <span style="float: right; font-weight: normal; font-size: 12px;">More</span></a></h3>
+    <ul class="item-box" v-if="isStatus">
+      <li style="padding-left: 20px; width: 120px;">{{form.QuotationID}}</li>
+      <li style="width: 120px;">{{form.Description}}</li>
+      <li style="width: 120px;">{{form.Status}}</li>
+      <li style="width: 120px;">{{form.Country}}</li>
+    </ul>
+    <ul class="item-box" v-else>
+      <li><span>Quotation ID:</span><i class="blue" :title="form.QuotationID">{{form.QuotationID}}</i></li>
+      <li><span>Description:</span><i class="blue" :title="form.Description">{{form.Description}}</i></li>
+      <li><span>Status:</span><i class="blue" :title="form.Status">{{form.Status}}</i></li>
+      <li><span>Country(S):</span><i class="blue" :title="form.Country">{{form.Country}}</i></li>
+      <li><span>Currency:</span><i class="blue" :title="form.Currency">{{form.Currency}}</i></li>
+      <li><span>Customer:</span><i :title="form.Customer">{{form.Customer}}</i></li>
+      <li><span>Valid From Date:</span><i :title="form.FromDate">{{form.FromDate}}</i></li>
+      <li><span>End Customer(DMU):</span><i :title="form.EndCustomer">{{form.EndCustomer}}</i></li>
+      <li><span>Sales Representative:</span><i :title="form.SalesRepresentative">{{form.SalesRepresentative}}</i></li>
+      <li><span>Bid Approver:</span><i :title="form.BidApprover">{{form.BidApprover}}</i></li>
+      <li><span>BU:</span><i :title="form.BU">{{form.BU}}</i></li>
+      <li><span>Current Date:</span><i :title="form.CurrentDate">{{form.CurrentDate}}</i></li>
+      <li><span>Valid To Date:</span><i :title="form.toDate">{{form.toDate}}</i></li>
+      <li><span>Opportunity ID:</span><i :title="form.OpportunityID">{{form.OpportunityID}}</i></li>
+      <li><span>Deal Reg Indicator:</span><i :title="form.DealRegIndicator">{{form.DealRegIndicator}}</i></li>
+      <li><span>MOT:</span><i :title="form.MOT">{{form.MOT}}</i></li>
+      <li><span>Bid Funding:</span><i :title="form.BidFunding">{{form.BidFunding}}</i></li>
+      <li><span>RTM:</span><i :title="form.RTM">{{form.RTM}}</i></li>
+      <li><span>Sub Type:</span><i :title="form.SubType">{{form.SubType}}</i></li>
+    </ul>
+    <h3 class="marginBottom" style="margin-bottom: 10px;"><a href="javascript:;" style="display:block;color: #333;" @click="toggleList1"><Icon type="ios-podium" /> CQ</a></h3>
+    <div  class="table-CQ">
+      <ag-grid-vue
+        style="width: 100%; height:100%;"
+        class="ag-theme-balham"
+        :columnDefs="formcolumns"
+        :rowData="formdata"
+        :gridAutoHeight="true"
+        :enableSorting="true"
+        :enableFilter="true"
+        :singleClickEdit="true"
+        :suppressSizeToFit="false"
+        :suppressResize="true"
+        :enableColResize="true"
+        rowSelection="multiple">
+      </ag-grid-vue>
+    </div>
   </div>
   <div class="split-pane-page-wrapper">
     <split-pane v-model="offset" @on-moving="handleMoving">
       <div slot="left" class="pane left-pane">
-        <div slot="top" class="pane top-pane" id ="ag-body-container">
+        <div slot="top" class="pane top-pane agcontainer">
           <ag-grid-vue 
-            style="width: 100%; overflow:hidden;"
+            style="width: 100%; height:100%;"
             class="ag-theme-balham"
             :columnDefs="columnDefs"
             :rowData="rowData"
@@ -86,13 +87,13 @@
       <div slot="right" class="pane right-pane">
         <h3 @click="pullFnc" style="cursor: pointer;">
           <div v-if="!pullFlag">
-          <Icon type="ios-arrow-forward" /><Icon style="margin-left: -10px;" type="ios-arrow-forward" />
-            <Icon @click="one" style="margin-left: 20px;" size=20 type="ios-stats" />
+            <Icon type="md-swap" />
+            <Icon @click="one" style="margin-left: 10px; margin-top:0; line-height:30px" size=20 type="ios-stats" />
             <Icon @click="two" style="margin-left: 10px;" size=20 type="md-reorder" />
           </div>
           <div v-else>
-            <Icon  type="ios-arrow-back" /><Icon style="margin-left: -10px;" type="ios-arrow-back" />
-            <Icon style="margin-left: 10px; margin-top: 20px;" size=20 type="ios-stats" />
+            <Icon type="md-swap" />
+            <Icon style="margin-left: 10px; margin-top: 0;" size=20 type="ios-stats" />
             <Icon style="margin-left: 10px;" size=20 type="md-reorder" />
           </div>
         </h3>
@@ -1677,6 +1678,8 @@ export default {
       ]
     }
   },
+  watch: {
+  },
   components: {
     AgGridVue,
     SplitPane,
@@ -1684,26 +1687,36 @@ export default {
     ChartBar
   },
   created () {
-
-      this.windowHeight = window.innerHeight -330+'px'
-
+    // this.windowHeight = window.innerHeight -330+'px'
+    // console.log(window.innerHeight)
   },
   mounted () {
-    var t1 = document.getElementsByClassName('split-pane-page-wrapper')[0]
-    var ag = document.getElementsByClassName('ag-theme-balham')[1]
-    var acontainer = document.getElementsByClassName('ag-body-container')[1]
-     ag.style.height = this.windowHeight
-    t1.style.height = this.windowHeight
-    acontainer.style.height = this.windowHeight
-    this.$nextTick(() => {
-      // this.toggleList()
-      this.toggleList1()
-    }, 3000)
+    this.calcGridHeight()
+    window.addEventListener('resize', () => {
+      window.clearTimeout(this.timer)
+      this.timer = window.setTimeout(() => {
+        this.calcGridHeight()
+      }, 100)
+    })
   },
-  beforeDestroy () {
-    off(window, 'resize', this.resize())
-  },
+  // beforeDestroy () {
+  //   off(window, 'resize', this.resize())
+  // },
   methods: {
+    calcGridHeight () {
+      var screenHeight = window.innerHeight
+      var topHeight = this.$refs.topMain.offsetHeight
+      // console.log('topHeight:' + topHeight)
+      var t1 = document.getElementsByClassName('split-pane-page-wrapper')[0]
+      var ag = document.getElementsByClassName('ag-theme-balham')[1]
+      var acontainer = document.getElementsByClassName('agcontainer')[0]
+      ag.style.height = screenHeight - topHeight - 64 - 10 - 10+ 'px' // 64是头部的高度，10是padding
+      t1.style.height = screenHeight - topHeight - 64 - 10 - 10 + 'px'
+      acontainer.style.height = screenHeight - topHeight - 64 -10 -10 + 'px'
+      this.$nextTick(() => {
+        this.toggleList1()
+      }, 3000)
+    },
     one () {
       this.tab1 = true
       this.tab2 = false
@@ -1765,8 +1778,8 @@ export default {
 .price-box{
   width: 100%;
   height: 100%;
-  overflow:auto;
-  padding-bottom:20px;
+  overflow: hidden;
+  padding-bottom: 10px;
   background: #fff
 }
 .tool-bar{
@@ -1886,7 +1899,7 @@ h3{
     }
     &.right-pane{
       background: #fff;
-      height: 500px;
+      // height: 500px;
       overflow-y: scroll;
     }
     &.top-pane{
