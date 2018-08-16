@@ -1,75 +1,79 @@
 <template>
-<div class="newpage">
-  <div class="tool-bar">
-    <!-- <a href="#" class="item" @click="resize, modeldetail = true" ><Icon class="icon" size=16 type="md-barcode" />Summary Detail</a>
-    <Divider type="vertical" />
-    <a href="#" class="item" @click="resize,modelProduct = true"><Icon class="icon" size=16 type="md-stats" />Summary By Product</a>
-    <Divider type="vertical" />
-    <a href="#" class="item" @click="resize,modelBrand = true"><Icon class="icon" size=16 type="md-search" />Summary By Brand</a>
-    <Divider type="vertical" /> -->
-    <a href="#" class="item" @click="modeltransction = true"><Icon class="icon" size=16 type="md-add" />Import Transaction</a>
-  </div>
-  <h3 class="marginBottom"><a href="javascript:;" style="display:block;color: #333;" @click="toggleList1"><Icon type="ios-podium" />PE Information</a></h3>
-  <div class="peinformation">
-    <Row>
-      <Col span=12 offset="6">
-        <img src="./pic1.png"/>
-      </Col>
-    </Row>
-  </div>
-  <h3 class="marginBottom"><a href="javascript:;" style="display:block;color: #333;" @click="toggleList"><Icon type="ios-podium" />form</a></h3>
-  <div class="boxitem">
-    <Form :model="FormItem" :label-width="120" :rules="ruleValidate">
+<div class="newpage" style="overflow: hidden;">
+  <div class="topBox">
+    <div class="tool-bar">
+      <!-- <a href="#" class="item" @click="resize, modeldetail = true" ><Icon class="icon" size=16 type="md-barcode" />Summary Detail</a>
+      <Divider type="vertical" />
+      <a href="#" class="item" @click="resize,modelProduct = true"><Icon class="icon" size=16 type="md-stats" />Summary By Product</a>
+      <Divider type="vertical" />
+      <a href="#" class="item" @click="resize,modelBrand = true"><Icon class="icon" size=16 type="md-search" />Summary By Brand</a>
+      <Divider type="vertical" /> -->
+      <a href="#" class="item" @click="modeltransction = true"><Icon class="icon" size=16 type="md-add" />Import Transaction</a>
+    </div>
+    <h3 class="marginBottom"><a href="javascript:;" style="display:block;color: #333;" @click="toggleList1"><Icon type="ios-podium" />PE Information</a></h3>
+    <div class="peinformation">
       <Row>
-        <Col span=5 offset="1">
-          <strong>PE ID: </strong><span>PE-20188081041-357</span>
-        </Col>
-        <Col span=5>
-          <strong>DMU Name: </strong><span>State Administration</span>
-        </Col>
-        <Col span=5>
-          <strong>Country: </strong><span>Bulgaria</span>
-        </Col>
-        <Col span=5>
-          <strong>Channel: </strong><span>Direct</span>
+        <Col span=12 offset="6">
+          <img src="./pic1.png"/>
         </Col>
       </Row>
-      <Row>
-        <Col span=5 offset="1">
-          <strong>Currency: </strong><span>USD</span>
+    </div>
+    <h3 class="marginBottom"><a href="javascript:;" style="display:block;color: #333;" @click="toggleList"><Icon type="ios-podium" />form</a></h3>
+    <div class="boxitem">
+      <Form :model="FormItem" :label-width="120" :rules="ruleValidate">
+        <Row>
+          <Col span=5 offset="1">
+            <strong>PE ID: </strong><span>PE-20188081041-357</span>
+          </Col>
+          <Col span=5>
+            <strong>DMU Name: </strong><span>State Administration</span>
+          </Col>
+          <Col span=5>
+            <strong>Country: </strong><span>Bulgaria</span>
+          </Col>
+          <Col span=5>
+            <strong>Channel: </strong><span>Direct</span>
+          </Col>
+        </Row>
+        <Row>
+          <Col span=5 offset="1">
+            <strong>Currency: </strong><span>USD</span>
+          </Col>
+          <Col span=5>
+            <strong>Pricing Group: </strong><span>B1</span>
+          </Col>
+          <Col span=5>
+            <strong>Created By: </strong><span>sumer</span>
+          </Col>
+          <Col span=5>
+            <strong>Description: </strong><span>RFP Coop August 2018</span>
+          </Col>
+        </Row>
+      </Form>
+    </div>
+    <h3 class="marginBottom"><a href="javascript:;" style="display:block;color: #333;" @click="toggleList2"><Icon type="ios-podium" />Summary Information</a></h3>
+    <div class="SummaryInformation">
+      <Row type="flex" justify="center">
+        <Col span=5>
+          <strong>System Volume: </strong><span>450</span>
         </Col>
         <Col span=5>
-          <strong>Pricing Group: </strong><span>B1</span>
+          <strong>Gross Revenue: </strong><span>337100</span>
         </Col>
         <Col span=5>
-          <strong>Created By: </strong><span>sumer</span>
+          <strong>Net Revenue: </strong><span>337100</span>
         </Col>
         <Col span=5>
-          <strong>Description: </strong><span>RFP Coop August 2018</span>
+          <strong>TMC Margin: </strong><span>33323</span>
+        </Col>
+        <Col span=4>
+          <strong>TMC Margin %: </strong><span>10.2</span>
         </Col>
       </Row>
-    </Form>
+    </div>
+
   </div>
-  <h3 class="marginBottom"><a href="javascript:;" style="display:block;color: #333;" @click="toggleList2"><Icon type="ios-podium" />Summary Information</a></h3>
-  <div class="SummaryInformation">
-    <Row type="flex" justify="center">
-      <Col span=5>
-        <strong>System Volume: </strong><span>450</span>
-      </Col>
-      <Col span=5>
-        <strong>Gross Revenue: </strong><span>337100</span>
-      </Col>
-      <Col span=5>
-        <strong>Net Revenue: </strong><span>337100</span>
-      </Col>
-      <Col span=5>
-        <strong>TMC Margin: </strong><span>33323</span>
-      </Col>
-      <Col span=4>
-        <strong>TMC Margin %: </strong><span>10.2</span>
-      </Col>
-    </Row>
-  </div>
+
   <div class="split-pane-page-wrapper">
     <split-pane v-model="offset" @on-moving="handleMoving">
       <div slot="left" class="pane left-pane">
@@ -80,7 +84,6 @@
             v-if="columns"
             :columnDefs="columns"
             :rowData="rowData"
-            :gridAutoHeight="true"
             :floatingFilter="true"
             :enableSorting="true"
             :enableFilter="true"
@@ -2224,7 +2227,31 @@ export default {
     this.toggleList1()
     this.toggleList2()
   },
+  mounted () {
+    this.calcGridHeight()
+     window.addEventListener('resize', () => {
+      window.clearTimeout(this.timer)
+      this.timer = window.setTimeout(() => {
+        this.calcGridHeight()
+      }, 100)
+    })
+  },
   methods: {
+    calcGridHeight () {
+      var screenHeight = window.innerHeight
+      // console.log('topHeight:' + topHeight)
+      var t1 = document.getElementsByClassName('split-pane-page-wrapper')[0]
+      var topBox = document.getElementsByClassName('topBox')[0]
+      var ag = document.getElementsByClassName('ag-theme-balham')[0]
+      var acontainer = document.getElementsByClassName('ag-body-container')[0]
+      // ag-body-container
+      ag.style.height = screenHeight - 64-285+ 'px' // 64是头部的高度，10是padding
+      t1.style.height = screenHeight - 64-285 + 'px'
+      acontainer.style.height = screenHeight - 64-64-285+ 'px'
+      this.$nextTick(() => {
+        this.toggleList1()
+      }, 3000)
+    },
     one () {
       this.tab1 = true
       this.tab2 = false
@@ -2355,7 +2382,6 @@ h3{
   transform: translate(-50%, -50%);
 }
 .split-pane-page-wrapper{
-  height: 400px;
   .pane{
     width: 100%;
     height: 100%;
@@ -2364,7 +2390,6 @@ h3{
     }
     &.right-pane{
       background: #fff;
-      height: 400px;
       overflow-y: scroll;
     }
     &.top-pane{
