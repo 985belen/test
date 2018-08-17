@@ -728,7 +728,7 @@ export default {
           field: 'vol',
           width: 100,
           editable: true,
-          cellStyle: {'text-align': 'left', color: '#fff', backgroundColor: 'green'}
+          cellStyle: {'text-align': 'left', color: '#fff', backgroundColor: '#B4C6E7'}
         },
         {
           headerName: 'List Price',
@@ -753,21 +753,21 @@ export default {
           width: 135,
           field: 'estpri',
           editable: true,
-          cellStyle: {'text-align': 'left', color: '#fff', backgroundColor: 'green'}
+          cellStyle: {'text-align': 'left', color: '#fff', backgroundColor: '#A9D08E'}
         },
         {
           headerName: 'Final Price',
           width: 100,
           field: 'finalpri',
           editable: true,
-          cellStyle: {'text-align': 'left', color: '#fff', backgroundColor: 'green'}
+          cellStyle: {'text-align': 'left', color: '#fff', backgroundColor: '#B4C6E7'}
         },
         {
           headerName: 'Discount %',
           width: 100,
           field: 'disc',
           editable: true,
-          cellStyle: {'text-align': 'left', color: '#fff', backgroundColor: 'green'}
+          cellStyle: {'text-align': 'left', color: '#fff', backgroundColor: '#B4C6E7'}
         },
         {
           headerName: 'BMC',
