@@ -497,7 +497,7 @@ export default {
           Description: 'RX - KPMG - Norway - M910q',
           ProductID: 'Desktop TC M910q_Intel Q270_TINY_ES_R',
           ProductDesc: '10MUCTO1WW',
-          StartDate: 'Thu Jan 25 00:00:00 CST 2018',
+          StartDate: '2018/01/25',
           Currency: 'USD'
         },
         {
@@ -505,7 +505,7 @@ export default {
           Description: 'CAT:KPMG - KBY NB Turkey T470 v1.0',
           ProductID: 'Notebook ThinkPad T470 20HECTO1WW Rx',
           ProductDesc: '20HECTO1WW',
-          StartDate: 'Mon Aug 21 00:00:00 CST 2017',
+          StartDate: '2018/08/21',
           Currency: 'USD'
         },
         {
@@ -513,7 +513,7 @@ export default {
           Description: 'NonCAT:KPMG - Forensic NB',
           ProductID: 'Notebook ThinkPad X1 Yoga 2G 20JECTO1WW 20JECTO1WW',
           ProductDesc: '20JECTO1WW',
-          StartDate: 'Wed Nov 08 00:00:00 CST 2017',
+          StartDate: '2018/11/08',
           Currency: 'USD'
         },
         {
@@ -521,7 +521,7 @@ export default {
           Description: 'CAT:KPMG-KBY-R T480s Yoga380 Canada',
           ProductID: 'Notebook ThinkPad X380 Yoga 20LJCTO1WW R',
           ProductDesc: '20LJCTO1WW',
-          StartDate: 'Thu Apr 05 00:00:00 CST 2018',
+          StartDate: '2018/04/05',
           Currency: 'USD'
         },
         {
@@ -529,7 +529,7 @@ export default {
           Description: 'CAT:KPMG _ RFP Turkey',
           ProductID: 'Notebook ThinkPad T480 20L6CTO1WW Rx',
           ProductDesc: '20L6CTO1WW',
-          StartDate: 'Mon Jul 23 00:00:00 CST 2018',
+          StartDate: '2018/07/23',
           Currency: 'USD'
         },
         {
@@ -537,7 +537,7 @@ export default {
           Description: 'RX - KPMG - Norway - M910q',
           ProductID: 'Desktop TC M910q_Intel Q270_TINY_ES_R',
           ProductDesc: '10MUCTO1WW',
-          StartDate: 'Thu Jan 25 00:00:00 CST 2018',
+          StartDate: '2018/01/25',
           Currency: 'USD'
         },
         {
@@ -545,7 +545,7 @@ export default {
           Description: 'CAT:KPMG - KBY NB Turkey T470 v1.0',
           ProductID: 'Notebook ThinkPad T470 20HECTO1WW Rx',
           ProductDesc: '20HECTO1WW',
-          StartDate: 'Mon Aug 21 00:00:00 CST 2017',
+          StartDate: '2018/08/21',
           Currency: 'USD'
         },
         {
@@ -553,7 +553,7 @@ export default {
           Description: 'NonCAT:KPMG - Forensic NB',
           ProductID: 'Notebook ThinkPad X1 Yoga 2G 20JECTO1WW 20JECTO1WW',
           ProductDesc: '20JECTO1WW',
-          StartDate: 'Wed Nov 08 00:00:00 CST 2017',
+          StartDate: '2018/11/08',
           Currency: 'USD'
         },
         {
@@ -561,7 +561,7 @@ export default {
           Description: 'CAT:KPMG-KBY-R T480s Yoga380 Canada',
           ProductID: 'Notebook ThinkPad X380 Yoga 20LJCTO1WW R',
           ProductDesc: '20LJCTO1WW',
-          StartDate: 'Thu Apr 05 00:00:00 CST 2018',
+          StartDate: '2018/04/05',
           Currency: 'USD'
         },
         {
@@ -569,7 +569,7 @@ export default {
           Description: 'CAT:KPMG _ RFP Turkey',
           ProductID: 'Notebook ThinkPad T480 20L6CTO1WW Rx',
           ProductDesc: '20L6CTO1WW',
-          StartDate: 'Mon Jul 23 00:00:00 CST 2018',
+          StartDate: '2018/07/23',
           Currency: 'USD'
         }
       ],

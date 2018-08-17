@@ -98,74 +98,20 @@
         </div>
       </div>
       <div slot="right" class="pane right-pane">
-        <h3 @click="pullFnc" style="cursor: pointer;">
+        <h3  style="cursor: pointer;">
           <div v-if="!pullFlag">
-            <Icon type="md-swap" />
+            <Icon @click="pullFnc" type="md-swap" />
             <Icon @click="one" style="margin-left: 10px; margin-top:0;line-height:30px" size=20 type="ios-stats" />
             <Icon @click="two" style="margin-left: 10px;" size=20 type="md-reorder" />
+             <Icon @click="three" style="margin-left: 10px;" size=20 type="md-grid" />
           </div>
           <div v-else>
-              <Icon type="md-swap" />
-              <Icon style="margin-left: 10px; margin-top: 0;" size=20 type="ios-stats" />
-              <Icon style="margin-left: 10px;" size=20 type="md-reorder" />
+              <Icon @click="pullFnc" type="md-swap" />
+              <Icon  @click="one" style="margin-left: -5px; margin-top: 10px;" size=20 type="ios-stats" />
+              <Icon @click="two" style="margin-left: -5px;" size=20 type="md-reorder" />
+             <Icon @click="three" style="margin-left: -5px;" size=20 type="md-grid" />
           </div>
         </h3>
-        <div v-if="tab1" style="width: 100%; padding:10px; border-collapse: collapse; height: 500px;">
-          <Card shadow>
-            <ag-grid-vue
-              style="width: 100%; height:100%;"
-              class="ag-theme-balham"
-              :columnDefs="detailcolumns1"
-              :rowData="detaildata1"
-              :gridAutoHeight="true"
-              :enableSorting="true"
-              :enableFilter="true"
-              :floatingFilter="true"
-              :defaultColDef='{editable: true}'
-              :singleClickEdit="true"
-              :suppressSizeToFit="true"
-              :suppressResize="true"
-              :enableColResize="true"
-              rowSelection="multiple">
-            </ag-grid-vue>
-            <Divider />
-            <ag-grid-vue
-              style="width: 100%; height:100%;"
-              class="ag-theme-balham"
-              :columnDefs="detailcolumns2"
-              :rowData="detaildata2"
-              :gridAutoHeight="true"
-              :enableSorting="true"
-              :floatingFilter="true"
-              :enableFilter="true"
-              :defaultColDef='{editable: true}'
-              :singleClickEdit="true"
-              :suppressSizeToFit="true"
-              :suppressResize="true"
-              :enableColResize="true"
-              rowSelection="multiple">
-            </ag-grid-vue>
-            <Divider />
-            <ag-grid-vue
-              style="width: 100%; height:100%;"
-              class="ag-theme-balham"
-              :columnDefs="detailcolumns3"
-              :rowData="detaildata3"
-              :gridAutoHeight="true"
-              :enableSorting="true"
-              :floatingFilter="true"
-              :enableFilter="true"
-              :defaultColDef='{editable: true}'
-              :singleClickEdit="true"
-              :suppressSizeToFit="true"
-              :suppressResize="true"
-              :enableColResize="true"
-              rowSelection="multiple">
-            </ag-grid-vue>
-          </Card>
-        </div>
-        <div v-if="tab2" style="width: 500px;height: 500px; display: none;">
-        </div>
       </div>
     </split-pane>
   </div>
