@@ -68,10 +68,10 @@ export default {
           MOT: 'Air(NON-HK/MO)',
           FulfillmentRoute: 'Indirect',
           DistributionChannel: '41',
-          ExpectedStartDate: '17.05.2018',
-          ValidUntilDate:'16.06.2018',
-          ExpectedEndDate: '16.06.2018',
-          CreateDate: '17.05.2018',
+          ExpectedStartDate: '2018/05/17',
+          ValidUntilDate:'2018/06/16',
+          ExpectedEndDate: '2018/06/16',
+          CreateDate: '2018/05/17',
           Status: 'Draft'
         },
         {
@@ -86,10 +86,10 @@ export default {
           MOT: 'Air(NON-HK/MO)',
           FulfillmentRoute: 'Indirect',
           DistributionChannel: '11',
-          ExpectedStartDate: '29.05.2018',
-          ValidUntilDate:'27.08.2018',
-          ExpectedEndDate: '27.08.2018',
-          CreateDate: '29.05.2018',
+          ExpectedStartDate: '2018/05/29',
+          ValidUntilDate:'2018/08/27',
+          ExpectedEndDate: '2018/08/27',
+          CreateDate: '2018/05/29',
           Status: 'Approved'
         },
         {
@@ -104,10 +104,10 @@ export default {
           MOT: 'Air(NON-HK/MO)',
           FulfillmentRoute: 'Indirect',
           DistributionChannel: '41',
-          ExpectedStartDate: '17.05.2018',
-          ValidUntilDate:'16.06.2018',
-          ExpectedEndDate: '16.06.2018',
-          CreateDate: '17.05.2018',
+          ExpectedStartDate: '2018/05/17',
+          ValidUntilDate:'2018/06/16',
+          ExpectedEndDate: '2018/06/16',
+          CreateDate: '2018/05/17',
           Status: 'Draft'
         },
         {
@@ -122,10 +122,10 @@ export default {
           MOT: 'Air(NON-HK/MO)',
           FulfillmentRoute: 'Indirect',
           DistributionChannel: '11',
-          ExpectedStartDate: '29.05.2018',
-          ValidUntilDate:'27.08.2018',
-          ExpectedEndDate: '27.08.2018',
-          CreateDate: '29.05.2018',
+          ExpectedStartDate: '2018/05/29',
+          ValidUntilDate:'2018/08/27',
+          ExpectedEndDate: '2018/08/27',
+          CreateDate: '2018/05/29',
           Status: 'Approved'
         },
         {
@@ -140,10 +140,10 @@ export default {
           MOT: 'Air(NON-HK/MO)',
           FulfillmentRoute: 'Indirect',
           DistributionChannel: '41',
-          ExpectedStartDate: '17.05.2018',
-          ValidUntilDate:'16.06.2018',
-          ExpectedEndDate: '16.06.2018',
-          CreateDate: '17.05.2018',
+          ExpectedStartDate: '2018/05/17',
+          ValidUntilDate:'2018/06/16',
+          ExpectedEndDate: '2018/06/16',
+          CreateDate: '2018/05/17',
           Status: 'Draft'
         },
         {
@@ -158,10 +158,10 @@ export default {
           MOT: 'Air(NON-HK/MO)',
           FulfillmentRoute: 'Indirect',
           DistributionChannel: '11',
-          ExpectedStartDate: '29.05.2018',
-          ValidUntilDate:'27.08.2018',
-          ExpectedEndDate: '27.08.2018',
-          CreateDate: '29.05.2018',
+          ExpectedStartDate: '2018/05/29',
+          ValidUntilDate:'2018/08/27',
+          ExpectedEndDate: '2018/08/27',
+          CreateDate: '2018/05/29',
           Status: 'Approved'
         },
         {
@@ -176,10 +176,10 @@ export default {
           MOT: 'Air(NON-HK/MO)',
           FulfillmentRoute: 'Indirect',
           DistributionChannel: '41',
-          ExpectedStartDate: '17.05.2018',
-          ValidUntilDate:'16.06.2018',
-          ExpectedEndDate: '16.06.2018',
-          CreateDate: '17.05.2018',
+          ExpectedStartDate: '2018/05/17',
+          ValidUntilDate:'2018/06/16',
+          ExpectedEndDate: '2018/06/16',
+          CreateDate: '2018/05/17',
           Status: 'Draft'
         },
         {
@@ -194,10 +194,10 @@ export default {
           MOT: 'Air(NON-HK/MO)',
           FulfillmentRoute: 'Indirect',
           DistributionChannel: '41',
-          ExpectedStartDate: '17.05.2018',
-          ValidUntilDate:'16.06.2018',
-          ExpectedEndDate: '16.06.2018',
-          CreateDate: '17.05.2018',
+          ExpectedStartDate: '2018/05/17',
+          ValidUntilDate:'2018/06/16',
+          ExpectedEndDate: '2018/06/16',
+          CreateDate: '2018/05/17',
           Status: 'Draft'
         },
         {
@@ -212,10 +212,10 @@ export default {
           MOT: 'Air(NON-HK/MO)',
           FulfillmentRoute: 'Indirect',
           DistributionChannel: '11',
-          ExpectedStartDate: '29.05.2018',
-          ValidUntilDate:'27.08.2018',
-          ExpectedEndDate: '27.08.2018',
-          CreateDate: '29.05.2018',
+          ExpectedStartDate: '2018/05/29',
+          ValidUntilDate:'2018/08/27',
+          ExpectedEndDate: '2018/08/27',
+          CreateDate: '2018/05/29',
           Status: 'Approved'
         },
         {
@@ -230,10 +230,10 @@ export default {
           MOT: 'Air(NON-HK/MO)',
           FulfillmentRoute: 'Indirect',
           DistributionChannel: '41',
-          ExpectedStartDate: '17.05.2018',
-          ValidUntilDate:'16.06.2018',
-          ExpectedEndDate: '16.06.2018',
-          CreateDate: '17.05.2018',
+          ExpectedStartDate: '2018/05/17',
+          ValidUntilDate:'2018/06/16',
+          ExpectedEndDate: '2018/06/16',
+          CreateDate: '2018/05/17',
           Status: 'Draft'
         },
         {
@@ -248,10 +248,10 @@ export default {
           MOT: 'Air(NON-HK/MO)',
           FulfillmentRoute: 'Indirect',
           DistributionChannel: '11',
-          ExpectedStartDate: '29.05.2018',
-          ValidUntilDate:'27.08.2018',
-          ExpectedEndDate: '27.08.2018',
-          CreateDate: '29.05.2018',
+          ExpectedStartDate: '2018/05/29',
+          ValidUntilDate:'2018/08/27',
+          ExpectedEndDate: '2018/08/27',
+          CreateDate: '2018/05/29',
           Status: 'Approved'
         },
         {
@@ -266,10 +266,10 @@ export default {
           MOT: 'Air(NON-HK/MO)',
           FulfillmentRoute: 'Indirect',
           DistributionChannel: '41',
-          ExpectedStartDate: '17.05.2018',
-          ValidUntilDate:'16.06.2018',
-          ExpectedEndDate: '16.06.2018',
-          CreateDate: '17.05.2018',
+          ExpectedStartDate: '2018/05/17',
+          ValidUntilDate:'2018/06/16',
+          ExpectedEndDate: '2018/06/16',
+          CreateDate: '2018/05/17',
           Status: 'Draft'
         },
         {
@@ -284,10 +284,10 @@ export default {
           MOT: 'Air(NON-HK/MO)',
           FulfillmentRoute: 'Indirect',
           DistributionChannel: '11',
-          ExpectedStartDate: '29.05.2018',
-          ValidUntilDate:'27.08.2018',
-          ExpectedEndDate: '27.08.2018',
-          CreateDate: '29.05.2018',
+          ExpectedStartDate: '2018/05/29',
+          ValidUntilDate:'2018/08/27',
+          ExpectedEndDate: '2018/08/27',
+          CreateDate: '2018/05/29',
           Status: 'Approved'
         },
         {
@@ -302,10 +302,10 @@ export default {
           MOT: 'Air(NON-HK/MO)',
           FulfillmentRoute: 'Indirect',
           DistributionChannel: '41',
-          ExpectedStartDate: '17.05.2018',
-          ValidUntilDate:'16.06.2018',
-          ExpectedEndDate: '16.06.2018',
-          CreateDate: '17.05.2018',
+          ExpectedStartDate: '2018/05/17',
+          ValidUntilDate:'2018/06/16',
+          ExpectedEndDate: '2018/06/16',
+          CreateDate: '2018/05/17',
           Status: 'Draft'
         },
         {
@@ -320,10 +320,10 @@ export default {
           MOT: 'Air(NON-HK/MO)',
           FulfillmentRoute: 'Indirect',
           DistributionChannel: '11',
-          ExpectedStartDate: '29.05.2018',
-          ValidUntilDate:'27.08.2018',
-          ExpectedEndDate: '27.08.2018',
-          CreateDate: '29.05.2018',
+          ExpectedStartDate: '2018/05/29',
+          ValidUntilDate:'2018/08/27',
+          ExpectedEndDate: '2018/08/27',
+          CreateDate: '2018/05/29',
           Status: 'Approved'
         },
         {
@@ -338,10 +338,10 @@ export default {
           MOT: 'Air(NON-HK/MO)',
           FulfillmentRoute: 'Indirect',
           DistributionChannel: '41',
-          ExpectedStartDate: '17.05.2018',
-          ValidUntilDate:'16.06.2018',
-          ExpectedEndDate: '16.06.2018',
-          CreateDate: '17.05.2018',
+          ExpectedStartDate: '2018/05/17',
+          ValidUntilDate:'2018/06/16',
+          ExpectedEndDate: '2018/06/16',
+          CreateDate: '2018/05/17',
           Status: 'Draft'
         },
         {
@@ -356,10 +356,10 @@ export default {
           MOT: 'Air(NON-HK/MO)',
           FulfillmentRoute: 'Indirect',
           DistributionChannel: '11',
-          ExpectedStartDate: '29.05.2018',
-          ValidUntilDate:'27.08.2018',
-          ExpectedEndDate: '27.08.2018',
-          CreateDate: '29.05.2018',
+          ExpectedStartDate: '2018/05/29',
+          ValidUntilDate:'2018/08/27',
+          ExpectedEndDate: '2018/08/27',
+          CreateDate: '2018/05/29',
           Status: 'Approved'
         },
         {
@@ -374,10 +374,10 @@ export default {
           MOT: 'Air(NON-HK/MO)',
           FulfillmentRoute: 'Indirect',
           DistributionChannel: '41',
-          ExpectedStartDate: '17.05.2018',
-          ValidUntilDate:'16.06.2018',
-          ExpectedEndDate: '16.06.2018',
-          CreateDate: '17.05.2018',
+          ExpectedStartDate: '2018/05/17',
+          ValidUntilDate:'2018/06/16',
+          ExpectedEndDate: '2018/06/16',
+          CreateDate: '2018/05/17',
           Status: 'Draft'
         },
         {
@@ -392,10 +392,10 @@ export default {
           MOT: 'Air(NON-HK/MO)',
           FulfillmentRoute: 'Indirect',
           DistributionChannel: '11',
-          ExpectedStartDate: '29.05.2018',
-          ValidUntilDate:'27.08.2018',
-          ExpectedEndDate: '27.08.2018',
-          CreateDate: '29.05.2018',
+          ExpectedStartDate: '2018/05/29',
+          ValidUntilDate:'2018/08/27',
+          ExpectedEndDate: '2018/08/27',
+          CreateDate: '2018/05/29',
           Status: 'Approved'
         },
         {
@@ -410,10 +410,10 @@ export default {
           MOT: 'Air(NON-HK/MO)',
           FulfillmentRoute: 'Indirect',
           DistributionChannel: '41',
-          ExpectedStartDate: '17.05.2018',
-          ValidUntilDate:'16.06.2018',
-          ExpectedEndDate: '16.06.2018',
-          CreateDate: '17.05.2018',
+          ExpectedStartDate: '2018/05/17',
+          ValidUntilDate:'2018/06/16',
+          ExpectedEndDate: '2018/06/16',
+          CreateDate: '2018/05/17',
           Status: 'Draft'
         },
         {
@@ -428,10 +428,10 @@ export default {
           MOT: 'Air(NON-HK/MO)',
           FulfillmentRoute: 'Indirect',
           DistributionChannel: '11',
-          ExpectedStartDate: '29.05.2018',
-          ValidUntilDate:'27.08.2018',
-          ExpectedEndDate: '27.08.2018',
-          CreateDate: '29.05.2018',
+          ExpectedStartDate: '2018/05/29',
+          ValidUntilDate:'2018/08/27',
+          ExpectedEndDate: '2018/08/27',
+          CreateDate: '2018/05/29',
           Status: 'Approved'
         },
         {
@@ -446,10 +446,10 @@ export default {
           MOT: 'Air(NON-HK/MO)',
           FulfillmentRoute: 'Indirect',
           DistributionChannel: '41',
-          ExpectedStartDate: '17.05.2018',
-          ValidUntilDate:'16.06.2018',
-          ExpectedEndDate: '16.06.2018',
-          CreateDate: '17.05.2018',
+          ExpectedStartDate: '2018/05/17',
+          ValidUntilDate:'2018/06/16',
+          ExpectedEndDate: '2018/06/16',
+          CreateDate: '2018/05/17',
           Status: 'Draft'
         },
         {
@@ -464,10 +464,10 @@ export default {
           MOT: 'Air(NON-HK/MO)',
           FulfillmentRoute: 'Indirect',
           DistributionChannel: '11',
-          ExpectedStartDate: '29.05.2018',
-          ValidUntilDate:'27.08.2018',
-          ExpectedEndDate: '27.08.2018',
-          CreateDate: '29.05.2018',
+          ExpectedStartDate: '2018/05/29',
+          ValidUntilDate:'2018/08/27',
+          ExpectedEndDate: '2018/08/27',
+          CreateDate: '2018/05/29',
           Status: 'Approved'
         }
       ]

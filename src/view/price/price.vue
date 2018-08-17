@@ -15,10 +15,6 @@
       <a href="#" class="item"><Icon class="icon" size=16 type="md-notifications" />Import Template</a>
       <Divider type="vertical" />
       <a href="#" class="item"><Icon class="icon" size=16 type="md-exit" />Upload Data</a>
-     
-
-      <!-- <Divider type="vertical" /> -->
-      <!-- <a href="#" class="item"><Icon class="icon" size=16 type="md-stats" />Summary Report</a> -->
     </div>
     <h3 ref=""><a href="javascript:;" style="display:block;color: #333;" @click="toggleList"><Icon type="md-pricetags" /> Quotation Infomation <span style="float: right; font-weight: normal; font-size: 12px;">More</span></a></h3>
     <ul class="item-box" v-if="isStatus">
@@ -50,7 +46,8 @@
     </ul>
     <h3 class="marginBottom" style="margin-bottom: 10px;"><a href="javascript:;" style="display:block;color: #333;" @click="toggleList1"><Icon type="ios-podium" /> CQ</a></h3>
     <div class="table-CQ">
-      <ag-grid-vue
+      <Table border :columns="formcolumns" :data="formdata"></Table>
+      <!-- <ag-grid-vue
         style="width: 100%; height:100%;"
         class="ag-theme-balham"
         :columnDefs="formcolumns"
@@ -63,7 +60,7 @@
         :suppressResize="true"
         :enableColResize="true"
         rowSelection="multiple">
-      </ag-grid-vue>
+      </ag-grid-vue> -->
     </div>
   </div>
   <div class="split-pane-page-wrapper">
@@ -207,29 +204,24 @@ export default {
       ],
       formcolumns: [
         {
-          headerName: ' ',
-          field: 'hedgerife',
-          editable: true
+          title: ' ',
+          key: 'hedgerife'
         },
         {
-          headerName: 'CQ',
-          field: 'CQ',
-          editable: true
+          title: 'CQ',
+          key: 'CQ'
         },
         {
-          headerName: 'CQ+1',
-          field: 'CQ1',
-          editable: true
+          title: 'CQ+1',
+          key: 'CQ1'
         },
         {
-          headerName: 'CQ+2',
-          field: 'CQ2',
-          editable: true
+          title: 'CQ+2',
+          key: 'CQ2'
         },
         {
-          headerName: 'CQ+3',
-          field: 'CQ3',
-          editable: true
+          title: 'CQ+3',
+          key: 'CQ3'
         }
       ],
       formdata: [
