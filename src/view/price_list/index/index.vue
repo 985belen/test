@@ -152,7 +152,7 @@
         </Col>
         <Col span=12>
           <Form-item label="Comments">
-            <Input v-model="FormItem.Comments" type="textarea" :rows="6" placeholder="Enter something..."></Input>
+            <Input v-model="FormItem.Comments" type="textarea" :rows="4" placeholder="Enter something..."></Input>
           </Form-item>
         </Col>
       </Row>
@@ -232,97 +232,97 @@ export default {
           cellStyle: {'text-align': 'left'},
           cellRenderer: (params) => { return '<a href="#/excel/excel_PEsale">' + params.value + '</a>'},
           field: 'peNum',
-          
+          width: 120
         },
         {
           headerName: 'DMU Number',
           cellStyle: {'text-align': 'left'},
           field: 'dmuNum',
-          
+          width: 120
         },
         {
           headerName: 'DMU Name',
           cellStyle: {'text-align': 'left'},
           field: 'dmuName',
-          
+          width: 120
         },
         {
           headerName: 'Description',
           cellStyle: {'text-align': 'left'},
           field: 'desc',
-          
+          width: 120
         },
         {
           headerName: 'Country',
           cellStyle: {'text-align': 'left'},
           field: 'country',
-          
+          width: 120
         },
         {
           headerName: 'Region',
           cellStyle: {'text-align': 'left'},
           field: 'region',
-          
+          width: 120
         },
         {
           headerName: 'Channel',
           cellStyle: {'text-align': 'left'},
           field: 'channel',
-          
+          width: 120
         },
         {
           headerName: 'Status',
           cellStyle: {'text-align': 'left'},
           field: 'status',
-          
+          width: 120
         },
         {
           headerName: 'Created By',
           cellStyle: {'text-align': 'left'},
           field: 'createdBy',
-          
+          width: 120
         },
         {
           headerName: 'Created Time',
           cellStyle: {'text-align': 'left'},
           field: 'createdTime',
-          
+          width: 120
         },
         {
           headerName: 'Modified By',
           cellStyle: {'text-align': 'left'},
           field: 'modifiedBy',
-          
+          width: 120
         },
         {
           headerName: 'Modyfied Time',
           cellStyle: {'text-align': 'left'},
           field: 'modyfiedTime',
-          
+          width: 130
         },
         {
           headerName: 'Pricer',
           cellStyle: {'text-align': 'left'},
           field: 'pricer',
-          
+          width: 120
         },
         {
           headerName: 'Gr Rev',
           cellStyle: {'text-align': 'left'},
           field: 'grRev',
-          
+          width: 120
         },
         {
           headerName: 'Margin %',
           cellStyle: {'text-align': 'left'},
           field: 'margi',
-          
+          width: 120
         },
         {
           headerName: 'Currency',
           cellStyle: {'text-align': 'left'},
           field: 'currency',
-          
+          width: 120
         }
       ],
       rowData: [
@@ -336,9 +336,9 @@ export default {
           channel: 'Direct',
           status: 'Draft',
           createdBy: 'arijn',
-          createdTime: '2018/08/06 10:00:00',
+          createdTime: '2018/08/06',
           modifiedBy: 'jofeytout',
-          modyfiedTime: '2018/08/07 10:00:00',
+          modyfiedTime: '2018/08/07',
           pricer: 'jmose',
           grRev: '347100',
           margi: '18.7',
@@ -354,9 +354,9 @@ export default {
           channel: 'Indirect',
           status: 'Submitted',
           createdBy: 'skeskin',
-          createdTime: '2018-08-06 0:00',
+          createdTime: '2018/08/06',
           modifiedBy: 'skeskin',
-          modyfiedTime: '2018-08-07 0:00',
+          modyfiedTime: '2018-08-07',
           pricer: 'yanm2',
           grRev: '2,102,080',
           margi: '4.2',
@@ -372,9 +372,9 @@ export default {
           channel: 'Direct',
           status: 'Approved',
           createdBy: 'jbruesse',
-          createdTime: '2018/08/06 0:00:00',
+          createdTime: '2018/08/06',
           modifiedBy: 'jofeytout',
-          modyfiedTime: '2018/08/07 0:00:00',
+          modyfiedTime: '2018/08/07',
           pricer: 'zhanghq3',
           grRev: '35,283,244',
           margi: '-9.6',
@@ -390,9 +390,9 @@ export default {
           channel: 'Indirect',
           status: 'Rejected',
           createdBy: 'arijn',
-          createdTime: '2018/08/06 0:00:00',
+          createdTime: '2018/08/06',
           modifiedBy: 'jofeytout',
-          modyfiedTime: '2018/08/07 0:00:00',
+          modyfiedTime: '2018/08/07',
           pricer: 'jbruesse',
           grRev: '0',
           margi: '-21.3',
@@ -408,9 +408,9 @@ export default {
           channel: 'Direct',
           status: 'Draft',
           createdBy: 'arijn',
-          createdTime: '2018/08/06 0:00:00',
+          createdTime: '2018/08/06',
           modifiedBy: 'jofeytout',
-          modyfiedTime: '2018/08/07 0:00:00',
+          modyfiedTime: '2018/08/07',
           pricer: 'jmose',
           grRev: '17,468,07',
           margi: '-35.4',
@@ -426,9 +426,9 @@ export default {
           channel: 'Direct',
           status: 'Draft',
           createdBy: 'arijn',
-          createdTime: '2018/08/06 10:00:00',
+          createdTime: '2018/08/06',
           modifiedBy: 'jofeytout',
-          modyfiedTime: '2018/08/07 10:00:00',
+          modyfiedTime: '2018/08/07',
           pricer: 'jmose',
           grRev: '347100',
           margi: '18.7',
@@ -444,9 +444,9 @@ export default {
           channel: 'Indirect',
           status: 'Submitted',
           createdBy: 'skeskin',
-          createdTime: '2018-08-06 0:00',
+          createdTime: '2018/08/06',
           modifiedBy: 'skeskin',
-          modyfiedTime: '2018-08-07 0:00',
+          modyfiedTime: '2018-08-07',
           pricer: 'yanm2',
           grRev: '2,102,080',
           margi: '4.2',
@@ -462,9 +462,9 @@ export default {
           channel: 'Direct',
           status: 'Approved',
           createdBy: 'jbruesse',
-          createdTime: '2018/08/06 0:00:00',
+          createdTime: '2018/08/06',
           modifiedBy: 'jofeytout',
-          modyfiedTime: '2018/08/07 0:00:00',
+          modyfiedTime: '2018/08/07',
           pricer: 'zhanghq3',
           grRev: '35,283,244',
           margi: '-9.6',
@@ -480,9 +480,9 @@ export default {
           channel: 'Indirect',
           status: 'Rejected',
           createdBy: 'arijn',
-          createdTime: '2018/08/06 0:00:00',
+          createdTime: '2018/08/06',
           modifiedBy: 'jofeytout',
-          modyfiedTime: '2018/08/07 0:00:00',
+          modyfiedTime: '2018/08/07',
           pricer: 'jbruesse',
           grRev: '0',
           margi: '-21.3',
@@ -498,9 +498,9 @@ export default {
           channel: 'Direct',
           status: 'Draft',
           createdBy: 'arijn',
-          createdTime: '2018/08/06 0:00:00',
+          createdTime: '2018/08/06',
           modifiedBy: 'jofeytout',
-          modyfiedTime: '2018/08/07 0:00:00',
+          modyfiedTime: '2018/08/07',
           pricer: 'jmose',
           grRev: '17,468,07',
           margi: '-35.4',
@@ -516,9 +516,9 @@ export default {
           channel: 'Direct',
           status: 'Draft',
           createdBy: 'arijn',
-          createdTime: '2018/08/06 10:00:00',
+          createdTime: '2018/08/06',
           modifiedBy: 'jofeytout',
-          modyfiedTime: '2018/08/07 10:00:00',
+          modyfiedTime: '2018/08/07',
           pricer: 'jmose',
           grRev: '347100',
           margi: '18.7',
@@ -534,9 +534,9 @@ export default {
           channel: 'Indirect',
           status: 'Submitted',
           createdBy: 'skeskin',
-          createdTime: '2018-08-06 0:00',
+          createdTime: '2018/08/06',
           modifiedBy: 'skeskin',
-          modyfiedTime: '2018-08-07 0:00',
+          modyfiedTime: '2018-08-07',
           pricer: 'yanm2',
           grRev: '2,102,080',
           margi: '4.2',
@@ -552,9 +552,9 @@ export default {
           channel: 'Direct',
           status: 'Approved',
           createdBy: 'jbruesse',
-          createdTime: '2018/08/06 0:00:00',
+          createdTime: '2018/08/06',
           modifiedBy: 'jofeytout',
-          modyfiedTime: '2018/08/07 0:00:00',
+          modyfiedTime: '2018/08/07',
           pricer: 'zhanghq3',
           grRev: '35,283,244',
           margi: '-9.6',
@@ -570,9 +570,9 @@ export default {
           channel: 'Indirect',
           status: 'Rejected',
           createdBy: 'arijn',
-          createdTime: '2018/08/06 0:00:00',
+          createdTime: '2018/08/06',
           modifiedBy: 'jofeytout',
-          modyfiedTime: '2018/08/07 0:00:00',
+          modyfiedTime: '2018/08/07',
           pricer: 'jbruesse',
           grRev: '0',
           margi: '-21.3',
@@ -588,9 +588,9 @@ export default {
           channel: 'Direct',
           status: 'Draft',
           createdBy: 'arijn',
-          createdTime: '2018/08/06 0:00:00',
+          createdTime: '2018/08/06',
           modifiedBy: 'jofeytout',
-          modyfiedTime: '2018/08/07 0:00:00',
+          modyfiedTime: '2018/08/07',
           pricer: 'jmose',
           grRev: '17,468,07',
           margi: '-35.4',
@@ -638,6 +638,9 @@ export default {
   overflow:hidden;
   padding-bottom:10px;
   background: #fff
+}
+.ivu-form-item{
+  margin-bottom: 5px!important;
 }
 .tool-bar{
   width:100%;

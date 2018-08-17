@@ -237,89 +237,88 @@ export default {
         {
           headerName: 'Group',
           children: [
-            {headerName: 'Item NO', field: 'Item NO', cellStyle: {'text-align': 'left'}},
-            {headerName: 'Flag', field: 'Flag', cellStyle: {'text-align': 'left'}},
-            {headerName: 'Part Number', field: 'Part Number', cellStyle: {'text-align': 'left'}},
-            {headerName: 'Description', field: 'Description', cellStyle: {'text-align': 'left'}},
-            {headerName: 'Category', field: 'Category', cellStyle: {'text-align': 'left'}},
-            {headerName: 'Standard Price', field: 'Standard Price', cellStyle: {'text-align': 'left'}},
-            {headerName: 'List Price', field: 'List Price', cellStyle: {'text-align': 'left'}},
-            {headerName: 'Requested Price', field: 'Requested Price', editable: true, cellStyle: {'text-align': 'left', color: '#fff', backgroundColor: 'green'}},
-            {headerName: 'Entitled Price', field: 'Entitled Price', cellStyle: {'text-align': 'left'}},
-            {headerName: 'Total Quantity', field: 'Total Quantity', cellStyle: {'text-align': 'left'}},
-            {headerName: 'MOT', field: 'MOT', editable: true, cellStyle: {'text-align': 'left', color: '#fff', backgroundColor: 'green'}},
-            {headerName: 'BMC w/ freight cost adjustment', field: 'BMC w/ freight cost adjustment', cellStyle: {'text-align': 'left'}},
-            {headerName: 'Special Funding', field: 'Special Funding', editable: true, cellStyle: {'text-align': 'left', color: '#fff', backgroundColor: 'green'}}
+            {headerName: 'Item NO',  width: 120, field: 'Item NO', cellStyle: {'text-align': 'left'}},
+            {headerName: 'Flag',  width: 120, field: 'Flag', cellStyle: {'text-align': 'left'}},
+            {headerName: 'Part Number',  width: 120, field: 'Part Number', cellStyle: {'text-align': 'left'}},
+            {headerName: 'Description',  width: 120, field: 'Description', cellStyle: {'text-align': 'left'}},
+            {headerName: 'Category',  width: 120, field: 'Category', cellStyle: {'text-align': 'left'}},
+            {headerName: 'Standard Price',  width: 120, field: 'Standard Price', cellStyle: {'text-align': 'left'}},
+            {headerName: 'List Price',  width: 120, field: 'List Price', cellStyle: {'text-align': 'left'}},
+            {headerName: 'Requested Price',  width: 130, field: 'Requested Price', editable: true, cellStyle: {'text-align': 'left', color: '#fff', backgroundColor: 'green'}},
+            {headerName: 'Entitled Price',  width: 120, field: 'Entitled Price', cellStyle: {'text-align': 'left'}},
+            {headerName: 'Total Quantity',  width: 120, field: 'Total Quantity', cellStyle: {'text-align': 'left'}},
+            {headerName: 'MOT', field: 'MOT',  width: 120, editable: true, cellStyle: {'text-align': 'left', color: '#fff', backgroundColor: 'green'}},
+            {headerName: 'BMC w/ freight cost adjustment',  width: 220, field: 'BMC w/ freight cost adjustment', cellStyle: {'text-align': 'left'}},
+            {headerName: 'Special Funding',  width: 130, field: 'Special Funding', editable: true, cellStyle: {'text-align': 'left', color: '#fff', backgroundColor: 'green'}}
           ]
         },
         {headerName: 'Qty', cellStyle: {'text-align': 'left'},
           children: [
-            {headerName: 'CQ', editable: true, field: 'QtyCQ', cellStyle: {'text-align': 'left', color: '#fff', backgroundColor: 'green'}},
-            {headerName: 'CQ+1', editable: true,  field: 'QtyCQ+1', cellStyle: {'text-align': 'left', color: '#fff', backgroundColor: 'green'}},
-            {headerName: 'CQ+2', editable: true,  field: 'QtyCQ+2', cellStyle: {'text-align': 'left', color: '#fff', backgroundColor: 'green'}}
+            {headerName: 'CQ', width: 120, editable: true, field: 'QtyCQ', cellStyle: {'text-align': 'left', color: '#fff', backgroundColor: 'green'}},
+            {headerName: 'CQ+1', width: 120, editable: true,  field: 'QtyCQ+1', cellStyle: {'text-align': 'left', color: '#fff', backgroundColor: 'green'}},
+            {headerName: 'CQ+2', width: 120, editable: true,  field: 'QtyCQ+2', cellStyle: {'text-align': 'left', color: '#fff', backgroundColor: 'green'}}
           ]
         },
         {headerName: 'BMC',cellStyle: {'text-align': 'left'},
           children: [
-            {headerName: 'CQ', field: 'BMCCQ', cellStyle: {'text-align': 'left'}},
-            {headerName: 'CQ+1', field: 'BMCCQ+1', cellStyle: {'text-align': 'left'}},
-            {headerName: 'CQ+2', field: 'BMCCQ+2', cellStyle: {'text-align': 'left'}},
-            {headerName: 'CQ+3', field: 'BMCCQ+3', cellStyle: {'text-align': 'left'}}
+            {headerName: 'CQ', width: 120, field: 'BMCCQ', cellStyle: {'text-align': 'left'}},
+            {headerName: 'CQ+1', width: 120, field: 'BMCCQ+1', cellStyle: {'text-align': 'left'}},
+            {headerName: 'CQ+2', width: 120, field: 'BMCCQ+2', cellStyle: {'text-align': 'left'}},
+            {headerName: 'CQ+3', width: 120, field: 'BMCCQ+3', cellStyle: {'text-align': 'left'}}
           ]
         },
-        
         {headerName: 'Net BMC Cost Details',
           children: [
-            {headerName: 'CPU Funding', cellStyle: {'text-align': 'left'}, field: 'CPU Funding'},
-            {headerName: 'HDD/SSHD/SSD Funding', field: 'HDD/SSHD/SSD Funding', cellStyle: {'text-align': 'left'}},
-            {headerName: 'Out tape funding for other components', field: 'Out tape funding for other components', cellStyle: {'text-align': 'left'}},
-            {headerName: 'Region Funding', field: 'Region Funding', cellStyle: {'text-align': 'left'}},
-            {headerName: 'Customer Funding(TBD)', field: 'Customer Funding(TBD)', cellStyle: {'text-align': 'left'}}
+            {headerName: 'CPU Funding', width: 120, cellStyle: {'text-align': 'left'}, field: 'CPU Funding'},
+            {headerName: 'HDD/SSHD/SSD Funding', width: 180, field: 'HDD/SSHD/SSD Funding', cellStyle: {'text-align': 'left'}},
+            {headerName: 'Out tape funding for other components', width: 180, field: 'Out tape funding for other components', cellStyle: {'text-align': 'left'}},
+            {headerName: 'Region Funding', width: 130, field: 'Region Funding', cellStyle: {'text-align': 'left'}},
+            {headerName: 'Customer Funding(TBD)', width: 180, field: 'Customer Funding(TBD)', cellStyle: {'text-align': 'left'}}
           ]
         },
         {headerName: 'Net Gross BMC Cost Details',
           children: [
-            {headerName: 'Custom Duty', field: 'Custom Duty', cellStyle: {'text-align': 'left'}},
-            {headerName: 'Other Local Fee', field: 'Other Local Fee', cellStyle: {'text-align': 'left'}},
+            {headerName: 'Custom Duty', width: 120, field: 'Custom Duty', cellStyle: {'text-align': 'left'}},
+            {headerName: 'Other Local Fee', width: 150, field: 'Other Local Fee', cellStyle: {'text-align': 'left'}},
           ]
         },
         {headerName: 'Non-BMC Cost Details',
           children: [
-            {headerName: 'warranty cost', field: 'warranty cost', cellStyle: {'text-align': 'left'}},
-            {headerName: 'Non-BMC uplift', field: 'Non-BMC uplift', cellStyle: {'text-align': 'left'}},
-            {headerName: 'Other cost adder', field: 'Other cost adder', cellStyle: {'text-align': 'left'}}
+            {headerName: 'warranty cost', width: 130, field: 'warranty cost', cellStyle: {'text-align': 'left'}},
+            {headerName: 'Non-BMC uplift', width: 130, field: 'Non-BMC uplift', cellStyle: {'text-align': 'left'}},
+            {headerName: 'Other cost adder', width: 150, field: 'Other cost adder', cellStyle: {'text-align': 'left'}}
           ]
         },
         {headerName: 'Total Cost',cellStyle: {'text-align': 'left'},
           children: [
-            {headerName: 'CQ', field: 'TotalCQ', cellStyle: {'text-align': 'left'}},
-            {headerName: 'CQ+1', field: 'TotalCQ+1', cellStyle: {'text-align': 'left'}},
-            {headerName: 'CQ+2', field: 'TotalCQ+2', cellStyle: {'text-align': 'left'}},
-            {headerName: 'CQ+3', field: 'TotalCQ+3', cellStyle: {'text-align': 'left'}},
+            {headerName: 'CQ', width: 120, field: 'TotalCQ', cellStyle: {'text-align': 'left'}},
+            {headerName: 'CQ+1', width: 120, field: 'TotalCQ+1', cellStyle: {'text-align': 'left'}},
+            {headerName: 'CQ+2', width: 120, field: 'TotalCQ+2', cellStyle: {'text-align': 'left'}},
+            {headerName: 'CQ+3', width: 120, field: 'TotalCQ+3', cellStyle: {'text-align': 'left'}},
           ]
         },
         {headerName: 'BMC Margin',cellStyle: {'text-align': 'left'},
           children: [
-            {headerName: 'CQ', field: 'MarginCQ', cellStyle: {'text-align': 'left'}},
-            {headerName: 'CQ+1', field: 'MarginCQ+1', cellStyle: {'text-align': 'left'}},
-            {headerName: 'CQ+2', field: 'MarginCQ+2', cellStyle: {'text-align': 'left'}},
-            {headerName: 'CQ+3', field: 'MarginCQ+3', cellStyle: {'text-align': 'left'}},
+            {headerName: 'CQ', width: 120, field: 'MarginCQ', cellStyle: {'text-align': 'left'}},
+            {headerName: 'CQ+1', width: 120, field: 'MarginCQ+1', cellStyle: {'text-align': 'left'}},
+            {headerName: 'CQ+2', width: 120, field: 'MarginCQ+2', cellStyle: {'text-align': 'left'}},
+            {headerName: 'CQ+3', width: 120, field: 'MarginCQ+3', cellStyle: {'text-align': 'left'}},
           ]
         },
         {headerName: 'TMC Margin',cellStyle: {'text-align': 'left'},
           children: [
-            {headerName: 'CQ', field: 'TMCCQ', cellStyle: {'text-align': 'left'}},
-            {headerName: 'CQ+1', field: 'TMCCQ+1', cellStyle: {'text-align': 'left'}},
-            {headerName: 'CQ+2', field: 'TMCCQ+2', cellStyle: {'text-align': 'left'}},
-            {headerName: 'CQ+3', field: 'TMCCQ+3', cellStyle: {'text-align': 'left'}},
+            {headerName: 'CQ', width: 120, field: 'TMCCQ', cellStyle: {'text-align': 'left'}},
+            {headerName: 'CQ+1', width: 120, field: 'TMCCQ+1', cellStyle: {'text-align': 'left'}},
+            {headerName: 'CQ+2', width: 120, field: 'TMCCQ+2', cellStyle: {'text-align': 'left'}},
+            {headerName: 'CQ+3', width: 120, field: 'TMCCQ+3', cellStyle: {'text-align': 'left'}},
           ]
         },
         {headerName: 'Revenue',cellStyle: {'text-align': 'left'},
           children: [
-            {headerName: 'CQ', field: 'RevenueCQ', cellStyle: {'text-align': 'left'}},
-            {headerName: 'CQ+1', field: 'RevenueCQ+1', cellStyle: {'text-align': 'left'}},
-            {headerName: 'CQ+2', field: 'RevenueCQ+2', cellStyle: {'text-align': 'left'}},
-            {headerName: 'CQ+3', field: 'RevenueCQ+2', cellStyle: {'text-align': 'left'}},
+            {headerName: 'CQ', width: 120, field: 'RevenueCQ', cellStyle: {'text-align': 'left'}},
+            {headerName: 'CQ+1', width: 120, field: 'RevenueCQ+1', cellStyle: {'text-align': 'left'}},
+            {headerName: 'CQ+2', width: 120, field: 'RevenueCQ+2', cellStyle: {'text-align': 'left'}},
+            {headerName: 'CQ+3', width: 120, field: 'RevenueCQ+2', cellStyle: {'text-align': 'left'}},
           ]
         }
       ],

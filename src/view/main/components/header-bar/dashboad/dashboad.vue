@@ -14,33 +14,33 @@
             <ul class="submenu">
               <li><router-link style="color: #515a6e" to="/price/CTO_Config">Price Simulation</router-link></li>
               <li ><router-link style="color: #515a6e" to="/price_lists/price_list">Price Evaluation</router-link></li>
-              <li><router-link style="color: #515a6e" to="/">Price recommendation</router-link></li>
+              <li><router-link style="color: #515a6e" to="/">Price Recommendation</router-link></li>
             </ul>
           </Col>
           <Col span=6>
             <DropdownItem style="font-size:20px!important;">Profit Margin  Analysis</DropdownItem>
             <Icon style=" margin-left: 30px;"  size="64" type="ios-contacts" />
             <ul class="submenu">
-              <!-- <li><router-link to="/iframe/iframe_PricingProfitMargin" style="color: #515a6e">Profit Margin Analysis</router-link></li>
-              <li><router-link to="/iframe/iframe_clv" style="color: #515a6e">Product report</router-link></li> -->
-              <li><router-link to="/iframe/iframe_HistoricalSummary" style="color: #515a6e">Historical summary report</router-link></li>
-              <li><router-link to="/iframe/iframe_clv" style="color: #515a6e">CLV report</router-link></li>
-              <li><router-link to="/iframe/iframe_DealTracking" style="color: #515a6e">Deal tracking report</router-link></li>
+              <li><router-link to="/iframe/iframe_ProductSeries" style="color: #515a6e">Product Series Report</router-link></li>
+              <li><router-link to="/iframe/iframe_ProductSummary" style="color: #515a6e">Product Summary Report</router-link></li>
+              <li><router-link to="/iframe/iframe_HistoricalSummary" style="color: #515a6e">Historical Summary Report</router-link></li>
+              <li><router-link to="/iframe/iframe_clv" style="color: #515a6e">CLV Report</router-link></li>
+              <li><router-link to="/iframe/iframe_DealTracking" style="color: #515a6e">Deal Tracking Report</router-link></li>
             </ul>
           </Col>
           <Col span=6>
             <DropdownItem style="font-size: 20px!important;">Financial Dashboard</DropdownItem>
             <Icon style=" margin-left: 30px;"  size="64" type="md-grid" />
             <ul class="submenu">
-              <li>Financial dashboard</li>
+              <li>Financial Dashboard</li>
             </ul>
             </Col>
           <Col span=6>
             <DropdownItem style="font-size: 20px!important;">Price Engine</DropdownItem>
             <Icon style=" margin-left: 30px;"  size="64" type="md-settings" />
             <ul class="submenu">
-              <li>Price auto calculation</li>
-              <li>Price auto publish</li>
+              <li>Price Auto Calculation</li>
+              <li>Price Auto Publish</li>
             </ul>
           </Col>
         </Row>
