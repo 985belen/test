@@ -158,7 +158,7 @@ export default {
     return {
       windowHeight:null,
       dom: null,
-      offset: 0.98,
+      offset: .97,
       pullFlag: true,
       tab1: false,
       tab2: false,
@@ -1699,7 +1699,7 @@ export default {
       var topHeight = this.$refs.topMain.offsetHeight
       // console.log('topHeight:' + topHeight)
       var t1 = document.getElementsByClassName('split-pane-page-wrapper')[0]
-      var ag = document.getElementsByClassName('ag-theme-balham')[1]
+      var ag = document.getElementsByClassName('ag-theme-balham')[0]
       var acontainer = document.getElementsByClassName('agcontainer')[0]
       ag.style.height = screenHeight - topHeight - 64 - 10 - 10+ 'px' // 64是头部的高度，10是padding
       t1.style.height = screenHeight - topHeight - 64 - 10 - 10 + 'px'
@@ -1729,7 +1729,7 @@ export default {
         this.tab2 = false
       } else {
         this.pullFlag = true
-        this.offset = 0.98
+        this.offset = 0.97
         this.tab1 = false
         this.tab2 = false
       }
