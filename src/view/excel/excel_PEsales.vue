@@ -75,6 +75,7 @@
       </Row>
     </div>
   </div>
+  <h3 class="marginBottom"><a href="javascript:;" style="display:block;color: #333;" ><Icon type="ios-podium" />Product Information</a></h3>
   <div class="split-pane-page-wrapper">
     <split-pane v-model="offset" @on-moving="handleMoving">
       <div slot="left" class="pane left-pane">
