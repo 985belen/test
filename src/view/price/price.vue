@@ -93,18 +93,20 @@
             <Icon  @click="pullFnc" type="md-swap" />
             <Icon @click="one" style="margin-left: 10px; margin-top:0; line-height:30px" size=20 type="ios-stats" />
             <Icon @click="two" style="margin-left: 10px;" size=20 type="md-reorder" />
+            <Icon @click="three" style="margin-left: 10px;" size=20 type="md-star" />
           </div>
           <div v-else>
             <Icon  @click="pullFnc" type="md-swap" />
-            <Icon @click="pullFnc" style="margin-left: -5px; margin-top: 0;" size=20 type="ios-stats" />
-            <Icon @click="pullFnc"  style="margin-left: -5px;" size=20 type="md-reorder" />
+            <Icon @click="pullFnc" style="margin-left: 10px; margin-top: 0;" size=20 type="ios-stats" />
+            <Icon @click="pullFnc" style="margin-left: 10px;" size=20 type="md-reorder" />
+            <Icon @click="pullFnc" style="margin-left: 10px;" size=20 type="md-star" />
           </div>
         </h3>
         <div v-if="tab1" style="width: 100%; padding:10px; border-collapse: collapse; min-height: 300px;">
           <Card shadow>
             <chart-pie style="height: 300px;" :value="pieData" text="Customer Revenue"></chart-pie>
           </Card>
-          <h3><a href="javascript:;" style="display:block;color: #333;"><Icon type="md-pricetags" />Summary </a> </h3>
+          <h3 class="marginBottom"><a href="javascript:;" style="display:block;color: #333;"><Icon type="md-pricetags" />Summary </a> </h3>
           <ag-grid-vue
             style="width: 100%; height:100%;"
             class="ag-theme-balham"
@@ -114,7 +116,6 @@
             :floatingFilter="true"
             :enableSorting="true"
             :enableFilter="true"
-            :defaultColDef='{editable: true}'
             :singleClickEdit="true"
             :suppressSizeToFit="true"
             :suppressResize="true"
@@ -123,20 +124,34 @@
           </ag-grid-vue>
         </div>
         <div v-if="tab2" style="width: 100%;padding:10px; border-collapse: collapse;min-height: 300px; ">
-          <Card shadow>
-            <chart-pie style="height: 300px;" :value="pieData" text="Customer Revenue"></chart-pie>
-          </Card>
-          <h3><a href="javascript:;" style="display:block;color: #333;" ><Icon type="md-pricetags" />Summary by product series level </a> </h3>
+          <h3 class="marginBottom"><a href="javascript:;" style="display:block;color: #333;" ><Icon type="md-pricetags" />Summary by product series level </a> </h3>
           <ag-grid-vue
             style="width: 100%; height:100%;"
             class="ag-theme-balham"
-            :columnDefs="columnDefs1"
-            :rowData="rowData1"
+            :columnDefs="columnDefs2"
+            :rowData="rowData3"
             :gridAutoHeight="true"
             :floatingFilter="true"
             :enableSorting="true"
             :enableFilter="true"
-            :defaultColDef='{editable: true}'
+            :singleClickEdit="true"
+            :suppressSizeToFit="true"
+            :suppressResize="true"
+            :enableColResize="true"
+            rowSelection="multiple">
+          </ag-grid-vue>
+        </div>
+        <div v-if="tab3" style="width: 100%;padding:10px; border-collapse: collapse;min-height: 300px; ">
+          <h3 class="marginBottom"><a href="javascript:;" style="display:block;color: #333;" ><Icon type="md-pricetags" />Summary by product Group</a> </h3>
+          <ag-grid-vue
+            style="width: 100%; height:100%;"
+            class="ag-theme-balham"
+            :columnDefs="columnDefs3"
+            :rowData="rowData3"
+            :gridAutoHeight="true"
+            :floatingFilter="true"
+            :enableSorting="true"
+            :enableFilter="true"
             :singleClickEdit="true"
             :suppressSizeToFit="true"
             :suppressResize="true"
@@ -158,10 +173,11 @@ export default {
     return {
       windowHeight:null,
       dom: null,
-      offset: .97,
+      offset: 0.97,
       pullFlag: true,
       tab1: false,
       tab2: false,
+      tab3: false,
       offsetVertical: '250px',
       isStatus: true,
       form: {
@@ -1620,50 +1636,374 @@ export default {
         {
           headerName: '',
           field: 'first',
-          editable: false
+          width: 120
         },
         {
           headerName: 'CQ',
           field: 'CQ',
-          editable: false
+          width: 120
         },
         {
           headerName: 'CQ+1',
           field: 'CQ+1',
-          editable: false
+          width: 120
         },
         {
           headerName: 'CQ+2',
           field: 'CQ+2',
-          editable: false
+          width: 120
         },
         {
           headerName: 'CQ+3',
           field: 'CQ+3',
-          editable: false
+          width: 120
         },
         {
           headerName: 'Total',
           field: 'Total',
-          editable: false
+          width: 120
         }
       ],
       rowData1: [
         {
-          first: 'Part Number',
-          CQ: '1000',
-          'CQ+1': '100',
-          'CQ+2': '1000',
-          'CQ+3': '100',
-          Total: '1000'
+          first: 'Quantity',
+          CQ: '100',
+          'CQ+1': '90',
+          'CQ+2': '220',
+          'CQ+3': '90',
+          Total: '500'
         },
         {
-          first: 'Part Number',
-          CQ: '1000',
-          'CQ+1': '100',
-          'CQ+2': '1000',
-          'CQ+3': '100',
-          Total: '1000'
+          first: 'Revenue',
+          CQ: '29699.00',
+          'CQ+1': '26999.10',
+          'CQ+2': '65997.8',
+          'CQ+3': '26999.10',
+          Total: '56,698'
+        },
+        {
+          first: 'TMC %',
+          CQ: '32.08%',
+          'CQ+1': '32.09%',
+          'CQ+2': '32.33%',
+          'CQ+3': '32.33%',
+          Total: '31.4%'
+        },
+        {
+          first: 'TMC %',
+          CQ: '9325.28',
+          'CQ+1': '8460.58',
+          'CQ+2': '21134.80',
+          'CQ+3': '8526.10',
+          Total: '17,786'
+        },
+        {
+          first: 'BMC %',
+          CQ: '33.76%',
+          'CQ+1': '33.76%',
+          'CQ+2': '34.00%',
+          'CQ+3': '34.00%',
+          Total: '33.0%'
+        },
+        {
+          first: 'BMC',
+          CQ: '9825.28',
+          'CQ+1': '8910.58',
+          'CQ+2': '22234.80',
+          'CQ+3': '8976.10',
+          Total: '18,736'
+        }
+      ],
+      columnDefs2: [
+        {
+          headerName: '',
+          field: 'first',
+          width: 120
+        },
+        {
+          headerName: 'CQ',
+          field: 'CQ',
+          width: 120
+        },
+        {
+          headerName: 'CQ+1',
+          field: 'CQ+1',
+          width: 120
+        },
+        {
+          headerName: 'CQ+2',
+          field: 'CQ+2',
+          width: 120
+        },
+        {
+          headerName: 'CQ+3',
+          field: 'CQ+3',
+          width: 120
+        },
+        {
+          headerName: 'Total',
+          field: 'Total',
+          width: 120
+        }
+      ],
+      rowData2: [
+        {
+          first: 'Quantity',
+          CQ: '100',
+          'CQ+1': '90',
+          'CQ+2': '220',
+          'CQ+3': '90',
+          Total: '500'
+        },
+        {
+          first: 'Request Price',
+          CQ: '296.99',
+          'CQ+1': '299.99',
+          'CQ+2': '299.99',
+          'CQ+3': '299.99',
+          Total: '1,197'
+        },
+        {
+          first: 'BMC Cost',
+          CQ: '196.72',
+          'CQ+1': '198.72',
+          'CQ+2': '198.00',
+          'CQ+3': '198.00',
+          Total: '791'
+        },
+        {
+          first: 'Cost Adjustment:  FUNDING',
+          CQ: '4',
+          'CQ+1': '4',
+          'CQ+2': '4',
+          'CQ+3': '4',
+          Total: '16'
+        },
+        {
+          first: 'Cost Adjustment:  MOT',
+          CQ: '1',
+          'CQ+1': '1',
+          'CQ+2': '1',
+          'CQ+3': '1',
+          Total: '4'
+        },
+        {
+          first: 'Comm Cost Adjustment',
+          CQ: '0',
+          'CQ+1': '0',
+          'CQ+2': '0',
+          'CQ+3': '0',
+          Total: '0'
+        },
+        {
+          first: 'Cost Adjustment: OTHER',
+          CQ: '0',
+          'CQ+1': '0',
+          'CQ+2': '0',
+          'CQ+3': '0',
+          Total: '0'
+        },
+        {
+          first: 'TOTAL COST ADJUSTMENTS',
+          CQ: '5',
+          'CQ+1': '5',
+          'CQ+2': '5',
+          'CQ+3': '5',
+          Total: '25'
+        },
+        {
+          first: 'Final TMC cost',
+          CQ: '201.72',
+          'CQ+1': '203.72',
+          'CQ+2': '203.00',
+          'CQ+3': '203.00',
+          Total: '811'
+        },
+        {
+          first: 'Revenue',
+          CQ: '29699.00',
+          'CQ+1': '26999.10',
+          'CQ+2': '65997.80',
+          'CQ+3': '26999.10',
+          Total: '56,698'
+        },
+        {
+          first: 'TMC %',
+          CQ: '32.08%',
+          'CQ+1': '32.09%',
+          'CQ+2': '32.33%',
+          'CQ+3': '32.33%',
+          Total: '31.4%'
+        },
+        {
+          first: 'TMC',
+          CQ: '9325.28',
+          'CQ+1': '8460.58',
+          'CQ+2': '21134.80',
+          'CQ+3': '8526.10',
+          Total: '17,786'
+        },
+        {
+          first: 'BMC %',
+          CQ: '33.76%',
+          'CQ+1': '33.76%',
+          'CQ+2': '34.00%',
+          'CQ+3': '34.00%',
+          Total: '33.0%'
+        },
+        {
+          first: 'BMC',
+          CQ: '9825.28',
+          'CQ+1': '8910.58',
+          'CQ+2': '22234.80',
+          'CQ+3': '8976.10',
+          Total: '18,736'
+        }
+      ],
+      columnDefs3: [
+        {
+          headerName: '',
+          field: 'first',
+          width: 120
+        },
+        {
+          headerName: 'CQ',
+          field: 'CQ',
+          width: 120
+        },
+        {
+          headerName: 'CQ+1',
+          field: 'CQ+1',
+          width: 120
+        },
+        {
+          headerName: 'CQ+2',
+          field: 'CQ+2',
+          width: 120
+        },
+        {
+          headerName: 'CQ+3',
+          field: 'CQ+3',
+          width: 120
+        },
+        {
+          headerName: 'Total',
+          field: 'Total',
+          width: 120
+        }
+      ],
+      rowData3: [
+        {
+          first: 'Quantity',
+          CQ: '100',
+          'CQ+1': '90',
+          'CQ+2': '220',
+          'CQ+3': '90',
+          Total: '500'
+        },
+        {
+          first: 'Request Price',
+          CQ: '296.99',
+          'CQ+1': '299.99',
+          'CQ+2': '299.99',
+          'CQ+3': '299.99',
+          Total: '1,197'
+        },
+        {
+          first: 'BMC Cost',
+          CQ: '196.72',
+          'CQ+1': '198.72',
+          'CQ+2': '198.00',
+          'CQ+3': '198.00',
+          Total: '791'
+        },
+        {
+          first: 'Cost Adjustment:  FUNDING',
+          CQ: '4',
+          'CQ+1': '4',
+          'CQ+2': '4',
+          'CQ+3': '4',
+          Total: '16'
+        },
+        {
+          first: 'Cost Adjustment:  MOT',
+          CQ: '1',
+          'CQ+1': '1',
+          'CQ+2': '1',
+          'CQ+3': '1',
+          Total: '4'
+        },
+        {
+          first: 'Comm Cost Adjustment',
+          CQ: '0',
+          'CQ+1': '0',
+          'CQ+2': '0',
+          'CQ+3': '0',
+          Total: '0'
+        },
+        {
+          first: 'Cost Adjustment: OTHER',
+          CQ: '0',
+          'CQ+1': '0',
+          'CQ+2': '0',
+          'CQ+3': '0',
+          Total: '0'
+        },
+        {
+          first: 'TOTAL COST ADJUSTMENTS',
+          CQ: '5',
+          'CQ+1': '5',
+          'CQ+2': '5',
+          'CQ+3': '5',
+          Total: '25'
+        },
+        {
+          first: 'Final TMC cost',
+          CQ: '201.72',
+          'CQ+1': '203.72',
+          'CQ+2': '203.00',
+          'CQ+3': '203.00',
+          Total: '811'
+        },
+        {
+          first: 'Revenue',
+          CQ: '29699.00',
+          'CQ+1': '26999.10',
+          'CQ+2': '65997.80',
+          'CQ+3': '26999.10',
+          Total: '56,698'
+        },
+        {
+          first: 'TMC %',
+          CQ: '32.08%',
+          'CQ+1': '32.09%',
+          'CQ+2': '32.33%',
+          'CQ+3': '32.33%',
+          Total: '31.4%'
+        },
+        {
+          first: 'TMC',
+          CQ: '9325.28',
+          'CQ+1': '8460.58',
+          'CQ+2': '21134.80',
+          'CQ+3': '8526.10',
+          Total: '17,786'
+        },
+        {
+          first: 'BMC %',
+          CQ: '33.76%',
+          'CQ+1': '33.76%',
+          'CQ+2': '34.00%',
+          'CQ+3': '34.00%',
+          Total: '33.0%'
+        },
+        {
+          first: 'BMC',
+          CQ: '9825.28',
+          'CQ+1': '8910.58',
+          'CQ+2': '22234.80',
+          'CQ+3': '8976.10',
+          Total: '18,736'
         }
       ]
     }
@@ -1710,11 +2050,19 @@ export default {
     one () {
       this.tab1 = true
       this.tab2 = false
+      this.tab3 = false
       return false
     },
     two () {
       this.tab1 = false
       this.tab2 = true
+      this.tab3 = false
+      return false
+    },
+    three () {
+      this.tab1 = false
+      this.tab2 = false
+      this.tab3 = true
       return false
     },
     resize () {
