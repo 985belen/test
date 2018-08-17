@@ -17,40 +17,40 @@
           <img src="./pic1.png"/>
         </Col>
       </Row>
+      <div class="boxitem">
+        <Form :model="FormItem" :label-width="120" :rules="ruleValidate">
+          <Row>
+            <Col span=5 offset="1">
+              <strong>PE ID: </strong><span>PE-20188081041-357</span>
+            </Col>
+            <Col span=5>
+              <strong>DMU Name: </strong><span>State Administration</span>
+            </Col>
+            <Col span=5>
+              <strong>Country: </strong><span>Bulgaria</span>
+            </Col>
+            <Col span=5>
+              <strong>Channel: </strong><span>Direct</span>
+            </Col>
+          </Row>
+          <Row>
+            <Col span=5 offset="1">
+              <strong>Currency: </strong><span>USD</span>
+            </Col>
+            <Col span=5>
+              <strong>Pricing Group: </strong><span>B1</span>
+            </Col>
+            <Col span=5>
+              <strong>Created By: </strong><span>sumer</span>
+            </Col>
+            <Col span=5>
+              <strong>Description: </strong><span>RFP Coop August 2018</span>
+            </Col>
+          </Row>
+        </Form>
+      </div>
     </div>
-    <h3 class="marginBottom"><a href="javascript:;" style="display:block;color: #333;" @click="toggleList"><Icon type="ios-podium" />form</a></h3>
-    <div class="boxitem">
-      <Form :model="FormItem" :label-width="120" :rules="ruleValidate">
-        <Row>
-          <Col span=5 offset="1">
-            <strong>PE ID: </strong><span>PE-20188081041-357</span>
-          </Col>
-          <Col span=5>
-            <strong>DMU Name: </strong><span>State Administration</span>
-          </Col>
-          <Col span=5>
-            <strong>Country: </strong><span>Bulgaria</span>
-          </Col>
-          <Col span=5>
-            <strong>Channel: </strong><span>Direct</span>
-          </Col>
-        </Row>
-        <Row>
-          <Col span=5 offset="1">
-            <strong>Currency: </strong><span>USD</span>
-          </Col>
-          <Col span=5>
-            <strong>Pricing Group: </strong><span>B1</span>
-          </Col>
-          <Col span=5>
-            <strong>Created By: </strong><span>sumer</span>
-          </Col>
-          <Col span=5>
-            <strong>Description: </strong><span>RFP Coop August 2018</span>
-          </Col>
-        </Row>
-      </Form>
-    </div>
+    <!-- <h3 class="marginBottom"><a href="javascript:;" style="display:block;color: #333;" @click="toggleList"><Icon type="ios-podium" />form</a></h3> -->
     <h3 class="marginBottom"><a href="javascript:;" style="display:block;color: #333;" @click="toggleList2"><Icon type="ios-podium" />Summary Information</a></h3>
     <div class="SummaryInformation">
       <Row type="flex" justify="center">
@@ -346,7 +346,7 @@
       <ag-grid-vue
         style="width: 100%; height:100%;"
         class="ag-theme-balham"
-        v-if="transColumns"
+        v-if="modeltransction"
         :columnDefs="transColumns"
         :rowData="transData"
         :gridAutoHeight="true"
@@ -398,7 +398,7 @@ export default {
   data () {
     return {
       toggle: true,
-      toggle1: true,
+      toggle1: false,
       toggle2: true,
       tab1: false,
       tab2: false,
@@ -724,7 +724,8 @@ export default {
           headerName: 'Vol',
           field: 'vol',
           width: 100,
-          cellStyle: {'text-align': 'center'}
+          editable: true,
+          cellStyle: {'text-align': 'center', color: '#fff', backgroundColor: 'green'}
         },
         {
           headerName: 'List Price',
@@ -748,19 +749,22 @@ export default {
           headerName: 'Estimation Price',
           width: 135,
           field: 'estpri',
-          cellStyle: {'text-align': 'center'}
+          editable: true,
+          cellStyle: {'text-align': 'center', color: '#fff', backgroundColor: 'green'}
         },
         {
           headerName: 'Final Price',
           width: 100,
           field: 'finalpri',
-          cellStyle: {'text-align': 'center'}
+          editable: true,
+          cellStyle: {'text-align': 'center', color: '#fff', backgroundColor: 'green'}
         },
         {
           headerName: 'Discount %',
           width: 100,
           field: 'disc',
-          cellStyle: {'text-align': 'center'}
+          editable: true,
+          cellStyle: {'text-align': 'center', color: '#fff', backgroundColor: 'green'}
         },
         {
           headerName: 'BMC',

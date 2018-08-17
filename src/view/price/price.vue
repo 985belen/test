@@ -15,8 +15,8 @@
       <a href="#" class="item"><Icon class="icon" size=16 type="md-notifications" />Import Template</a>
       <Divider type="vertical" />
       <a href="#" class="item"><Icon class="icon" size=16 type="md-exit" />Upload Data</a>
-      <Divider type="vertical" />
-      <a href="#" class="item"><Icon class="icon" size=16 type="md-stats" />Summary Report</a>
+      <!-- <Divider type="vertical" /> -->
+      <!-- <a href="#" class="item"><Icon class="icon" size=16 type="md-stats" />Summary Report</a> -->
     </div>
     <h3 ref=""><a href="javascript:;" style="display:block;color: #333;" @click="toggleList"><Icon type="md-pricetags" /> Quotation Infomation <span style="float: right; font-weight: normal; font-size: 12px;">More</span></a></h3>
     <ul class="item-box" v-if="isStatus">
@@ -47,7 +47,7 @@
       <li><span>Sub Type:</span><i :title="form.SubType">{{form.SubType}}</i></li>
     </ul>
     <h3 class="marginBottom" style="margin-bottom: 10px;"><a href="javascript:;" style="display:block;color: #333;" @click="toggleList1"><Icon type="ios-podium" /> CQ</a></h3>
-    <div  class="table-CQ">
+    <div class="table-CQ">
       <ag-grid-vue
         style="width: 100%; height:100%;"
         class="ag-theme-balham"
@@ -68,7 +68,7 @@
     <split-pane v-model="offset" @on-moving="handleMoving">
       <div slot="left" class="pane left-pane">
         <div slot="top" class="pane top-pane agcontainer">
-          <ag-grid-vue 
+          <ag-grid-vue
             style="width: 100%; height:100%;"
             class="ag-theme-balham"
             :columnDefs="columnDefs"
@@ -76,6 +76,10 @@
             :floatingFilter="true"
             :enableSorting="true"
             :enableFilter="true"
+            :showToolPanel="showToolPanel"
+            :toolPanelSuppressGroups="true"
+            :toolPanelSuppressValues="true"
+            :toolPanelSuppressSideButtons="false"
             :singleClickEdit="true"
             :suppressSizeToFit="true"
             :suppressResize="true"
@@ -253,7 +257,7 @@ export default {
             {headerName: 'Category', field: 'Category', cellStyle: {'text-align': 'center'}, width: 100},
             {headerName: 'Standard Price', field: 'Standard Price', cellStyle: {'text-align': 'center'}, width: 100},
             {headerName: 'List Price', field: 'List Price', cellStyle: {'text-align': 'center'}, width: 100},
-            {headerName: 'Requested Price', field: 'Requested Price',  editable: true, cellStyle: {'text-align': 'center', color: '#fff', backgroundColor: 'green'}, width: 100},
+            {headerName: 'Requested Price', field: 'Requested Price', editable: true, cellStyle: {'text-align': 'center', color: '#fff', backgroundColor: 'green'}, width: 100},
             {headerName: 'Entitled Price', field: 'Entitled Price', cellStyle: {'text-align': 'center'}, width: 100},
             {headerName: 'Total Quantity', field: 'Total Quantity', cellStyle: {'text-align': 'center'}, width: 100},
             {headerName: 'MOT', field: 'MOT', editable: true, cellStyle: {'text-align': 'center', color: '#fff', backgroundColor: 'green'}, width: 100},
@@ -1875,7 +1879,6 @@ h3{
   width: 100%;
   height:auto;
   overflow: hidden;
-  padding: 0 10px;
   margin-bottom: 10px;
 }
 .ivu-tabs-bar{
