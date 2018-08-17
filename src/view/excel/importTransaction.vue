@@ -30,7 +30,7 @@
   <div class="table-box">
     <ag-grid-vue
       style="width: 100%; height:100%;"
-      class="ag-theme-balham"
+      class="ag-theme-blue"
       v-if="transColumns"
       :columnDefs="transColumns"
       :rowData="transData"

@@ -49,7 +49,7 @@
         <div slot="top" class="pane top-pane">
             <ag-grid-vue
               style="width: 100%; height:100%;"
-              class="ag-theme-balham"
+              class="ag-theme-blue"
               :columnDefs="columnDefs"
               :rowData="rowData"
               :gridAutoHeight="true"

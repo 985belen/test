@@ -24,7 +24,7 @@
       </Form>
       <ag-grid-vue
         style="width: 100%; height:600px;overflow:hidden;"
-        class="ag-theme-balham"
+        class="ag-theme-blue"
         v-if="pcgcolumn"
         :columnDefs="pcgcolumn"
         :rowData="pcgdata"
@@ -70,7 +70,7 @@
       <div style="width: 100%; height:600px;overflow:hidden;">
         <ag-grid-vue
           style="width: 100%; height:600px"
-          class="ag-theme-balham"
+          class="ag-theme-blue"
           v-if="mbgcolumn"
           :columnDefs="mbgcolumn"
           :rowData="mbgdata"

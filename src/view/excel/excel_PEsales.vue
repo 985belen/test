@@ -82,7 +82,7 @@
         <div slot="top" class="pane top-pane agcontainer">
           <ag-grid-vue
             style="width: 100%; height:100%;"
-            class="ag-theme-balham"
+            class="ag-theme-blue"
             v-if="columns"
             :columnDefs="columns"
             :rowData="rowData"
@@ -123,7 +123,7 @@
     cancel-text="Cancel">
     <ag-grid-vue
       style="width: 100%; height:100%;"
-      class="ag-theme-balham"
+      class="ag-theme-blue"
       v-if="detailcolumns1"
       :columnDefs="detailcolumns1"
       :rowData="detaildata1"
@@ -140,7 +140,7 @@
     <Divider />
     <ag-grid-vue
       style="width: 100%; height:100%;"
-      class="ag-theme-balham"
+      class="ag-theme-blue"
       :columnDefs="detailcolumns2"
       :rowData="detaildata2"
       :floatingFilter="true"
@@ -157,7 +157,7 @@
     <Divider />
     <ag-grid-vue
       style="width: 100%; height:100%;"
-      class="ag-theme-balham"
+      class="ag-theme-blue"
       :columnDefs="detailcolumns3"
       :rowData="detaildata3"
       :floatingFilter="true"
@@ -180,7 +180,7 @@
     cancel-text="Cancel">
     <ag-grid-vue
       style="width: 100%; height:100%;"
-      class="ag-theme-balham"
+      class="ag-theme-blue"
       v-if="productcolumns1"
       :columnDefs="productcolumns1"
       :rowData="productdata1"
@@ -241,7 +241,7 @@
     </div>
     <ag-grid-vue
       style="width: 100%; height:100%;"
-      class="ag-theme-balham"
+      class="ag-theme-blue"
       v-if="Brandcolumns"
       :columnDefs="Brandcolumns"
       :rowData="Branddata"
@@ -293,7 +293,7 @@
     <div class="table-box">
       <ag-grid-vue
         style="width: 100%; height:100%;"
-        class="ag-theme-balham"
+        class="ag-theme-blue"
         v-if="modeltransction"
         :columnDefs="transColumns"
         :rowData="transData"
@@ -319,7 +319,7 @@
     <div class="table-box">
       <ag-grid-vue
         style="width: 100%; height:100%;"
-        class="ag-theme-balham"
+        class="ag-theme-blue"
         v-if="ComponentsListcolumn"
         :columnDefs="ComponentsListcolumn"
         :rowData="ComponentsListData"
@@ -1861,7 +1861,7 @@ export default {
       // console.log('topHeight:' + topHeight)
       var t1 = document.getElementsByClassName('split-pane-page-wrapper')[0]
       var topBox = document.getElementsByClassName('topBox')[0]
-      var ag = document.getElementsByClassName('ag-theme-balham')[0]
+      var ag = document.getElementsByClassName('ag-theme-blue')[0]
       var acontainer = document.getElementsByClassName('ag-body-container')[0]
       // ag-body-container
       ag.style.height = screenHeight - 64-285+ 'px' // 64是头部的高度，10是padding
