@@ -11,7 +11,7 @@
         </iframe>
       </TabPane>
       <TabPane label=" Historical Data Analysis" icon="logo-codepen">
-        <iframe src='http://localhost:4848/single?appid=D:\QlikPricing Profit Margin 2.qvf&sheet=dccedc74-f12a-47bd-8d80-a9d2bc66ef67&opt=currsel&select=clearall' style='border:none;width:1500px;height:800px'>
+        <iframe src='http://localhost:4848/single?appid=D:\Qlik\Pricing Profit Margin 2.qvf&sheet=dccedc74-f12a-47bd-8d80-a9d2bc66ef67&opt=currsel&select=clearall' style='border:none;width:1500px;height:800px'>
           <p>你的浏览器不支持iframe标签</p>
         </iframe>
       </TabPane>
