@@ -59,19 +59,19 @@
     <div class="SummaryInformation">
       <Row type="flex" justify="center">
         <Col span=5>
-          <strong>System Volume: </strong><span>450</span>
+          <strong>System Volume: </strong><span style="font-size: 14px; font-weight: bold;">450</span>
         </Col>
         <Col span=5>
-          <strong>Gross Revenue: </strong><span>337100</span>
+          <strong>Gross Revenue: </strong><span style="font-size: 14px; font-weight: bold;">337100</span>
         </Col>
         <Col span=5>
-          <strong>Net Revenue: </strong><span>337100</span>
+          <strong>Net Revenue: </strong><span style="font-size: 14px; font-weight: bold;">337100</span>
         </Col>
         <Col span=5>
-          <strong>TMC Margin: </strong><span>33323</span>
+          <strong>TMC Margin: </strong><span style="font-size: 14px; font-weight: bold;">33323</span>
         </Col>
         <Col span=4>
-          <strong>TMC Margin %: </strong><span>10.2</span>
+          <strong>TMC Margin %: </strong><span style="font-size: 14px; font-weight: bold;">10.2</span>
         </Col>
       </Row>
     </div>
@@ -99,19 +99,21 @@
         </div>
       </div>
       <div slot="right" class="pane right-pane">
-        <h3 @click="pullFnc" style="cursor: pointer;">
+        <h3  style="cursor: pointer;">
           <div v-if="!pullFlag">
-            <Icon type="md-swap" />
+            <Icon @click="pullFnc" type="md-swap" />
             <Icon @click="one" style="margin-left: 10px; margin-top:0;line-height:30px" size=20 type="ios-stats" />
             <Icon @click="two" style="margin-left: 10px;" size=20 type="md-reorder" />
+             <Icon @click="three" style="margin-left: 10px;" size=20 type="md-grid" />
           </div>
           <div v-else>
-              <Icon type="md-swap" />
-              <Icon style="margin-left: 10px; margin-top: 0;" size=20 type="ios-stats" />
-              <Icon style="margin-left: 10px;" size=20 type="md-reorder" />
+              <Icon @click="pullFnc" type="md-swap" />
+              <Icon  @click="one" style="margin-left: -5px; margin-top: 10px;" size=20 type="ios-stats" />
+              <Icon @click="two" style="margin-left: -5px;" size=20 type="md-reorder" />
+             <Icon @click="three" style="margin-left: -5px;" size=20 type="md-grid" />
           </div>
         </h3>
-        <div v-if="tab1" style="width: 100%; padding:10px; border-collapse: collapse; height: 500px;">
+        <div v-if="tab1" style="width: 100%; padding:10px; border-collapse: collapse; min-height: 300px;">
           <Card shadow>
             <ag-grid-vue
               style="width: 100%; height:100%;"
@@ -129,7 +131,9 @@
               :enableColResize="true"
               rowSelection="multiple">
             </ag-grid-vue>
-            <Divider />
+          </Card>
+        </div>
+             <div v-if="tab2" style="width: 100%; padding:10px; border-collapse: collapse; min-height: 300px;">
             <ag-grid-vue
               style="width: 100%; height:100%;"
               class="ag-theme-balham"
@@ -146,7 +150,8 @@
               :enableColResize="true"
               rowSelection="multiple">
             </ag-grid-vue>
-            <Divider />
+          </div>
+             <div v-if="tab3" style="width: 100%; padding:10px; border-collapse: collapse; min-height: 300px;">
             <ag-grid-vue
               style="width: 100%; height:100%;"
               class="ag-theme-balham"
@@ -163,9 +168,6 @@
               :enableColResize="true"
               rowSelection="multiple">
             </ag-grid-vue>
-          </Card>
-        </div>
-        <div v-if="tab2" style="width: 500px;height: 500px; display: none;">
         </div>
       </div>
     </split-pane>
@@ -407,7 +409,7 @@ export default {
       tab2: false,
       pullFlag: true,
       dom: null,
-      offset: 0.95,
+      offset: 0.97,
       FormItem: {
         id: '',
         CreatedDate: '2018/8/8 11:05:51',
@@ -2263,11 +2265,19 @@ export default {
     one () {
       this.tab1 = true
       this.tab2 = false
+      this.tab3 = false
       return false
     },
     two () {
       this.tab1 = false
       this.tab2 = true
+      this.tab3 = false
+      return false
+    },
+    three () {
+      this.tab1 = false
+      this.tab2 = false
+      this.tab3 = true
       return false
     },
     resize () {
