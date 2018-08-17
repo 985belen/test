@@ -15,6 +15,8 @@
       <a href="#" class="item"><Icon class="icon" size=16 type="md-notifications" />Import Template</a>
       <Divider type="vertical" />
       <a href="#" class="item"><Icon class="icon" size=16 type="md-exit" />Upload Data</a>
+     
+
       <!-- <Divider type="vertical" /> -->
       <!-- <a href="#" class="item"><Icon class="icon" size=16 type="md-stats" />Summary Report</a> -->
     </div>
@@ -89,23 +91,23 @@
         </div>
       </div>
       <div slot="right" class="pane right-pane">
-        <h3 @click="pullFnc" style="cursor: pointer;">
+        <h3 style="cursor: pointer;">
           <div v-if="!pullFlag">
-            <Icon type="md-swap" />
+            <Icon  @click="pullFnc" type="md-swap" />
             <Icon @click="one" style="margin-left: 10px; margin-top:0; line-height:30px" size=20 type="ios-stats" />
             <Icon @click="two" style="margin-left: 10px;" size=20 type="md-reorder" />
           </div>
           <div v-else>
-            <Icon type="md-swap" />
-            <Icon style="margin-left: 10px; margin-top: 0;" size=20 type="ios-stats" />
-            <Icon style="margin-left: 10px;" size=20 type="md-reorder" />
+            <Icon  @click="pullFnc" type="md-swap" />
+            <Icon @click="one" style="margin-left: 10px; margin-top: 0;" size=20 type="ios-stats" />
+            <Icon @click="two"  style="margin-left: 10px;" size=20 type="md-reorder" />
           </div>
         </h3>
-        <div v-if="tab1" style="width: 100%; padding:10px; border-collapse: collapse; height: 500px;">
+        <div v-if="tab1" style="width: 100%; padding:10px; border-collapse: collapse; min-height: 300px;">
           <Card shadow>
             <chart-pie style="height: 300px;" :value="pieData" text="Customer Revenue"></chart-pie>
           </Card>
-          <h3><a href="javascript:;" style="display:block;color: #333;" @click="toggleList"><Icon type="md-pricetags" />Summary </a> </h3>
+          <h3><a href="javascript:;" style="display:block;color: #333;"><Icon type="md-pricetags" />Summary </a> </h3>
           <ag-grid-vue
             style="width: 100%; height:100%;"
             class="ag-theme-balham"
@@ -123,11 +125,11 @@
             rowSelection="multiple">
           </ag-grid-vue>
         </div>
-        <div v-if="tab2" style="width: 500px;height: 500px; display: none;">
+        <div v-if="tab2" style="width: 100%;padding:10px; border-collapse: collapse;min-height: 300px; ">
           <Card shadow>
             <chart-pie style="height: 300px;" :value="pieData" text="Customer Revenue"></chart-pie>
           </Card>
-          <h3><a href="javascript:;" style="display:block;color: #333;" @click="toggleList"><Icon type="md-pricetags" />Summary by product series level </a> </h3>
+          <h3><a href="javascript:;" style="display:block;color: #333;" ><Icon type="md-pricetags" />Summary by product series level </a> </h3>
           <ag-grid-vue
             style="width: 100%; height:100%;"
             class="ag-theme-balham"
