@@ -52,7 +52,7 @@
   <div class="table-box">
     <ag-grid-vue
       style="width: 100%; height:100%;"
-      class="ag-theme-blue"
+      class="ag-theme-balham"
       :columnDefs="Columns"
       :rowData="data"
       :gridAutoHeight="true"

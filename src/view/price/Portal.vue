@@ -19,7 +19,7 @@
   </div>
   <ag-grid-vue
     style="width: 100%"
-    class="ag-theme-blue"
+    class="ag-theme-balham"
     :columnDefs="columnDefs"
     :rowData="rowData"
     :gridAutoHeight="true"

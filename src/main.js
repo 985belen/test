@@ -12,7 +12,7 @@ import 'iview/dist/styles/iview.css'
 import './index.less'
 import '@/assets/icons/iconfont.css'
 import '../node_modules/ag-grid/dist/styles/ag-grid.css'
-import '../node_modules/ag-grid/dist/styles/ag-theme-blue.css'
+import '../node_modules/ag-grid/dist/styles/ag-theme-balham.css'
 // import '@/mock'
 // 实际打包时应该不引入mock
 import env from '../config/env'

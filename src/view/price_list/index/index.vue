@@ -1,7 +1,7 @@
 <template>
 <div class="price-box">
   <div class="tool-bar" ref="toolBar">
-    <a href="#" class="item" @click="modelnew = true"><Icon class="icon" size=16 type="md-add" />New1</a>
+    <a href="#" class="item" @click="modelnew = true"><Icon class="icon" size=16 type="md-add" />New</a>
     <Divider type="vertical" />
     <a href="#" class="item"><Icon class="icon" size=16 type="md-trash"/>Delete</a>
     <Divider type="vertical" />
@@ -24,7 +24,7 @@
   <div class="agcontainer" style="width: 100%;height:100%;overflow:hidden;">
     <ag-grid-vue
       style="width: 100%;height:100%;"
-      class="ag-theme-blue"
+      class="ag-theme-balham"
       :columnDefs="columnDefs"
       :rowData="rowData"
       :floatingFilter="true"
@@ -35,6 +35,7 @@
       :suppressSizeToFit="true"
       :suppressResize="true"
       :enableColResize="true"
+      :gridOptions="gridOptions"
       rowSelection="multiple">
     </ag-grid-vue>
   </div>
@@ -164,6 +165,9 @@ import {AgGridVue} from 'ag-grid-vue'
 export default {
   data () {
     return {
+        gridOptions: {
+          toolPanelSuppressSideButtons: false //true隐藏Columns按钮
+        },
        FormNewpE: {
         id: '',
         CreatedDate: '2018/8/8 11:05:51',
@@ -614,7 +618,7 @@ export default {
       var screenHeight = window.innerHeight
       var topHeight = this.$refs.toolBar.offsetHeight
       // console.log('topHeight:' + topHeight)
-      var ag = document.getElementsByClassName('ag-theme-blue')[0]
+      var ag = document.getElementsByClassName('ag-theme-balham')[0]
       var acontainer = document.getElementsByClassName('agcontainer')[0]
       ag.style.height = screenHeight - topHeight - 64 - 40 + 'px' // 64是头部的高度，10是padding
       acontainer.style.height = screenHeight - topHeight - 64 - 40 + 'px'

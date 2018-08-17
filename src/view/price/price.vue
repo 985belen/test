@@ -49,7 +49,7 @@
       <Table border :columns="formcolumns" :data="formdata"></Table>
       <!-- <ag-grid-vue
         style="width: 100%; height:100%;"
-        class="ag-theme-blue"
+        class="ag-theme-balham"
         :columnDefs="formcolumns"
         :rowData="formdata"
         :gridAutoHeight="true"
@@ -69,7 +69,7 @@
         <div slot="top" class="pane top-pane agcontainer">
           <ag-grid-vue
             style="width: 100%; height:100%;"
-            class="ag-theme-blue"
+            class="ag-theme-balham"
             :columnDefs="columnDefs"
             :rowData="rowData"
             :floatingFilter="true"
@@ -107,7 +107,7 @@
           <h3><a href="javascript:;" style="display:block;color: #333;"><Icon type="md-pricetags" />Summary </a> </h3>
           <ag-grid-vue
             style="width: 100%; height:100%;"
-            class="ag-theme-blue"
+            class="ag-theme-balham"
             :columnDefs="columnDefs1"
             :rowData="rowData1"
             :gridAutoHeight="true"
@@ -129,7 +129,7 @@
           <h3><a href="javascript:;" style="display:block;color: #333;" ><Icon type="md-pricetags" />Summary by product series level </a> </h3>
           <ag-grid-vue
             style="width: 100%; height:100%;"
-            class="ag-theme-blue"
+            class="ag-theme-balham"
             :columnDefs="columnDefs1"
             :rowData="rowData1"
             :gridAutoHeight="true"
@@ -1699,7 +1699,7 @@ export default {
       var topHeight = this.$refs.topMain.offsetHeight
       // console.log('topHeight:' + topHeight)
       var t1 = document.getElementsByClassName('split-pane-page-wrapper')[0]
-      var ag = document.getElementsByClassName('ag-theme-blue')[0]
+      var ag = document.getElementsByClassName('ag-theme-balham')[0]
       var acontainer = document.getElementsByClassName('agcontainer')[0]
       ag.style.height = screenHeight - topHeight - 64 - 10 - 10+ 'px' // 64是头部的高度，10是padding
       t1.style.height = screenHeight - topHeight - 64 - 10 - 10 + 'px'
