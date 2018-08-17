@@ -73,32 +73,32 @@ export default {
         {
           headerName: 'Transaction ID',
           field: 'TransactionID',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'Description',
           field: 'Description',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'Product ID',
           field: 'ProductID',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'Product Desc',
           field: 'ProductDesc',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'Start Date',
           field: 'StartDate',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'Currency',
           field: 'Currency',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         }
       ],
       transData: [

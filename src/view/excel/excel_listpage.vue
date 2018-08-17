@@ -231,98 +231,98 @@ export default {
         },
         {
           headerName: 'PE Number',
-          cellStyle: {'text-align': 'center'},
+          cellStyle: {'text-align': 'left'},
           cellRenderer: (params) => { return '<a href="#/excel/excel_PEsale">' + params.value + '</a>' },
           field: 'peNum',
           width: 135
         },
         {
           headerName: 'DMU Number',
-          cellStyle: {'text-align': 'center'},
+          cellStyle: {'text-align': 'left'},
           field: 'dmuNum',
           width: 120
         },
         {
           headerName: 'DMU Name',
-          cellStyle: {'text-align': 'center'},
+          cellStyle: {'text-align': 'left'},
           field: 'dmuName',
           width: 120
         },
         {
           headerName: 'Description',
-          cellStyle: {'text-align': 'center'},
+          cellStyle: {'text-align': 'left'},
           field: 'desc',
           width: 120
         },
         {
           headerName: 'Country',
-          cellStyle: {'text-align': 'center'},
+          cellStyle: {'text-align': 'left'},
           field: 'country',
           width: 120
         },
         {
           headerName: 'Region',
-          cellStyle: {'text-align': 'center'},
+          cellStyle: {'text-align': 'left'},
           field: 'region',
           width: 120
         },
         {
           headerName: 'Channel',
-          cellStyle: {'text-align': 'center'},
+          cellStyle: {'text-align': 'left'},
           field: 'channel',
           width: 120
         },
         {
           headerName: 'Status',
-          cellStyle: {'text-align': 'center'},
+          cellStyle: {'text-align': 'left'},
           field: 'status',
           width: 120
         },
         {
           headerName: 'Created By',
-          cellStyle: {'text-align': 'center'},
+          cellStyle: {'text-align': 'left'},
           field: 'createdBy',
           width: 120
         },
         {
           headerName: 'Created Time',
-          cellStyle: {'text-align': 'center'},
+          cellStyle: {'text-align': 'left'},
           field: 'createdTime',
           width: 120
         },
         {
           headerName: 'Modified By',
-          cellStyle: {'text-align': 'center'},
+          cellStyle: {'text-align': 'left'},
           field: 'modifiedBy',
           width: 120
         },
         {
           headerName: 'Modyfied Time',
-          cellStyle: {'text-align': 'center'},
+          cellStyle: {'text-align': 'left'},
           field: 'modyfiedTime',
           width: 120
         },
         {
           headerName: 'Pricer',
-          cellStyle: {'text-align': 'center'},
+          cellStyle: {'text-align': 'left'},
           field: 'pricer',
           width: 120
         },
         {
           headerName: 'Gr Rev',
-          cellStyle: {'text-align': 'center'},
+          cellStyle: {'text-align': 'left'},
           field: 'grRev',
           width: 120
         },
         {
           headerName: 'Margin %',
-          cellStyle: {'text-align': 'center'},
+          cellStyle: {'text-align': 'left'},
           field: 'margi',
           width: 120
         },
         {
           headerName: 'Currency',
-          cellStyle: {'text-align': 'center'},
+          cellStyle: {'text-align': 'left'},
           field: 'currency',
           width: 120
         }

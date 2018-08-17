@@ -9,6 +9,10 @@
       <a href="#" class="item" @click="resize,modelBrand = true"><Icon class="icon" size=16 type="md-search" />Summary By Brand</a>
       <Divider type="vertical" /> -->
       <a href="#" class="item" @click="modeltransction = true"><Icon class="icon" size=16 type="md-add" />Import Transaction</a>
+      <Divider type="vertical" />
+      <a href="#" class="item" ><Icon class="icon" size=16 type="md-stats" />Import Products</a>
+      <Divider type="vertical" />
+      <a href="#" class="item" ><Icon class="icon" size=16 type="md-add" />Add Dummy Item</a>
     </div>
     <h3 class="marginBottom"><a href="javascript:;" style="display:block;color: #333;" @click="toggleList1"><Icon type="ios-podium" />PE Information</a></h3>
     <div class="peinformation">
@@ -71,9 +75,7 @@
         </Col>
       </Row>
     </div>
-
   </div>
-
   <div class="split-pane-page-wrapper">
     <split-pane v-model="offset" @on-moving="handleMoving">
       <div slot="left" class="pane left-pane">
@@ -372,7 +374,7 @@
       <ag-grid-vue
         style="width: 100%; height:100%;"
         class="ag-theme-balham"
-        v-if="ComponentsListcolumn"
+        v-if="modelComponentsList"
         :columnDefs="ComponentsListcolumn"
         :rowData="ComponentsListData"
         :gridAutoHeight="true"
@@ -454,32 +456,36 @@ export default {
         {
           headerName: 'Transaction ID',
           field: 'TransactionID',
-          cellStyle: {'text-align': 'center'}
+          width: 120,
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'Description',
           field: 'Description',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'Product ID',
           field: 'ProductID',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'Product Desc',
           field: 'ProductDesc',
-          cellStyle: {'text-align': 'center'}
+          width: 120,
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'Start Date',
           field: 'StartDate',
-          cellStyle: {'text-align': 'center'}
+          width: 120,
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'Currency',
           field: 'Currency',
-          cellStyle: {'text-align': 'center'}
+          width: 120,
+          cellStyle: {'text-align': 'left'}
         }
       ],
       transData: [
@@ -577,23 +583,20 @@ export default {
         {
           headerName: 'Category ID',
           field: 'CategoryID',
-          fixed: 'left',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         }, {
           headerName: 'Description',
-          fixed: 'left',
           field: 'Description',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         }, {
           headerName: 'QTY',
-          fixed: 'left',
           field: 'QTY',
-          cellStyle: {'text-align': 'center'}
+          width: 120,
+          cellStyle: {'text-align': 'left'}
         }, {
           headerName: 'TMC',
-          fixed: 'left',
           field: 'TMC',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         }
       ],
       ComponentsListData: [
@@ -676,37 +679,37 @@ export default {
           width: 80,
           field: 'id',
           fixed: 'left',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         }, {
           headerName: 'Quarter',
           fixed: 'left',
           field: 'quarter',
           width: 100,
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'Brand',
           field: 'brand',
-          cellStyle: {'text-align': 'center'},
+          cellStyle: {'text-align': 'left'},
           width: 100
         },
         {
           headerName: 'Brand Summary',
           width: 100,
           field: 'brsum',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'Sub-Series',
           width: 100,
           field: 'subser',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'Product No.',
           width: 120,
           field: 'prono',
-          cellStyle: {'text-align': 'center'},
+          cellStyle: {'text-align': 'left'},
           cellRenderer: (params) => {
             return '<a href="#">' + params.value + '</a>'
           },
@@ -718,125 +721,125 @@ export default {
           headerName: 'Product Desc',
           width: 120,
           field: 'prodesc',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'Vol',
           field: 'vol',
           width: 100,
           editable: true,
-          cellStyle: {'text-align': 'center', color: '#fff', backgroundColor: 'green'}
+          cellStyle: {'text-align': 'left', color: '#fff', backgroundColor: 'green'}
         },
         {
           headerName: 'List Price',
           width: 100,
           field: 'listpri',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'Stnd Price',
           width: 100,
           field: 'stndpri',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'Request price',
           width: 120,
           field: 'respri',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'Estimation Price',
           width: 135,
           field: 'estpri',
           editable: true,
-          cellStyle: {'text-align': 'center', color: '#fff', backgroundColor: 'green'}
+          cellStyle: {'text-align': 'left', color: '#fff', backgroundColor: 'green'}
         },
         {
           headerName: 'Final Price',
           width: 100,
           field: 'finalpri',
           editable: true,
-          cellStyle: {'text-align': 'center', color: '#fff', backgroundColor: 'green'}
+          cellStyle: {'text-align': 'left', color: '#fff', backgroundColor: 'green'}
         },
         {
           headerName: 'Discount %',
           width: 100,
           field: 'disc',
           editable: true,
-          cellStyle: {'text-align': 'center', color: '#fff', backgroundColor: 'green'}
+          cellStyle: {'text-align': 'left', color: '#fff', backgroundColor: 'green'}
         },
         {
           headerName: 'BMC',
           width: 100,
           field: 'bmc',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'TMC',
           width: 100,
           field: 'tmc',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'BMC Margin',
           width: 110,
           field: 'bmcmar',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'TMC Margin',
           width: 110,
           field: 'tmcmar',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'BMC %',
           width: 100,
           field: 'bmcb',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'TMC %',
           width: 100,
           field: 'tmcb',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'GR',
           width: 100,
           field: 'gr',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'GR Reduce %',
           width: 110,
           field: 'grre',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'Net Revenue',
           width: 100,
           field: 'netre',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'PTI',
           width: 100,
           field: 'pti',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'PTI Profit',
           width: 100,
           field: 'ptipro',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'PTI Margin',
           width: 100,
           field: 'ptimar',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         }
       ],
       rowData: [
@@ -1181,33 +1184,33 @@ export default {
         {
           headerName: ' ',
           field: 'f0q',
-          cellStyle: {'text-align': 'center'},
+          cellStyle: {'text-align': 'left'},
           className: 'pxt'
         },
         {
           headerName: 'F1Q 18/19',
           field: 'f1q',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'F2Q 18/19',
           field: 'f2q',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'F3Q 18/19',
           field: 'f3q',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'F4Q 18/19',
           field: 'f4q',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'Total',
           field: 'total',
-          cellStyle: {'text-align': 'center'},
+          cellStyle: {'text-align': 'left'},
           className: 'pxt'
         }
       ],
@@ -1289,12 +1292,12 @@ export default {
         {
           headerName: 'Total System Volumes',
           field: 'tsv',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: ' ',
           field: 'tsvv',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         }
       ],
       detaildata2: [
@@ -1319,12 +1322,12 @@ export default {
         {
           headerName: 'Roadmap Metrics',
           field: 'tsv',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: ' ',
           field: 'tsvv',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         }
       ],
       detaildata3: [
@@ -1349,69 +1352,69 @@ export default {
         {
           headerName: 'Part#',
           field: 'part',
-          cellStyle: {'text-align': 'center'},
+          cellStyle: {'text-align': 'left'},
           className: 'pxt'
         },
         {
           headerName: 'Product Brand',
           field: 'pb',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'Product Desc',
           field: 'pd',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'Total Volume',
           field: 'tv',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'Wtd Average List',
           field: 'wal',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'Wtd Average Price',
           field: 'wap',
-          cellStyle: {'text-align': 'center'},
+          cellStyle: {'text-align': 'left'},
           className: 'pxt'
         },
         {
           headerName: 'Wtd Average TMC Cost',
           field: 'watc',
-          cellStyle: {'text-align': 'center'},
+          cellStyle: {'text-align': 'left'},
           className: 'pxt'
         },
         {
           headerName: 'TMC GP',
           field: 'tg',
-          cellStyle: {'text-align': 'center'},
+          cellStyle: {'text-align': 'left'},
           className: 'pxt'
         },
         {
           headerName: 'TMC GP%',
           field: 'tgb',
-          cellStyle: {'text-align': 'center'},
+          cellStyle: {'text-align': 'left'},
           className: 'pxt'
         },
         {
           headerName: 'Total Gross Revenue',
           field: 'tgr',
-          cellStyle: {'text-align': 'center'},
+          cellStyle: {'text-align': 'left'},
           className: 'pxt'
         },
         {
           headerName: 'Total Net Revenue',
           field: 'tnr',
-          cellStyle: {'text-align': 'center'},
+          cellStyle: {'text-align': 'left'},
           className: 'pxt'
         },
         {
           headerName: 'Total TMC GP',
           field: 'ttg',
-          cellStyle: {'text-align': 'center'},
+          cellStyle: {'text-align': 'left'},
           className: 'pxt'
         }
       ],
@@ -1477,33 +1480,33 @@ export default {
         {
           headerName: ' ',
           field: 'f0q',
-          cellStyle: {'text-align': 'center'},
+          cellStyle: {'text-align': 'left'},
           className: 'pxt'
         },
         {
           headerName: 'F1Q 18/19',
           field: 'f1q',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'F2Q 18/19',
           field: 'f2q',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'F3Q 18/19',
           field: 'f3q',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'F4Q 18/19',
           field: 'f4q',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'Total',
           field: 'total',
-          cellStyle: {'text-align': 'center'},
+          cellStyle: {'text-align': 'left'},
           className: 'pxt'
         }
       ],
@@ -2417,8 +2420,10 @@ h3{
   }
 }
 }
-.SummaryInformation,.boxitem{
-  padding-bottom: 5px
+.boxitem,.SummaryInformation{
+  padding-bottom: 5px;
+  span{
+    color:#999;
+  }
 }
-
 </style>

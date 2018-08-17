@@ -1,87 +1,91 @@
 <template>
-<div class="newpage">
-  <div class="tool-bar">
-    <!-- <a href="#" class="item" @click="modeldetail = true" ><Icon class="icon" size=16 type="md-add" />Summary Detail</a>
-    <Divider type="vertical" />
-    <a href="#" class="item" @click="modelProduct = true"><Icon class="icon" size=16 type="md-stats" />Summary By Product</a>
-    <Divider type="vertical" />
-    <a href="#" class="item" @click="modelBrand = true"><Icon class="icon" size=16 type="md-search" />Summary By Brand</a>
-    <Divider type="vertical" /> -->
-    <a href="#" class="item" @click="modeltransction = true"><Icon class="icon" size=16 type="md-add" />Import Transaction</a>
-  </div>
-  <h3 class="marginBottom"><a href="javascript:;" style="display:block;color: #333;" @click="toggleList1"><Icon type="ios-podium" />PE Information</a></h3>
-  <div class="peinformation">
-    <Row>
-      <Col span=12 offset="6">
-        <img src="./pic1.png"/>
-      </Col>
-    </Row>
-  </div>
-  <h3 class="marginBottom"><a href="javascript:;" style="display:block;color: #333;" @click="toggleList"><Icon type="ios-podium" />form</a></h3>
-  <div class="boxitem">
-    <Form :model="FormItem" :label-width="120" :rules="ruleValidate">
+<div class="newpage" style="overflow: hidden;">
+  <div class="topBox">
+    <div class="tool-bar">
+      <!-- <a href="#" class="item" @click="resize, modeldetail = true" ><Icon class="icon" size=16 type="md-barcode" />Summary Detail</a>
+      <Divider type="vertical" />
+      <a href="#" class="item" @click="resize,modelProduct = true"><Icon class="icon" size=16 type="md-stats" />Summary By Product</a>
+      <Divider type="vertical" />
+      <a href="#" class="item" @click="resize,modelBrand = true"><Icon class="icon" size=16 type="md-search" />Summary By Brand</a>
+      <Divider type="vertical" /> -->
+      <a href="#" class="item" @click="modeltransction = true"><Icon class="icon" size=16 type="md-add" />Import Transaction</a>
+      <Divider type="vertical" />
+      <a href="#" class="item" ><Icon class="icon" size=16 type="md-add" />Import Products</a>
+      <Divider type="vertical" />
+      <a href="#" class="item" ><Icon class="icon" size=16 type="md-add" />Add Dummy Item</a>
+    </div>
+    <h3 class="marginBottom"><a href="javascript:;" style="display:block;color: #333;" @click="toggleList1"><Icon type="ios-podium" />PE Information</a></h3>
+    <div class="peinformation">
       <Row>
-        <Col span=5 offset="1">
-          <strong>System Volume: </strong><span>450</span>
-        </Col>
-        <Col span=5>
-          <strong>Gross Revenue: </strong><span>347100</span>
-        </Col>
-        <Col span=5>
-          <strong>Net Revenue: </strong><span>347100</span>
-        </Col>
-        <Col span=5>
-          <strong>TMC Margin: </strong><span>35524</span>
+        <Col span=12 offset="6">
+          <img src="./pic1.png"/>
         </Col>
       </Row>
-      <Row>
-        <Col span=5 offset="1">
-          <strong>Currency: </strong><span>USD</span>
+      <div class="boxitem">
+        <Form :model="FormItem" :label-width="120" :rules="ruleValidate">
+          <Row>
+            <Col span=5 offset="1">
+              <strong>PE ID: </strong><span></span>
+            </Col>
+            <Col span=5>
+              <strong>DMU Name: </strong><span></span>
+            </Col>
+            <Col span=5>
+              <strong>Country: </strong><span></span>
+            </Col>
+            <Col span=5>
+              <strong>Channel: </strong><span></span>
+            </Col>
+          </Row>
+          <Row>
+            <Col span=5 offset="1">
+              <strong>Currency: </strong><span></span>
+            </Col>
+            <Col span=5>
+              <strong>Pricing Group: </strong><span></span>
+            </Col>
+            <Col span=5>
+              <strong>Created By: </strong><span></span>
+            </Col>
+            <Col span=5>
+              <strong>Description: </strong><span></span>
+            </Col>
+          </Row>
+        </Form>
+      </div>
+    </div>
+    <h3 class="marginBottom"><a href="javascript:;" style="display:block;color: #333;" @click="toggleList2"><Icon type="ios-podium" />Summary Information</a></h3>
+    <div class="SummaryInformation">
+      <Row type="flex" justify="center">
+        <Col span=5>
+          <strong>System Volume: </strong><span></span>
         </Col>
         <Col span=5>
-          <strong>Pricing Group: </strong><span>B1</span>
+          <strong>Gross Revenue: </strong><span></span>
         </Col>
         <Col span=5>
-          <strong>Created By: </strong><span>sumer</span>
+          <strong>Net Revenue: </strong><span></span>
         </Col>
         <Col span=5>
-          <strong>Description: </strong><span>RFP Coop August 2018</span>
+          <strong>TMC Margin: </strong><span></span>
+        </Col>
+        <Col span=4>
+          <strong>TMC Margin %: </strong><span></span>
         </Col>
       </Row>
-    </Form>
-  </div>
-  <h3 class="marginBottom"><a href="javascript:;" style="display:block;color: #333;" @click="toggleList2"><Icon type="ios-podium" />Summary Information</a></h3>
-  <div class="SummaryInformation">
-    <Row type="flex" justify="center">
-      <Col span=5>
-        <strong>System Volume: </strong><span>440</span>
-      </Col>
-      <Col span=5>
-        <strong>Gross Revenue: </strong><span>337100</span>
-      </Col>
-      <Col span=5>
-        <strong>Net Revenue: </strong><span>337100</span>
-      </Col>
-      <Col span=5>
-        <strong>TMC Margin: </strong><span>33323</span>
-      </Col>
-      <Col span=4>
-        <strong>TMC Margin %: </strong><span>10.2</span>
-      </Col>
-    </Row>
+    </div>
   </div>
   <div class="split-pane-page-wrapper">
     <split-pane v-model="offset" @on-moving="handleMoving">
       <div slot="left" class="pane left-pane">
-        <div slot="top" class="pane top-pane">
+        <div slot="top" class="pane top-pane agcontainer">
           <ag-grid-vue
             style="width: 100%; height:100%;"
             class="ag-theme-balham"
             v-if="columns"
             :columnDefs="columns"
-            :rowData="rowdata"
+            :rowData="rowData"
             :floatingFilter="true"
-            :gridAutoHeight="true"
             :enableSorting="true"
             :enableFilter="true"
             :singleClickEdit="true"
@@ -93,10 +97,73 @@
         </div>
       </div>
       <div slot="right" class="pane right-pane">
-        <h3 @click="pullFnc()" style="cursor: pointer;"><Icon type="ios-arrow-back" /><Icon style="margin-left: -10px;" type="ios-arrow-back" /></h3>
-        <div style="width: 500px;height: 500px">
+        <h3 @click="pullFnc" style="cursor: pointer;">
+          <div v-if="!pullFlag">
+            <Icon type="md-swap" />
+            <Icon @click="one" style="margin-left: 10px; margin-top:0;line-height:30px" size=20 type="ios-stats" />
+            <Icon @click="two" style="margin-left: 10px;" size=20 type="md-reorder" />
+          </div>
+          <div v-else>
+              <Icon type="md-swap" />
+              <Icon style="margin-left: 10px; margin-top: 0;" size=20 type="ios-stats" />
+              <Icon style="margin-left: 10px;" size=20 type="md-reorder" />
+          </div>
+        </h3>
+        <div v-if="tab1" style="width: 100%; padding:10px; border-collapse: collapse; height: 500px;">
           <Card shadow>
+            <ag-grid-vue
+              style="width: 100%; height:100%;"
+              class="ag-theme-balham"
+              :columnDefs="detailcolumns1"
+              :rowData="detaildata1"
+              :gridAutoHeight="true"
+              :enableSorting="true"
+              :enableFilter="true"
+              :floatingFilter="true"
+              :defaultColDef='{editable: true}'
+              :singleClickEdit="true"
+              :suppressSizeToFit="true"
+              :suppressResize="true"
+              :enableColResize="true"
+              rowSelection="multiple">
+            </ag-grid-vue>
+            <Divider />
+            <ag-grid-vue
+              style="width: 100%; height:100%;"
+              class="ag-theme-balham"
+              :columnDefs="detailcolumns2"
+              :rowData="detaildata2"
+              :gridAutoHeight="true"
+              :enableSorting="true"
+              :floatingFilter="true"
+              :enableFilter="true"
+              :defaultColDef='{editable: true}'
+              :singleClickEdit="true"
+              :suppressSizeToFit="true"
+              :suppressResize="true"
+              :enableColResize="true"
+              rowSelection="multiple">
+            </ag-grid-vue>
+            <Divider />
+            <ag-grid-vue
+              style="width: 100%; height:100%;"
+              class="ag-theme-balham"
+              :columnDefs="detailcolumns3"
+              :rowData="detaildata3"
+              :gridAutoHeight="true"
+              :enableSorting="true"
+              :floatingFilter="true"
+              :enableFilter="true"
+              :defaultColDef='{editable: true}'
+              :singleClickEdit="true"
+              :suppressSizeToFit="true"
+              :suppressResize="true"
+              :enableColResize="true"
+              rowSelection="multiple">
+            </ag-grid-vue>
           </Card>
+        </div>
+        <div v-if="tab2" style="width: 500px;height: 500px; display: none;">
         </div>
       </div>
     </split-pane>
@@ -113,27 +180,24 @@
       v-if="detailcolumns1"
       :columnDefs="detailcolumns1"
       :rowData="detaildata1"
-      :floatingFilter="true"
       :gridAutoHeight="true"
+      :floatingFilter="true"
       :enableSorting="true"
       :enableFilter="true"
-      :defaultColDef='{editable: true}'
       :singleClickEdit="true"
       :suppressSizeToFit="true"
       :suppressResize="true"
       :enableColResize="true"
       rowSelection="multiple">
     </ag-grid-vue>
-    <!-- <Table border height="380" :columns="detailcolumns1" :data="detaildata1"></Table> -->
     <Divider />
     <ag-grid-vue
       style="width: 100%; height:100%;"
       class="ag-theme-balham"
-      v-if="detailcolumns2"
       :columnDefs="detailcolumns2"
       :rowData="detaildata2"
-      :gridAutoHeight="true"
       :floatingFilter="true"
+      :gridAutoHeight="true"
       :enableSorting="true"
       :enableFilter="true"
       :defaultColDef='{editable: true}'
@@ -147,7 +211,6 @@
     <ag-grid-vue
       style="width: 100%; height:100%;"
       class="ag-theme-balham"
-      v-if="detailcolumns3"
       :columnDefs="detailcolumns3"
       :rowData="detaildata3"
       :floatingFilter="true"
@@ -161,7 +224,6 @@
       :enableColResize="true"
       rowSelection="multiple">
     </ag-grid-vue>
-    <!-- <Table border :columns="detailcolumns3" :data="detaildata3"></Table> -->
   </Modal>
   <Modal
     v-model="modelProduct"
@@ -172,13 +234,13 @@
     <ag-grid-vue
       style="width: 100%; height:100%;"
       class="ag-theme-balham"
+      v-if="productcolumns1"
       :columnDefs="productcolumns1"
       :rowData="productdata1"
       :floatingFilter="true"
       :gridAutoHeight="true"
       :enableSorting="true"
       :enableFilter="true"
-      :defaultColDef='{editable: true}'
       :singleClickEdit="true"
       :suppressSizeToFit="true"
       :suppressResize="true"
@@ -230,7 +292,22 @@
         </li>
       </ul>
     </div>
-    <Table style="margin:10px auto" height='300' width="100%" :columns="Brandcolumns" :data="Branddata"></Table>
+    <ag-grid-vue
+      style="width: 100%; height:100%;"
+      class="ag-theme-balham"
+      v-if="Brandcolumns"
+      :columnDefs="Brandcolumns"
+      :rowData="Branddata"
+      :gridAutoHeight="true"
+      :floatingFilter="true"
+      :enableSorting="true"
+      :enableFilter="true"
+      :singleClickEdit="true"
+      :suppressSizeToFit="true"
+      :suppressResize="true"
+      :enableColResize="true"
+      rowSelection="multiple">
+    </ag-grid-vue>
   </Modal>
   <Modal
     v-model="modeltransction"
@@ -270,14 +347,41 @@
       <ag-grid-vue
         style="width: 100%; height:100%;"
         class="ag-theme-balham"
-        v-if="transColumns"
+        v-if="modeltransction"
         :columnDefs="transColumns"
         :rowData="transData"
+        :gridAutoHeight="true"
+        :enableSorting="true"
         :floatingFilter="true"
+        :enableFilter="true"
+        :showToolPanel="true"
+        :singleClickEdit="true"
+        :suppressSizeToFit="true"
+        :suppressResize="true"
+        :enableColResize="true"
+        rowSelection="multiple">
+      </ag-grid-vue>
+    </div>
+  </Modal>
+  <Modal
+    v-model="modelComponentsList"
+    title="Components List-->20KECTO1WW"
+    :styles="{width:'800px'}"
+    ok-text="OK"
+    cancel-text="Cancel">
+    <div class="table-box">
+      <ag-grid-vue
+        style="width: 100%; height:100%;"
+        class="ag-theme-balham"
+        v-if="ComponentsListcolumn"
+        :columnDefs="ComponentsListcolumn"
+        :rowData="ComponentsListData"
         :gridAutoHeight="true"
         :enableSorting="true"
         :enableFilter="true"
         :showToolPanel="true"
+        :sizeColumnsToFit="true"
+        :floatingFilter="true"
         :singleClickEdit="true"
         :suppressSizeToFit="true"
         :suppressResize="true"
@@ -292,12 +396,14 @@
 import {AgGridVue} from 'ag-grid-vue'
 import SplitPane from '_c/split-pane'
 export default {
-  name:"excel_PEsales",
   data () {
     return {
       toggle: true,
-      toggle1: true,
+      toggle1: false,
       toggle2: true,
+      tab1: false,
+      tab2: false,
+      pullFlag: true,
       dom: null,
       offset: 0.95,
       FormItem: {
@@ -337,198 +443,439 @@ export default {
       modelProduct: false,
       modelBrand: false,
       modeltransction: false,
+      modelComponentsList: false,
+      transColumns: [
+        {
+          headerCheckboxSelection: true,
+          headerCheckboxSelectionFilteredOnly: false,
+          editable: false,
+          checkboxSelection: true,
+          width: 60
+        },
+        {
+          headerName: 'Transaction ID',
+          field: 'TransactionID',
+          width: 120,
+          cellStyle: {'text-align': 'left'}
+        },
+        {
+          headerName: 'Description',
+          field: 'Description',
+          cellStyle: {'text-align': 'left'}
+        },
+        {
+          headerName: 'Product ID',
+          field: 'ProductID',
+          width: 140,
+          cellStyle: {'text-align': 'left'}
+        },
+        {
+          headerName: 'Product Desc',
+          field: 'ProductDesc',
+          width: 120,
+          cellStyle: {'text-align': 'left'}
+        },
+        {
+          headerName: 'Start Date',
+          field: 'StartDate',
+          cellStyle: {'text-align': 'left'}
+        },
+        {
+          headerName: 'Currency',
+          field: 'Currency',
+          width: 100,
+          cellStyle: {'text-align': 'left'}
+        }
+      ],
+      transData: [
+        {
+          TransactionID: '0002223182',
+          Description: 'RX - KPMG - Norway - M910q',
+          ProductID: 'Desktop TC M910q_Intel Q270_TINY_ES_R',
+          ProductDesc: '10MUCTO1WW',
+          StartDate: 'Thu Jan 25 00:00:00 CST 2018',
+          Currency: 'USD'
+        },
+        {
+          TransactionID: '0002102225',
+          Description: 'CAT:KPMG - KBY NB Turkey T470 v1.0',
+          ProductID: 'Notebook ThinkPad T470 20HECTO1WW Rx',
+          ProductDesc: '20HECTO1WW',
+          StartDate: 'Mon Aug 21 00:00:00 CST 2017',
+          Currency: 'USD'
+        },
+        {
+          TransactionID: '0002175497',
+          Description: 'NonCAT:KPMG - Forensic NB',
+          ProductID: 'Notebook ThinkPad X1 Yoga 2G 20JECTO1WW 20JECTO1WW',
+          ProductDesc: '20JECTO1WW',
+          StartDate: 'Wed Nov 08 00:00:00 CST 2017',
+          Currency: 'USD'
+        },
+        {
+          TransactionID: '0002260500',
+          Description: 'CAT:KPMG-KBY-R T480s Yoga380 Canada',
+          ProductID: 'Notebook ThinkPad X380 Yoga 20LJCTO1WW R',
+          ProductDesc: '20LJCTO1WW',
+          StartDate: 'Thu Apr 05 00:00:00 CST 2018',
+          Currency: 'USD'
+        },
+        {
+          TransactionID: '0002297646',
+          Description: 'CAT:KPMG _ RFP Turkey',
+          ProductID: 'Notebook ThinkPad T480 20L6CTO1WW Rx',
+          ProductDesc: '20L6CTO1WW',
+          StartDate: 'Mon Jul 23 00:00:00 CST 2018',
+          Currency: 'USD'
+        },
+        {
+          TransactionID: '0002223182',
+          Description: 'RX - KPMG - Norway - M910q',
+          ProductID: 'Desktop TC M910q_Intel Q270_TINY_ES_R',
+          ProductDesc: '10MUCTO1WW',
+          StartDate: 'Thu Jan 25 00:00:00 CST 2018',
+          Currency: 'USD'
+        },
+        {
+          TransactionID: '0002102225',
+          Description: 'CAT:KPMG - KBY NB Turkey T470 v1.0',
+          ProductID: 'Notebook ThinkPad T470 20HECTO1WW Rx',
+          ProductDesc: '20HECTO1WW',
+          StartDate: 'Mon Aug 21 00:00:00 CST 2017',
+          Currency: 'USD'
+        },
+        {
+          TransactionID: '0002175497',
+          Description: 'NonCAT:KPMG - Forensic NB',
+          ProductID: 'Notebook ThinkPad X1 Yoga 2G 20JECTO1WW 20JECTO1WW',
+          ProductDesc: '20JECTO1WW',
+          StartDate: 'Wed Nov 08 00:00:00 CST 2017',
+          Currency: 'USD'
+        },
+        {
+          TransactionID: '0002260500',
+          Description: 'CAT:KPMG-KBY-R T480s Yoga380 Canada',
+          ProductID: 'Notebook ThinkPad X380 Yoga 20LJCTO1WW R',
+          ProductDesc: '20LJCTO1WW',
+          StartDate: 'Thu Apr 05 00:00:00 CST 2018',
+          Currency: 'USD'
+        },
+        {
+          TransactionID: '0002297646',
+          Description: 'CAT:KPMG _ RFP Turkey',
+          ProductID: 'Notebook ThinkPad T480 20L6CTO1WW Rx',
+          ProductDesc: '20L6CTO1WW',
+          StartDate: 'Mon Jul 23 00:00:00 CST 2018',
+          Currency: 'USD'
+        }
+      ],
+      transFormItem: {
+        BusinessPartner: '',
+        DMUName: '',
+        PricingEstimationNumber: '',
+        CreatedBy: '',
+        Country: '',
+        select: '',
+        selects: ['opportunity', 'quotation', 'contract']
+      },
+      ComponentsListcolumn: [
+        {
+          headerName: 'Category ID',
+          field: 'CategoryID',
+          fixed: 'left',
+          cellStyle: {'text-align': 'left'}
+        }, {
+          headerName: 'Description',
+          fixed: 'left',
+          field: 'Description',
+          cellStyle: {'text-align': 'left'}
+        }, {
+          headerName: 'QTY',
+          fixed: 'left',
+          field: 'QTY',
+          cellStyle: {'text-align': 'left'}
+        }, {
+          headerName: 'TMC',
+          fixed: 'left',
+          field: 'TMC',
+          cellStyle: {'text-align': 'left'}
+        }
+      ],
+      ComponentsListData: [
+        {
+          CategoryID: 'SBB0M45830',
+          Description: ' Intel Core i5-7500T 2.7G 4C',
+          QTY: '1',
+          TMC: ' 183.07'
+        },
+        {
+          CategoryID: 'SBB0J05441',
+          Description: ' W10 Pro',
+          QTY: '1',
+          TMC: '112.00'
+        },
+        {
+          CategoryID: 'SBB0L54434',
+          Description: 'Tiny B250 WW',
+          QTY: '1',
+          TMC: '88.87'
+        },
+        {
+          CategoryID: 'VK00028880',
+          Description: '8GB DDR4 2400 SoDIMM',
+          QTY: '1',
+          TMC: '72.44'
+        },
+        {
+          CategoryID: 'VK00008845',
+          Description: '3 Year On-site',
+          QTY: '1',
+          TMC: '7.70'
+        },
+        {
+          CategoryID: 'SBB0J04751',
+          Description: 'Intel 3165+BT 1x1ac Tiny',
+          QTY: '1',
+          TMC: '6.89'
+        },
+        {
+          CategoryID: 'SBB0L53089',
+          Description: 'USB Calliope KB BK 189 FRA',
+          QTY: '1',
+          TMC: '6.80'
+        },
+        {
+          CategoryID: 'SBB0J02811',
+          Description: 'Optional VGA Port',
+          QTY: '1',
+          TMC: '6.03'
+        },
+        {
+          CategoryID: 'SBB0J03380',
+          Description: 'Thermal Kit 35W Tiny',
+          QTY: '1',
+          TMC: '4.87'
+        },
+        {
+          CategoryID: 'SBB0J04752',
+          Description: 'Tiny 65W adapter',
+          QTY: '1',
+          TMC: '4.80'
+        },
+        {
+          CategoryID: 'VK00041036',
+          Description: 'Win10 Ready to Provision',
+          QTY: '1',
+          TMC: '3.18'
+        },
+        {
+          CategoryID: 'SBB0L52928',
+          Description: 'USB Calliope Mouse BK',
+          QTY: '1',
+          TMC: '2.14'
+        }
+      ],
       columns: [
         {
           headerName: 'ID',
           width: 80,
           field: 'id',
           fixed: 'left',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         }, {
           headerName: 'Quarter',
           fixed: 'left',
           field: 'quarter',
           width: 100,
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'Brand',
           field: 'brand',
-          cellStyle: {'text-align': 'center'},
+          cellStyle: {'text-align': 'left'},
           width: 100
         },
         {
           headerName: 'Brand Summary',
-          width: 100,
+          width: 130,
           field: 'brsum',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'Sub-Series',
           width: 100,
           field: 'subser',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'Product No.',
           width: 120,
           field: 'prono',
-          cellStyle: {'text-align': 'center'},
-          cellRenderer: () => { return '<a href="#/excel/excel_listpage">PE-20176807001</a>'}
+          cellStyle: {'text-align': 'left'},
+          cellRenderer: (params) => {
+            return '<a href="#">' + params.value + '</a>'
+          },
+          onCellClicked: () => {
+            this.modelComponentsList = true
+          }
         },
         {
           headerName: 'Product Desc',
           width: 120,
           field: 'prodesc',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'Vol',
           field: 'vol',
           width: 100,
-          cellStyle: {'text-align': 'center'}
+          editable: true,
+          cellStyle: {'text-align': 'left', color: '#fff', backgroundColor: 'green'}
         },
         {
           headerName: 'List Price',
           width: 100,
           field: 'listpri',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'Stnd Price',
           width: 100,
           field: 'stndpri',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'Request price',
           width: 120,
           field: 'respri',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'Estimation Price',
           width: 135,
           field: 'estpri',
-          cellStyle: {'text-align': 'center'}
+          editable: true,
+          cellStyle: {'text-align': 'left', color: '#fff', backgroundColor: 'green'}
         },
         {
           headerName: 'Final Price',
           width: 100,
           field: 'finalpri',
-          cellStyle: {'text-align': 'center'}
+          editable: true,
+          cellStyle: {'text-align': 'left', color: '#fff', backgroundColor: 'green'}
         },
         {
           headerName: 'Discount %',
           width: 100,
           field: 'disc',
-          cellStyle: {'text-align': 'center'}
+          editable: true,
+          cellStyle: {'text-align': 'left', color: '#fff', backgroundColor: 'green'}
         },
         {
           headerName: 'BMC',
           width: 100,
           field: 'bmc',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'TMC',
           width: 100,
           field: 'tmc',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'BMC Margin',
           width: 110,
           field: 'bmcmar',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'TMC Margin',
           width: 110,
           field: 'tmcmar',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'BMC %',
           width: 100,
           field: 'bmcb',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'TMC %',
           width: 100,
           field: 'tmcb',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'GR',
           width: 100,
           field: 'gr',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'GR Reduce %',
           width: 110,
           field: 'grre',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'Net Revenue',
           width: 100,
           field: 'netre',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'PTI',
           width: 100,
           field: 'pti',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'PTI Profit',
           width: 100,
           field: 'ptipro',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'PTI Margin',
           width: 100,
           field: 'ptimar',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         }
       ],
-      rowdata: [],
+      rowData: [],
       detailcolumns1: [
         {
           headerName: ' ',
           field: 'f0q',
-          cellStyle: {'text-align': 'center'},
+          cellStyle: {'text-align': 'left'},
           className: 'pxt'
         },
         {
           headerName: 'F1Q 18/19',
           field: 'f1q',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'F2Q 18/19',
           field: 'f2q',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'F3Q 18/19',
           field: 'f3q',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'F4Q 18/19',
           field: 'f4q',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'Total',
           field: 'total',
-          cellStyle: {'text-align': 'center'},
+          cellStyle: {'text-align': 'left'},
           className: 'pxt'
         }
       ],
@@ -610,12 +957,12 @@ export default {
         {
           headerName: 'Total System Volumes',
           field: 'tsv',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: ' ',
           field: 'tsvv',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         }
       ],
       detaildata2: [
@@ -640,12 +987,12 @@ export default {
         {
           headerName: 'Roadmap Metrics',
           field: 'tsv',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: ' ',
           field: 'tsvv',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         }
       ],
       detaildata3: [
@@ -670,69 +1017,69 @@ export default {
         {
           headerName: 'Part#',
           field: 'part',
-          cellStyle: {'text-align': 'center'},
+          cellStyle: {'text-align': 'left'},
           className: 'pxt'
         },
         {
           headerName: 'Product Brand',
           field: 'pb',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'Product Desc',
           field: 'pd',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'Total Volume',
           field: 'tv',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'Wtd Average List',
           field: 'wal',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'Wtd Average Price',
           field: 'wap',
-          cellStyle: {'text-align': 'center'},
+          cellStyle: {'text-align': 'left'},
           className: 'pxt'
         },
         {
           headerName: 'Wtd Average TMC Cost',
           field: 'watc',
-          cellStyle: {'text-align': 'center'},
+          cellStyle: {'text-align': 'left'},
           className: 'pxt'
         },
         {
           headerName: 'TMC GP',
           field: 'tg',
-          cellStyle: {'text-align': 'center'},
+          cellStyle: {'text-align': 'left'},
           className: 'pxt'
         },
         {
           headerName: 'TMC GP%',
           field: 'tgb',
-          cellStyle: {'text-align': 'center'},
+          cellStyle: {'text-align': 'left'},
           className: 'pxt'
         },
         {
           headerName: 'Total Gross Revenue',
           field: 'tgr',
-          cellStyle: {'text-align': 'center'},
+          cellStyle: {'text-align': 'left'},
           className: 'pxt'
         },
         {
           headerName: 'Total Net Revenue',
           field: 'tnr',
-          cellStyle: {'text-align': 'center'},
+          cellStyle: {'text-align': 'left'},
           className: 'pxt'
         },
         {
           headerName: 'Total TMC GP',
           field: 'ttg',
-          cellStyle: {'text-align': 'center'},
+          cellStyle: {'text-align': 'left'},
           className: 'pxt'
         }
       ],
@@ -798,33 +1145,33 @@ export default {
         {
           headerName: ' ',
           field: 'f0q',
-          cellStyle: {'text-align': 'center'},
+          cellStyle: {'text-align': 'left'},
           className: 'pxt'
         },
         {
           headerName: 'F1Q 18/19',
           field: 'f1q',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'F2Q 18/19',
           field: 'f2q',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'F3Q 18/19',
           field: 'f3q',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'F4Q 18/19',
           field: 'f4q',
-          cellStyle: {'text-align': 'center'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'Total',
           field: 'total',
-          cellStyle: {'text-align': 'center'},
+          cellStyle: {'text-align': 'left'},
           className: 'pxt'
         }
       ],
@@ -1447,11 +1794,11 @@ export default {
         },
         {
           f0q: 'Total Services/Other',
-          f1q: '',
-          f2q: '',
-          f3q: '',
-          f4q: '',
-          total: ''
+          f1q: 'sd',
+          f2q: 'sdsd',
+          f3q: 'sd',
+          f4q: 'sd',
+          total: 'sdvc'
         },
         {
           f0q: 'Revenue',
@@ -1479,11 +1826,11 @@ export default {
         },
         {
           f0q: 'Total Branded',
-          f1q: '',
-          f2q: '',
-          f3q: '',
-          f4q: '',
-          total: ''
+          f1q: 'sds',
+          f2q: '213',
+          f3q: '12',
+          f4q: '1111',
+          total: '12332'
         },
         {
           f0q: 'Revenue',
@@ -1511,11 +1858,11 @@ export default {
         },
         {
           f0q: 'Non Branded',
-          f1q: '',
-          f2q: '',
-          f3q: '',
-          f4q: '',
-          total: ''
+          f1q: '34',
+          f2q: '23',
+          f3q: '232',
+          f4q: '23',
+          total: '2323'
         },
         {
           f0q: 'Revenue',
@@ -1541,159 +1888,73 @@ export default {
           f4q: '100%',
           total: '100%'
         }
-      ],
-      transColumns: [
-        {
-          headerCheckboxSelection: true,
-          headerCheckboxSelectionFilteredOnly: false,
-          editable: false,
-          checkboxSelection: true,
-          width: 60
-        },
-        {
-          headerName: 'Transaction ID',
-          field: 'TransactionID',
-          cellStyle: {'text-align': 'center'}
-        },
-        {
-          headerName: 'Description',
-          field: 'Description',
-          cellStyle: {'text-align': 'center'}
-        },
-        {
-          headerName: 'Product ID',
-          field: 'ProductID',
-          cellStyle: {'text-align': 'center'}
-        },
-        {
-          headerName: 'Product Desc',
-          field: 'ProductDesc',
-          cellStyle: {'text-align': 'center'}
-        },
-        {
-          headerName: 'Start Date',
-          field: 'StartDate',
-          cellStyle: {'text-align': 'center'}
-        },
-        {
-          headerName: 'Currency',
-          field: 'Currency',
-          cellStyle: {'text-align': 'center'}
-        }
-      ],
-      transData: [
-        {
-          TransactionID: '0002223182',
-          Description: 'RX - KPMG - Norway - M910q',
-          ProductID: 'Desktop TC M910q_Intel Q270_TINY_ES_R',
-          ProductDesc: '10MUCTO1WW',
-          StartDate: 'Thu Jan 25 00:00:00 CST 2018',
-          Currency: 'USD'
-        },
-        {
-          TransactionID: '0002102225',
-          Description: 'CAT:KPMG - KBY NB Turkey T470 v1.0',
-          ProductID: 'Notebook ThinkPad T470 20HECTO1WW Rx',
-          ProductDesc: '20HECTO1WW',
-          StartDate: 'Mon Aug 21 00:00:00 CST 2017',
-          Currency: 'USD'
-        },
-        {
-          TransactionID: '0002175497',
-          Description: 'NonCAT:KPMG - Forensic NB',
-          ProductID: 'Notebook ThinkPad X1 Yoga 2G 20JECTO1WW 20JECTO1WW',
-          ProductDesc: '20JECTO1WW',
-          StartDate: 'Wed Nov 08 00:00:00 CST 2017',
-          Currency: 'USD'
-        },
-        {
-          TransactionID: '0002260500',
-          Description: 'CAT:KPMG-KBY-R T480s Yoga380 Canada',
-          ProductID: 'Notebook ThinkPad X380 Yoga 20LJCTO1WW R',
-          ProductDesc: '20LJCTO1WW',
-          StartDate: 'Thu Apr 05 00:00:00 CST 2018',
-          Currency: 'USD'
-        },
-        {
-          TransactionID: '0002297646',
-          Description: 'CAT:KPMG _ RFP Turkey',
-          ProductID: 'Notebook ThinkPad T480 20L6CTO1WW Rx',
-          ProductDesc: '20L6CTO1WW',
-          StartDate: 'Mon Jul 23 00:00:00 CST 2018',
-          Currency: 'USD'
-        },
-        {
-          TransactionID: '0002223182',
-          Description: 'RX - KPMG - Norway - M910q',
-          ProductID: 'Desktop TC M910q_Intel Q270_TINY_ES_R',
-          ProductDesc: '10MUCTO1WW',
-          StartDate: 'Thu Jan 25 00:00:00 CST 2018',
-          Currency: 'USD'
-        },
-        {
-          TransactionID: '0002102225',
-          Description: 'CAT:KPMG - KBY NB Turkey T470 v1.0',
-          ProductID: 'Notebook ThinkPad T470 20HECTO1WW Rx',
-          ProductDesc: '20HECTO1WW',
-          StartDate: 'Mon Aug 21 00:00:00 CST 2017',
-          Currency: 'USD'
-        },
-        {
-          TransactionID: '0002175497',
-          Description: 'NonCAT:KPMG - Forensic NB',
-          ProductID: 'Notebook ThinkPad X1 Yoga 2G 20JECTO1WW 20JECTO1WW',
-          ProductDesc: '20JECTO1WW',
-          StartDate: 'Wed Nov 08 00:00:00 CST 2017',
-          Currency: 'USD'
-        },
-        {
-          TransactionID: '0002260500',
-          Description: 'CAT:KPMG-KBY-R T480s Yoga380 Canada',
-          ProductID: 'Notebook ThinkPad X380 Yoga 20LJCTO1WW R',
-          ProductDesc: '20LJCTO1WW',
-          StartDate: 'Thu Apr 05 00:00:00 CST 2018',
-          Currency: 'USD'
-        },
-        {
-          TransactionID: '0002297646',
-          Description: 'CAT:KPMG _ RFP Turkey',
-          ProductID: 'Notebook ThinkPad T480 20L6CTO1WW Rx',
-          ProductDesc: '20L6CTO1WW',
-          StartDate: 'Mon Jul 23 00:00:00 CST 2018',
-          Currency: 'USD'
-        }
-      ],
-      transFormItem: {
-        BusinessPartner: '',
-        DMUName: '',
-        PricingEstimationNumber: '',
-        CreatedBy: '',
-        Country: '',
-        select: '',
-        selects: ['opportunity', 'quotation', 'contract']
-      }
+      ]
     }
   },
-  beforeDestroy () {
-    off(window, 'resize', this.resize())
-  },
+  // beforeDestroy () {
+  //   off(window, 'resize', this.resize())
+  // },
   created () {
     this.toggleList()
     this.toggleList1()
     this.toggleList2()
   },
+  mounted () {
+    this.calcGridHeight()
+     window.addEventListener('resize', () => {
+      window.clearTimeout(this.timer)
+      this.timer = window.setTimeout(() => {
+        this.calcGridHeight()
+      }, 100)
+    })
+  },
   methods: {
+    calcGridHeight () {
+      var screenHeight = window.innerHeight
+      // console.log('topHeight:' + topHeight)
+      var t1 = document.getElementsByClassName('split-pane-page-wrapper')[0]
+      var topBox = document.getElementsByClassName('topBox')[0]
+      var ag = document.getElementsByClassName('ag-theme-balham')[0]
+      var acontainer = document.getElementsByClassName('ag-body-container')[0]
+      // ag-body-container
+      ag.style.height = screenHeight - 64-285+ 'px' // 64是头部的高度，10是padding
+      t1.style.height = screenHeight - 64-285 + 'px'
+      acontainer.style.height = screenHeight - 64-64-285+ 'px'
+      this.$nextTick(() => {
+        this.toggleList1()
+      }, 3000)
+    },
+    one () {
+      this.tab1 = true
+      this.tab2 = false
+      return false
+    },
+    two () {
+      this.tab1 = false
+      this.tab2 = true
+      return false
+    },
     resize () {
       this.dom.resize()
     },
     pullFnc () {
-      this.offset = 0.4
+      if(this.pullFlag){
+        this.pullFlag = false
+        this.offset = 0.4
+        this.tab1 = true
+        this.tab2 = false
+      }else{
+        this.pullFlag = true
+        this.offset = 0.96
+        this.tab1 = false
+        this.tab2 = false
+      }
     },
     handleMoving (e) {
       console.log(e.atMin, e.atMax)
     },
     importTransaction () {
-      this.$router.push('#/excel/excel_importTransaction')
+      this.$router.push('/excel/excel_importTransaction')
     },
     toggleList () {
       let boxitem = document.getElementsByClassName('boxitem')[0]
@@ -1741,8 +2002,9 @@ ul{
   width: 48%;
   float: left;
   padding: 0 20px;
+  margin: 10px 0;
   &:nth-child(1) {
-    border-right:1px solid blue;
+    border-right:1px solid #ccc;
   }
   li{
     list-style: none;
@@ -1792,7 +2054,6 @@ h3{
   transform: translate(-50%, -50%);
 }
 .split-pane-page-wrapper{
-  // height: 400px;
   .pane{
     width: 100%;
     height: 100%;
@@ -1801,6 +2062,7 @@ h3{
     }
     &.right-pane{
       background: #fff;
+      overflow-y: scroll;
     }
     &.top-pane{
       background: sandybrown;
@@ -1823,4 +2085,11 @@ h3{
   }
 }
 }
+.boxitem,.SummaryInformation{
+  padding-bottom: 5px;
+  span{
+    color:#999;
+  }
+}
+
 </style>
