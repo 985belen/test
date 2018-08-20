@@ -2,17 +2,17 @@
 <div class="newpage" style="overflow: hidden;">
   <div class="topBox">
     <div class="tool-bar">
-      <!-- <a href="#" class="item" @click="resize, modeldetail = true" ><Icon class="icon" size=16 type="md-barcode" />Summary Detail</a>
-      <Divider type="vertical" />
-      <a href="#" class="item" @click="resize,modelProduct = true"><Icon class="icon" size=16 type="md-stats" />Summary By Product</a>
+      <!-- <a href="#" class="item" @click="resize,modelProduct = true"><Icon class="icon" size=16 type="md-stats" />Summary By Product</a>
       <Divider type="vertical" />
       <a href="#" class="item" @click="resize,modelBrand = true"><Icon class="icon" size=16 type="md-search" />Summary By Brand</a>
       <Divider type="vertical" /> -->
       <a href="#" class="item" @click="modeltransction = true"><Icon class="icon" size=16 type="md-add" />Import Transaction</a>
       <Divider type="vertical" />
-      <a href="#" class="item" ><Icon class="icon" size=16 type="md-add" />Import Products</a>
+      <a href="#" class="item" ><Icon class="icon" size=16 type="md-stats" />Import Products</a>
       <Divider type="vertical" />
       <a href="#" class="item" ><Icon class="icon" size=16 type="md-add" />Add Dummy Item</a>
+      <Divider type="vertical" />
+      <a href="#" class="item"><Icon class="icon" size=16 type="md-stats" />Recommendation Price</a>
     </div>
     <h3 class="marginBottom"><a href="javascript:;" style="display:block;color: #333;" @click="toggleList1"><Icon type="ios-podium" />PE Information</a></h3>
     <div class="peinformation">

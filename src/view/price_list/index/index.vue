@@ -619,7 +619,8 @@ export default {
   methods: {
     calcGridHeight () {
       var screenHeight = window.innerHeight
-      var topHeight = this.$refs.toolBar.offsetHeight
+      // var topHeight = this.$refs.toolBar.offsetHeight
+      var topHeight = document.getElementsByClassName('tool-bar')[0].offsetHeight
       // console.log('topHeight:' + topHeight)
       var ag = document.getElementsByClassName('ag-theme-balham')[0]
       var acontainer = document.getElementsByClassName('agcontainer')[0]

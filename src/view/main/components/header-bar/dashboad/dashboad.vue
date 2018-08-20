@@ -14,7 +14,7 @@
             <ul class="submenu">
               <li><router-link style="color: #515a6e" to="/price/CTO_Config">Price Simulation</router-link></li>
               <li ><router-link style="color: #515a6e" to="/price_lists/price_list">Price Evaluation</router-link></li>
-              <li><router-link style="color: #515a6e" to="/">Price Recommendation</router-link></li>
+              <li><router-link style="color: #515a6e" to="">Price Recommendation</router-link></li>
             </ul>
           </Col>
           <Col span=6>

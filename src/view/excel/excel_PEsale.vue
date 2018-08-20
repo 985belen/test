@@ -9,6 +9,8 @@
       <a href="#" class="item" ><Icon class="icon" size=16 type="md-add" />Add Dummy Item</a>
       <Divider type="vertical" />
       <a href="#" class="item" ><Icon class="icon" size=16 type="md-stats" />Accepted</a>
+      <Divider type="vertical" />
+      <a href="#" class="item" ><Icon class="icon" size=16 type="md-stats" />Recommendation Price</a>
     </div>
     <h3 class="marginBottom"><a href="javascript:;" style="display:block;color: #333;" @click="toggleList1"><Icon type="ios-podium" />PE Information</a></h3>
     <div class="peinformation">
@@ -402,6 +404,7 @@ export default {
       toggle2: true,
       tab1: false,
       tab2: false,
+      tab3: false,
       pullFlag: true,
       dom: null,
       offset: 0.97,
@@ -462,7 +465,7 @@ export default {
           field: 'Description',
           cellStyle: {'text-align': 'left'},
           cellRenderer: (params) => {
-            return '<div class="longdata" title="' + params.value +'">' + params.value + '</div>'
+            return '<div role="gridcell" title="' + params.value +'">' + params.value + '</div>'
           }
         },
         {
@@ -470,7 +473,7 @@ export default {
           field: 'ProductID',
           cellStyle: {'text-align': 'left'},
           cellRenderer: (params) => {
-            return '<div class="longdata" title="' + params.value +'">' + params.value + '</div>'
+            return '<div role="gridcell" title="' + params.value +'">' + params.value + '</div>'
           }
         },
         {
@@ -479,7 +482,7 @@ export default {
           width: 120,
           cellStyle: {'text-align': 'left'},
           cellRenderer: (params) => {
-            return '<div class="longdata" title="' + params.value +'">' + params.value + '</div>'
+            return '<div role="gridcell" title="' + params.value +'">' + params.value + '</div>'
           }
         },
         {
@@ -596,7 +599,7 @@ export default {
           field: 'Description',
           cellStyle: {'text-align': 'left'},
           cellRenderer: (params) => {
-            return '<div class="longdata" title="' + params.value +'">' + params.value + '</div>'
+            return '<div role="gridcell" title="' + params.value +'">' + params.value + '</div>'
           }
         }, {
           headerName: 'QTY',
@@ -702,7 +705,7 @@ export default {
           field: 'brand',
           cellStyle: {'text-align': 'left'},
           cellRenderer: (params) => {
-            return '<div class="longdata" title="' + params.value +'">' + params.value + '</div>'
+            return '<div role="gridcell" title="' + params.value +'">' + params.value + '</div>'
           },
           width: 100
         },
@@ -718,7 +721,7 @@ export default {
           field: 'subser',
           cellStyle: {'text-align': 'left'},
           cellRenderer: (params) => {
-            return '<div class="longdata" title="' + params.value +'">' + params.value + '</div>'
+            return '<div role="gridcell" title="' + params.value +'">' + params.value + '</div>'
           }
         },
         {
@@ -727,7 +730,7 @@ export default {
           field: 'prono',
           cellStyle: {'text-align': 'left'},
           cellRenderer: (params) => {
-            return '<a href="#">' + params.value + '</a>'
+            return '<a title="' + params.value +'"href="#">' + params.value + '</a>'
           },
           onCellClicked: () => {
             this.modelComponentsList = true
@@ -739,7 +742,7 @@ export default {
           field: 'prodesc',
           cellStyle: {'text-align': 'left'},
           cellRenderer: (params) => {
-            return '<div class="longdata" title="' + params.value +'">' + params.value + '</div>'
+            return '<div role="gridcell" title="' + params.value +'">' + params.value + '</div>'
           }
         },
         {
@@ -2245,9 +2248,6 @@ export default {
       ]
     }
   },
-  // beforeDestroy () {
-  //   off(window, 'resize', this.resize())
-  // },
   created () {
     this.toggleList()
     this.toggleList1()
@@ -2265,15 +2265,14 @@ export default {
   methods: {
     calcGridHeight () {
       var screenHeight = window.innerHeight
-      // console.log('topHeight:' + topHeight)
       var t1 = document.getElementsByClassName('split-pane-page-wrapper')[0]
       var topBox = document.getElementsByClassName('topBox')[0]
       var ag = document.getElementsByClassName('ag-theme-balham')[0]
       var acontainer = document.getElementsByClassName('ag-body-container')[0]
       // ag-body-container
-      ag.style.height = screenHeight - 64-285+ 'px' // 64是头部的高度，10是padding
-      t1.style.height = screenHeight - 64-285 + 'px'
-      acontainer.style.height = screenHeight - 64-64-285+ 'px'
+      ag.style.height = screenHeight - 64 - 285 + 'px'
+      t1.style.height = screenHeight - 64 - 285 + 'px'
+      acontainer.style.height = screenHeight - 64 - 64 - 285 + 'px'
       this.$nextTick(() => {
         this.toggleList1()
       }, 3000)

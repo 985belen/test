@@ -1,6 +1,6 @@
 <template>
 <div class="price-box" ref="priceBox">
-  <div ref="topMain">
+  <div ref="topMain" class="topMain">
     <div class="tool-bar" ref="toolBar">
       <a href="#" class="item"><Icon class="icon" size=16 type="md-trash"/>Delete</a>
       <Divider type="vertical" />
@@ -244,7 +244,7 @@ export default {
             {headerName: 'Part Number',  width: 120, field: 'Part Number', cellStyle: {'text-align': 'left'}},
             {headerName: 'Description',  width: 120, field: 'Description', cellStyle: {'text-align': 'left'},
               cellRenderer: (params) => {
-                return '<div class="longdata" title="' + params.value +'">' + params.value + '</div>'
+                return '<div role="gridcell" title="' + params.value +'">' + params.value + '</div>'
               }
             },
             {headerName: 'Category',  width: 120, field: 'Category', cellStyle: {'text-align': 'left'}},
@@ -1628,7 +1628,7 @@ export default {
           field: 'first',
           width: 120,
           cellRenderer: (params) => {
-            return '<div class="longdata" title="' + params.value +'">' + params.value + '</div>'
+            return '<div role="gridcell" title="' + params.value +'">' + params.value + '</div>'
           }
         },
         {
@@ -1713,7 +1713,7 @@ export default {
           field: 'first',
           width: 120,
           cellRenderer: (params) => {
-            return '<div class="longdata" title="' + params.value +'">' + params.value + '</div>'
+            return '<div role="gridcell" title="' + params.value +'">' + params.value + '</div>'
           },
         },
         {
@@ -1861,7 +1861,7 @@ export default {
           headerName: '',
           field: 'first',
           cellRenderer: (params) => {
-            return '<div class="longdata" title="' + params.value +'">' + params.value + '</div>'
+            return '<div role="gridcell" title="' + params.value +'">' + params.value + '</div>'
           },
           width: 120
         },
@@ -2031,7 +2031,8 @@ export default {
   methods: {
     calcGridHeight () {
       var screenHeight = window.innerHeight
-      var topHeight = this.$refs.topMain.offsetHeight
+      // var topHeight = this.$refs.topMain.offsetHeight
+      var topHeight = document.getElementsByClassName('topMain')[0].offsetHeight
       // console.log('topHeight:' + topHeight)
       var t1 = document.getElementsByClassName('split-pane-page-wrapper')[0]
       var ag = document.getElementsByClassName('ag-theme-balham')[0]

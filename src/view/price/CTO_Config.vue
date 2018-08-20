@@ -41,11 +41,11 @@ export default {
         },
         {headerName: 'Opportunity', field: 'Opportunity', width: 120, cellStyle: {'text-align': 'left'},
           cellRenderer: (params) => {
-            return '<div title="' + params.value +'">' + params.value + '</div>'
+            return '<div role="gridcell" title="' + params.value +'">' + params.value + '</div>'
           }},
         {headerName: 'Account', field: 'Account', width: 120, cellStyle: {'text-align': 'left'},
           cellRenderer: (params) => {
-            return '<div title="' + params.value +'">' + params.value + '</div>'
+            return '<div role="gridcell" title="' + params.value +'">' + params.value + '</div>'
           }},
         {headerName: 'Country', field: 'country',  width: 120,cellStyle: {'text-align': 'left'}},
         {headerName: 'End Customer DMU', width: 150, field: 'EndCustomerDMU', cellStyle: {'text-align': 'left'}},
@@ -496,8 +496,9 @@ export default {
   methods: {
     calcGridHeight () {
       var screenHeight = window.innerHeight
-      var topHeight = this.$refs.toolBar.offsetHeight
+      // var topHeight = this.$refs.toolBar.offsetHeight
       // console.log('topHeight:' + topHeight)
+      var topHeight = document.getElementsByClassName('tool-bar')[0].offsetHeight
       var ag = document.getElementsByClassName('ag-theme-balham')[0]
       var acontainer = document.getElementsByClassName('agcontainer')[0]
       ag.style.height = screenHeight - topHeight - 64 - 40 + 'px' // 64是头部的高度，10是padding
