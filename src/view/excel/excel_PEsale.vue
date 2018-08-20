@@ -598,7 +598,7 @@ export default {
         }, {
           headerName: 'Description',
           field: 'Description',
-          width: 200,
+          width: 250,
           cellStyle: {'text-align': 'left'},
           cellRenderer: (params) => {
             return '<div role="gridcell" title="' + params.value +'">' + params.value + '</div>'
@@ -606,12 +606,12 @@ export default {
         }, {
           headerName: 'QTY',
           field: 'QTY',
-          width: 150,
+          width: 155,
           cellStyle: {'text-align': 'left'}
         }, {
           headerName: 'TMC',
           field: 'TMC',
-          width: 150,
+          width: 160,
           cellStyle: {'text-align': 'left'}
         }
       ],
