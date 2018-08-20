@@ -24,9 +24,10 @@ html,body{
 #app {
   .size;
 }
-.longdata{
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
+.ag-header-cell-color{
+  background: #3ce43c
+}
+.lessThan0IsRed{
+  color: red
 }
 </style>

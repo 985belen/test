@@ -593,10 +593,12 @@ export default {
         {
           headerName: 'Category ID',
           field: 'CategoryID',
+          width: 200,
           cellStyle: {'text-align': 'left'}
         }, {
           headerName: 'Description',
           field: 'Description',
+          width: 200,
           cellStyle: {'text-align': 'left'},
           cellRenderer: (params) => {
             return '<div role="gridcell" title="' + params.value +'">' + params.value + '</div>'
@@ -604,11 +606,12 @@ export default {
         }, {
           headerName: 'QTY',
           field: 'QTY',
-          width: 120,
+          width: 150,
           cellStyle: {'text-align': 'left'}
         }, {
           headerName: 'TMC',
           field: 'TMC',
+          width: 150,
           cellStyle: {'text-align': 'left'}
         }
       ],
@@ -819,13 +822,23 @@ export default {
           headerName: 'BMC %',
           width: 100,
           field: 'bmcb',
-          cellStyle: {'text-align': 'left'}
+          cellStyle: {'text-align': 'left'},
+          cellClassRules: {
+            lessThan0IsRed: function (params) {
+              return params.value < 0
+            }
+          }
         },
         {
           headerName: 'TMC %',
           width: 100,
           field: 'tmcb',
-          cellStyle: {'text-align': 'left'}
+          cellStyle: {'text-align': 'left'},
+          cellClassRules: {
+            lessThan0IsRed: function (params) {
+              return params.value < 0
+            }
+          }
         },
         {
           headerName: 'GR',
@@ -996,8 +1009,8 @@ export default {
           tmc: '955.31',
           bmcmar: '19.69',
           tmcmar: '19.69',
-          bmcb: '2.00',
-          tmcb: '2.00',
+          bmcb: '-2.00',
+          tmcb: '-2.00',
           gr: '29525',
           grre: '0',
           netre: '29525',
@@ -1080,8 +1093,8 @@ export default {
           tmc: '956.18',
           bmcmar: '19.69',
           tmcmar: '18.82',
-          bmcb: '2.00',
-          tmcb: '2.00',
+          bmcb: '-2.00',
+          tmcb: '-2.00',
           gr: '29525',
           grre: '0',
           netre: '29525',
@@ -1192,7 +1205,7 @@ export default {
           tmc: '956.18',
           bmcmar: '19.69',
           tmcmar: '18.82',
-          bmcb: '2.00',
+          bmcb: '-2.00',
           tmcb: '2.00',
           gr: '29525',
           grre: '0',

@@ -61,7 +61,6 @@
             :floatingFilter="true"
             :enableSorting="true"
             :enableFilter="true"
-            :showToolPanel="showToolPanel"
             :toolPanelSuppressGroups="true"
             :toolPanelSuppressValues="true"
             :toolPanelSuppressSideButtons="false"
