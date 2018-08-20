@@ -124,7 +124,6 @@ export default [
       }
     ]
   },
-
   {
     path: '/excel',
     name: 'excel',
@@ -199,6 +198,15 @@ export default [
           title: 'mtm_index'
         },
         component: () => import('@/view/mtm/index.vue')
+      },
+      {
+        path: 'mtm_mtm',
+        name: 'mtm_mtm',
+        meta: {
+          icon: 'mtm_mtm',
+          title: 'mtm_mtm'
+        },
+        component: () => import('@/view/mtm/mtm.vue')
       }
     ]
   },
