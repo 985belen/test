@@ -25,30 +25,30 @@
         <Form :model="FormItem" :label-width="120" :rules="ruleValidate">
           <Row>
             <Col span=5 offset="1">
-              <strong>PE ID: </strong><span></span>
+              <strong>PE ID: </strong><span>3324324</span>
             </Col>
             <Col span=5>
-              <strong>DMU Name: </strong><span></span>
+              <strong>DMU Name: </strong><span>tonny</span>
             </Col>
             <Col span=5>
-              <strong>Country: </strong><span></span>
+              <strong>Country: </strong><span>China</span>
             </Col>
             <Col span=5>
-              <strong>Channel: </strong><span></span>
+              <strong>Channel: </strong><span>Direct</span>
             </Col>
           </Row>
           <Row>
             <Col span=5 offset="1">
-              <strong>Currency: </strong><span></span>
+              <strong>Currency: </strong><span>USD</span>
             </Col>
             <Col span=5>
-              <strong>Pricing Group: </strong><span></span>
+              <strong>Pricing Group: </strong><span>B1</span>
             </Col>
             <Col span=5>
-              <strong>Created By: </strong><span></span>
+              <strong>Created By: </strong><span>sumer</span>
             </Col>
             <Col span=5>
-              <strong>Description: </strong><span></span>
+              <strong>Description: </strong><span>RFP Coop August 2018</span>
             </Col>
           </Row>
         </Form>
@@ -791,7 +791,62 @@ export default {
           cellStyle: {'text-align': 'left'}
         }
       ],
-      rowData: [],
+      rowData: [{
+          id: 1,
+          quarter: 'F1Q 18/19',
+          brand: 'ThinkPad Classic',
+          brsum: 'Notebook',
+          subser: 'X280',
+          prono: '20KECTO1WW config',
+          prodesc: 'Notebook ThinkPad X280 20KECTO1WW Rx',
+          vol: '300',
+          listpri: '10641.64',
+          stndpri: '10641.64',
+          respri: '817',
+          estpri: '850',
+          finalpri: '0',
+          disc: '1',
+          bmc: '786.03',
+          tmc: '801.7',
+          bmcmar: '19.69',
+          tmcmar: '19.69',
+          bmcb: '2.00',
+          tmcb: '2.00',
+          gr: '4875',
+          grre: '0',
+          netre: '4875',
+          pti: '1075.23',
+          ptipro: '-100.23',
+          ptimar: '-10.30%'
+        },
+        {
+          id: '',
+          quarter: 'F2Q 18/19',
+          brand: 'ThinkPad Classic',
+          brsum: 'Notebook',
+          subser: 'X280',
+          prono: '20KECTO1WW',
+          prodesc: 'Notebook ThinkPad X280 20KECTO1WW Rx',
+          vol: '300',
+          listpri: '10641.64',
+          stndpri: '10641.64',
+          respri: '817',
+          estpri: '850',
+          finalpri: '0',
+          disc: '1',
+          bmc: '786.03',
+          tmc: '804.92',
+          bmcmar: '19.69',
+          tmcmar: '21.01',
+          bmcb: '2.00',
+          tmcb: '2.00',
+          gr: '4875',
+          grre: '0',
+          netre: '4875',
+          pti: '1073.91',
+          ptipro: '-98.92',
+          ptimar: '-10.30%'
+        }],
       detailcolumns1: [
         {
           headerName: ' ',

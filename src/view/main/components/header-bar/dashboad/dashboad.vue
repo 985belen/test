@@ -8,7 +8,7 @@
       </Button>
       <DropdownMenu slot="list" style="margin-left: 30px;">
         <Row>
-          <Col span=6>
+          <Col class="hover" span=6>
             <DropdownItem style="font-size: 20px!important;">Pricing Portal</DropdownItem>
             <Icon style=" margin-left: 30px;"  size="64" type="ios-cog" />
             <ul class="submenu">
@@ -17,25 +17,24 @@
               <li><router-link style="color: #515a6e" to="">Price Recommendation</router-link></li>
             </ul>
           </Col>
-          <Col span=6>
+          <Col class="hover" span=6>
             <DropdownItem style="font-size:20px!important;">Profit Margin  Analysis</DropdownItem>
             <Icon style=" margin-left: 30px;"  size="64" type="ios-contacts" />
             <ul class="submenu">
-              <li><router-link to="/iframe/iframe_ProductSeries" style="color: #515a6e">Product Series Report</router-link></li>
-              <li><router-link to="/iframe/iframe_ProductSummary" style="color: #515a6e">Product Summary Report</router-link></li>
+              <li><router-link to="/finance_list" style="color: #515a6e">Finance Review</router-link></li>
               <li><router-link to="/iframe/iframe_HistoricalSummary" style="color: #515a6e">Historical Summary Report</router-link></li>
               <li><router-link to="/iframe/iframe_clv" style="color: #515a6e">CLV Report</router-link></li>
               <li><router-link to="/iframe/iframe_DealTracking" style="color: #515a6e">Deal Tracking Report</router-link></li>
             </ul>
           </Col>
-          <Col span=6>
+          <Col class="hover" span=6>
             <DropdownItem style="font-size: 20px!important;">Financial Dashboard</DropdownItem>
             <Icon style=" margin-left: 30px;"  size="64" type="md-grid" />
             <ul class="submenu">
               <li>Financial Dashboard</li>
             </ul>
             </Col>
-          <Col span=6>
+          <Col class="hover" span=6>
             <DropdownItem style="font-size: 20px!important;">Price Engine</DropdownItem>
             <Icon style=" margin-left: 30px;"  size="64" type="md-settings" />
             <ul class="submenu">
@@ -67,7 +66,7 @@ export default {
   }
 }
 </script>
-<style>
+<style >
   .ivu-select-dropdown{
     width: 100%!important;
     height: 300px!important;
@@ -81,5 +80,9 @@ export default {
     margin-left: 20px;
     list-style: disc;
     line-height: 28px;
+  }
+  .hover:hover{
+    background: #f3f3f3;
+    height: 296px;
   }
 </style>
