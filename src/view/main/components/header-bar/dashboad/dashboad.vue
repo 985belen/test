@@ -21,7 +21,7 @@
             <DropdownItem style="font-size:20px!important;">Profit Margin  Analysis</DropdownItem>
             <Icon style=" margin-left: 30px;"  size="64" type="ios-contacts" />
             <ul class="submenu">
-              <li><router-link to="/finance_list" style="color: #515a6e">Finance Review</router-link></li>
+              <li><router-link to="/price/CTO_ListPrice" style="color: #515a6e">Finance Review</router-link></li>
               <li><router-link to="/iframe/iframe_HistoricalSummary" style="color: #515a6e">Historical Summary Report</router-link></li>
               <li><router-link to="/iframe/iframe_clv" style="color: #515a6e">CLV Report</router-link></li>
               <li><router-link to="/iframe/iframe_DealTracking" style="color: #515a6e">Deal Tracking Report</router-link></li>
