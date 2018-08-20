@@ -6,9 +6,9 @@
           Pricing Suite
         <Icon type="ios-arrow-down"></Icon>
       </Button>
-      <DropdownMenu slot="list" style="margin-left: 30px;">
+      <DropdownMenu slot="list" >
         <Row>
-          <Col class="hover" span=6>
+          <Col style="padding-left: 30px;" class="hover" span=6>
             <DropdownItem style="font-size: 20px!important;">Pricing Portal</DropdownItem>
             <Icon style=" margin-left: 30px;"  size="64" type="ios-cog" />
             <ul class="submenu">
@@ -66,7 +66,10 @@ export default {
   }
 }
 </script>
-<style >
+<style lang="less">
+.submenu{
+  margin-left: 10px;
+}
   .ivu-select-dropdown{
     width: 100%!important;
     height: 300px!important;
@@ -82,7 +85,12 @@ export default {
     line-height: 28px;
   }
   .hover:hover{
-    background: #f3f3f3;
+    background: rgba(23, 245, 134,.4);
+    color: #fff;
     height: 296px;
+    .ivu-dropdown-item{
+      color: #fff;
+    }
   }
+
 </style>
