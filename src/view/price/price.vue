@@ -238,8 +238,8 @@ export default {
         {
           headerName: 'Group',
           children: [
-            {headerName: 'Item NO',  width: 120, field: 'Item NO', cellStyle: {'text-align': 'left'}},
-            {headerName: 'Flag',  width: 120, field: 'Flag', cellStyle: {'text-align': 'left'}},
+            {headerName: 'Item NO',  width: 80, field: 'Item NO', cellStyle: {'text-align': 'left'}},
+            {headerName: 'Flag',  width: 90, field: 'Flag', cellStyle: {'text-align': 'left'}},
             {headerName: 'Part Number',  width: 120, field: 'Part Number', cellStyle: {'text-align': 'left'}},
             {headerName: 'Description',  width: 120, field: 'Description', cellStyle: {'text-align': 'left'},
               cellRenderer: (params) => {

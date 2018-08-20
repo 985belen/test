@@ -42,7 +42,7 @@
   <Modal
     v-model="modelnew"
     :styles="{width:'1000px'}"
-    title="create New PE"
+    title="Create New PE"
     ok-text="Ok"
     @on-ok="ok"
     cancel-text="Cancel">
