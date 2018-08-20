@@ -252,22 +252,13 @@ export default [
         component: () => import('@/view/iframe/PricingProfitMargin.vue')
       },
       {
-        path: 'iframe_ProductSeries',
-        name: 'iframe_ProductSeries',
+        path: 'iframe_FinanceReview',
+        name: 'iframe_FinanceReview',
         meta: {
-          icon: 'iframe_ProductSeries',
-          title: 'iframe_ProductSeries'
+          icon: 'iframe_FinanceReview',
+          title: 'iframe_FinanceReview'
         },
-        component: () => import('@/view/iframe/ProductSeries.vue')
-      },
-      {
-        path: 'iframe_ProductSummary',
-        name: 'iframe_ProductSummary',
-        meta: {
-          icon: 'iframe_ProductSummary',
-          title: 'iframe_ProductSummary'
-        },
-        component: () => import('@/view/iframe/ProductSummary.vue')
+        component: () => import('@/view/iframe/FinanceReview.vue')
       }
     ]
   }
