@@ -39,8 +39,14 @@ export default {
         {headerName: 'Quotation ID', field: 'QuotationID', width: 120, cellStyle: {'text-align': 'left'},
           cellRenderer:(params) => { return '<a href="#/price/price_index">' + params.value + '</a>' }
         },
-        {headerName: 'Opportunity', field: 'Opportunity', width: 120, cellStyle: {'text-align': 'left'}},
-        {headerName: 'Account', field: 'Account', width: 120, cellStyle: {'text-align': 'left'}},
+        {headerName: 'Opportunity', field: 'Opportunity', width: 120, cellStyle: {'text-align': 'left'},
+          cellRenderer: (params) => {
+            return '<div title="' + params.value +'">' + params.value + '</div>'
+          }},
+        {headerName: 'Account', field: 'Account', width: 120, cellStyle: {'text-align': 'left'},
+          cellRenderer: (params) => {
+            return '<div title="' + params.value +'">' + params.value + '</div>'
+          }},
         {headerName: 'Country', field: 'country',  width: 120,cellStyle: {'text-align': 'left'}},
         {headerName: 'End Customer DMU', width: 150, field: 'EndCustomerDMU', cellStyle: {'text-align': 'left'}},
         {headerName: 'Sold to Party', width: 120, field: 'SoldtoParty', cellStyle: {'text-align': 'left'}},

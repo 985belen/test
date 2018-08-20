@@ -244,6 +244,9 @@ export default {
           headerName: 'DMU Name',
           cellStyle: {'text-align': 'left'},
           field: 'dmuName',
+          cellRenderer: (params) => {
+            return '<div title="' + params.value +'">' + params.value + '</div>'
+          },
           width: 120
         },
         {

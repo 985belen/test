@@ -2,8 +2,6 @@
 <div class="price-box" ref="priceBox">
   <div ref="topMain">
     <div class="tool-bar" ref="toolBar">
-      <a href="#" class="item"><Icon class="icon" size=16 type="md-add" />New</a>
-      <Divider type="vertical" />
       <a href="#" class="item"><Icon class="icon" size=16 type="md-trash"/>Delete</a>
       <Divider type="vertical" />
       <a href="#" class="item"><Icon class="icon" size=16 type="md-link" />Email</a>
@@ -15,6 +13,8 @@
       <a href="#" class="item"><Icon class="icon" size=16 type="md-notifications" />Import Template</a>
       <Divider type="vertical" />
       <a href="#" class="item"><Icon class="icon" size=16 type="md-exit" />Upload Data</a>
+      <Divider type="vertical" /> 
+      <a href="#" class="item"><Icon class="icon" size=16 type="md-add" />Accepted</a>
     </div>
     <h3 ref=""><a href="javascript:;" style="display:block;color: #333;" @click="toggleList"><Icon type="md-pricetags" /> Quotation Infomation <span style="float: right; font-weight: normal; font-size: 12px;">More</span></a></h3>
     <ul class="item-box" v-if="isStatus">
@@ -47,20 +47,6 @@
     <h3 class="marginBottom" style="margin-bottom: 10px;"><a href="javascript:;" style="display:block;color: #333;" @click="toggleList1"><Icon type="ios-podium" /> CQ</a></h3>
     <div class="table-CQ">
       <Table border :columns="formcolumns" :data="formdata"></Table>
-      <!-- <ag-grid-vue
-        style="width: 100%; height:100%;"
-        class="ag-theme-balham"
-        :columnDefs="formcolumns"
-        :rowData="formdata"
-        :gridAutoHeight="true"
-        :enableSorting="true"
-        :enableFilter="true"
-        :singleClickEdit="true"
-        :suppressSizeToFit="false"
-        :suppressResize="true"
-        :enableColResize="true"
-        rowSelection="multiple">
-      </ag-grid-vue> -->
     </div>
   </div>
   <div class="split-pane-page-wrapper">
@@ -256,7 +242,11 @@ export default {
             {headerName: 'Item NO',  width: 120, field: 'Item NO', cellStyle: {'text-align': 'left'}},
             {headerName: 'Flag',  width: 120, field: 'Flag', cellStyle: {'text-align': 'left'}},
             {headerName: 'Part Number',  width: 120, field: 'Part Number', cellStyle: {'text-align': 'left'}},
-            {headerName: 'Description',  width: 120, field: 'Description', cellStyle: {'text-align': 'left'}},
+            {headerName: 'Description',  width: 120, field: 'Description', cellStyle: {'text-align': 'left'},
+              cellRenderer: (params) => {
+                return '<div class="longdata" title="' + params.value +'">' + params.value + '</div>'
+              }
+            },
             {headerName: 'Category',  width: 120, field: 'Category', cellStyle: {'text-align': 'left'}},
             {headerName: 'Standard Price',  width: 120, field: 'Standard Price', cellStyle: {'text-align': 'left'}},
             {headerName: 'List Price',  width: 120, field: 'List Price', cellStyle: {'text-align': 'left'}},
@@ -1636,7 +1626,10 @@ export default {
         {
           headerName: '',
           field: 'first',
-          width: 120
+          width: 120,
+          cellRenderer: (params) => {
+            return '<div class="longdata" title="' + params.value +'">' + params.value + '</div>'
+          }
         },
         {
           headerName: 'CQ',
@@ -1718,7 +1711,10 @@ export default {
         {
           headerName: '',
           field: 'first',
-          width: 120
+          width: 120,
+          cellRenderer: (params) => {
+            return '<div class="longdata" title="' + params.value +'">' + params.value + '</div>'
+          },
         },
         {
           headerName: 'CQ',
@@ -1864,6 +1860,9 @@ export default {
         {
           headerName: '',
           field: 'first',
+          cellRenderer: (params) => {
+            return '<div class="longdata" title="' + params.value +'">' + params.value + '</div>'
+          },
           width: 120
         },
         {
@@ -2029,9 +2028,6 @@ export default {
       }, 100)
     })
   },
-  // beforeDestroy () {
-  //   off(window, 'resize', this.resize())
-  // },
   methods: {
     calcGridHeight () {
       var screenHeight = window.innerHeight

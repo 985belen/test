@@ -24,4 +24,9 @@ html,body{
 #app {
   .size;
 }
+.longdata{
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
 </style>

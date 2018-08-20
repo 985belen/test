@@ -2,17 +2,13 @@
 <div class="newpage" style="overflow: hidden;">
   <div class="topBox">
     <div class="tool-bar">
-      <!-- <a href="#" class="item" @click="resize, modeldetail = true" ><Icon class="icon" size=16 type="md-barcode" />Summary Detail</a>
-      <Divider type="vertical" />
-      <a href="#" class="item" @click="resize,modelProduct = true"><Icon class="icon" size=16 type="md-stats" />Summary By Product</a>
-      <Divider type="vertical" />
-      <a href="#" class="item" @click="resize,modelBrand = true"><Icon class="icon" size=16 type="md-search" />Summary By Brand</a>
-      <Divider type="vertical" /> -->
       <a href="#" class="item" @click="modeltransction = true"><Icon class="icon" size=16 type="md-add" />Import Transaction</a>
       <Divider type="vertical" />
       <a href="#" class="item" ><Icon class="icon" size=16 type="md-stats" />Import Products</a>
       <Divider type="vertical" />
       <a href="#" class="item" ><Icon class="icon" size=16 type="md-add" />Add Dummy Item</a>
+      <Divider type="vertical" />
+      <a href="#" class="item" ><Icon class="icon" size=16 type="md-stats" />Accepted</a>
     </div>
     <h3 class="marginBottom"><a href="javascript:;" style="display:block;color: #333;" @click="toggleList1"><Icon type="ios-podium" />PE Information</a></h3>
     <div class="peinformation">
@@ -54,7 +50,6 @@
         </Form>
       </div>
     </div>
-    <!-- <h3 class="marginBottom"><a href="javascript:;" style="display:block;color: #333;" @click="toggleList"><Icon type="ios-podium" />form</a></h3> -->
     <h3 class="marginBottom"><a href="javascript:;" style="display:block;color: #333;" @click="toggleList2"><Icon type="ios-podium" />Summary Information</a></h3>
     <div class="SummaryInformation">
       <Row type="flex" justify="center">
@@ -465,18 +460,27 @@ export default {
         {
           headerName: 'Description',
           field: 'Description',
-          cellStyle: {'text-align': 'left'}
+          cellStyle: {'text-align': 'left'},
+          cellRenderer: (params) => {
+            return '<div class="longdata" title="' + params.value +'">' + params.value + '</div>'
+          }
         },
         {
           headerName: 'Product ID',
           field: 'ProductID',
-          cellStyle: {'text-align': 'left'}
+          cellStyle: {'text-align': 'left'},
+          cellRenderer: (params) => {
+            return '<div class="longdata" title="' + params.value +'">' + params.value + '</div>'
+          }
         },
         {
           headerName: 'Product Desc',
           field: 'ProductDesc',
           width: 120,
-          cellStyle: {'text-align': 'left'}
+          cellStyle: {'text-align': 'left'},
+          cellRenderer: (params) => {
+            return '<div class="longdata" title="' + params.value +'">' + params.value + '</div>'
+          }
         },
         {
           headerName: 'Start Date',
@@ -590,7 +594,10 @@ export default {
         }, {
           headerName: 'Description',
           field: 'Description',
-          cellStyle: {'text-align': 'left'}
+          cellStyle: {'text-align': 'left'},
+          cellRenderer: (params) => {
+            return '<div class="longdata" title="' + params.value +'">' + params.value + '</div>'
+          }
         }, {
           headerName: 'QTY',
           field: 'QTY',
@@ -694,6 +701,9 @@ export default {
           headerName: 'Brand',
           field: 'brand',
           cellStyle: {'text-align': 'left'},
+          cellRenderer: (params) => {
+            return '<div class="longdata" title="' + params.value +'">' + params.value + '</div>'
+          },
           width: 100
         },
         {
@@ -706,7 +716,10 @@ export default {
           headerName: 'Sub-Series',
           width: 100,
           field: 'subser',
-          cellStyle: {'text-align': 'left'}
+          cellStyle: {'text-align': 'left'},
+          cellRenderer: (params) => {
+            return '<div class="longdata" title="' + params.value +'">' + params.value + '</div>'
+          }
         },
         {
           headerName: 'Product No.',
@@ -724,7 +737,10 @@ export default {
           headerName: 'Product Desc',
           width: 120,
           field: 'prodesc',
-          cellStyle: {'text-align': 'left'}
+          cellStyle: {'text-align': 'left'},
+          cellRenderer: (params) => {
+            return '<div class="longdata" title="' + params.value +'">' + params.value + '</div>'
+          }
         },
         {
           headerName: 'Vol',
@@ -2437,4 +2453,5 @@ h3{
     color:#999;
   }
 }
+
 </style>
