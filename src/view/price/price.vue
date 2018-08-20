@@ -249,19 +249,31 @@ export default {
             {headerName: 'Category',  width: 120, field: 'Category', cellStyle: {'text-align': 'left'}},
             {headerName: 'Standard Price',  width: 120, field: 'Standard Price', cellStyle: {'text-align': 'left'}},
             {headerName: 'List Price',  width: 120, field: 'List Price', cellStyle: {'text-align': 'left'}},
-            {headerName: 'Requested Price',  width: 130, field: 'Requested Price', editable: true, cellStyle: {'text-align': 'left', color: '#fff', backgroundColor: 'green'}},
+            {headerName: 'Requested Price',  width: 130, field: 'Requested Price', editable: true, 
+            headerClass:'headerColor',
+            cellStyle: {'text-align': 'left'}},
             {headerName: 'Entitled Price',  width: 120, field: 'Entitled Price', cellStyle: {'text-align': 'left'}},
             {headerName: 'Total Quantity',  width: 120, field: 'Total Quantity', cellStyle: {'text-align': 'left'}},
-            {headerName: 'MOT', field: 'MOT',  width: 120, editable: true, cellStyle: {'text-align': 'left', color: '#fff', backgroundColor: 'green'}},
+            {headerName: 'MOT', field: 'MOT',  width: 120, editable: true, 
+            headerClass:'headerColor',
+            cellStyle: {'text-align': 'left'}},
             {headerName: 'BMC w/ freight cost adjustment',  width: 220, field: 'BMC w/ freight cost adjustment', cellStyle: {'text-align': 'left'}},
-            {headerName: 'Special Funding',  width: 130, field: 'Special Funding', editable: true, cellStyle: {'text-align': 'left', color: '#fff', backgroundColor: 'green'}}
+            {headerName: 'Special Funding',  width: 130, field: 'Special Funding', editable: true, 
+            headerClass:'headerColor',
+            cellStyle: {'text-align': 'left'}}
           ]
         },
         {headerName: 'Qty', cellStyle: {'text-align': 'left'},
           children: [
-            {headerName: 'CQ', width: 120, editable: true, field: 'QtyCQ', cellStyle: {'text-align': 'left', color: '#fff', backgroundColor: 'green'}},
-            {headerName: 'CQ+1', width: 120, editable: true,  field: 'QtyCQ+1', cellStyle: {'text-align': 'left', color: '#fff', backgroundColor: 'green'}},
-            {headerName: 'CQ+2', width: 120, editable: true,  field: 'QtyCQ+2', cellStyle: {'text-align': 'left', color: '#fff', backgroundColor: 'green'}}
+            {headerName: 'CQ', width: 120, editable: true, field: 'QtyCQ', 
+            headerClass:'headerColor',
+            cellStyle: {'text-align': 'left'}},
+            {headerName: 'CQ+1', width: 120, editable: true,  field: 'QtyCQ+1', 
+            headerClass:'headerColor',
+            cellStyle: {'text-align': 'left'}},
+            {headerName: 'CQ+2', width: 120, editable: true,  field: 'QtyCQ+2', 
+            headerClass:'headerColor',
+            cellStyle: {'text-align': 'left'}}
           ]
         },
         {headerName: 'BMC',cellStyle: {'text-align': 'left'},
@@ -2248,5 +2260,8 @@ h3{
       .center-middle;
     }
   }
+}
+.headerColor{
+  background: #B4C6E7;
 }
 </style>

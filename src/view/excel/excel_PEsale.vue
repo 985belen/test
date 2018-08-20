@@ -369,6 +369,7 @@
     title="Components List-->20KECTO1WW"
     :styles="{width:'800px'}"
     ok-text="OK"
+    @on-ok="ok"
     cancel-text="Cancel">
     <div class="table-box">
       <ag-grid-vue
@@ -753,7 +754,8 @@ export default {
           field: 'vol',
           width: 100,
           editable: true,
-          cellStyle: {'text-align': 'left', color: '#fff', backgroundColor: '#B4C6E7'}
+          headerClass:'headerColor1',
+          cellStyle: {'text-align': 'left',}
         },
         {
           headerName: 'List Price',
@@ -778,21 +780,24 @@ export default {
           width: 135,
           field: 'estpri',
           editable: true,
-          cellStyle: {'text-align': 'left', color: '#fff', backgroundColor: '#A9D08E'}
+          headerClass:'headerColor2',
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'Final Price',
           width: 100,
           field: 'finalpri',
           editable: true,
-          cellStyle: {'text-align': 'left', color: '#fff', backgroundColor: '#B4C6E7'}
+          headerClass:'headerColor3',
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'Discount %',
           width: 100,
           field: 'disc',
           editable: true,
-          cellStyle: {'text-align': 'left', color: '#fff', backgroundColor: '#B4C6E7'}
+          headerClass:'headerColor4',
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'BMC',
@@ -2465,5 +2470,16 @@ h3{
     color:#999;
   }
 }
-
+.headerColor1{
+  background: #B4C6E7
+}
+.headerColor2{
+  background: #A9D08E
+}
+.headerColor3{
+  background: #B4C6E7
+}
+.headerColor4{
+  background: #B4C6E7
+}
 </style>
