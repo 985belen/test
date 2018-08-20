@@ -91,6 +91,9 @@ export default {
     .ivu-dropdown-item{
       color: #fff;
     }
+    .ivu-dropdown-item:hover{
+      background: transparent;
+    }
   }
 
 </style>
