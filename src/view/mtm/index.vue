@@ -4,21 +4,21 @@
     <TabPane label="PCG" icon="md-bookmarks">
       <Form :model="formLeft" label-position="left">
         <Row type="flex" :gutter="10">
-         <Col span="6">
-            <FormItem label="MTM_NO">
+         <Col span=6>
+            <Form-item label="MTM_NO">
               <Input v-model="formLeft.MTM_NO"></Input>
-            </FormItem>
+            </Form-item>
           </Col>
-          <Col span="6">
-            <FormItem label="COUNTRY">
+          <Col span=6>
+            <Form-item label="COUNTRY">
               <Input v-model="formLeft.COUNTRY"></Input>
-            </FormItem>
+            </Form-item>
           </Col>
-          <Col span="6">
-            <FormItem>
-              <Button type="primary">Search</Button>
+          <Col span=6>
+            <Form-item>
+              <Button type="primary" style="margin-right: 15px;">Search</Button>
               <Button type="primary">Export</Button>
-            </FormItem>
+            </Form-item>
          </Col>
         </Row>
       </Form>
@@ -44,26 +44,26 @@
     <TabPane label="MBG" icon="logo-codepen">
       <Form :model="formRight" label-position="left">
         <Row type="flex" :gutter="10">
-         <Col span="6">
-            <FormItem label="MTM_NO">
+         <Col span=6>
+            <Form-item label="MTM_NO">
               <Input v-model="formRight.MTM_NO"></Input>
-            </FormItem>
+            </Form-item>
           </Col>
-          <Col span="6">
-            <FormItem label="SALES_ORG">
+          <Col span=6>
+            <Form-item label="SALES_ORG">
               <Input v-model="formRight.SALES_ORG"></Input>
-            </FormItem>
+            </Form-item>
           </Col>
-          <Col span="6">
-            <FormItem label="SALES_OFFICE">
+          <Col span=6>
+            <Form-item label="SALES_OFFICE">
               <Input v-model="formRight.SALES_OFFICE"></Input>
-            </FormItem>
+            </Form-item>
           </Col>
-          <Col span="6">
-            <FormItem>
-              <Button type="primary" style="margin-right:15px;">Search</Button>
+          <Col span=6>
+            <Form-item>
+              <Button type="primary" style="margin-right: 15px;">Search</Button>
               <Button type="primary">Export</Button>
-            </FormItem>
+            </Form-item>
          </Col>
         </Row>
       </Form>
