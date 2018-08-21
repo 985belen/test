@@ -261,12 +261,13 @@
     title="Transaction"
     :styles="{width:'1000px'}"
     ok-text="OK"
+    @on-ok="ok"
     cancel-text="Cancel">
     <Form :model="transFormItem" label-position="left" ref="transFormItem" >
       <Row type="flex" justify="start" :gutter="15">
         <Col span=6>
           <Form-item label="Business Partner">
-            <Input v-model="transFormItem.BusinessPartner" placeholder="Enter something..."></Input>
+            <Input v-model="transFormItem.BusinessPartner" placeholder="Enter something...222"></Input>
           </Form-item>
         </Col>
         <Col span=6>
@@ -677,7 +678,7 @@ export default {
           field: 'vol',
           width: 100,
           editable: true,
-          cellStyle: {'text-align': 'left', color: '#fff', backgroundColor: 'green'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'List Price',
@@ -702,21 +703,21 @@ export default {
           width: 135,
           field: 'estpri',
           editable: true,
-          cellStyle: {'text-align': 'left', color: '#fff', backgroundColor: 'green'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'Final Price',
           width: 100,
           field: 'finalpri',
           editable: true,
-          cellStyle: {'text-align': 'left', color: '#fff', backgroundColor: 'green'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'Discount %',
           width: 100,
           field: 'disc',
           editable: true,
-          cellStyle: {'text-align': 'left', color: '#fff', backgroundColor: 'green'}
+          cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'BMC',
@@ -791,62 +792,7 @@ export default {
           cellStyle: {'text-align': 'left'}
         }
       ],
-      rowData: [{
-          id: 1,
-          quarter: 'F1Q 18/19',
-          brand: 'ThinkPad Classic',
-          brsum: 'Notebook',
-          subser: 'X280',
-          prono: '20KECTO1WW config',
-          prodesc: 'Notebook ThinkPad X280 20KECTO1WW Rx',
-          vol: '300',
-          listpri: '10641.64',
-          stndpri: '10641.64',
-          respri: '817',
-          estpri: '850',
-          finalpri: '0',
-          disc: '1',
-          bmc: '786.03',
-          tmc: '801.7',
-          bmcmar: '19.69',
-          tmcmar: '19.69',
-          bmcb: '2.00',
-          tmcb: '2.00',
-          gr: '4875',
-          grre: '0',
-          netre: '4875',
-          pti: '1075.23',
-          ptipro: '-100.23',
-          ptimar: '-10.30%'
-        },
-        {
-          id: '',
-          quarter: 'F2Q 18/19',
-          brand: 'ThinkPad Classic',
-          brsum: 'Notebook',
-          subser: 'X280',
-          prono: '20KECTO1WW',
-          prodesc: 'Notebook ThinkPad X280 20KECTO1WW Rx',
-          vol: '300',
-          listpri: '10641.64',
-          stndpri: '10641.64',
-          respri: '817',
-          estpri: '850',
-          finalpri: '0',
-          disc: '1',
-          bmc: '786.03',
-          tmc: '804.92',
-          bmcmar: '19.69',
-          tmcmar: '21.01',
-          bmcb: '2.00',
-          tmcb: '2.00',
-          gr: '4875',
-          grre: '0',
-          netre: '4875',
-          pti: '1073.91',
-          ptipro: '-98.92',
-          ptimar: '-10.30%'
-        }],
+      rowData: [],
       detailcolumns1: [
         {
           headerName: ' ',
@@ -1911,6 +1857,65 @@ export default {
     })
   },
   methods: {
+    ok(){
+      var obj = [{
+          id: 1,
+          quarter: 'F1Q 18/19',
+          brand: 'ThinkPad Classic',
+          brsum: 'Notebook',
+          subser: 'X280',
+          prono: '20KECTO1WW config',
+          prodesc: 'Notebook ThinkPad X280 20KECTO1WW Rx',
+          vol: '300',
+          listpri: '10641.64',
+          stndpri: '10641.64',
+          respri: '817',
+          estpri: '850',
+          finalpri: '0',
+          disc: '1',
+          bmc: '786.03',
+          tmc: '801.7',
+          bmcmar: '19.69',
+          tmcmar: '19.69',
+          bmcb: '2.00',
+          tmcb: '2.00',
+          gr: '4875',
+          grre: '0',
+          netre: '4875',
+          pti: '1075.23',
+          ptipro: '-100.23',
+          ptimar: '-10.30%'
+        },
+        {
+          id: '',
+          quarter: 'F2Q 18/19',
+          brand: 'ThinkPad Classic',
+          brsum: 'Notebook',
+          subser: 'X280',
+          prono: '20KECTO1WW',
+          prodesc: 'Notebook ThinkPad X280 20KECTO1WW Rx',
+          vol: '300',
+          listpri: '10641.64',
+          stndpri: '10641.64',
+          respri: '817',
+          estpri: '850',
+          finalpri: '0',
+          disc: '1',
+          bmc: '786.03',
+          tmc: '804.92',
+          bmcmar: '19.69',
+          tmcmar: '21.01',
+          bmcb: '2.00',
+          tmcb: '2.00',
+          gr: '4875',
+          grre: '0',
+          netre: '4875',
+          pti: '1073.91',
+          ptipro: '-98.92',
+          ptimar: '-10.30%'
+        }]
+      this.rowData = obj
+    },
     calcGridHeight () {
       var screenHeight = window.innerHeight
       // console.log('topHeight:' + topHeight)

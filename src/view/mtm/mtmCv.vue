@@ -1,6 +1,6 @@
 <template>
 <div class="price-box" ref="priceBox">
-  <div ref="topMain" class="topMain">
+  <div ref="topMain" class="topMain" style="display: none;">
     <div class="tool-bar" ref="toolBar">
       <a href="#" class="item"><Icon class="icon" size=16 type="md-trash"/>Delete</a>
       <Divider type="vertical" />
