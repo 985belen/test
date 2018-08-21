@@ -207,6 +207,15 @@ export default [
           title: 'mtm_mtm'
         },
         component: () => import('@/view/mtm/mtm.vue')
+      },
+      {
+        path: 'mtm_mtmCv',
+        name: 'mtm_mtmCv',
+        meta: {
+          icon: 'mtm_mtmCv',
+          title: 'mtm_mtmCv'
+        },
+        component: () => import('@/view/mtm/mtmCv.vue')
       }
     ]
   },

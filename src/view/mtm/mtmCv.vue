@@ -1,0 +1,174 @@
+<template>
+<div class="price-box" ref="priceBox">
+  <div ref="topMain" class="topMain">
+    <div class="tool-bar" ref="toolBar">
+      <a href="#" class="item"><Icon class="icon" size=16 type="md-trash"/>Delete</a>
+      <Divider type="vertical" />
+      <a href="#" class="item"><Icon class="icon" size=16 type="md-link" />Email</a>
+      <Divider type="vertical" />
+      <a href="#" class="item"><Icon class="icon" size=16 type="md-appstore" />Generate Report</a>
+      <Divider type="vertical" />
+      <a href="#" class="item"><Icon class="icon" size=16 type="md-list-box" />Export Template</a>
+      <Divider type="vertical" />
+      <a href="#" class="item"><Icon class="icon" size=16 type="md-notifications" />Import Template</a>
+      <Divider type="vertical" />
+      <a href="#" class="item"><Icon class="icon" size=16 type="md-exit" />Upload Data</a>
+      <Divider type="vertical" /> 
+      <a href="#" class="item"><Icon class="icon" size=16 type="md-add" />Accepted</a>
+    </div>
+    <h3 class="marginBottom"><a href="javascript:;" style="display:block;color: #333;" @click="toggleList"><Icon type="md-pricetags" />Input Information<span style="float: right; font-weight: normal; font-size: 12px;">More</span></a></h3>
+    <div class="middle-box">
+      <Form :model="form" label-position="left" ref="form" >
+        <Row type="flex" justify="start" :gutter="10">
+          <Col span=6 offset=1>
+            <Form-item label="pns">
+              <Input v-model="form.pns" placeholder="Enter something..."></Input>
+            </Form-item>
+          </Col>
+          <Col span=6>
+            <Form-item>
+              <Button type="primary" style="margin-right:15px;">Call</Button>
+              <Button type="primary" >Export</Button>
+            </Form-item>
+          </Col>
+        </Row>
+      </Form>
+    </div>
+  </div>
+  <h3 class="marginBottom" style="margin-bottom: 10px;"><Icon type="ios-podium" />Output Information</h3>
+  <div class="ag2">
+    <ag-grid-vue
+      style="width: 100%; height:100%;"
+      class="ag-theme-balham agContainer"
+      :columnDefs="columnDefs"
+      :rowData="rowDataDefs"
+      :floatingFilter="true"
+      :enableSorting="true"
+      :enableFilter="true"
+      :singleClickEdit="true"
+      :suppressSizeToFit="true"
+      :suppressResize="true"
+      :enableColResize="true"
+      rowSelection="multiple">
+    </ag-grid-vue>
+  </div>
+</div>
+</template>
+<script>
+import {AgGridVue} from 'ag-grid-vue'
+export default {
+  data () {
+    return {
+      form: {
+        pns: ''
+      },
+      toggle: false,
+      columnDefs: [
+        {headerName: 'pn',  width: 120, field: 'pn', cellStyle: {'text-align': 'left'}},
+        {headerName: 'character',  width: 120, field: 'character', cellStyle: {'text-align': 'left'}},
+        {headerName: 'characterValue',  width: 120, field: 'characterValue', cellStyle: {'text-align': 'left'}},
+      ],
+      rowDataDefs: []
+    }
+  },
+  components: {
+    AgGridVue
+  },
+  created () {
+  },
+  mounted () {
+    this.toggleList()
+    this.calcGridHeight()
+    window.addEventListener('resize', () => {
+      window.clearTimeout(this.timer)
+      this.timer = window.setTimeout(() => {
+        this.calcGridHeight()
+      }, 100)
+    })
+  },
+  methods: {
+    calcGridHeight () {
+      var screenHeight = window.innerHeight
+      var topHeight = document.getElementsByClassName('topMain')[0].offsetHeight
+      var t1 = document.getElementsByClassName('split-pane-page-wrapper')[1]
+      var ag = document.getElementsByClassName('agContainer')[0]
+      ag.style.height = screenHeight - topHeight - 64 - 10 - 10+ 'px' // 64是头部的高度，10是padding
+      t1.style.height = screenHeight - topHeight - 64 - 10 - 10 + 'px'
+      acontainer.style.height = screenHeight - topHeight - 64 -10 -10 + 'px'
+      this.$nextTick(() => {
+        this.toggleList1()
+      }, 3000)
+    },
+    toggleList () {
+      let itembox = document.getElementsByClassName('middle-box')[0]
+      if (this.toggle) {
+        itembox.style.display = 'none'
+      } else {
+        itembox.style.display = 'block'
+      }
+      this.toggle = !this.toggle
+    }
+  }
+}
+</script>
+<style lang="less">
+.price-box{
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  padding-bottom: 10px;
+  background: #fff;
+}
+.tool-bar{
+  width:100%;
+  height:32px;
+  box-shadow: 0 0 5px #ccc;
+  margin-bottom:10px;
+  padding: 0 10px;
+  .item{
+    color:#666;
+    height:32px;
+    line-height: 32px;
+    &:hover{
+      color:rgb(40, 122, 245);
+    }
+    .icon{
+      padding: 0 2px;
+      height:32px;
+      line-height: 32px;
+    }
+  }
+}
+h3{
+  height:30px;
+  line-height: 30px;
+  background: #eee;
+  padding: 0 20px;
+  &.marginBottom{
+    margin-bottom: 10px;
+  }
+}
+.item-box{
+  width:100%;
+  height:auto;
+  margin-bottom:5px;
+  overflow: hidden;
+  padding-top: 3px;
+}
+.ag2{
+  width: 100%;
+  height:auto;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+.ivu-tabs-bar{
+  margin-bottom: 2px;
+}
+.ivu-form-label-left .ivu-form-item-label,
+.ivu-form-item-content{
+  float:left;
+}
+.ivu-form-item{
+  margin-bottom:10px;
+}
+</style>
