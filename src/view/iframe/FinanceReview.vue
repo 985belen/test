@@ -27,7 +27,7 @@ export default {
   }
 }
 </script>
-<style>
+<style lang="less">
 .target{
   width:100%;
   height:100%;

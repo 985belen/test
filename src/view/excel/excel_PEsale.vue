@@ -325,7 +325,7 @@
         </Col>
         <Col span=6>
           <Form-item label="Select">
-            <Select v-model="transFormItem.select" >
+            <Select v-model="transFormItem.select" placeholder="Please select..">
               <Option v-for="(item, index) in transFormItem.selects" :value="item" :key="index">{{item}}</Option>
           </Select>
           </Form-item>
@@ -335,10 +335,17 @@
             <Input v-model="transFormItem.TransactionID" placeholder="Enter something..."></Input>
           </Form-item>
         </Col>
-        <Col span=6>
+        <Col span=2>
           <Form-item>
             <br/>
             <Button type="primary">Search</Button>
+            <!-- <Button type="primary">Attach</Button> -->
+          </Form-item>
+        </Col>
+        <Col span=2>
+          <Form-item>
+            <br/>
+            <!-- <Button type="primary">Search</Button> -->
             <Button type="primary">Attach</Button>
           </Form-item>
         </Col>
@@ -464,6 +471,7 @@ export default {
         {
           headerName: 'Description',
           field: 'Description',
+          width: 200,
           cellStyle: {'text-align': 'left'},
           cellRenderer: (params) => {
             return '<div class="longData" title="' + params.value +'">' + params.value + '</div>'
@@ -472,6 +480,7 @@ export default {
         {
           headerName: 'Product ID',
           field: 'ProductID',
+          width: 200,
           cellStyle: {'text-align': 'left'},
           cellRenderer: (params) => {
             return '<div class="longData" title="' + params.value +'">' + params.value + '</div>'
@@ -480,7 +489,7 @@ export default {
         {
           headerName: 'Product Desc',
           field: 'ProductDesc',
-          width: 120,
+          width: 160,
           cellStyle: {'text-align': 'left'},
           cellRenderer: (params) => {
             return '<div class="longData" title="' + params.value +'">' + params.value + '</div>'
