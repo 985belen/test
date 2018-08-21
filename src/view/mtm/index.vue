@@ -2,7 +2,7 @@
 <div class="box">
   <Tabs>
     <TabPane label="PCG" icon="md-bookmarks">
-      <Form :model="formLeft" label-position="left" >
+      <Form :model="formLeft" label-position="left" class="form-box">
         <Row type="flex" :gutter="10">
          <Col span="6">
             <FormItem label="MTM_NO">
@@ -427,5 +427,8 @@ export default {
 .ivu-form-label-left .ivu-form-item-label,
 .ivu-form-item-content{
   float:left;
+}
+.form-box{
+  margin-top:10px;
 }
 </style>
