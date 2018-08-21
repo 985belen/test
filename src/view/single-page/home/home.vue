@@ -22,8 +22,8 @@
           <Icon type="ios-close-circle" />
       </a>
       <ul class="fast_link">
-        <li v-for="(item, index) in randomMovieList" :key="index">
-            <a :href="item.url" target="_blank">{{ item.name }}</a>
+          <li v-for="(item, index) in randomMovieList" :key="index">
+            <router-link style="color: #515a6e" :to="item.url">{{ item.name }}</router-link>
           </li>
       </ul>
     </Card>
@@ -40,9 +40,9 @@
               <Icon type="ios-close-circle" />
           </a>
           <ul class="fast_link">
-            <li v-for="(item, index) in randomMovieList" :key="index">
-                <a :href="item.url" target="_blank">{{ item.name }}</a>
-              </li>
+            <li v-for="(item, index) in todos" :key="index">
+            <router-link style="color: #515a6e" :to="item.url">{{ item.name }}</router-link>
+          </li>
           </ul>
     </Card>
     </Col>
@@ -58,9 +58,9 @@
           <Icon type="ios-close-circle" />
       </a>
       <ul class="fast_link">
-        <li v-for="(item, index) in randomMovieList" :key="index">
-            <a :href="item.url" target="_blank">{{ item.name }}</a>
-          </li>
+        <li v-for="(item, index) in MyActives" :key="index">
+          <router-link style="color: #515a6e" :to="item.url">{{ item.name }}</router-link>
+        </li>
       </ul>
     </Card>
     </Col>
@@ -76,9 +76,9 @@
               <Icon type="ios-close-circle" />
           </a>
           <ul class="fast_link">
-            <li v-for="(item, index) in randomMovieList" :key="index">
-                  <a :href="item.url" target="_blank">{{ item.name }}</a>
-              </li>
+            <li v-for="(item, index) in NoticesArr" :key="index">
+              <router-link style="color: #515a6e" :to="item.url">{{ item.name }}</router-link>
+            </li>
           </ul>
     </Card>
     </Col>
@@ -117,42 +117,61 @@ export default {
       randomMovieList: [
         {
           name: 'Pricing Simulation',
-          url: 'http://10.100.98.182:9002/#/price/CTO_Config'
+          url: '/price/CTO_Config'
         },
         {
           name: 'Quotation need to be priced',
-          url: 'http://10.100.98.182:9002/#/price/price_index'
+          url: '/price/price_index'
         },
         {
           name: 'Pricing Evaluation',
-          url: 'http://10.100.98.182:9002/#/excel/excel_PEsale'
-        {
-          name: 'Forrest Gump',
-          url: 'https://movie.douban.com/subject/1292720/'
+          url: '/excel/excel_PEsale'
         },
         {
-          name: 'Life Is Beautiful',
-          url: 'https://movie.douban.com/subject/1292063/'
+          name: 'CLV report',
+          url: '/iframe/iframe_clv'
         },
         {
-          name: 'Spirited Away',
-          url: 'https://movie.douban.com/subject/1291561/'
+          name: 'Historical report',
+          url: '/iframe/iframe_HistoricalSummary'
+        },
+      ],
+      todos: [
+        {
+          name: 'Quotation review',
+          url: '/price/price_index'
         },
         {
-          name: 'Schindler`s List',
-          url: 'https://movie.douban.com/subject/1295124/'
+          name: 'Profit margin review',
+          url: '/iframe/iframe_ProductSummary'
+        }
+      ],
+      MyActives: [
+        {
+          name: 'Quotation review',
+          url: '/price/price_index'
         },
         {
-          name: 'The Legend of 1900',
-          url: 'https://movie.douban.com/subject/1292001/'
+          name: 'Evaluation review',
+          url: '/excel/excel_PEsale'
         },
         {
-          name: 'WALL·E',
-          url: 'https://movie.douban.com/subject/2131459/'
+          name: 'Profit margin review',
+          url: '/iframe/iframe_ProductSummary'
+        }
+      ],
+      NoticesArr: [
+        {
+          name: 'Historical data is updated',
+          url: ''
         },
         {
-          name: 'Inception',
-          url: 'https://movie.douban.com/subject/3541415/'
+          name: 'CLV new data is updated',
+          url: ''
+        },
+        {
+          name: 'Tracking report is updated',
+          url: ''
         }
       ],
       movieList: [],
