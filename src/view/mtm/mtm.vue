@@ -16,7 +16,12 @@
       <Divider type="vertical" /> 
       <a href="#" class="item"><Icon class="icon" size=16 type="md-add" />Accepted</a>
     </div>
-    <h3 class="marginBottom"><a href="javascript:;" style="display:block;color: #333;"><Icon type="md-pricetags" />Input Information</a></h3>
+    <h3 class="marginBottom"><a href="javascript:;" style="display:inline-block;color: #333;"><Icon type="md-pricetags" />Input Information</a>
+      <div style="float: right;">
+          <Button size='small' @click='searchAjax' type="defalut" style="margin-right:15px;">Call</Button>
+          <Button  size='small' type="defalut">Import</Button>
+      </div>
+    </h3>
     <div class="middle-box" style="display: block;">
       <Form :model="form" label-position="left" ref="form" >
         <Row type="flex" justify="start" :gutter="10">
@@ -33,10 +38,7 @@
             </Form-item>
           </Col>
           <Col span=6>
-            <Form-item>
-              <Button @click='searchAjax' type="primary" style="margin-right:15px;">Call</Button>
-              <Button type="primary">Import</Button>
-            </Form-item>
+            
           </Col>
         </Row>
       </Form>
