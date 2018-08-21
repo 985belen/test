@@ -267,12 +267,12 @@
       <Row type="flex" justify="start" :gutter="15">
         <Col span=6>
           <Form-item label="Business Partner">
-            <Input v-model="transFormItem.BusinessPartner" placeholder="Enter something...222"></Input>
+            <Input v-model="transFormItem.BusinessPartner" placeholder="Enter something..."></Input>
           </Form-item>
         </Col>
         <Col span=6>
           <Form-item label="Select">
-            <Select v-model="transFormItem.select" >
+            <Select v-model="transFormItem.select" placeholder="Please select...">
               <Option v-for="(item, index) in transFormItem.selects" :value="item" :key="index">{{item}}</Option>
           </Select>
           </Form-item>
@@ -285,7 +285,7 @@
         <Col span=6>
           <Form-item>
             <br/>
-            <Button type="primary">Search</Button>
+            <Button type="primary" style="margin-right:15px">Search</Button>
             <Button type="primary">Attach</Button>
           </Form-item>
         </Col>
@@ -395,7 +395,7 @@ export default {
       transColumns: [
         {
           headerCheckboxSelection: true,
-          headerCheckboxSelectionFilteredOnly: false,
+          headerCheckboxSelectionFilteredOnly: true,
           editable: false,
           checkboxSelection: true,
           width: 60,
@@ -410,12 +410,13 @@ export default {
         {
           headerName: 'Description',
           field: 'Description',
+          width: 200,
           cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'Product ID',
           field: 'ProductID',
-          width: 140,
+          width: 200,
           cellStyle: {'text-align': 'left'}
         },
         {
@@ -427,6 +428,7 @@ export default {
         {
           headerName: 'Start Date',
           field: 'StartDate',
+          width: 180,
           cellStyle: {'text-align': 'left'}
         },
         {
