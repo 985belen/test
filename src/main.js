@@ -7,12 +7,15 @@ import store from './store'
 import iView from 'iview'
 import i18n from '@/locale'
 import config from '@/config'
+import axios from 'axios'
 import importDirective from '@/directive'
 import 'iview/dist/styles/iview.css'
 import './index.less'
 import '@/assets/icons/iconfont.css'
 import '../node_modules/ag-grid/dist/styles/ag-grid.css'
 import '../node_modules/ag-grid/dist/styles/ag-theme-balham.css'
+Vue.use(axios)
+Vue.prototype.axios=axios;
 // import '@/mock'
 // 实际打包时应该不引入mock
 import env from '../config/env'

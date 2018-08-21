@@ -1,7 +1,7 @@
 <template>
 <div class="price-box" ref="priceBox">
   <div ref="topMain" class="topMain">
-    <div class="tool-bar" ref="toolBar">
+    <div class="tool-bar" ref="toolBar" style="display: none;">
       <a href="#" class="item"><Icon class="icon" size=16 type="md-trash"/>Delete</a>
       <Divider type="vertical" />
       <a href="#" class="item"><Icon class="icon" size=16 type="md-link" />Email</a>
@@ -16,8 +16,8 @@
       <Divider type="vertical" /> 
       <a href="#" class="item"><Icon class="icon" size=16 type="md-add" />Accepted</a>
     </div>
-    <h3 class="marginBottom"><a href="javascript:;" style="display:block;color: #333;" @click="toggleList"><Icon type="md-pricetags" />Input Information<span style="float: right; font-weight: normal; font-size: 12px;">More</span></a></h3>
-    <div class="middle-box">
+    <h3 class="marginBottom"><a href="javascript:;" style="display:block;color: #333;"><Icon type="md-pricetags" />Input Information</a></h3>
+    <div class="middle-box" style="display: block;">
       <Form :model="form" label-position="left" ref="form" >
         <Row type="flex" justify="start" :gutter="10">
           <Col span=6 offset=1>
@@ -34,7 +34,7 @@
           </Col>
           <Col span=6>
             <Form-item>
-              <Button type="primary" style="margin-right:15px;">Call</Button>
+              <Button @click='searchAjax' type="primary" style="margin-right:15px;">Call</Button>
               <Button type="primary">Import</Button>
             </Form-item>
           </Col>
@@ -66,6 +66,7 @@
 </template>
 <script>
 import {AgGridVue} from 'ag-grid-vue'
+import axios from '@/libs/api.request'
 export default {
   data () {
     return {
@@ -497,9 +498,9 @@ export default {
     AgGridVue
   },
   created () {
+
   },
   mounted () {
-    this.toggleList()
     this.calcGridHeight()
     window.addEventListener('resize', () => {
       window.clearTimeout(this.timer)
@@ -517,9 +518,6 @@ export default {
       ag.style.height = screenHeight - topHeight - 64 - 10 - 10+ 'px' // 64是头部的高度，10是padding
       t1.style.height = screenHeight - topHeight - 64 - 10 - 10 + 'px'
       acontainer.style.height = screenHeight - topHeight - 64 -10 -10 + 'px'
-      this.$nextTick(() => {
-        this.toggleList1()
-      }, 3000)
     },
     toggleList () {
       let itembox = document.getElementsByClassName('middle-box')[0]
@@ -529,7 +527,43 @@ export default {
         itembox.style.display = 'block'
       }
       this.toggle = !this.toggle
+    },
+    searchAjax () {
+        var _url = 'http://10.120.116.171:8082/api/cfebmc'
+        axios.request({
+          url: 'http://10.120.116.171:8082/api/cfebmc',
+          params: {    
+                "inputBmcEntityList": [    
+                  {    
+                    "brand": "string",    
+                    "ccKey": "string",    
+                    "cfecountry": "string",    
+                    "country": "string",    
+                    "family": "string",    
+                    "key": "string",    
+                    "machinetype": "string",    
+                    "mtmNo": "string",    
+                    "office": "string",    
+                    "org": "string",    
+                    "ph": "string",    
+                    "plant": "string",    
+                    "productgroup": "string",    
+                    "subgeo": "string"    
+                  }    
+                ],    
+                "lineUpGeo": "string",
+                "systemType": "string"
+              },
+          method: 'post'
+      })
+        
+
+
     }
+
+
+
+
   }
 }
 </script>
