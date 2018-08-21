@@ -34,7 +34,7 @@
           </Col>
           <Col span=6>
             <Form-item>
-              <Button type="primary">Call</Button>
+              <Button type="primary" style="margin-right:15px;">Call</Button>
               <Button type="primary">Import</Button>
             </Form-item>
           </Col>

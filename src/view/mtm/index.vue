@@ -61,7 +61,7 @@
           </Col>
           <Col span="6">
             <FormItem>
-              <Button type="primary">Search</Button>
+              <Button type="primary" style="margin-right:15px;">Search</Button>
               <Button type="primary">Export</Button>
             </FormItem>
          </Col>

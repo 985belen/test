@@ -339,13 +339,11 @@
           <Form-item>
             <br/>
             <Button type="primary">Search</Button>
-            <!-- <Button type="primary">Attach</Button> -->
           </Form-item>
         </Col>
         <Col span=2>
           <Form-item>
             <br/>
-            <!-- <Button type="primary">Search</Button> -->
             <Button type="primary">Attach</Button>
           </Form-item>
         </Col>
