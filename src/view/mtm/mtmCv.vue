@@ -62,7 +62,7 @@ export default {
       form: {
         pns: ''
       },
-      toggle: false,
+      toggle: true,
       columnDefs: [
         {headerName: 'pn',  width: 120, field: 'pn', cellStyle: {'text-align': 'left'}},
         {headerName: 'character',  width: 120, field: 'character', cellStyle: {'text-align': 'left'}},
