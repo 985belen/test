@@ -116,17 +116,16 @@ export default {
     return {
       randomMovieList: [
         {
-          name: 'The Shawshank Redemption',
-          url: 'https://movie.douban.com/subject/1292052/'
+          name: 'Pricing Simulation',
+          url: 'http://10.100.98.182:9002/#/price/CTO_Config'
         },
         {
-          name: 'Leon:The Professional',
-          url: 'https://movie.douban.com/subject/1295644/'
+          name: 'Quotation need to be priced',
+          url: 'http://10.100.98.182:9002/#/price/price_index'
         },
         {
-          name: 'Farewell to My Concubine',
-          url: 'https://movie.douban.com/subject/1291546/'
-        },
+          name: 'Pricing Evaluation',
+          url: 'http://10.100.98.182:9002/#/excel/excel_PEsale'
         {
           name: 'Forrest Gump',
           url: 'https://movie.douban.com/subject/1292720/'
