@@ -85,14 +85,14 @@ export default {
     line-height: 28px;
   }
   .hover:hover{
-    background: rgba(23, 245, 134,.4);
-    color: #fff;
+    background: #f5f7f9;
     height: 296px;
     .ivu-dropdown-item{
-      color: #fff;
+      font-weight: bold;
     }
     .ivu-dropdown-item:hover{
       background: transparent;
+      color:#333;
     }
   }
 
