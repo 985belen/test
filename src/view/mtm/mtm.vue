@@ -27,7 +27,7 @@
         <Row type="flex" justify="start" :gutter="10">
           <Col span=6 offset=1>
             <Form-item label="systemType">
-              <Select v-model="form.systemType">
+              <Select v-model="form.systemType" placeholder="Please select">
                 <Option v-for="(item, index) in form.selects" :value="item" :key="index">{{item}}</Option>
             </Select>
             </Form-item>
@@ -77,7 +77,6 @@ export default {
         selects: ['consumer', 'SMB'],
         lineUpGeo: ''
       },
-      toggle: true,
       columns: [
         {title: 'key', key: 'key'},
         {title: 'mtmNo', key: 'mtmNo'},
@@ -521,15 +520,6 @@ export default {
       t1.style.height = screenHeight - topHeight - 64 - 10 - 10 + 'px'
       acontainer.style.height = screenHeight - topHeight - 64 -10 -10 + 'px'
     },
-    toggleList () {
-      let itembox = document.getElementsByClassName('middle-box')[0]
-      if (this.toggle) {
-        itembox.style.display = 'none'
-      } else {
-        itembox.style.display = 'block'
-      }
-      this.toggle = !this.toggle
-    },
     searchAjax () {
         var _url = 'http://10.120.116.171:8082/api/cfebmc'
         axios.request({
@@ -562,10 +552,6 @@ export default {
 
 
     }
-
-
-
-
   }
 }
 </script>
