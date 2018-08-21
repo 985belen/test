@@ -41,11 +41,11 @@ export default {
         },
         {headerName: 'Opportunity', field: 'Opportunity', width: 120, cellStyle: {'text-align': 'left'},
           cellRenderer: (params) => {
-            return '<div role="gridcell" title="' + params.value +'">' + params.value + '</div>'
+            return '<div class="longData" title="' + params.value +'">' + params.value + '</div>'
           }},
         {headerName: 'Account', field: 'Account', width: 120, cellStyle: {'text-align': 'left'},
           cellRenderer: (params) => {
-            return '<div role="gridcell" title="' + params.value +'">' + params.value + '</div>'
+            return '<div class="longData" title="' + params.value +'">' + params.value + '</div>'
           }},
         {headerName: 'Country', field: 'country',  width: 120,cellStyle: {'text-align': 'left'}},
         {headerName: 'End Customer DMU', width: 150, field: 'EndCustomerDMU', cellStyle: {'text-align': 'left'}},

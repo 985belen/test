@@ -245,7 +245,7 @@ export default {
           cellStyle: {'text-align': 'left'},
           field: 'dmuName',
           cellRenderer: (params) => {
-            return '<div title="' + params.value +'">' + params.value + '</div>'
+            return '<div class="longData" title="' + params.value +'">' + params.value + '</div>'
           },
           width: 120
         },
@@ -253,6 +253,9 @@ export default {
           headerName: 'Description',
           cellStyle: {'text-align': 'left'},
           field: 'desc',
+          cellRenderer: (params) => {
+            return '<div class="longData" title="' + params.value +'">' + params.value + '</div>'
+          },
           width: 120
         },
         {

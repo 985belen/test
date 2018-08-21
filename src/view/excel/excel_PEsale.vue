@@ -466,7 +466,7 @@ export default {
           field: 'Description',
           cellStyle: {'text-align': 'left'},
           cellRenderer: (params) => {
-            return '<div role="gridcell" title="' + params.value +'">' + params.value + '</div>'
+            return '<div class="longData" title="' + params.value +'">' + params.value + '</div>'
           }
         },
         {
@@ -474,7 +474,7 @@ export default {
           field: 'ProductID',
           cellStyle: {'text-align': 'left'},
           cellRenderer: (params) => {
-            return '<div role="gridcell" title="' + params.value +'">' + params.value + '</div>'
+            return '<div class="longData" title="' + params.value +'">' + params.value + '</div>'
           }
         },
         {
@@ -483,7 +483,7 @@ export default {
           width: 120,
           cellStyle: {'text-align': 'left'},
           cellRenderer: (params) => {
-            return '<div role="gridcell" title="' + params.value +'">' + params.value + '</div>'
+            return '<div class="longData" title="' + params.value +'">' + params.value + '</div>'
           }
         },
         {
@@ -602,7 +602,7 @@ export default {
           width: 250,
           cellStyle: {'text-align': 'left'},
           cellRenderer: (params) => {
-            return '<div role="gridcell" title="' + params.value +'">' + params.value + '</div>'
+            return '<div class="longData" title="' + params.value +'">' + params.value + '</div>'
           }
         }, {
           headerName: 'QTY',
@@ -709,7 +709,7 @@ export default {
           field: 'brand',
           cellStyle: {'text-align': 'left'},
           cellRenderer: (params) => {
-            return '<div role="gridcell" title="' + params.value +'">' + params.value + '</div>'
+            return '<div class="longData" title="' + params.value +'">' + params.value + '</div>'
           },
           width: 100
         },
@@ -725,7 +725,7 @@ export default {
           field: 'subser',
           cellStyle: {'text-align': 'left'},
           cellRenderer: (params) => {
-            return '<div role="gridcell" title="' + params.value +'">' + params.value + '</div>'
+            return '<div class="longData" title="' + params.value +'">' + params.value + '</div>'
           }
         },
         {
@@ -746,7 +746,7 @@ export default {
           field: 'prodesc',
           cellStyle: {'text-align': 'left'},
           cellRenderer: (params) => {
-            return '<div role="gridcell" title="' + params.value +'">' + params.value + '</div>'
+            return '<div class="longData" title="' + params.value +'">' + params.value + '</div>'
           }
         },
         {

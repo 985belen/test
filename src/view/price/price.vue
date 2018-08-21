@@ -238,12 +238,12 @@ export default {
         {
           headerName: 'Group',
           children: [
-            {headerName: 'Item NO',  width: 80, field: 'Item NO', cellStyle: {'text-align': 'left'}},
+            {headerName: 'Item NO',  width: 90, field: 'Item NO', cellStyle: {'text-align': 'left'}},
             {headerName: 'Flag',  width: 90, field: 'Flag', cellStyle: {'text-align': 'left'}},
             {headerName: 'Part Number',  width: 120, field: 'Part Number', cellStyle: {'text-align': 'left'}},
             {headerName: 'Description',  width: 120, field: 'Description', cellStyle: {'text-align': 'left'},
               cellRenderer: (params) => {
-                return '<div role="gridcell" title="' + params.value +'">' + params.value + '</div>'
+                return '<div class="longData" title="' + params.value +'">' + params.value + '</div>'
               }
             },
             {headerName: 'Category',  width: 120, field: 'Category', cellStyle: {'text-align': 'left'}},
@@ -1639,7 +1639,7 @@ export default {
           field: 'first',
           width: 120,
           cellRenderer: (params) => {
-            return '<div role="gridcell" title="' + params.value +'">' + params.value + '</div>'
+            return '<div class="longData" title="' + params.value +'">' + params.value + '</div>'
           }
         },
         {
@@ -1724,7 +1724,7 @@ export default {
           field: 'first',
           width: 120,
           cellRenderer: (params) => {
-            return '<div role="gridcell" title="' + params.value +'">' + params.value + '</div>'
+            return '<div class="longData" title="' + params.value +'">' + params.value + '</div>'
           },
         },
         {
@@ -1872,7 +1872,7 @@ export default {
           headerName: '',
           field: 'first',
           cellRenderer: (params) => {
-            return '<div role="gridcell" title="' + params.value +'">' + params.value + '</div>'
+            return '<div class="longData" title="' + params.value +'">' + params.value + '</div>'
           },
           width: 120
         },

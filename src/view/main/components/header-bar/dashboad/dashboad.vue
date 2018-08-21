@@ -31,15 +31,15 @@
             <DropdownItem style="font-size: 20px!important;">Financial Dashboard</DropdownItem>
             <Icon style=" margin-left: 30px;"  size="64" type="md-grid" />
             <ul class="submenu">
-              <li>Financial Dashboard</li>
+              <li><router-link style="color: #515a6e" to="">Financial Dashboard</router-link></li>
             </ul>
             </Col>
           <Col class="hover" span=6>
             <DropdownItem style="font-size: 20px!important;">Price Engine</DropdownItem>
             <Icon style=" margin-left: 30px;"  size="64" type="md-settings" />
             <ul class="submenu">
-              <li>Price Auto Calculation</li>
-              <li>Price Auto Publish</li>
+              <li><router-link style="color: #515a6e" to="">Price Auto Calculation</router-link></li>
+              <li><router-link style="color: #515a6e" to="">Price Auto Publish</router-link></li>
             </ul>
           </Col>
         </Row>

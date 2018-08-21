@@ -32,17 +32,18 @@ export default {
         { headerCheckboxSelection: true,
           headerCheckboxSelectionFilteredOnly: false,
           editable: false,
+          // floatingFilter: false,
           checkboxSelection: true, width: 60},
         {headerName: 'Quotation ID', field: 'QuotationID', width: 120, cellStyle: {'text-align': 'left'},
-          cellRenderer:(params) => { return '<a href="#/iframe/iframe_FinanceReview">' + params.value + '</a>' }
+          cellRenderer: (params) => { return '<a href="#/iframe/iframe_FinanceReview">' + params.value + '</a>' }
         },
         {headerName: 'Opportunity', field: 'Opportunity', width: 120, cellStyle: {'text-align': 'left'},
           cellRenderer: (params) => {
-            return '<div role="gridcell" title="' + params.value +'">' + params.value + '</div>'
+            return '<div class="longData" title="' + params.value +'">' + params.value + '</div>'
           }},
         {headerName: 'Account', field: 'Account', width: 120, cellStyle: {'text-align': 'left'},
           cellRenderer: (params) => {
-            return '<div role="gridcell" title="' + params.value +'">' + params.value + '</div>'
+            return '<div class="longData" title="' + params.value +'">' + params.value + '</div>'
           }},
         {headerName: 'Country', field: 'country',  width: 120,cellStyle: {'text-align': 'left'}},
         {headerName: 'End Customer DMU', width: 150, field: 'EndCustomerDMU', cellStyle: {'text-align': 'left'}},
@@ -495,8 +496,8 @@ export default {
       var screenHeight = window.innerHeight
       var ag = document.getElementsByClassName('ag-theme-balham')[0]
       var acontainer = document.getElementsByClassName('agcontainer')[0]
-      ag.style.height = screenHeight - 64 +'px' // 64是头部的高度
-      acontainer.style.height = screenHeight - 64 + 'px'
+      ag.style.height = screenHeight - 64 -20 +'px' // 64是头部的高度
+      acontainer.style.height = screenHeight - 64 - 20 + 'px'
     }
   }
 }

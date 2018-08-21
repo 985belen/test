@@ -30,4 +30,9 @@ html,body{
 .lessThan0IsRed{
   color: red
 }
+.longData{
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
 </style>

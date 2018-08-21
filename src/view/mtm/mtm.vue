@@ -81,7 +81,7 @@ export default {
         {headerName: 'PLANT',  width: 120, field: 'PLANT', cellStyle: {'text-align': 'left'}},
         {headerName: 'COUNTRY',  width: 120, field: 'COUNTRY', cellStyle: {'text-align': 'left'}
           // cellRenderer: (params) => {
-          //   return '<div role="gridcell" title="' + params.value +'">' + params.value + '</div>'
+          //   return '<div class="longData" title="' + params.value +'">' + params.value + '</div>'
           // }
         },
         {headerName: 'CFECOUNTRY', width: 120, field: 'CFECOUNTRY', cellStyle: {'text-align': 'left'}},
@@ -1404,7 +1404,7 @@ export default {
           field: 'first',
           width: 120,
           cellRenderer: (params) => {
-            return '<div role="gridcell" title="' + params.value +'">' + params.value + '</div>'
+            return '<div class="longData" title="' + params.value +'">' + params.value + '</div>'
           }
         },
         {
