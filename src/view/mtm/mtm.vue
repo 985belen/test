@@ -42,19 +42,6 @@
       </Form>
       <div class="ag1" style="padding-bottom:10px">
         <Table border stripe :columns="columns" :data="rowData" height="250"></Table>
-        <!-- <ag-grid-vue
-          style="width: 100%; height: 230px;"
-          class="ag-theme-balham"
-          :columnDefs="columns"
-          :rowData="rowData"
-          :enableSorting="true"
-          :enableFilter="true"
-          :singleClickEdit="true"
-          :suppressSizeToFit="true"
-          :suppressResize="true"
-          :enableColResize="true"
-          rowSelection="multiple">
-        </ag-grid-vue> -->
       </div>
     </div>
   </div>

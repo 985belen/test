@@ -2,7 +2,7 @@
 <div class="box">
   <Tabs>
     <TabPane label="PCG" icon="md-bookmarks">
-      <Form :model="formLeft" label-position="left" class="form-box">
+      <Form :model="formLeft" label-position="left">
         <Row type="flex" :gutter="10">
          <Col span="6">
             <FormItem label="MTM_NO">
@@ -42,7 +42,7 @@
       </ag-grid-vue>
     </TabPane>
     <TabPane label="MBG" icon="logo-codepen">
-      <Form :model="formRight" label-position="left" >
+      <Form :model="formRight" label-position="left">
         <Row type="flex" :gutter="10">
          <Col span="6">
             <FormItem label="MTM_NO">
@@ -427,8 +427,5 @@ export default {
 .ivu-form-label-left .ivu-form-item-label,
 .ivu-form-item-content{
   float:left;
-}
-.form-box{
-  margin-top:10px;
 }
 </style>

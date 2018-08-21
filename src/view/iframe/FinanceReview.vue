@@ -1,19 +1,9 @@
 <template>
   <div class="target" >
     <div class="tool-bar" ref="toolBar">
-      <a href="#" class="item"><Icon class="icon" size=16 type="md-trash"/>Delete</a>
+      <a href="#" class="item"><Icon class="icon" size=16 type="md-trash"/>Reject</a>
       <Divider type="vertical" />
-      <a href="#" class="item"><Icon class="icon" size=16 type="md-link" />Email</a>
-      <Divider type="vertical" />
-      <a href="#" class="item"><Icon class="icon" size=16 type="md-appstore" />Generate Report</a>
-      <Divider type="vertical" />
-      <a href="#" class="item"><Icon class="icon" size=16 type="md-list-box" />Export Template</a>
-      <Divider type="vertical" />
-      <a href="#" class="item"><Icon class="icon" size=16 type="md-notifications" />Import Template</a>
-      <Divider type="vertical" />
-      <a href="#" class="item"><Icon class="icon" size=16 type="md-exit" />Upload Data</a>
-      <Divider type="vertical" /> 
-      <a href="#" class="item"><Icon class="icon" size=16 type="md-add" />Accepted</a>
+      <a href="#" class="item"><Icon class="icon" size=16 type="md-link" />Accept</a>
     </div>
     <Tabs>
       <TabPane label="Product Series Report" icon="md-bookmarks">
