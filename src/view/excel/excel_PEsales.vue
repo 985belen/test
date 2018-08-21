@@ -398,7 +398,8 @@ export default {
           headerCheckboxSelectionFilteredOnly: false,
           editable: false,
           checkboxSelection: true,
-          width: 60
+          width: 60,
+          suppressFilter: true
         },
         {
           headerName: 'Transaction ID',
@@ -641,11 +642,14 @@ export default {
           headerName: 'Brand',
           field: 'brand',
           cellStyle: {'text-align': 'left'},
+          cellRenderer: (params) => {
+            return '<div class="longData" title="' + params.value +'">' + params.value + '</div>'
+          },
           width: 100
         },
         {
           headerName: 'Brand Summary',
-          width: 130,
+          width: 100,
           field: 'brsum',
           cellStyle: {'text-align': 'left'}
         },
@@ -653,7 +657,10 @@ export default {
           headerName: 'Sub-Series',
           width: 100,
           field: 'subser',
-          cellStyle: {'text-align': 'left'}
+          cellStyle: {'text-align': 'left'},
+          cellRenderer: (params) => {
+            return '<div class="longData" title="' + params.value +'">' + params.value + '</div>'
+          }
         },
         {
           headerName: 'Product No.',
@@ -661,7 +668,7 @@ export default {
           field: 'prono',
           cellStyle: {'text-align': 'left'},
           cellRenderer: (params) => {
-            return '<a href="#">' + params.value + '</a>'
+            return '<a title="' + params.value +'"href="#">' + params.value + '</a>'
           },
           onCellClicked: () => {
             this.modelComponentsList = true
@@ -671,14 +678,18 @@ export default {
           headerName: 'Product Desc',
           width: 120,
           field: 'prodesc',
-          cellStyle: {'text-align': 'left'}
+          cellStyle: {'text-align': 'left'},
+          cellRenderer: (params) => {
+            return '<div class="longData" title="' + params.value +'">' + params.value + '</div>'
+          }
         },
         {
           headerName: 'Vol',
           field: 'vol',
           width: 100,
           editable: true,
-          cellStyle: {'text-align': 'left'}
+          headerClass:'headerColor1',
+          cellStyle: {'text-align': 'left',}
         },
         {
           headerName: 'List Price',
@@ -703,6 +714,7 @@ export default {
           width: 135,
           field: 'estpri',
           editable: true,
+          headerClass:'headerColor2',
           cellStyle: {'text-align': 'left'}
         },
         {
@@ -710,6 +722,7 @@ export default {
           width: 100,
           field: 'finalpri',
           editable: true,
+          headerClass:'headerColor3',
           cellStyle: {'text-align': 'left'}
         },
         {
@@ -717,6 +730,7 @@ export default {
           width: 100,
           field: 'disc',
           editable: true,
+          headerClass:'headerColor4',
           cellStyle: {'text-align': 'left'}
         },
         {
@@ -747,13 +761,23 @@ export default {
           headerName: 'BMC %',
           width: 100,
           field: 'bmcb',
-          cellStyle: {'text-align': 'left'}
+          cellStyle: {'text-align': 'left'},
+          cellClassRules: {
+            lessThan0IsRed: function (params) {
+              return params.value < 0
+            }
+          }
         },
         {
           headerName: 'TMC %',
           width: 100,
           field: 'tmcb',
-          cellStyle: {'text-align': 'left'}
+          cellStyle: {'text-align': 'left'},
+          cellClassRules: {
+            lessThan0IsRed: function (params) {
+              return params.value < 0
+            }
+          }
         },
         {
           headerName: 'GR',
@@ -1913,6 +1937,61 @@ export default {
           pti: '1073.91',
           ptipro: '-98.92',
           ptimar: '-10.30%'
+        },{
+          id: '',
+          quarter: 'F2Q 18/19',
+          brand: 'ThinkPad Classic',
+          brsum: 'Notebook',
+          subser: 'X280',
+          prono: '20KECTO1WW',
+          prodesc: 'Notebook ThinkPad X280 20KECTO1WW Rx',
+          vol: '300',
+          listpri: '10641.64',
+          stndpri: '10641.64',
+          respri: '817',
+          estpri: '850',
+          finalpri: '0',
+          disc: '1',
+          bmc: '786.03',
+          tmc: '804.92',
+          bmcmar: '19.69',
+          tmcmar: '21.01',
+          bmcb: '2.00',
+          tmcb: '2.00',
+          gr: '4875',
+          grre: '0',
+          netre: '4875',
+          pti: '1073.91',
+          ptipro: '-98.92',
+          ptimar: '-10.30%'
+        },
+        {
+          id: '',
+          quarter: 'F2Q 18/19',
+          brand: 'ThinkPad Classic',
+          brsum: 'Notebook',
+          subser: 'X280',
+          prono: '20KECTO1WW',
+          prodesc: 'Notebook ThinkPad X280 20KECTO1WW Rx',
+          vol: '300',
+          listpri: '10641.64',
+          stndpri: '10641.64',
+          respri: '817',
+          estpri: '850',
+          finalpri: '0',
+          disc: '1',
+          bmc: '786.03',
+          tmc: '804.92',
+          bmcmar: '19.69',
+          tmcmar: '21.01',
+          bmcb: '2.00',
+          tmcb: '2.00',
+          gr: '4875',
+          grre: '0',
+          netre: '4875',
+          pti: '1073.91',
+          ptipro: '-98.92',
+          ptimar: '-10.30%'
         }]
       this.rowData = obj
     },
@@ -2097,6 +2176,18 @@ h3{
   span{
     color:#999;
   }
+}
+.headerColor1{
+  background: #B4C6E7
+}
+.headerColor2{
+  background: #A9D08E
+}
+.headerColor3{
+  background: #B4C6E7
+}
+.headerColor4{
+  background: #B4C6E7
 }
 
 </style>

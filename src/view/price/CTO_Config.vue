@@ -35,6 +35,7 @@ export default {
         { headerCheckboxSelection: true,
           headerCheckboxSelectionFilteredOnly: false,
           editable: false,
+          suppressFilter: true,
           checkboxSelection: true, width: 60},
         {headerName: 'Quotation ID', field: 'QuotationID', width: 120, cellStyle: {'text-align': 'left'},
           cellRenderer:(params) => { return '<a href="#/price/price_index">' + params.value + '</a>' }

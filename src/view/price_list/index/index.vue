@@ -225,7 +225,8 @@ export default {
         {
           headerCheckboxSelection: true,
           headerCheckboxSelectionFilteredOnly: false,
-          checkboxSelection: true, width: 60
+          checkboxSelection: true, width: 60,
+          suppressFilter: true
         },
         {
           headerName: 'PE Number',

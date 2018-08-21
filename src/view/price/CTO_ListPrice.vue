@@ -31,6 +31,7 @@ export default {
       columnDefs: [
         { headerCheckboxSelection: true,
           headerCheckboxSelectionFilteredOnly: false,
+          suppressFilter: true,
           editable: false,
           // floatingFilter: false,
           checkboxSelection: true, width: 60},
