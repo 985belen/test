@@ -14,8 +14,9 @@ import './index.less'
 import '@/assets/icons/iconfont.css'
 import '../node_modules/ag-grid/dist/styles/ag-grid.css'
 import '../node_modules/ag-grid/dist/styles/ag-theme-balham.css'
-Vue.use(axios)
+import VueAxios from 'vue-axios'
 Vue.prototype.axios=axios;
+Vue.use(VueAxios, axios);
 // import '@/mock'
 // 实际打包时应该不引入mock
 import env from '../config/env'

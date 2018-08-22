@@ -17,7 +17,7 @@
       <a href="#" class="item"><Icon class="icon" size=16 type="md-add" />Accepted</a>
     </div>
     <h3 class="marginBottom"><a href="javascript:;" style="display:inline-block;color: #333;"><Icon type="md-pricetags" />Input Information</a>
-      <div style="float: right;">
+      <div style="float: right; margin-top: -3px;">
           <Button size='small' @click='searchAjax' type="defalut" style="margin-right:15px;">Call</Button>
           <Button  size='small' type="defalut">Import</Button>
       </div>
@@ -25,24 +25,44 @@
     <div class="middle-box" style="display: block;">
       <Form :model="form" label-position="left" ref="form" >
         <Row type="flex" justify="start" :gutter="10">
-          <Col span=6 offset=1>
-            <Form-item label="systemType">
+          <Col span=4 >
+            <Form-item label="systemType" style="padding-left: 20px">
               <Select v-model="form.systemType" placeholder="Please select">
                 <Option v-for="(item, index) in form.selects" :value="item" :key="index">{{item}}</Option>
             </Select>
             </Form-item>
           </Col>
-          <Col span=6>
+          <Col span=4>
             <Form-item label="lineUpGeo">
               <Input v-model="form.lineUpGeo" placeholder="Enter something..."></Input>
             </Form-item>
           </Col>
-          <Col span=6>
-            
+          <Col span=3>
+            <Form-item label="key">
+              <Input v-model="form.key" placeholder="Enter something..."></Input>
+            </Form-item>
+          </Col>
+          <Col span=3>
+            <Form-item label="mtmNo">
+              <Input v-model="form.mtmNo" placeholder="Enter something..."></Input>
+            </Form-item>
+          </Col>
+          <Col span=3>
+            <Form-item label="plant">
+              <Input v-model="form.plant" placeholder="Enter something..."></Input>
+            </Form-item>
+          </Col>
+          <Col span=3>
+            <Form-item label="country">
+              <Input v-model="form.country" placeholder="Enter something..."></Input>
+            </Form-item>
+          </Col>
+          <Col span=3>
+            <Button type="info">More Filters</Button>  
           </Col>
         </Row>
       </Form>
-      <div class="ag1" style="padding-bottom:10px">
+      <div class="ag1" style="padding-bottom:10px; display: none;">
         <Table border stripe :columns="columns" :data="rowData" height="250"></Table>
       </div>
     </div>
@@ -68,7 +88,9 @@
 </template>
 <script>
 import {AgGridVue} from 'ag-grid-vue'
-import axios from '@/libs/api.request'
+// import axios from '@/libs/api.request'
+import axios from 'axios'
+
 export default {
   data () {
     return {
@@ -135,32 +157,35 @@ export default {
         }
       ],
       columnDefs: [
-        {headerName: 'KEY',  width: 120, field: 'KEY', cellStyle: {'text-align': 'left'}},
-        {headerName: 'MTM_NO',  width: 120, field: 'MTM_NO', cellStyle: {'text-align': 'left'}},
-        {headerName: 'PLANT',  width: 120, field: 'PLANT', cellStyle: {'text-align': 'left'}},
-        {headerName: 'COUNTRY',  width: 120, field: 'COUNTRY', cellStyle: {'text-align': 'left'}
+        {headerName: 'KEY',  width: 120, field: 'key', cellStyle: {'text-align': 'left'}},
+        {headerName: 'MTM_NO',  width: 120, field: 'mtm_NO', cellStyle: {'text-align': 'left'}},
+        {headerName: 'PLANT',  width: 120, field: 'plant', cellStyle: {'text-align': 'left'}},
+        {headerName: 'COUNTRY',  width: 120, field: 'country', cellStyle: {'text-align': 'left'}
           // cellRenderer: (params) => {
           //   return '<div class="longData" title="' + params.value +'">' + params.value + '</div>'
           // }
         },
-        {headerName: 'CFECOUNTRY', width: 120, field: 'CFECOUNTRY', cellStyle: {'text-align': 'left'}},
-        {headerName: 'Pre_M3', width: 120, field: 'Pre_M3', cellStyle: {'text-align': 'left'}},
-        {headerName: 'Pre_M2', width: 120, field: 'Pre_M2', cellStyle: {'text-align': 'left'}},
-        {headerName: 'Pre_M1', width: 120, field: 'Pre_M1', cellStyle: {'text-align': 'left'}},
-        {headerName: 'M1', width: 120, field: 'M1', cellStyle: {'text-align': 'left'}},
-        {headerName: 'M2', width: 120, field: 'M2', cellStyle: {'text-align': 'left'}},
-        {headerName: 'M3', width: 120, field: 'M3', cellStyle: {'text-align': 'left'}},
-        {headerName: 'M4', width: 120, field: 'M4', cellStyle: {'text-align': 'left'}},
-        {headerName: 'M5', width: 120, field: 'M5', cellStyle: {'text-align': 'left'}},
-        {headerName: 'M6', width: 120, field: 'M6', cellStyle: {'text-align': 'left'}},
-        {headerName: 'M7', width: 120, field: 'M7', cellStyle: {'text-align': 'left'}},
-        {headerName: 'M8', width: 120, field: 'M8', cellStyle: {'text-align': 'left'}},
-        {headerName: 'M9', width: 120, field: 'M9', cellStyle: {'text-align': 'left'}},
-        {headerName: 'M10', width: 120, field: 'M10', cellStyle: {'text-align': 'left'}},
-        {headerName: 'M11', width: 120, field: 'M11', cellStyle: {'text-align': 'left'}},
-        {headerName: 'M12', width: 120, field: 'M12', cellStyle: {'text-align': 'left'}}
+        {headerName: 'CFECOUNTRY', width: 120, field: 'cfecountry', cellStyle: {'text-align': 'left'}},
+        {headerName: 'Pre_M3', width: 120, field: 'pre_M3', cellStyle: {'text-align': 'left'}},
+        {headerName: 'Pre_M2', width: 120, field: 'pre_M2', cellStyle: {'text-align': 'left'}},
+        {headerName: 'Pre_M1', width: 120, field: 'pre_M1', cellStyle: {'text-align': 'left'}},
+        {headerName: 'M1', width: 120, field: 'm1', cellStyle: {'text-align': 'left'}},
+        {headerName: 'M2', width: 120, field: 'm2', cellStyle: {'text-align': 'left'}},
+        {headerName: 'M3', width: 120, field: 'm3', cellStyle: {'text-align': 'left'}},
+        {headerName: 'M4', width: 120, field: 'm4', cellStyle: {'text-align': 'left'}},
+        {headerName: 'M5', width: 120, field: 'm5', cellStyle: {'text-align': 'left'}},
+        {headerName: 'M6', width: 120, field: 'm6', cellStyle: {'text-align': 'left'}},
+        {headerName: 'M7', width: 120, field: 'm7', cellStyle: {'text-align': 'left'}},
+        {headerName: 'M8', width: 120, field: 'm8', cellStyle: {'text-align': 'left'}},
+        {headerName: 'M9', width: 120, field: 'm9', cellStyle: {'text-align': 'left'}},
+        {headerName: 'M10', width: 120, field: 'm10', cellStyle: {'text-align': 'left'}},
+        {headerName: 'M11', width: 120, field: 'm11', cellStyle: {'text-align': 'left'}},
+        {headerName: 'M12', width: 120, field: 'm12', cellStyle: {'text-align': 'left'}}
       ],
-      rowDataDefs: [],
+      rowDataDefs: [
+
+
+      ],
       rowDataDefs1: [
         {
           KEY: 'NP ESS',
@@ -522,34 +547,13 @@ export default {
     },
     searchAjax () {
         var _url = 'http://10.120.116.171:8082/api/cfebmc'
-        axios.request({
-          url: 'http://10.120.116.171:8082/api/cfebmc',
-          params: {    
-                "inputBmcEntityList": [    
-                  {    
-                    "brand": "string",    
-                    "ccKey": "string",    
-                    "cfecountry": "string",    
-                    "country": "string",    
-                    "family": "string",    
-                    "key": "string",    
-                    "machinetype": "string",    
-                    "mtmNo": "string",    
-                    "office": "string",    
-                    "org": "string",    
-                    "ph": "string",    
-                    "plant": "string",    
-                    "productgroup": "string",    
-                    "subgeo": "string"    
-                  }    
-                ],    
-                "lineUpGeo": "string",
-                "systemType": "string"
-              },
-          method: 'post'
-      })
-        
+        var obj = {
+            "inputBmcEntityList":[{"country":"TM","key":"1","mtmNo":"80M100ELRU","plant":"BITLAND_NB"},{"country":"LI","key":"2","mtmNo":"80VR00GJFR","plant":"LCFC_NB"},{"country":"LI","key":"3","mtmNo":"80VR00GJFR","plant":"1"},{"country":"AT","key":"4","mtmNo":"90B6009MUK","plant":"S111"},{"country":"AT","key":"5","mtmNo":"90FB007LGE","plant":"1"},{"country":"LI","key":"6","mtmNo":"90AV001NFR","plant":"S111"},{"country":"DE","key":"7","mtmNo":"30BK001YFR","plant":"FLEX_HGY"},{"country":"DE","key":"8","mtmNo":"30BK001YFR","plant":"1"},{"country":"LI","key":"9","mtmNo":"30BK001YFR","plant":"FLEX_HGY"},{"country":"LI","key":"10","mtmNo":"30BK001YFR","plant":"1"},{"country":"MY","key":"11","mtmNo":"GX20G46698","plant":"S120"},{"country":"AE","key":"12","mtmNo":"G0A10170AR","plant":"1"},{"country":"CA","key":"13","mtmNo":"65ACGCC1US","plant":"S111"},{"country":"CN","key":"14","mtmNo":"60C7MCR1CB","plant":"1"},{"country":"AT","key":"16","mtmNo":"5MS0M38429","plant":"N/A"},{"country":"DE","key":"17","mtmNo":"5MS0M38429","plant":"N/A"},{"country":"AT","key":"19","mtmNo":"5MS0M38429","plant":"1"},{"country":"BE","key":"20","mtmNo":"ZA090000SE","plant":"1"},{"country":"LI","key":"21","mtmNo":"ZA200050FR","plant":"1"},{"country":"TH","key":"22","mtmNo":"ZG38C00964","plant":"1"}],"lineUpGeo":"","systemType":"consumer"
+              }
+        axios.post(_url,obj).then((res)=>{
 
+          this.rowDataDefs = res.data.data
+        })
 
     }
   }
@@ -621,4 +625,17 @@ h3{
 .ivu-form-item{
   margin-bottom:10px;
 }
+.marginBottom{
+.ivu-btn,
+.ivu-btn:hover{
+  background: #fff;
+  outline:none;
+}
+}
+
+.ivu-btn.ivu-btn-info{
+  background-color: #2db7f5;
+}
+
+
 </style>
