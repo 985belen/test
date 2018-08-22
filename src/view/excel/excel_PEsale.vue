@@ -919,7 +919,7 @@ export default {
           ptimar: '-10.30%'
         },
         {
-          id: '',
+          id: '2',
           quarter: 'F2Q 18/19',
           brand: 'ThinkPad Classic',
           brsum: 'Notebook',

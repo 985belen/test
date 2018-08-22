@@ -36,7 +36,7 @@
   <h3 class="marginBottom" style="margin-bottom: 10px;"><Icon type="ios-podium" />Output Information</h3>
   <div class="ag2">
     <ag-grid-vue
-      style="width: 100%; height:100%;"
+      style="width:1200px; height:100%;"
       class="ag-theme-balham agContainer"
       :columnDefs="columnDefs"
       :rowData="rowDataDefs"
@@ -63,9 +63,9 @@ export default {
       },
       toggle: true,
       columnDefs: [
-        {headerName: 'pn',  width: 120, field: 'pn', cellStyle: {'text-align': 'left'}},
-        {headerName: 'character',  width: 120, field: 'character', cellStyle: {'text-align': 'left'}},
-        {headerName: 'characterValue',  width: 120, field: 'characterValue', cellStyle: {'text-align': 'left'}},
+        {headerName: 'pn',  width: 400, field: 'pn', cellStyle: {'text-align': 'left'}},
+        {headerName: 'character',  width: 400, field: 'character', cellStyle: {'text-align': 'left'}},
+        {headerName: 'characterValue',  width: 400, field: 'characterValue', cellStyle: {'text-align': 'left'}},
       ],
       rowDataDefs: []
     }
@@ -88,11 +88,28 @@ export default {
     searchAjax () {
 
       var _url = 'http://10.120.116.171:8081/api/mtmcvinfo'
-      var _params = this.form.pns
+      var _params = this.form.pns||'10FC0000CG,10FC0000IG'
       _url+='/'+_params
         axios.get(_url).then((res)=>{
-          debugger
-            this.rowDataDefs = res.data.data
+          var  _res = res.data.data;
+          var _arr =[]
+          var obj = {
+            pn:'',
+            character:'',
+            characterValue:''
+          }
+          for(var i = 0 ; i < _res.length; i++){
+            for(var n = 0 ; n < _res[i]['cvList'].length; n++){
+              var _cvList = _res[i]['cvList'][n]
+              obj={
+                pn:_res[i]['pn'],
+                character:_cvList.character,
+                characterValue:_cvList.characterValue
+              }
+              _arr.push(obj)
+            }
+          }
+            this.rowDataDefs = _arr
         })
 
     },

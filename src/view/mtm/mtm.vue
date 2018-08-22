@@ -25,14 +25,14 @@
     <div class="middle-box" style="display: block;">
       <Form :model="form" label-position="left" ref="form" >
         <Row type="flex" justify="start" :gutter="15">
-          <Col span=3 offset=1>
-            <Form-item label="systemType">
+          <Col span=4>
+            <Form-item label="systemType" style="padding-left: 20px;">
               <Select v-model="form.systemType" placeholder="Please select">
                 <Option v-for="(item, index) in form.selects" :value="item" :key="index">{{item}}</Option>
             </Select>
             </Form-item>
           </Col>
-          <Col span=3>
+          <Col span=4>
             <Form-item label="lineUpGeo">
               <Input v-model="form.lineUpGeo" placeholder="Enter something..."></Input>
             </Form-item>
@@ -60,7 +60,7 @@
           <Col span=3>
             <Form-item>
               <!-- <br/> -->
-              <Button type="info" @click="model=true">More Filters</Button>
+              <Button style="background: #fff;" type="" @click="model=true">More Filters</Button>
             </Form-item>
           </Col>
         </Row>
@@ -69,7 +69,8 @@
         v-model="model"
         title="Components"
         :styles="{width:'655px'}"
-        ok-text="OK"
+        ok-text="Search"
+        @on-ok='searchAjax()'
         cancel-text="Cancel">
         <ag-grid-vue
           style="width: 100%; height:250px"
@@ -313,8 +314,7 @@ export default {
     },
     searchAjax() {
       var _url = "http://10.120.116.171:8082/api/cfebmc";
-      var obj = {
-        inputBmcEntityList: [
+      var _tpl = [
           { country: "TM", key: "1", mtmNo: "80M100ELRU", plant: "BITLAND_NB" },
           { country: "LI", key: "2", mtmNo: "80VR00GJFR", plant: "LCFC_NB" },
           { country: "LI", key: "3", mtmNo: "80VR00GJFR", plant: "1" },
@@ -335,9 +335,11 @@ export default {
           { country: "BE", key: "20", mtmNo: "ZA090000SE", plant: "1" },
           { country: "LI", key: "21", mtmNo: "ZA200050FR", plant: "1" },
           { country: "TH", key: "22", mtmNo: "ZG38C00964", plant: "1" }
-        ],
-        lineUpGeo: "",
-        systemType: "consumer"
+        ]
+      var obj = {
+        inputBmcEntityList: _tpl,
+        lineUpGeo: this.form.lineUpGeo||"",
+        systemType: this.form.systemType||"consumer"
       };
       axios.post(_url, obj).then(res => {
         this.rowDataDefs = res.data.data;

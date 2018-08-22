@@ -16,8 +16,8 @@
           </Col>
           <Col span=6>
             <Form-item>
-              <Button type="primary" style="margin-right: 15px;">Search</Button>
-              <Button type="primary">Export</Button>
+              <Button type="" style="margin-right: 15px;" @click='searchAjax'>Search</Button>
+              <Button type="">Export</Button>
             </Form-item>
          </Col>
         </Row>
@@ -93,6 +93,7 @@
 </template>
 <script>
 import {AgGridVue} from 'ag-grid-vue'
+import axios from 'axios'
 export default {
   data () {
     return {
@@ -115,121 +116,121 @@ export default {
         }, {
           headerName: 'MTM_NO',
           width: 120,
-          field: 'MTM_NO',
+          field: 'mtm_NO',
           fixed: 'left',
           cellStyle: {'text-align': 'center'}
         }, {
           headerName: 'PRODUCT_GROUP',
           width: 120,
-          field: 'PRODUCT_GROUP',
+          field: 'product_GROUP',
           fixed: 'left',
           cellStyle: {'text-align': 'center'}
         }, {
           headerName: 'PLANT',
           width: 120,
-          field: 'PLANT',
+          field: 'plant',
           fixed: 'left',
           cellStyle: {'text-align': 'center'}
         }, {
           headerName: 'SUBGEO',
           width: 120,
-          field: 'SUBGEO',
+          field: 'subgeo',
           fixed: 'left',
           cellStyle: {'text-align': 'center'}
         }, {
           headerName: 'COUNTRY',
           width: 120,
-          field: 'COUNTRY',
+          field: 'country',
           fixed: 'left',
           cellStyle: {'text-align': 'center'}
         }, {
           headerName: 'Pre_M3',
           width: 120,
-          field: 'Pre_M3',
+          field: 'pre_M3',
           fixed: 'left',
           cellStyle: {'text-align': 'center'}
         }, {
           headerName: 'Pre_M2',
           width: 120,
-          field: 'Pre_M2',
+          field: 'pre_M2',
           fixed: 'left',
           cellStyle: {'text-align': 'center'}
         }, {
           headerName: 'Pre_M1',
           width: 120,
-          field: 'Pre_M1',
+          field: 'pre_M1',
           fixed: 'left',
           cellStyle: {'text-align': 'center'}
         }, {
           headerName: 'M1',
           width: 120,
-          field: 'M1',
+          field: 'm1',
           fixed: 'left',
           cellStyle: {'text-align': 'center'}
         }, {
           headerName: 'M2',
           width: 120,
-          field: 'M2',
+          field: 'm2',
           fixed: 'left',
           cellStyle: {'text-align': 'center'}
         }, {
           headerName: 'M3',
           width: 120,
-          field: 'M3',
+          field: 'm3',
           fixed: 'left',
           cellStyle: {'text-align': 'center'}
         }, {
           headerName: 'M4',
           width: 120,
-          field: 'M4',
+          field: 'm4',
           fixed: 'left',
           cellStyle: {'text-align': 'center'}
         }, {
           headerName: 'M5',
           width: 120,
-          field: 'M5',
+          field: 'm5',
           fixed: 'left',
           cellStyle: {'text-align': 'center'}
         }, {
           headerName: 'M6',
           width: 120,
-          field: 'M6',
+          field: 'm6',
           fixed: 'left',
           cellStyle: {'text-align': 'center'}
         }, {
           headerName: 'M7',
           width: 120,
-          field: 'M7',
+          field: 'm7',
           fixed: 'left',
           cellStyle: {'text-align': 'center'}
         }, {
           headerName: 'M8',
           width: 120,
-          field: 'M8',
+          field: 'm8',
           fixed: 'left',
           cellStyle: {'text-align': 'center'}
         }, {
           headerName: 'M9',
           width: 120,
-          field: 'M9',
+          field: 'm9',
           fixed: 'left',
           cellStyle: {'text-align': 'center'}
         }, {
           headerName: 'M10',
           width: 120,
-          field: 'M10',
+          field: 'm10',
           fixed: 'left',
           cellStyle: {'text-align': 'center'}
         }, {
           headerName: 'M11',
           width: 120,
-          field: 'M11',
+          field: 'm11',
           fixed: 'left',
           cellStyle: {'text-align': 'center'}
         }, {
           headerName: 'M12',
           width: 120,
-          field: 'M12',
+          field: 'm12',
           fixed: 'left',
           cellStyle: {'text-align': 'center'}
         }, {
@@ -413,6 +414,21 @@ export default {
     AgGridVue
   },
   methods: {
+    searchAjax () {
+      var _url = 'http://10.120.116.169:8082/api/cfebmcbymtmnoandcountry'
+      var _params = {
+            "changeAt": "2018-08-22T09:09:25.559Z",
+            "country": this.formLeft.COUNTRY||"ES",
+            "mtm_NO": this.formLeft.MTM_NO||"10GQS0VU0C",
+            "plant": "string",
+            "product_GROUP": "string",
+            "subgeo": "string",
+            "tableName": "CFE_MTM_BMC_20180821035509"
+          }
+        axios.post(_url,_params).then((res)=>{
+            this.pcgdata = res.data.data
+        })
+    }
 
   }
 }
