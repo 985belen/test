@@ -58,13 +58,34 @@
             </Form-item>
           </Col>
           <Col span=3>
-            <Button type="info">More Filters</Button>  
+            <Form-item>
+              <br/>
+              <Button type="info" @click="model=true">More Filters</Button>
+            </Form-item>
           </Col>
         </Row>
       </Form>
-      <div class="ag1" style="padding-bottom:10px; display: none;">
-        <Table border stripe :columns="columns" :data="rowData" height="250"></Table>
-      </div>
+      <Modal
+        v-model="model"
+        title="Components"
+        :styles="{width:'800px'}"
+        ok-text="OK"
+        cancel-text="Cancel">
+        <ag-grid-vue
+          style="width: 100%; height:250px"
+          class="ag-theme-balham"
+          v-if="model"
+          :columnDefs="columns"
+          :rowData="rowData"
+          :enableSorting="true"
+          :enableFilter="true"
+          :floatingFilter="true"
+          :singleClickEdit="true"
+          :suppressResize="true"
+          :enableColResize="true"
+          rowSelection="multiple">
+        </ag-grid-vue>
+      </Modal>
     </div>
   </div>
   <h3 class="marginBottom" style="margin-bottom: 10px;"><Icon type="ios-podium" />Output Information</h3>
@@ -87,555 +108,356 @@
 </div>
 </template>
 <script>
-import {AgGridVue} from 'ag-grid-vue'
+import { AgGridVue } from "ag-grid-vue";
 // import axios from '@/libs/api.request'
-import axios from 'axios'
+import axios from "axios";
 
 export default {
-  data () {
+  data() {
     return {
+      model: false,
       form: {
-        systemType: '',
-        selects: ['consumer', 'SMB'],
-        lineUpGeo: ''
+        systemType: "",
+        selects: ["consumer", "SMB"],
+        lineUpGeo: ""
       },
       columns: [
-        {title: 'key', key: 'key'},
-        {title: 'mtmNo', key: 'mtmNo'},
-        {title: 'plant', key: 'plant'},
-        {title: 'country', key: 'country'}
+        { headerName: "key", field: "key" },
+        { headerName: "mtmNo", field: "mtmNo" },
+        { headerName: "plant", field: "plant" },
+        { headerName: "country", field: "country" }
       ],
-      rowData: [],
-      rowData1: [
+      rowData: [
         {
-          key: '12',
-          mtmNo: '221',
-          plant:'asd',
-          country: 'asdsa'
+          key: "12",
+          mtmNo: "221",
+          plant: "asd",
+          country: "asdsa"
         },
         {
-          key: '23',
-          mtmNo: '23e',
-          plant:'rewf',
-          country: 'wefd'
+          key: "23",
+          mtmNo: "23e",
+          plant: "rewf",
+          country: "wefd"
         },
         {
-          key: 'wef',
-          mtmNo: '23efd',
-          plant:'23',
-          country: '23'
+          key: "wef",
+          mtmNo: "23efd",
+          plant: "23",
+          country: "23"
         },
         {
-          key: '12',
-          mtmNo: '221',
-          plant:'asd',
-          country: 'asdsa'
+          key: "12",
+          mtmNo: "221",
+          plant: "asd",
+          country: "asdsa"
         },
         {
-          key: '23',
-          mtmNo: '23e',
-          plant:'rewf',
-          country: 'wefd'
+          key: "23",
+          mtmNo: "23e",
+          plant: "rewf",
+          country: "wefd"
         },
         {
-          key: 'wef',
-          mtmNo: '23efd',
-          plant:'23',
-          country: '23'
+          key: "23",
+          mtmNo: "23e",
+          plant: "rewf",
+          country: "wefd"
         },
         {
-          key: '23d',
-          mtmNo: '2d',
-          plant:'d23',
-          country: '3de2'
+          key: "23",
+          mtmNo: "23e",
+          plant: "rewf",
+          country: "wefd"
         },
         {
-          key: '23rd',
-          mtmNo: '34',
-          plant:'dsf',
-          country: 'er'
+          key: "23",
+          mtmNo: "23e",
+          plant: "rewf",
+          country: "wefd"
+        },
+        {
+          key: "wef",
+          mtmNo: "23efd",
+          plant: "23",
+          country: "23"
+        },
+        {
+          key: "23d",
+          mtmNo: "2d",
+          plant: "d23",
+          country: "3de2"
+        },
+        {
+          key: "23rd",
+          mtmNo: "34",
+          plant: "dsf",
+          country: "er"
         }
       ],
       columnDefs: [
-        {headerName: 'KEY',  width: 120, field: 'key', cellStyle: {'text-align': 'left'}},
-        {headerName: 'MTM_NO',  width: 120, field: 'mtm_NO', cellStyle: {'text-align': 'left'}},
-        {headerName: 'PLANT',  width: 120, field: 'plant', cellStyle: {'text-align': 'left'}},
-        {headerName: 'COUNTRY',  width: 120, field: 'country', cellStyle: {'text-align': 'left'}
+        {
+          headerName: "KEY",
+          width: 120,
+          field: "key",
+          cellStyle: { "text-align": "left" }
+        },
+        {
+          headerName: "MTM_NO",
+          width: 120,
+          field: "mtm_NO",
+          cellStyle: { "text-align": "left" }
+        },
+        {
+          headerName: "PLANT",
+          width: 120,
+          field: "plant",
+          cellStyle: { "text-align": "left" }
+        },
+        {
+          headerName: "COUNTRY",
+          width: 120,
+          field: "country",
+          cellStyle: { "text-align": "left" }
           // cellRenderer: (params) => {
           //   return '<div class="longData" title="' + params.value +'">' + params.value + '</div>'
           // }
         },
-        {headerName: 'CFECOUNTRY', width: 120, field: 'cfecountry', cellStyle: {'text-align': 'left'}},
-        {headerName: 'Pre_M3', width: 120, field: 'pre_M3', cellStyle: {'text-align': 'left'}},
-        {headerName: 'Pre_M2', width: 120, field: 'pre_M2', cellStyle: {'text-align': 'left'}},
-        {headerName: 'Pre_M1', width: 120, field: 'pre_M1', cellStyle: {'text-align': 'left'}},
-        {headerName: 'M1', width: 120, field: 'm1', cellStyle: {'text-align': 'left'}},
-        {headerName: 'M2', width: 120, field: 'm2', cellStyle: {'text-align': 'left'}},
-        {headerName: 'M3', width: 120, field: 'm3', cellStyle: {'text-align': 'left'}},
-        {headerName: 'M4', width: 120, field: 'm4', cellStyle: {'text-align': 'left'}},
-        {headerName: 'M5', width: 120, field: 'm5', cellStyle: {'text-align': 'left'}},
-        {headerName: 'M6', width: 120, field: 'm6', cellStyle: {'text-align': 'left'}},
-        {headerName: 'M7', width: 120, field: 'm7', cellStyle: {'text-align': 'left'}},
-        {headerName: 'M8', width: 120, field: 'm8', cellStyle: {'text-align': 'left'}},
-        {headerName: 'M9', width: 120, field: 'm9', cellStyle: {'text-align': 'left'}},
-        {headerName: 'M10', width: 120, field: 'm10', cellStyle: {'text-align': 'left'}},
-        {headerName: 'M11', width: 120, field: 'm11', cellStyle: {'text-align': 'left'}},
-        {headerName: 'M12', width: 120, field: 'm12', cellStyle: {'text-align': 'left'}}
+        {
+          headerName: "CFECOUNTRY",
+          width: 120,
+          field: "cfecountry",
+          cellStyle: { "text-align": "left" }
+        },
+        {
+          headerName: "Pre_M3",
+          width: 120,
+          field: "pre_M3",
+          cellStyle: { "text-align": "left" }
+        },
+        {
+          headerName: "Pre_M2",
+          width: 120,
+          field: "pre_M2",
+          cellStyle: { "text-align": "left" }
+        },
+        {
+          headerName: "Pre_M1",
+          width: 120,
+          field: "pre_M1",
+          cellStyle: { "text-align": "left" }
+        },
+        {
+          headerName: "M1",
+          width: 120,
+          field: "m1",
+          cellStyle: { "text-align": "left" }
+        },
+        {
+          headerName: "M2",
+          width: 120,
+          field: "m2",
+          cellStyle: { "text-align": "left" }
+        },
+        {
+          headerName: "M3",
+          width: 120,
+          field: "m3",
+          cellStyle: { "text-align": "left" }
+        },
+        {
+          headerName: "M4",
+          width: 120,
+          field: "m4",
+          cellStyle: { "text-align": "left" }
+        },
+        {
+          headerName: "M5",
+          width: 120,
+          field: "m5",
+          cellStyle: { "text-align": "left" }
+        },
+        {
+          headerName: "M6",
+          width: 120,
+          field: "m6",
+          cellStyle: { "text-align": "left" }
+        },
+        {
+          headerName: "M7",
+          width: 120,
+          field: "m7",
+          cellStyle: { "text-align": "left" }
+        },
+        {
+          headerName: "M8",
+          width: 120,
+          field: "m8",
+          cellStyle: { "text-align": "left" }
+        },
+        {
+          headerName: "M9",
+          width: 120,
+          field: "m9",
+          cellStyle: { "text-align": "left" }
+        },
+        {
+          headerName: "M10",
+          width: 120,
+          field: "m10",
+          cellStyle: { "text-align": "left" }
+        },
+        {
+          headerName: "M11",
+          width: 120,
+          field: "m11",
+          cellStyle: { "text-align": "left" }
+        },
+        {
+          headerName: "M12",
+          width: 120,
+          field: "m12",
+          cellStyle: { "text-align": "left" }
+        }
       ],
-      rowDataDefs: [
-
-
-      ],
-      rowDataDefs1: [
-        {
-          KEY: 'NP ESS',
-          MTM_NO: '',
-          PLANT: '',
-          'COUNTRY': 'Ocean',
-          CFECOUNTRY: 'Ocean',
-          Pre_M3: '',
-          Pre_M2: '',
-          Pre_M1: '',
-          M1: '',
-          M2: '',
-          M3: '',
-          M4: '',
-          M5: '',
-          M6: '',
-          M7: '',
-          M8: '',
-          M9: '',
-          M10: '',
-          M11: '',
-          M12: '',
-        },
-        {
-          KEY: 'NP ESS',
-          MTM_NO: '',
-          PLANT: '',
-          'COUNTRY': 'Ocean',
-          CFECOUNTRY: 'Ocean',
-          Pre_M3: '',
-          Pre_M2: '',
-          Pre_M1: '',
-          M1: '',
-          M2: '',
-          M3: '',
-          M4: '',
-          M5: '',
-          M6: '',
-          M7: '',
-          M8: '',
-          M9: '',
-          M10: '',
-          M11: '',
-          M12: '',
-        },
-        {
-          KEY: 'NP ESS',
-          MTM_NO: '',
-          PLANT: '',
-          'COUNTRY': 'Ocean',
-          CFECOUNTRY: 'Ocean',
-          Pre_M3: '',
-          Pre_M2: '',
-          Pre_M1: '',
-          M1: '',
-          M2: '',
-          M3: '',
-          M4: '',
-          M5: '',
-          M6: '',
-          M7: '',
-          M8: '',
-          M9: '',
-          M10: '',
-          M11: '',
-          M12: '',
-        },
-        {
-          KEY: 'NP ESS',
-          MTM_NO: '',
-          PLANT: '',
-          'COUNTRY': 'Ocean',
-          CFECOUNTRY: 'Ocean',
-          Pre_M3: '',
-          Pre_M2: '',
-          Pre_M1: '',
-          M1: '',
-          M2: '',
-          M3: '',
-          M4: '',
-          M5: '',
-          M6: '',
-          M7: '',
-          M8: '',
-          M9: '',
-          M10: '',
-          M11: '',
-          M12: '',
-        },
-        {
-          KEY: 'NP ESS',
-          MTM_NO: '',
-          PLANT: '',
-          'COUNTRY': 'Ocean',
-          CFECOUNTRY: 'Ocean',
-          Pre_M3: '',
-          Pre_M2: '',
-          Pre_M1: '',
-          M1: '',
-          M2: '',
-          M3: '',
-          M4: '',
-          M5: '',
-          M6: '',
-          M7: '',
-          M8: '',
-          M9: '',
-          M10: '',
-          M11: '',
-          M12: '',
-        },
-        {
-          KEY: 'NP ESS',
-          MTM_NO: '',
-          PLANT: '',
-          'COUNTRY': 'Ocean',
-          CFECOUNTRY: 'Ocean',
-          Pre_M3: '',
-          Pre_M2: '',
-          Pre_M1: '',
-          M1: '',
-          M2: '',
-          M3: '',
-          M4: '',
-          M5: '',
-          M6: '',
-          M7: '',
-          M8: '',
-          M9: '',
-          M10: '',
-          M11: '',
-          M12: '',
-        },
-        {
-          KEY: 'NP ESS',
-          MTM_NO: '',
-          PLANT: '',
-          'COUNTRY': 'Ocean',
-          CFECOUNTRY: 'Ocean',
-          Pre_M3: '',
-          Pre_M2: '',
-          Pre_M1: '',
-          M1: '',
-          M2: '',
-          M3: '',
-          M4: '',
-          M5: '',
-          M6: '',
-          M7: '',
-          M8: '',
-          M9: '',
-          M10: '',
-          M11: '',
-          M12: '',
-        },
-        {
-          KEY: 'NP ESS',
-          MTM_NO: '',
-          PLANT: '',
-          'COUNTRY': 'Ocean',
-          CFECOUNTRY: 'Ocean',
-          Pre_M3: '',
-          Pre_M2: '',
-          Pre_M1: '',
-          M1: '',
-          M2: '',
-          M3: '',
-          M4: '',
-          M5: '',
-          M6: '',
-          M7: '',
-          M8: '',
-          M9: '',
-          M10: '',
-          M11: '',
-          M12: '',
-        },
-        {
-          KEY: 'NP ESS',
-          MTM_NO: '',
-          PLANT: '',
-          'COUNTRY': 'Ocean',
-          CFECOUNTRY: 'Ocean',
-          Pre_M3: '',
-          Pre_M2: '',
-          Pre_M1: '',
-          M1: '',
-          M2: '',
-          M3: '',
-          M4: '',
-          M5: '',
-          M6: '',
-          M7: '',
-          M8: '',
-          M9: '',
-          M10: '',
-          M11: '',
-          M12: '',
-        },
-        {
-          KEY: 'NP ESS',
-          MTM_NO: '',
-          PLANT: '',
-          'COUNTRY': 'Ocean',
-          CFECOUNTRY: 'Ocean',
-          Pre_M3: '',
-          Pre_M2: '',
-          Pre_M1: '',
-          M1: '',
-          M2: '',
-          M3: '',
-          M4: '',
-          M5: '',
-          M6: '',
-          M7: '',
-          M8: '',
-          M9: '',
-          M10: '',
-          M11: '',
-          M12: '',
-        },
-        {
-          KEY: 'NP ESS',
-          MTM_NO: '',
-          PLANT: '',
-          'COUNTRY': 'Ocean',
-          CFECOUNTRY: 'Ocean',
-          Pre_M3: '',
-          Pre_M2: '',
-          Pre_M1: '',
-          M1: '',
-          M2: '',
-          M3: '',
-          M4: '',
-          M5: '',
-          M6: '',
-          M7: '',
-          M8: '',
-          M9: '',
-          M10: '',
-          M11: '',
-          M12: '',
-        },
-        {
-          KEY: 'NP ESS',
-          MTM_NO: '',
-          PLANT: '',
-          'COUNTRY': 'Ocean',
-          CFECOUNTRY: 'Ocean',
-          Pre_M3: '',
-          Pre_M2: '',
-          Pre_M1: '',
-          M1: '',
-          M2: '',
-          M3: '',
-          M4: '',
-          M5: '',
-          M6: '',
-          M7: '',
-          M8: '',
-          M9: '',
-          M10: '',
-          M11: '',
-          M12: '',
-        },
-        {
-          KEY: 'NP ESS',
-          MTM_NO: '',
-          PLANT: '',
-          'COUNTRY': 'Ocean',
-          CFECOUNTRY: 'Ocean',
-          Pre_M3: '',
-          Pre_M2: '',
-          Pre_M1: '',
-          M1: '',
-          M2: '',
-          M3: '',
-          M4: '',
-          M5: '',
-          M6: '',
-          M7: '',
-          M8: '',
-          M9: '',
-          M10: '',
-          M11: '',
-          M12: '',
-        },
-        {
-          KEY: 'NP ESS',
-          MTM_NO: '',
-          PLANT: '',
-          'COUNTRY': 'Ocean',
-          CFECOUNTRY: 'Ocean',
-          Pre_M3: '',
-          Pre_M2: '',
-          Pre_M1: '',
-          M1: '',
-          M2: '',
-          M3: '',
-          M4: '',
-          M5: '',
-          M6: '',
-          M7: '',
-          M8: '',
-          M9: '',
-          M10: '',
-          M11: '',
-          M12: '',
-        },
-        {
-          KEY: 'NP ESS',
-          MTM_NO: '',
-          PLANT: '',
-          'COUNTRY': 'Ocean',
-          CFECOUNTRY: 'Ocean',
-          Pre_M3: '',
-          Pre_M2: '',
-          Pre_M1: '',
-          M1: '',
-          M2: '',
-          M3: '',
-          M4: '',
-          M5: '',
-          M6: '',
-          M7: '',
-          M8: '',
-          M9: '',
-          M10: '',
-          M11: '',
-          M12: '',
-        },
-      ]
-    }
+      rowDataDefs: []
+    };
   },
   components: {
     AgGridVue
   },
-  created () {
-
-  },
-  mounted () {
-    this.calcGridHeight()
-    window.addEventListener('resize', () => {
-      window.clearTimeout(this.timer)
+  created() {},
+  mounted() {
+    this.calcGridHeight();
+    window.addEventListener("resize", () => {
+      window.clearTimeout(this.timer);
       this.timer = window.setTimeout(() => {
-        this.calcGridHeight()
-      }, 100)
-    })
+        this.calcGridHeight();
+      }, 100);
+    });
   },
   methods: {
-    calcGridHeight () {
-      var screenHeight = window.innerHeight
-      var topHeight = document.getElementsByClassName('topMain')[0].offsetHeight
-      var t1 = document.getElementsByClassName('split-pane-page-wrapper')[1]
-      var ag = document.getElementsByClassName('agContainer')[0]
-      ag.style.height = screenHeight - topHeight - 64 - 10 - 10+ 'px' // 64是头部的高度，10是padding
-      t1.style.height = screenHeight - topHeight - 64 - 10 - 10 + 'px'
-      acontainer.style.height = screenHeight - topHeight - 64 -10 -10 + 'px'
+    calcGridHeight() {
+      var screenHeight = window.innerHeight;
+      var topHeight = document.getElementsByClassName("topMain")[0]
+        .offsetHeight;
+      var t1 = document.getElementsByClassName("split-pane-page-wrapper")[1];
+      var ag = document.getElementsByClassName("agContainer")[0];
+      ag.style.height = screenHeight - topHeight - 64 - 10 - 10 + "px"; // 64是头部的高度，10是padding
+      t1.style.height = screenHeight - topHeight - 64 - 10 - 10 + "px";
+      acontainer.style.height = screenHeight - topHeight - 64 - 10 - 10 + "px";
     },
-    searchAjax () {
-        var _url = 'http://10.120.116.171:8082/api/cfebmc'
-        var obj = {
-            "inputBmcEntityList":[{"country":"TM","key":"1","mtmNo":"80M100ELRU","plant":"BITLAND_NB"},{"country":"LI","key":"2","mtmNo":"80VR00GJFR","plant":"LCFC_NB"},{"country":"LI","key":"3","mtmNo":"80VR00GJFR","plant":"1"},{"country":"AT","key":"4","mtmNo":"90B6009MUK","plant":"S111"},{"country":"AT","key":"5","mtmNo":"90FB007LGE","plant":"1"},{"country":"LI","key":"6","mtmNo":"90AV001NFR","plant":"S111"},{"country":"DE","key":"7","mtmNo":"30BK001YFR","plant":"FLEX_HGY"},{"country":"DE","key":"8","mtmNo":"30BK001YFR","plant":"1"},{"country":"LI","key":"9","mtmNo":"30BK001YFR","plant":"FLEX_HGY"},{"country":"LI","key":"10","mtmNo":"30BK001YFR","plant":"1"},{"country":"MY","key":"11","mtmNo":"GX20G46698","plant":"S120"},{"country":"AE","key":"12","mtmNo":"G0A10170AR","plant":"1"},{"country":"CA","key":"13","mtmNo":"65ACGCC1US","plant":"S111"},{"country":"CN","key":"14","mtmNo":"60C7MCR1CB","plant":"1"},{"country":"AT","key":"16","mtmNo":"5MS0M38429","plant":"N/A"},{"country":"DE","key":"17","mtmNo":"5MS0M38429","plant":"N/A"},{"country":"AT","key":"19","mtmNo":"5MS0M38429","plant":"1"},{"country":"BE","key":"20","mtmNo":"ZA090000SE","plant":"1"},{"country":"LI","key":"21","mtmNo":"ZA200050FR","plant":"1"},{"country":"TH","key":"22","mtmNo":"ZG38C00964","plant":"1"}],"lineUpGeo":"","systemType":"consumer"
-              }
-        axios.post(_url,obj).then((res)=>{
-
-          this.rowDataDefs = res.data.data
-        })
-
+    searchAjax() {
+      var _url = "http://10.120.116.171:8082/api/cfebmc";
+      var obj = {
+        inputBmcEntityList: [
+          { country: "TM", key: "1", mtmNo: "80M100ELRU", plant: "BITLAND_NB" },
+          { country: "LI", key: "2", mtmNo: "80VR00GJFR", plant: "LCFC_NB" },
+          { country: "LI", key: "3", mtmNo: "80VR00GJFR", plant: "1" },
+          { country: "AT", key: "4", mtmNo: "90B6009MUK", plant: "S111" },
+          { country: "AT", key: "5", mtmNo: "90FB007LGE", plant: "1" },
+          { country: "LI", key: "6", mtmNo: "90AV001NFR", plant: "S111" },
+          { country: "DE", key: "7", mtmNo: "30BK001YFR", plant: "FLEX_HGY" },
+          { country: "DE", key: "8", mtmNo: "30BK001YFR", plant: "1" },
+          { country: "LI", key: "9", mtmNo: "30BK001YFR", plant: "FLEX_HGY" },
+          { country: "LI", key: "10", mtmNo: "30BK001YFR", plant: "1" },
+          { country: "MY", key: "11", mtmNo: "GX20G46698", plant: "S120" },
+          { country: "AE", key: "12", mtmNo: "G0A10170AR", plant: "1" },
+          { country: "CA", key: "13", mtmNo: "65ACGCC1US", plant: "S111" },
+          { country: "CN", key: "14", mtmNo: "60C7MCR1CB", plant: "1" },
+          { country: "AT", key: "16", mtmNo: "5MS0M38429", plant: "N/A" },
+          { country: "DE", key: "17", mtmNo: "5MS0M38429", plant: "N/A" },
+          { country: "AT", key: "19", mtmNo: "5MS0M38429", plant: "1" },
+          { country: "BE", key: "20", mtmNo: "ZA090000SE", plant: "1" },
+          { country: "LI", key: "21", mtmNo: "ZA200050FR", plant: "1" },
+          { country: "TH", key: "22", mtmNo: "ZG38C00964", plant: "1" }
+        ],
+        lineUpGeo: "",
+        systemType: "consumer"
+      };
+      axios.post(_url, obj).then(res => {
+        this.rowDataDefs = res.data.data;
+      });
     }
   }
-}
+};
 </script>
 <style lang="less">
-.price-box{
+.price-box {
   width: 100%;
   height: 100%;
   overflow: hidden;
   padding-bottom: 10px;
   background: #fff;
 }
-.tool-bar{
-  width:100%;
-  height:32px;
+.tool-bar {
+  width: 100%;
+  height: 32px;
   box-shadow: 0 0 5px #ccc;
-  margin-bottom:10px;
+  margin-bottom: 10px;
   padding: 0 10px;
-  .item{
-    color:#666;
-    height:32px;
+  .item {
+    color: #666;
+    height: 32px;
     line-height: 32px;
-    &:hover{
-      color:rgb(40, 122, 245);
+    &:hover {
+      color: rgb(40, 122, 245);
     }
-    .icon{
+    .icon {
       padding: 0 2px;
-      height:32px;
+      height: 32px;
       line-height: 32px;
     }
   }
 }
-.ivu-table th, .ivu-table td{
-  height:30px
+.ivu-table th,
+.ivu-table td {
+  height: 30px;
 }
-h3{
-  height:30px;
+h3 {
+  height: 30px;
   line-height: 30px;
   background: #eee;
   padding: 0 20px;
-  &.marginBottom{
+  &.marginBottom {
     margin-bottom: 10px;
   }
 }
-.item-box{
-  width:100%;
-  height:auto;
-  margin-bottom:5px;
+.item-box {
+  width: 100%;
+  height: auto;
+  margin-bottom: 5px;
   overflow: hidden;
   padding-top: 3px;
 }
-.ag2{
+.ag2 {
   width: 100%;
-  height:auto;
+  height: auto;
   overflow: hidden;
   margin-bottom: 10px;
 }
-.ivu-tabs-bar{
+.ivu-tabs-bar {
   margin-bottom: 2px;
 }
 .ivu-form-label-left .ivu-form-item-label,
-.ivu-form-item-content{
-  float:left;
+.ivu-form-item-content {
+  float: left;
 }
-.ivu-select{
-  width:162px;
+.ivu-select {
+  width: 162px;
 }
-.ivu-form-item{
-  margin-bottom:10px;
+.ivu-form-item {
+  margin-bottom: 10px;
 }
-.marginBottom{
-.ivu-btn,
-.ivu-btn:hover{
-  background: #fff;
-  outline:none;
-}
+.marginBottom {
+  .ivu-btn,
+  .ivu-btn:hover {
+    background: #fff;
+    outline: none;
+  }
 }
 
-.ivu-btn.ivu-btn-info{
+.ivu-btn.ivu-btn-info {
   background-color: #2db7f5;
 }
-
-
 </style>
