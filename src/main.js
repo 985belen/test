@@ -15,6 +15,8 @@ import '@/assets/icons/iconfont.css'
 import '../node_modules/ag-grid/dist/styles/ag-grid.css'
 import '../node_modules/ag-grid/dist/styles/ag-theme-balham.css'
 import VueAxios from 'vue-axios'
+import 'ag-grid-enterprise'
+Vue.use(axios)
 Vue.prototype.axios=axios;
 Vue.use(VueAxios, axios);
 // import '@/mock'
