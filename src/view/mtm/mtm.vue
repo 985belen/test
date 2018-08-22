@@ -24,15 +24,15 @@
     </h3>
     <div class="middle-box" style="display: block;">
       <Form :model="form" label-position="left" ref="form" >
-        <Row type="flex" justify="start" :gutter="10">
-          <Col span=4 >
-            <Form-item label="systemType" style="padding-left: 20px">
+        <Row type="flex" justify="start" :gutter="15">
+          <Col span=3 offset=1>
+            <Form-item label="systemType">
               <Select v-model="form.systemType" placeholder="Please select">
                 <Option v-for="(item, index) in form.selects" :value="item" :key="index">{{item}}</Option>
             </Select>
             </Form-item>
           </Col>
-          <Col span=4>
+          <Col span=3>
             <Form-item label="lineUpGeo">
               <Input v-model="form.lineUpGeo" placeholder="Enter something..."></Input>
             </Form-item>
@@ -59,7 +59,7 @@
           </Col>
           <Col span=3>
             <Form-item>
-              <br/>
+              <!-- <br/> -->
               <Button type="info" @click="model=true">More Filters</Button>
             </Form-item>
           </Col>
@@ -68,7 +68,7 @@
       <Modal
         v-model="model"
         title="Components"
-        :styles="{width:'800px'}"
+        :styles="{width:'655px'}"
         ok-text="OK"
         cancel-text="Cancel">
         <ag-grid-vue
@@ -78,8 +78,8 @@
           :columnDefs="columns"
           :rowData="rowData"
           :enableSorting="true"
+          :showToolPanel="false"
           :enableFilter="true"
-          :floatingFilter="true"
           :singleClickEdit="true"
           :suppressResize="true"
           :enableColResize="true"
@@ -122,77 +122,41 @@ export default {
         lineUpGeo: ""
       },
       columns: [
-        { headerName: "key", field: "key" },
-        { headerName: "mtmNo", field: "mtmNo" },
-        { headerName: "plant", field: "plant" },
-        { headerName: "country", field: "country" }
+        { headerName: "key", field: "key", width: 150, editable: true},
+        { headerName: "mtmNo", field: "mtmNo", width: 150, editable: true },
+        { headerName: "plant", field: "plant", width: 150, editable: true },
+        { headerName: "country", field: "country", width: 150, editable: true }
       ],
       rowData: [
         {
-          key: "12",
-          mtmNo: "221",
-          plant: "asd",
-          country: "asdsa"
+          key: "",
+          mtmNo: "",
+          plant: "",
+          country: ""
         },
         {
-          key: "23",
-          mtmNo: "23e",
-          plant: "rewf",
-          country: "wefd"
+          key: "",
+          mtmNo: "",
+          plant: "",
+          country: ""
         },
         {
-          key: "wef",
-          mtmNo: "23efd",
-          plant: "23",
-          country: "23"
+          key: "",
+          mtmNo: "",
+          plant: "",
+          country: ""
         },
         {
-          key: "12",
-          mtmNo: "221",
-          plant: "asd",
-          country: "asdsa"
+          key: "",
+          mtmNo: "",
+          plant: "",
+          country: ""
         },
         {
-          key: "23",
-          mtmNo: "23e",
-          plant: "rewf",
-          country: "wefd"
-        },
-        {
-          key: "23",
-          mtmNo: "23e",
-          plant: "rewf",
-          country: "wefd"
-        },
-        {
-          key: "23",
-          mtmNo: "23e",
-          plant: "rewf",
-          country: "wefd"
-        },
-        {
-          key: "23",
-          mtmNo: "23e",
-          plant: "rewf",
-          country: "wefd"
-        },
-        {
-          key: "wef",
-          mtmNo: "23efd",
-          plant: "23",
-          country: "23"
-        },
-        {
-          key: "23d",
-          mtmNo: "2d",
-          plant: "d23",
-          country: "3de2"
-        },
-        {
-          key: "23rd",
-          mtmNo: "34",
-          plant: "dsf",
-          country: "er"
+          key: "",
+          mtmNo: "",
+          plant: "",
+          country: ""
         }
       ],
       columnDefs: [
@@ -330,11 +294,11 @@ export default {
   mounted() {
     this.calcGridHeight();
     window.addEventListener("resize", () => {
-      window.clearTimeout(this.timer);
+      window.clearTimeout(this.timer)
       this.timer = window.setTimeout(() => {
-        this.calcGridHeight();
-      }, 100);
-    });
+        this.calcGridHeight()
+      }, 100)
+    })
   },
   methods: {
     calcGridHeight() {
