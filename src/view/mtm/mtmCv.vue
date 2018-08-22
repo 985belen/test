@@ -1,7 +1,7 @@
 <template>
 <div class="price-box" ref="priceBox">
-  <div ref="topMain" class="topMain" style="display: none;">
-    <div class="tool-bar" ref="toolBar">
+  <div ref="topMain" class="topMain" >
+    <div class="tool-bar" ref="toolBar" style="display: none;">
       <a href="#" class="item"><Icon class="icon" size=16 type="md-trash"/>Delete</a>
       <Divider type="vertical" />
       <a href="#" class="item"><Icon class="icon" size=16 type="md-link" />Email</a>
@@ -16,19 +16,17 @@
       <Divider type="vertical" /> 
       <a href="#" class="item"><Icon class="icon" size=16 type="md-add" />Accepted</a>
     </div>
-    <h3 class="marginBottom"><a href="javascript:;" style="display:block;color: #333;" @click="toggleList"><Icon type="md-pricetags" />Input Information<span style="float: right; font-weight: normal; font-size: 12px;">More</span></a></h3>
-    <div class="middle-box">
+    <h3 class="marginBottom"><Icon type="md-pricetags" />Input Information<div style="float: right; margin-top: -3px;">
+          <Button size='small' @click='searchAjax' type="defalut" style="margin-right:15px;">Call</Button>
+          <Button  size='small' type="defalut">Import</Button>
+      </div></h3>
+    <div class="middle-box"  style="display: block;">
       <Form :model="form" label-position="left" ref="form" >
         <Row type="flex" justify="start" :gutter="10">
-          <Col span=6 offset=1>
+          <Col style="padding-left: 20px">
             <Form-item label="pns">
-              <Input v-model="form.pns" placeholder="Enter something..."></Input>
-            </Form-item>
-          </Col>
-          <Col span=6>
-            <Form-item>
-              <Button type="primary" style="margin-right:15px;">Call</Button>
-              <Button type="primary" >Export</Button>
+              <Input style="width:400px" v-model="form.pns" placeholder="Enter something..."></Input>
+              *以逗号分隔
             </Form-item>
           </Col>
         </Row>
@@ -56,6 +54,7 @@
 </template>
 <script>
 import {AgGridVue} from 'ag-grid-vue'
+import axios from 'axios'
 export default {
   data () {
     return {
@@ -77,7 +76,6 @@ export default {
   created () {
   },
   mounted () {
-    this.toggleList()
     this.calcGridHeight()
     window.addEventListener('resize', () => {
       window.clearTimeout(this.timer)
@@ -87,6 +85,17 @@ export default {
     })
   },
   methods: {
+    searchAjax () {
+
+      var _url = 'http://10.120.116.171:8081/api/mtmcvinfo'
+      var _params = this.form.pns
+      _url+='/'+_params
+        axios.get(_url).then((res)=>{
+          debugger
+            this.rowDataDefs = res.data.data
+        })
+
+    },
     calcGridHeight () {
       var screenHeight = window.innerHeight
       var topHeight = document.getElementsByClassName('topMain')[0].offsetHeight
