@@ -88,18 +88,18 @@
       <h4>手工：</h4>
       <Row>
         <Col span=4>
-          <Form-item label="BMC w/ freight Cost" style="padding-left: 20px;">
-            <Input v-model="formula.bmc" placeholder="Enter something..."></Input>
+          <Form-item label="Label1" style="padding-left: 20px;">
+            <Input v-model="formula.Label1" placeholder="Enter something..."></Input>
           </Form-item>
         </Col>
         <Col span=4>
-          <Form-item label="BMC w/ freight Cost" style="padding-left: 20px;">
-            <Input v-model="formula.bmc" placeholder="Enter something..."></Input>
+          <Form-item label="Label2" style="padding-left: 20px;">
+            <Input v-model="formula.Label2" placeholder="Enter something..."></Input>
           </Form-item>
         </Col>
         <Col span=4>
-          <Form-item label="BMC w/ freight Cost" style="padding-left: 20px;">
-            <Input v-model="formula.bmc" placeholder="Enter something..."></Input>
+          <Form-item label="Label3" style="padding-left: 20px;">
+            <Input v-model="formula.Label3" placeholder="Enter something..."></Input>
           </Form-item>
         </Col>
       </Row>
@@ -358,6 +358,9 @@ export default {
       },
       formula: {
         // 手工
+        Label1: '',
+        Label2: '',
+        Label3: '',
         // cfe
         bmc: '',
         FreightCost: '',
