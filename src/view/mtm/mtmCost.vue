@@ -27,8 +27,8 @@
     <div class="middle-box" style="display: block;">
       <Form :model="form" label-position="left" ref="form" >
         <Row type="flex" justify="start" :gutter="15">
-          <Col span=5>
-            <Form-item label="PN CODE">
+          <Col span=5 style="padding-left: 20px;">
+            <Form-item label="PN CODE" >
               <Input v-model="form.pn" placeholder="Enter something..."></Input>
             </Form-item>
           </Col>

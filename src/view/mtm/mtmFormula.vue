@@ -27,21 +27,21 @@
     <div class="middle-box" style="display: block;">
       <Form :model="form" label-position="left" ref="form" >
         <Row type="flex" justify="start" :gutter="15">
-          <Col span=4>
+          <Col span=6>
             <Form-item label="Application Name" style="padding-left: 20px;">
               <Select v-model="form.ApplicationName" placeholder="Please select">
                 <Option v-for="(item, index) in form.ApplicationNames" :value="item" :key="index">{{item}}</Option>
             </Select>
             </Form-item>
           </Col>
-          <Col span=4>
+          <Col span=6>
             <Form-item label="Segment" style="padding-left: 20px;">
               <Select v-model="form.Segment" placeholder="Please select">
                 <Option v-for="(item, index) in form.Segments" :value="item" :key="index">{{item}}</Option>
               </Select>
             </Form-item>
           </Col>
-          <Col span=4>
+          <Col span=6>
             <Form-item label="Tree" style="padding-left: 20px;">
               <Select v-model="form.Tree" placeholder="Please select">
                 <Option
@@ -84,129 +84,125 @@
   </div>
   <h3 class="marginBottom" style="margin-bottom: 10px;"><Icon type="ios-podium" />Formula Setup</h3>
   <div class="ag2">
-    <Form :model="formula" label-position="left" ref="formula" >
+    <Form :model="formula" :label-width="180" ref="formula" style="padding-right: 20px;">
       <h4>手工：</h4>
       <Row>
-        <Col span=4>
-          <Form-item label="Label1" style="padding-left: 20px;">
+        <Col span=6>
+          <Form-item label="Label1" style="">
             <Input v-model="formula.Label1" placeholder="Enter something..."></Input>
           </Form-item>
         </Col>
-        <Col span=4>
-          <Form-item label="Label2" style="padding-left: 20px;">
+        <Col span=6>
+          <Form-item label="Label2" style="">
             <Input v-model="formula.Label2" placeholder="Enter something..."></Input>
           </Form-item>
         </Col>
-        <Col span=4>
-          <Form-item label="Label3" style="padding-left: 20px;">
+        <Col span=6>
+          <Form-item label="Label3" style="">
             <Input v-model="formula.Label3" placeholder="Enter something..."></Input>
           </Form-item>
         </Col>
       </Row>
       <Row>
        <h4>CFE：</h4>
-        <Col span=4>
-          <Form-item label="BMC w/ freight Cost" style="padding-left: 20px;">
+        <Col span=6>
+          <Form-item label="BMC w/ freight Cost" >
             <Input v-model="formula.bmc" placeholder="Enter something..."></Input>
           </Form-item>
         </Col>
-        <Col span=4>
-          <Form-item label="BMCCOST" style="padding-left: 20px;">
+        <Col span=6>
+          <Form-item label="BMCCOST" >
             <Input v-model="formula.BMCCOST" placeholder="Enter something..."></Input>
           </Form-item>
         </Col>
-        <Col span=4>
-          <Form-item label="Freight Cost" style="padding-left: 20px;">
+        <Col span=6>
+          <Form-item label="Freight Cost" >
             <Input v-model="formula.FreightCost" placeholder="Enter something..."></Input>
           </Form-item>
         </Col>
       </Row>
       <h4>Policy：</h4>
       <Row>
-        <Col span=4>
-          <Form-item label="Funding1(CPU)" style="padding-left: 20px;">
+        <Col span=6>
+          <Form-item label="Funding1(CPU)" >
             <Input v-model="formula.Funding1" placeholder="Enter something..."></Input>
           </Form-item>
         </Col>
-        <Col span=4>
-          <Form-item label="Funding2(HDD/SSD)" style="padding-left: 20px;">
+        <Col span=6>
+          <Form-item label="Funding2(HDD/SSD)" >
             <Input v-model="formula.Funding2" placeholder="Enter something..."></Input>
           </Form-item>
         </Col>
-        <Col span=4>
-          <Form-item label="Funding3(others)" style="padding-left: 20px;">
+        <Col span=6>
+          <Form-item label="Funding3(others)" >
             <Input v-model="formula.Funding3" placeholder="Enter something..."></Input>
           </Form-item>
         </Col>
-        <Col span=4>
-          <Form-item label="GEO Funding(MOU) ($)" style="padding-left: 20px;">
+        <Col span=6>
+          <Form-item label="GEO Funding(MOU) ($)" >
             <Input v-model="formula.GEOFunding" placeholder="Enter something..."></Input>
           </Form-item>
         </Col>
-        <Col span=4>
-          <Form-item label="Region/Country Funding ($)" style="padding-left: 20px;">
+        <Col span=6>
+          <Form-item label="Region/Country Funding ($)" >
             <Input v-model="formula.RegionFunding" placeholder="Enter something..."></Input>
           </Form-item>
         </Col>
-        <Col span=4>
-          <Form-item label="WW Funding ($)" style="padding-left: 20px;">
+        <Col span=6>
+          <Form-item label="WW Funding ($)" >
             <Input v-model="formula.WWFunding" placeholder="Enter something..."></Input>
           </Form-item>
         </Col>
-      </Row>
-      <Row>
-        <Col span=4>
-          <Form-item label="GEO Funding(Others) ($)" style="padding-left: 20px;">
+        <Col span=6>
+          <Form-item label="GEO Funding(Others) ($)" >
             <Input v-model="formula.GEOFundingother" placeholder="Enter something..."></Input>
           </Form-item>
         </Col>
-        <Col span=4>
-          <Form-item label="Other local logistic cost" style="padding-left: 20px;">
+        <Col span=6>
+          <Form-item label="Other local logistic cost" >
             <Input v-model="formula.Otherlocal" placeholder="Enter something..."></Input>
           </Form-item>
         </Col>
-        <Col span=4>
-          <Form-item label="Custom Duty" style="padding-left: 20px;">
+        <Col span=6>
+          <Form-item label="Custom Duty" >
             <Input v-model="formula.CustomDuty" placeholder="Enter something..."></Input>
           </Form-item>
         </Col>
       </Row>
       <h4>计算：</h4>
       <Row>
-        <Col span=4>
-          <Form-item label="Net BMC Cost" style="padding-left: 20px;">
+        <Col span=6>
+          <Form-item label="Net BMC Cost" >
             <Input v-model="formula.NetBMCCost" placeholder="Enter something..."></Input>
           </Form-item>
         </Col>
-        <Col span=4>
-          <Form-item label="Gross BMC Cost" style="padding-left: 20px;">
+        <Col span=6>
+          <Form-item label="Gross BMC Cost" >
             <Input v-model="formula.GrossBMCCost" placeholder="Enter something..."></Input>
           </Form-item>
         </Col>
-        <Col span=4>
-          <Form-item label="Net Gross BMC Cost" style="padding-left: 20px;">
+        <Col span=6>
+          <Form-item label="Net Gross BMC Cost" >
             <Input v-model="formula.NetGrossBMCCost" placeholder="Enter something..."></Input>
           </Form-item>
         </Col>
-        <Col span=4>
-          <Form-item label="Non-BMC uplift" style="padding-left: 20px;">
+        <Col span=6>
+          <Form-item label="Non-BMC uplift" >
             <Input v-model="formula.NonBMCuplift" placeholder="Enter something..."></Input>
           </Form-item>
         </Col>
-        <Col span=4>
-          <Form-item label="Other Cost Adder" style="padding-left: 20px;">
+        <Col span=6>
+          <Form-item label="Other Cost Adder" >
             <Input v-model="formula.OtherCostAdder" placeholder="Enter something..."></Input>
           </Form-item>
         </Col>
-        <Col span=4>
-          <Form-item label="Net Total Cost" style="padding-left: 20px;">
+        <Col span=6>
+          <Form-item label="Net Total Cost" >
             <Input v-model="formula.NetTotalCost" placeholder="Enter something..."></Input>
           </Form-item>
         </Col>
-      </Row>
-      <Row>
-        <Col span=4>
-          <Form-item label="Total Cost" style="padding-left: 20px;">
+        <Col span=6>
+          <Form-item label="Total Cost" >
             <Input v-model="formula.TotalCost" placeholder="Enter something..."></Input>
           </Form-item>
         </Col>
@@ -654,13 +650,16 @@ h4 {
   overflow: hidden;
   border: 1px solid #ccc;
   margin-bottom: 10px;
+  h4{
+    margin-bottom:  10px;
+  }
 }
 .ivu-tabs-bar {
   margin-bottom: 2px;
 }
 .ivu-form-label-left .ivu-form-item-label,
 .ivu-form-item-content {
-  float: left;
+  // float: left;
 }
 .ivu-select {
   width: 162px;
