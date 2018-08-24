@@ -95,16 +95,6 @@ export default [
         },
         component: () =>
           import ('@/view/price/Pricing_Simulation.vue')
-      },
-      {
-        path: 'Tx_Rate',
-        name: 'Tx_Rate',
-        meta: {
-          icon: 'Tx_Rate',
-          title: 'Tx_Rate'
-        },
-        component: () =>
-          import ('@/view/price/Tx_Rate.vue')
       }
     ]
   },
@@ -209,6 +199,15 @@ export default [
         component: () => import('@/view/mtm/mtm.vue')
       },
       {
+        path: 'mtm_Cost',
+        name: 'mtm_Cost',
+        meta: {
+          icon: 'mtm_Cost',
+          title: 'mtm_Cost'
+        },
+        component: () => import('@/view/mtm/mtmCost.vue')
+      },
+      {
         path: 'mtm_mtmCv',
         name: 'mtm_mtmCv',
         meta: {
@@ -216,6 +215,15 @@ export default [
           title: 'mtm_mtmCv'
         },
         component: () => import('@/view/mtm/mtmCv.vue')
+      },
+      {
+        path: 'mtm_mtmFormula',
+        name: 'mtm_mtmFormula',
+        meta: {
+          icon: 'mtm_mtmFormula',
+          title: 'mtm_mtmFormula'
+        },
+        component: () => import('@/view/mtm/mtmFormula.vue')
       }
     ]
   },
