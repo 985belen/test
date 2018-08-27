@@ -1,5 +1,5 @@
 <template>
-<div class="price-box" ref="priceBox">
+<div class="mtm-box" ref="mtmBox">
   <div ref="topMain" class="topMain">
     <h3 class="marginBottom"><a href="javascript:;" style="display:inline-block;color: #333;"><Icon type="md-pricetags" />Formula For</a>
       <div style="float: right; margin-top: -3px;">
@@ -442,12 +442,12 @@ export default {
 }
 </script>
 <style lang="less">
-.price-box {
+.mtm-box {
   width: 100%;
   height: 100%;
-  overflow: hidden;
   padding-bottom: 10px;
   background: #fff;
+  overflow: hidden;
 }
 .tool-bar {
   width: 100%;
