@@ -1,47 +1,39 @@
 <template>
 <div class="price-box" ref="priceBox">
   <div ref="topMain" class="topMain">
-    <div class="tool-bar" ref="toolBar" style="display: none;">
-      <a href="#" class="item"><Icon class="icon" size=16 type="md-trash"/>Delete</a>
-      <Divider type="vertical" />
-      <a href="#" class="item"><Icon class="icon" size=16 type="md-link" />Email</a>
-      <Divider type="vertical" />
-      <a href="#" class="item"><Icon class="icon" size=16 type="md-appstore" />Generate Report</a>
-      <Divider type="vertical" />
-      <a href="#" class="item"><Icon class="icon" size=16 type="md-list-box" />Export Template</a>
-      <Divider type="vertical" />
-      <a href="#" class="item"><Icon class="icon" size=16 type="md-notifications" />Import Template</a>
-      <Divider type="vertical" />
-      <a href="#" class="item"><Icon class="icon" size=16 type="md-exit" />Upload Data</a>
-      <Divider type="vertical" /> 
-      <a href="#" class="item"><Icon class="icon" size=16 type="md-add" />Accepted</a>
-    </div>
     <h3 class="marginBottom"><a href="javascript:;" style="display:inline-block;color: #333;"><Icon type="md-pricetags" />Formula For</a>
       <div style="float: right; margin-top: -3px;">
-        <Button size='small' type="defalut" style="margin-right:15px;">Search</Button>
-        <Button  size='small' type="defalut">Download</Button>
-        <Button  size='small' type="defalut">upload</Button>
-        <Button  size='small' type="defalut">DownloadTemplate</Button>
+        <Button size='small' type="default" style="margin-right:15px;">Search</Button>
+        <Button  size='small' type="default">Download</Button>
+        <Button  size='small' type="default">upload</Button>
+        <Button  size='small' type="default">DownloadTemplate</Button>
       </div>
     </h3>
     <div class="middle-box" style="display: block;">
       <Form :model="form" label-position="left" ref="form" >
-        <Row type="flex" justify="start" :gutter="15">
+        <Row type="flex" justify="start" :gutter="10">
           <Col span=6>
             <Form-item label="Application Name" style="padding-left: 20px;">
               <Select v-model="form.ApplicationName" placeholder="Please select">
                 <Option v-for="(item, index) in form.ApplicationNames" :value="item" :key="index">{{item}}</Option>
-            </Select>
+              </Select>
             </Form-item>
           </Col>
-          <Col span=6>
+          <Col span=5>
             <Form-item label="Segment" style="padding-left: 20px;">
               <Select v-model="form.Segment" placeholder="Please select">
                 <Option v-for="(item, index) in form.Segments" :value="item" :key="index">{{item}}</Option>
               </Select>
             </Form-item>
           </Col>
-          <Col span=6>
+          <Col span=5>
+            <Form-item label="Sales Mode" style="padding-left: 20px;">
+              <Select v-model="form.SalesMode" placeholder="Please select">
+                <Option v-for="(item, index) in form.SalesModes" :value="item" :key="index">{{item}}</Option>
+              </Select>
+            </Form-item>
+          </Col>
+          <Col span=5>
             <Form-item label="Tree" style="padding-left: 20px;">
               <Select v-model="form.Tree" placeholder="Please select">
                 <Option
@@ -51,68 +43,28 @@
               </Select>
             </Form-item>
           </Col>
-          <Col span=4>
+          <Col span=3>
             <Form-item>
               <Button type="primary">Search</Button>
             </Form-item>
           </Col>
         </Row>
       </Form>
-      <Modal
-        v-model="model"
-        title="Components"
-        :styles="{width:'655px'}"
-        ok-text="Search"
-        @on-ok='searchAjax()'
-        cancel-text="Cancel">
-        <ag-grid-vue
-          style="width: 100%; height:250px"
-          class="ag-theme-balham"
-          v-if="model"
-          :columnDefs="columns"
-          :rowData="rowData"
-          :enableSorting="true"
-          :showToolPanel="false"
-          :enableFilter="true"
-          :singleClickEdit="true"
-          :suppressResize="true"
-          :enableColResize="true"
-          rowSelection="multiple">
-        </ag-grid-vue>
-      </Modal>
     </div>
   </div>
   <h3 class="marginBottom" style="margin-bottom: 10px;"><Icon type="ios-podium" />Formula Setup</h3>
   <div class="ag2">
-    <Form :model="formula" :label-width="180" ref="formula" style="padding-right: 20px;">
-      <h4>手工：</h4>
-      <Row>
-        <Col span=6>
-          <Form-item label="Label1" style="">
-            <Input v-model="formula.Label1" placeholder="Enter something..."></Input>
-          </Form-item>
-        </Col>
-        <Col span=6>
-          <Form-item label="Label2" style="">
-            <Input v-model="formula.Label2" placeholder="Enter something..."></Input>
-          </Form-item>
-        </Col>
-        <Col span=6>
-          <Form-item label="Label3" style="">
-            <Input v-model="formula.Label3" placeholder="Enter something..."></Input>
-          </Form-item>
-        </Col>
-      </Row>
+    <Form :model="formula" :label-width="120" ref="formula" >
       <Row>
        <h4>CFE：</h4>
         <Col span=6>
           <Form-item label="BMC w/ freight Cost" >
-            <Input v-model="formula.bmc" placeholder="Enter something..."></Input>
+            <Input v-model="formula.bmc" disabled placeholder="Enter something..."></Input>
           </Form-item>
         </Col>
         <Col span=6>
           <Form-item label="BMCCOST" >
-            <Input v-model="formula.BMCCOST" placeholder="Enter something..."></Input>
+            <Input v-model="formula.BMCCOST" disabled placeholder="Enter something..."></Input>
           </Form-item>
         </Col>
         <Col span=6>
@@ -121,90 +73,147 @@
           </Form-item>
         </Col>
       </Row>
-      <h4>Policy：</h4>
+      <h4>Policy：<Button type="primary" @click="policyhandleAdd" icon="md-add" size="small" style="float:right;margin-top:3px;">Add</Button></h4>
       <Row>
         <Col span=6>
           <Form-item label="Funding1(CPU)" >
             <Input v-model="formula.Funding1" placeholder="Enter something..."></Input>
+            <Select v-model="formula.Funding1sel" placeholder="Please select">
+              <Option v-for="(item, index) in formula.Funding1sels" :value="item" :key="index">{{item}}</Option>
+            </Select>
           </Form-item>
         </Col>
         <Col span=6>
           <Form-item label="Funding2(HDD/SSD)" >
             <Input v-model="formula.Funding2" placeholder="Enter something..."></Input>
+            <Select v-model="formula.Funding2sel" placeholder="Please select">
+              <Option v-for="(item, index) in formula.Funding2sels" :value="item" :key="index">{{item}}</Option>
+            </Select>
           </Form-item>
         </Col>
         <Col span=6>
           <Form-item label="Funding3(others)" >
             <Input v-model="formula.Funding3" placeholder="Enter something..."></Input>
+            <Select v-model="formula.Funding3sel" placeholder="Please select">
+              <Option v-for="(item, index) in formula.Funding3sels" :value="item" :key="index">{{item}}</Option>
+            </Select>
           </Form-item>
         </Col>
         <Col span=6>
           <Form-item label="GEO Funding(MOU) ($)" >
             <Input v-model="formula.GEOFunding" placeholder="Enter something..."></Input>
+            <Select v-model="formula.GEOFundingsel" placeholder="Please select">
+              <Option v-for="(item, index) in formula.GEOFundingsels" :value="item" :key="index">{{item}}</Option>
+            </Select>
           </Form-item>
         </Col>
+      </Row>
+      <Row>
         <Col span=6>
           <Form-item label="Region/Country Funding ($)" >
             <Input v-model="formula.RegionFunding" placeholder="Enter something..."></Input>
+            <Select v-model="formula.RegionFundingsel" placeholder="Please select">
+              <Option v-for="(item, index) in formula.RegionFundingsels" :value="item" :key="index">{{item}}</Option>
+            </Select>
           </Form-item>
         </Col>
         <Col span=6>
           <Form-item label="WW Funding ($)" >
             <Input v-model="formula.WWFunding" placeholder="Enter something..."></Input>
+            <Select v-model="formula.WWFundingsel" placeholder="Please select">
+              <Option v-for="(item, index) in formula.WWFundingsels" :value="item" :key="index">{{item}}</Option>
+            </Select>
           </Form-item>
         </Col>
         <Col span=6>
           <Form-item label="GEO Funding(Others) ($)" >
             <Input v-model="formula.GEOFundingother" placeholder="Enter something..."></Input>
+            <Select v-model="formula.GEOFundingothersel" placeholder="Please select">
+              <Option v-for="(item, index) in formula.GEOFundingothersels" :value="item" :key="index">{{item}}</Option>
+            </Select>
           </Form-item>
         </Col>
         <Col span=6>
           <Form-item label="Other local logistic cost" >
             <Input v-model="formula.Otherlocal" placeholder="Enter something..."></Input>
-          </Form-item>
-        </Col>
-        <Col span=6>
-          <Form-item label="Custom Duty" >
-            <Input v-model="formula.CustomDuty" placeholder="Enter something..."></Input>
+            <Select v-model="formula.Otherlocalsel" placeholder="Please select">
+              <Option v-for="(item, index) in formula.Otherlocalsels" :value="item" :key="index">{{item}}</Option>
+            </Select>
           </Form-item>
         </Col>
       </Row>
-      <h4>计算：</h4>
+      <Row>
+        <Col span=6>
+          <Form-item label="Custom Duty" >
+            <Input v-model="formula.CustomDuty" placeholder="Enter something..."></Input>
+            <Select v-model="formula.CustomDutysel" placeholder="Please select">
+              <Option v-for="(item, index) in formula.CustomDutysels" :value="item" :key="index">{{item}}</Option>
+            </Select>
+          </Form-item>
+        </Col>
+        <!--<Col span=6 v-if="item.status" :key="i" v-for="(item, i) in formula.policyitems">
+          <FormItem
+            :label="'Item ' + item.num">
+            <Input v-model="" placeholder="Enter something..."></Input>
+            <Select v-model="" placeholder="Please select">
+              <Option ></Option>
+            </Select>
+          </FormItem>
+        </Col>-->
+      </Row>
+      <h4>计算：<Button type="primary" @click="calcuhandleAdd" icon="md-add" size="small" style="float:right;margin-top:3px;">Add</Button></h4>
       <Row>
         <Col span=6>
           <Form-item label="Net BMC Cost" >
             <Input v-model="formula.NetBMCCost" placeholder="Enter something..."></Input>
+            <Input v-model="formula.NetBMCCost" placeholder="公式..."></Input>
           </Form-item>
         </Col>
         <Col span=6>
           <Form-item label="Gross BMC Cost" >
             <Input v-model="formula.GrossBMCCost" placeholder="Enter something..."></Input>
+            <Input v-model="formula.NetBMCCost" placeholder="公式..."></Input>
           </Form-item>
         </Col>
         <Col span=6>
           <Form-item label="Net Gross BMC Cost" >
             <Input v-model="formula.NetGrossBMCCost" placeholder="Enter something..."></Input>
+            <Input v-model="formula.NetBMCCost" placeholder="公式..."></Input>
           </Form-item>
         </Col>
         <Col span=6>
           <Form-item label="Non-BMC uplift" >
             <Input v-model="formula.NonBMCuplift" placeholder="Enter something..."></Input>
+            <Input v-model="formula.NetBMCCost" placeholder="公式..."></Input>
           </Form-item>
         </Col>
+      </Row>
+      <Row>
         <Col span=6>
           <Form-item label="Other Cost Adder" >
             <Input v-model="formula.OtherCostAdder" placeholder="Enter something..."></Input>
+            <Input v-model="formula.OtherCostAddergs" placeholder="公式..."></Input>
           </Form-item>
         </Col>
         <Col span=6>
           <Form-item label="Net Total Cost" >
             <Input v-model="formula.NetTotalCost" placeholder="Enter something..."></Input>
+            <Input v-model="formula.NetTotalCostgs" placeholder="公式..."></Input>
           </Form-item>
         </Col>
         <Col span=6>
           <Form-item label="Total Cost" >
             <Input v-model="formula.TotalCost" placeholder="Enter something..."></Input>
+            <Input v-model="formula.TotalCostgs" placeholder="公式..."></Input>
           </Form-item>
+        </Col>
+        <Col span=6 v-if="item.status" :key="i" v-for="(item, i) in formula.calcuitems">
+          <FormItem
+            :label="'Item ' + item.index"
+            :prop="'items.' + i + '.value'">
+              <Input placeholder="Enter something..."></Input>
+              <Input placeholder="公式..."></Input>
+          </FormItem>
         </Col>
       </Row>
     </Form>
@@ -212,19 +221,20 @@
 </div>
 </template>
 <script>
-import { AgGridVue } from "ag-grid-vue";
+import { AgGridVue } from "ag-grid-vue"
 // import axios from '@/libs/api.request'
-import axios from "axios";
+import axios from "axios"
 
 export default {
   data() {
     return {
-      model: false,
       form: {
         ApplicationName: "",
         ApplicationNames: [],
         Segment: "",
         Segments: ["Beijing", "Tianjin"],
+        SalesMode: '',
+        SalesModes: ["ALL", "Onshore", "Offshore"],
         Tree: "",
         Treedata: [
           {
@@ -353,241 +363,83 @@ export default {
         ]
       },
       formula: {
-        // 手工
-        Label1: '',
-        Label2: '',
-        Label3: '',
+        calcuitems: [
+        ],
+        policyitems: [],
         // cfe
         bmc: '',
         FreightCost: '',
         BMCCOST: '',
         // POLICY
         Funding1: '',
+        Funding1sel: '',
+        Funding1sels: '',
         Funding2: '',
+        Funding2sel: '',
+        Funding2sels: '',
         Funding3: '',
+        Funding3sel: '',
+        Funding3sels: '',
         GEOFunding: '',
+        GEOFundingsel: '',
+        GEOFundingsels: '',
         RegionFunding: '',
+        RegionFundingsel: '',
+        RegionFundingsels: '',
         WWFunding: '',
+        WWFundingsel: '',
+        WWFundingsels: '',
         GEOFundingother: '',
+        GEOFundingothersel: '',
+        GEOFundingothersels: '',
         Otherlocal: '',
+        Otherlocalsel: '',
+        Otherlocalsels: '',
         CustomDuty: '',
+        CustomDutysel: '',
+        CustomDutysels: '',
         // 计算
         NetBMCCost: '',
+        NetBMCCostgs: '',
         GrossBMCCost:'',
+        GrossBMCCostgs:'',
         NetGrossBMCCost: '',
+        NetGrossBMCCostgs: '',
         NonBMCuplift: '',
+        NonBMCupliftgs: '',
         NetTotalCost: '',
-        OtherCostAdder:'',
-        TotalCost: ''
-      },
-      columns: [
-        { headerName: "key", field: "key", width: 150, editable: true },
-        { headerName: "mtmNo", field: "mtmNo", width: 150, editable: true },
-        { headerName: "plant", field: "plant", width: 150, editable: true },
-        { headerName: "country", field: "country", width: 150, editable: true }
-      ],
-      rowData: [
-        {
-          key: "",
-          mtmNo: "",
-          plant: "",
-          country: ""
-        },
-        {
-          key: "",
-          mtmNo: "",
-          plant: "",
-          country: ""
-        },
-        {
-          key: "",
-          mtmNo: "",
-          plant: "",
-          country: ""
-        },
-        {
-          key: "",
-          mtmNo: "",
-          plant: "",
-          country: ""
-        },
-        {
-          key: "",
-          mtmNo: "",
-          plant: "",
-          country: ""
-        }
-      ],
-      columnDefs: [
-        {
-          headerName: "KEY",
-          width: 120,
-          field: "key",
-          cellStyle: { "text-align": "left" }
-        },
-        {
-          headerName: "MTM_NO",
-          width: 120,
-          field: "mtm_NO",
-          cellStyle: { "text-align": "left" }
-        },
-        {
-          headerName: "PLANT",
-          width: 120,
-          field: "plant",
-          cellStyle: { "text-align": "left" }
-        },
-        {
-          headerName: "COUNTRY",
-          width: 120,
-          field: "country",
-          cellStyle: { "text-align": "left" }
-          // cellRenderer: (params) => {
-          //   return '<div class="longData" title="' + params.value +'">' + params.value + '</div>'
-          // }
-        },
-        {
-          headerName: "CFECOUNTRY",
-          width: 120,
-          field: "cfecountry",
-          cellStyle: { "text-align": "left" }
-        },
-        {
-          headerName: "Pre_M3",
-          width: 120,
-          field: "pre_M3",
-          cellStyle: { "text-align": "left" }
-        },
-        {
-          headerName: "Pre_M2",
-          width: 120,
-          field: "pre_M2",
-          cellStyle: { "text-align": "left" }
-        },
-        {
-          headerName: "Pre_M1",
-          width: 120,
-          field: "pre_M1",
-          cellStyle: { "text-align": "left" }
-        },
-        {
-          headerName: "M1",
-          width: 120,
-          field: "m1",
-          cellStyle: { "text-align": "left" }
-        },
-        {
-          headerName: "M2",
-          width: 120,
-          field: "m2",
-          cellStyle: { "text-align": "left" }
-        },
-        {
-          headerName: "M3",
-          width: 120,
-          field: "m3",
-          cellStyle: { "text-align": "left" }
-        },
-        {
-          headerName: "M4",
-          width: 120,
-          field: "m4",
-          cellStyle: { "text-align": "left" }
-        },
-        {
-          headerName: "M5",
-          width: 120,
-          field: "m5",
-          cellStyle: { "text-align": "left" }
-        },
-        {
-          headerName: "M6",
-          width: 120,
-          field: "m6",
-          cellStyle: { "text-align": "left" }
-        },
-        {
-          headerName: "M7",
-          width: 120,
-          field: "m7",
-          cellStyle: { "text-align": "left" }
-        },
-        {
-          headerName: "M8",
-          width: 120,
-          field: "m8",
-          cellStyle: { "text-align": "left" }
-        },
-        {
-          headerName: "M9",
-          width: 120,
-          field: "m9",
-          cellStyle: { "text-align": "left" }
-        },
-        {
-          headerName: "M10",
-          width: 120,
-          field: "m10",
-          cellStyle: { "text-align": "left" }
-        },
-        {
-          headerName: "M11",
-          width: 120,
-          field: "m11",
-          cellStyle: { "text-align": "left" }
-        },
-        {
-          headerName: "M12",
-          width: 120,
-          field: "m12",
-          cellStyle: { "text-align": "left" }
-        }
-      ],
-      rowDataDefs: []
+        NetTotalCostgs: '',
+        OtherCostAdder: '',
+        OtherCostAddergs: '',
+        TotalCost: '',
+        TotalCostgs: ''
+      }
     }
   },
   components: {
-    AgGridVue
   },
   created() {},
   mounted() {
   },
   methods: {
-    searchAjax() {
-      var _url = "http://10.120.116.171:8082/api/cfebmc";
-      var _tpl = [
-        { country: "TM", key: "1", mtmNo: "80M100ELRU", plant: "BITLAND_NB" },
-        { country: "LI", key: "2", mtmNo: "80VR00GJFR", plant: "LCFC_NB" },
-        { country: "LI", key: "3", mtmNo: "80VR00GJFR", plant: "1" },
-        { country: "AT", key: "4", mtmNo: "90B6009MUK", plant: "S111" },
-        { country: "AT", key: "5", mtmNo: "90FB007LGE", plant: "1" },
-        { country: "LI", key: "6", mtmNo: "90AV001NFR", plant: "S111" },
-        { country: "DE", key: "7", mtmNo: "30BK001YFR", plant: "FLEX_HGY" },
-        { country: "DE", key: "8", mtmNo: "30BK001YFR", plant: "1" },
-        { country: "LI", key: "9", mtmNo: "30BK001YFR", plant: "FLEX_HGY" },
-        { country: "LI", key: "10", mtmNo: "30BK001YFR", plant: "1" },
-        { country: "MY", key: "11", mtmNo: "GX20G46698", plant: "S120" },
-        { country: "AE", key: "12", mtmNo: "G0A10170AR", plant: "1" },
-        { country: "CA", key: "13", mtmNo: "65ACGCC1US", plant: "S111" },
-        { country: "CN", key: "14", mtmNo: "60C7MCR1CB", plant: "1" },
-        { country: "AT", key: "16", mtmNo: "5MS0M38429", plant: "N/A" },
-        { country: "DE", key: "17", mtmNo: "5MS0M38429", plant: "N/A" },
-        { country: "AT", key: "19", mtmNo: "5MS0M38429", plant: "1" },
-        { country: "BE", key: "20", mtmNo: "ZA090000SE", plant: "1" },
-        { country: "LI", key: "21", mtmNo: "ZA200050FR", plant: "1" },
-        { country: "TH", key: "22", mtmNo: "ZG38C00964", plant: "1" }
-      ];
-      var obj = {
-        inputBmcEntityList: _tpl,
-        lineUpTree: this.form.lineUpTree || "",
-        systemType: this.form.systemType || "consumer"
-      };
-      axios.post(_url, obj).then(res => {
-        this.rowDataDefs = res.data.data;
-      });
+    calcuhandleAdd () {
+      this.index++
+      this.formula.calcuitems.push({
+        value: '',
+        index: this.index,
+        status: 1
+      })
+    },
+    policyhandleAdd () {
+      this.num++
+      this.formula.policyitems.push({
+        value: '',
+        num: this.num,
+        status: 1
+      })
     }
   }
-};
+}
 </script>
 <style lang="less">
 .price-box {
