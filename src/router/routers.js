@@ -208,20 +208,20 @@ export default [
         component: () => import('@/view/mtm/mtmCost.vue')
       },
       {
-        path: 'mtm_mtmCv',
-        name: 'mtm_mtmCv',
+        path: 'mtm_Cv',
+        name: 'mtm_Cv',
         meta: {
-          icon: 'mtm_mtmCv',
-          title: 'mtm_mtmCv'
+          icon: 'mtm_Cv',
+          title: 'mtm_Cv'
         },
         component: () => import('@/view/mtm/mtmCv.vue')
       },
       {
-        path: 'mtm_mtmFormula',
-        name: 'mtm_mtmFormula',
+        path: 'mtm_Formula',
+        name: 'mtm_Formula',
         meta: {
-          icon: 'mtm_mtmFormula',
-          title: 'mtm_mtmFormula'
+          icon: 'mtm_Formula',
+          title: 'mtm_Formula'
         },
         component: () => import('@/view/mtm/mtmFormula.vue')
       }
