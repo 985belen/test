@@ -11,31 +11,31 @@
     </h3>
     <div class="middle-box" style="display: block;">
       <Form :model="form" label-position="left" ref="form" >
-        <Row type="flex" justify="start" :gutter="10">
+        <Row type="flex" justify="start" :gutter="8">
           <Col span=6>
-            <Form-item label="Application Name" style="padding-left: 20px;">
-              <Select v-model="form.ApplicationName" placeholder="Please select">
+            <Form-item label="Application Name" >
+              <Select v-model="form.ApplicationName" placeholder="Please select" style="width:180px">
                 <Option v-for="(item, index) in form.ApplicationNames" :value="item" :key="index">{{item}}</Option>
               </Select>
             </Form-item>
           </Col>
           <Col span=5>
-            <Form-item label="Segment" style="padding-left: 20px;">
-              <Select v-model="form.Segment" placeholder="Please select">
+            <Form-item label="Segment">
+              <Select v-model="form.Segment" placeholder="Please select" style="width:180px">
                 <Option v-for="(item, index) in form.Segments" :value="item" :key="index">{{item}}</Option>
               </Select>
             </Form-item>
           </Col>
           <Col span=5>
-            <Form-item label="Sales Mode" style="padding-left: 20px;">
-              <Select v-model="form.SalesMode" placeholder="Please select">
+            <Form-item label="Sales Mode">
+              <Select v-model="form.SalesMode" placeholder="Please select" style="width:180px">
                 <Option v-for="(item, index) in form.SalesModes" :value="item" :key="index">{{item}}</Option>
               </Select>
             </Form-item>
           </Col>
-          <Col span=5>
-            <Form-item label="Tree" style="padding-left: 20px;">
-              <Select v-model="form.Tree" placeholder="Please select">
+          <Col span=6>
+            <Form-item label="Tree">
+              <Select v-model="form.Tree" placeholder="Please select" style="width:200px">
                 <Option
                   <Tree :data="form.Treedata" show-checkbox></Tree>
                 >
@@ -43,7 +43,7 @@
               </Select>
             </Form-item>
           </Col>
-          <Col span=3>
+          <Col span=2>
             <Form-item>
               <Button type="primary">Search</Button>
             </Form-item>
@@ -54,101 +54,194 @@
   </div>
   <h3 class="marginBottom" style="margin-bottom: 10px;"><Icon type="ios-podium" />Formula Setup</h3>
   <div class="ag2">
-    <Form :model="formula" :label-width="120" ref="formula" >
+    <Form :model="formula" :label-width="180" ref="formula" >
       <Row>
        <h4>CFE：</h4>
         <Col span=6>
-          <Form-item label="BMC w/ freight Cost" >
+          <Form-item label="BMC w/ freight Cost" :label-width="150">
             <Input v-model="formula.bmc" disabled placeholder="Enter something..."></Input>
           </Form-item>
         </Col>
         <Col span=6>
-          <Form-item label="BMCCOST" >
+          <Form-item label="BMCCOST" :label-width="150">
             <Input v-model="formula.BMCCOST" disabled placeholder="Enter something..."></Input>
           </Form-item>
         </Col>
         <Col span=6>
-          <Form-item label="Freight Cost" >
+          <Form-item label="Freight Cost" :label-width="150">
             <Input v-model="formula.FreightCost" placeholder="Enter something..."></Input>
           </Form-item>
         </Col>
       </Row>
       <h4>Policy：<Button type="primary" @click="policyhandleAdd" icon="md-add" size="small" style="float:right;margin-top:3px;">Add</Button></h4>
       <Row>
-        <Col span=6>
+        <Col span=7 offset=1>
           <Form-item label="Funding1(CPU)" >
-            <Input v-model="formula.Funding1" placeholder="Enter something..."></Input>
-            <Select v-model="formula.Funding1sel" placeholder="Please select">
+            <Input clearable v-model="formula.Funding1" placeholder="Enter something..."></Input>
+          </Form-item>
+        </Col>
+        <Col span=4 >
+          <Form-item :label-width="15">
+            <Select clearable v-model="formula.Funding1sel" placeholder="Please select">
               <Option v-for="(item, index) in formula.Funding1sels" :value="item" :key="index">{{item}}</Option>
             </Select>
           </Form-item>
         </Col>
-        <Col span=6>
+        <Col span=2 >
+          <Form-item :label-width="20">
+            <Icon type="md-close-circle" size="20" />
+          </Form-item>
+        </Col>
+      </Row>
+      <Row>
+        <Col span=7 offset=1>
           <Form-item label="Funding2(HDD/SSD)" >
-            <Input v-model="formula.Funding2" placeholder="Enter something..."></Input>
-            <Select v-model="formula.Funding2sel" placeholder="Please select">
+            <Input clearable v-model="formula.Funding2" placeholder="Enter something..."></Input>
+          </Form-item>
+        </Col>
+        <Col span=4>
+          <Form-item :label-width="15" >
+            <Select clearable v-model="formula.Funding2sel" placeholder="Please select">
               <Option v-for="(item, index) in formula.Funding2sels" :value="item" :key="index">{{item}}</Option>
             </Select>
           </Form-item>
         </Col>
-        <Col span=6>
+        <Col span=2 >
+          <Form-item :label-width="20">
+            <Icon type="md-close-circle" size="20" />
+          </Form-item>
+        </Col>
+      </Row>
+      <Row>
+        <Col span=7 offset=1>
           <Form-item label="Funding3(others)" >
-            <Input v-model="formula.Funding3" placeholder="Enter something..."></Input>
-            <Select v-model="formula.Funding3sel" placeholder="Please select">
+            <Input clearable v-model="formula.Funding3" placeholder="Enter something..."></Input>
+          </Form-item>
+        </Col>
+        <Col span=4>
+          <Form-item :label-width="15">
+            <Select clearable v-model="formula.Funding3sel" placeholder="Please select">
               <Option v-for="(item, index) in formula.Funding3sels" :value="item" :key="index">{{item}}</Option>
             </Select>
           </Form-item>
         </Col>
-        <Col span=6>
+        <Col span=2 >
+          <Form-item :label-width="20">
+            <Icon type="md-close-circle" size="20" />
+          </Form-item>
+        </Col>
+      </Row>
+      <Row>
+        <Col span=7 offset=1>
           <Form-item label="GEO Funding(MOU) ($)" >
-            <Input v-model="formula.GEOFunding" placeholder="Enter something..."></Input>
+            <Input clearable v-model="formula.GEOFunding" placeholder="Enter something..."></Input>
+          </Form-item>
+        </Col>
+        <Col span=4>
+          <Form-item :label-width="15" >
             <Select v-model="formula.GEOFundingsel" placeholder="Please select">
               <Option v-for="(item, index) in formula.GEOFundingsels" :value="item" :key="index">{{item}}</Option>
             </Select>
           </Form-item>
         </Col>
+        <Col span=2 >
+          <Form-item :label-width="20">
+            <Icon type="md-close-circle" size="20" />
+          </Form-item>
+        </Col>
       </Row>
       <Row>
-        <Col span=6>
+        <Col span=7 offset=1>
           <Form-item label="Region/Country Funding ($)" >
-            <Input v-model="formula.RegionFunding" placeholder="Enter something..."></Input>
-            <Select v-model="formula.RegionFundingsel" placeholder="Please select">
+            <Input clearable v-model="formula.RegionFunding" placeholder="Enter something..."></Input>
+          </Form-item>
+        </Col>
+        <Col span=4>
+          <Form-item :label-width="15">
+            <Select clearable v-model="formula.RegionFundingsel" placeholder="Please select">
               <Option v-for="(item, index) in formula.RegionFundingsels" :value="item" :key="index">{{item}}</Option>
             </Select>
           </Form-item>
         </Col>
-        <Col span=6>
-          <Form-item label="WW Funding ($)" >
-            <Input v-model="formula.WWFunding" placeholder="Enter something..."></Input>
-            <Select v-model="formula.WWFundingsel" placeholder="Please select">
-              <Option v-for="(item, index) in formula.WWFundingsels" :value="item" :key="index">{{item}}</Option>
-            </Select>
-          </Form-item>
-        </Col>
-        <Col span=6>
-          <Form-item label="GEO Funding(Others) ($)" >
-            <Input v-model="formula.GEOFundingother" placeholder="Enter something..."></Input>
-            <Select v-model="formula.GEOFundingothersel" placeholder="Please select">
-              <Option v-for="(item, index) in formula.GEOFundingothersels" :value="item" :key="index">{{item}}</Option>
-            </Select>
-          </Form-item>
-        </Col>
-        <Col span=6>
-          <Form-item label="Other local logistic cost" >
-            <Input v-model="formula.Otherlocal" placeholder="Enter something..."></Input>
-            <Select v-model="formula.Otherlocalsel" placeholder="Please select">
-              <Option v-for="(item, index) in formula.Otherlocalsels" :value="item" :key="index">{{item}}</Option>
-            </Select>
+        <Col span=2 >
+          <Form-item :label-width="20">
+            <Icon type="md-close-circle" size="20" />
           </Form-item>
         </Col>
       </Row>
       <Row>
-        <Col span=6>
+        <Col span=7 offset=1>
+          <Form-item label="WW Funding ($)" >
+            <Input v-model="formula.WWFunding" placeholder="Enter something..."></Input>
+          </Form-item>
+        </Col>
+        <Col span=4>
+          <Form-item :label-width="15">
+            <Select clearable v-model="formula.WWFundingsel" placeholder="Please select">
+              <Option v-for="(item, index) in formula.WWFundingsels" :value="item" :key="index">{{item}}</Option>
+            </Select>
+          </Form-item>
+        </Col>
+        <Col span=2 >
+          <Form-item :label-width="20">
+            <Icon type="md-close-circle" size="20" />
+          </Form-item>
+        </Col>
+      </Row>
+      <Row>
+        <Col span=7 offset=1>
+          <Form-item label="GEO Funding(Others) ($)" >
+            <Input clearable v-model="formula.GEOFundingother" placeholder="Enter something..."></Input>
+          </Form-item>
+        </Col>
+        <Col span=4>
+          <Form-item :label-width="15">
+            <Select clearable v-model="formula.GEOFundingothersel" placeholder="Please select">
+              <Option v-for="(item, index) in formula.GEOFundingothersels" :value="item" :key="index">{{item}}</Option>
+            </Select>
+          </Form-item>
+        </Col>
+        <Col span=2 >
+          <Form-item :label-width="20">
+            <Icon type="md-close-circle" size="20" />
+          </Form-item>
+        </Col>
+      </Row>
+      <Row>
+        <Col span=7 offset=1>
+          <Form-item label="Other local logistic cost" >
+            <Input clearable v-model="formula.Otherlocal" placeholder="Enter something..."></Input>
+          </Form-item>
+        </Col>
+        <Col span=4>
+          <Form-item :label-width="15">
+            <Select clearable v-model="formula.Otherlocalsel" placeholder="Please select">
+              <Option v-for="(item, index) in formula.Otherlocalsels" :value="item" :key="index">{{item}}</Option>
+            </Select>
+          </Form-item>
+        </Col>
+        <Col span=2 >
+          <Form-item :label-width="20">
+            <Icon type="md-close-circle" size="20" />
+          </Form-item>
+        </Col>
+      </Row>
+      <Row>
+        <Col span=7 offset=1>
           <Form-item label="Custom Duty" >
-            <Input v-model="formula.CustomDuty" placeholder="Enter something..."></Input>
-            <Select v-model="formula.CustomDutysel" placeholder="Please select">
+            <Input clearable v-model="formula.CustomDuty" placeholder="Enter something..."></Input>
+          </Form-item>
+        </Col>
+        <Col span=4>
+          <Form-item :label-width="15">
+            <Select clearable v-model="formula.CustomDutysel" placeholder="Please select">
               <Option v-for="(item, index) in formula.CustomDutysels" :value="item" :key="index">{{item}}</Option>
             </Select>
+          </Form-item>
+        </Col>
+        <Col span=2 >
+          <Form-item :label-width="20">
+            <Icon type="md-close-circle" size="20" />
           </Form-item>
         </Col>
         <!--<Col span=6 v-if="item.status" :key="i" v-for="(item, i) in formula.policyitems">
@@ -163,56 +256,141 @@
       </Row>
       <h4>计算：<Button type="primary" @click="calcuhandleAdd" icon="md-add" size="small" style="float:right;margin-top:3px;">Add</Button></h4>
       <Row>
-        <Col span=6>
+        <Col span=7 offset=1>
           <Form-item label="Net BMC Cost" >
-            <Input v-model="formula.NetBMCCost" placeholder="Enter something..."></Input>
-            <Input v-model="formula.NetBMCCost" placeholder="公式..."></Input>
+            <Input clearable v-model="formula.NetBMCCost" placeholder="Enter something..."></Input>
           </Form-item>
         </Col>
-        <Col span=6>
-          <Form-item label="Gross BMC Cost" >
-            <Input v-model="formula.GrossBMCCost" placeholder="Enter something..."></Input>
-            <Input v-model="formula.NetBMCCost" placeholder="公式..."></Input>
+        <Col span=4>
+          <Form-item :label-width="15">
+            <Input clearable v-model="formula.NetBMCCostgs" placeholder="Please enter formula..."></Input>
           </Form-item>
         </Col>
-        <Col span=6>
-          <Form-item label="Net Gross BMC Cost" >
-            <Input v-model="formula.NetGrossBMCCost" placeholder="Enter something..."></Input>
-            <Input v-model="formula.NetBMCCost" placeholder="公式..."></Input>
-          </Form-item>
-        </Col>
-        <Col span=6>
-          <Form-item label="Non-BMC uplift" >
-            <Input v-model="formula.NonBMCuplift" placeholder="Enter something..."></Input>
-            <Input v-model="formula.NetBMCCost" placeholder="公式..."></Input>
+        <Col span=2 >
+          <Form-item :label-width="20">
+            <Icon type="md-close-circle" size="20" />
           </Form-item>
         </Col>
       </Row>
       <Row>
-        <Col span=6>
+        <Col span=7 offset=1>
+          <Form-item label="Gross BMC Cost" >
+            <Input clearable v-model="formula.GrossBMCCost" placeholder="Enter something..."></Input>
+          </Form-item>
+        </Col>
+        <Col span=4>
+          <Form-item :label-width="15">
+            <Input clearable v-model="formula.GrossBMCCostgs" placeholder="Please enter formula..."></Input>
+          </Form-item>
+        </Col>
+        <Col span=2 >
+          <Form-item :label-width="20">
+            <Icon type="md-close-circle" size="20" />
+          </Form-item>
+        </Col>
+      </Row>
+      <Row>
+        <Col span=7 offset=1>
+          <Form-item label="Net Gross BMC Cost" >
+            <Input clearable v-model="formula.NetGrossBMCCost" placeholder="Enter something..."></Input>
+          </Form-item>
+        </Col>
+        <Col span=4>
+          <Form-item :label-width="15">
+            <Input clearable v-model="formula.NetGrossBMCCostgs" placeholder="Please enter formula..."></Input>
+          </Form-item>
+        </Col>
+        <Col span=2 >
+          <Form-item :label-width="20">
+            <Icon type="md-close-circle" size="20" />
+          </Form-item>
+        </Col>
+      </Row>
+      <Row>
+        <Col span=7 offset=1>
+          <Form-item label="Non-BMC uplift" >
+            <Input clearable v-model="formula.NonBMCuplift" placeholder="Enter something..."></Input>
+          </Form-item>
+        </Col>
+        <Col span=4>
+          <Form-item :label-width="15">
+            <Input clearable v-model="formula.NonBMCupliftgs" placeholder="Please enter formula..."></Input>
+          </Form-item>
+        </Col>
+        <Col span=2 >
+          <Form-item :label-width="20">
+            <Icon type="md-close-circle" size="20" />
+          </Form-item>
+        </Col>
+      </Row>
+      <Row>
+        <Col span=7 offset=1>
           <Form-item label="Other Cost Adder" >
-            <Input v-model="formula.OtherCostAdder" placeholder="Enter something..."></Input>
-            <Input v-model="formula.OtherCostAddergs" placeholder="公式..."></Input>
+            <Input clearable v-model="formula.OtherCostAdder" placeholder="Enter something..."></Input>
           </Form-item>
         </Col>
-        <Col span=6>
+        <Col span=4>
+          <Form-item :label-width="15">
+            <Input clearable v-model="formula.OtherCostAddergs" placeholder="Please enter formula..."></Input>
+          </Form-item>
+        </Col>
+        <Col span=2 >
+          <Form-item :label-width="20">
+            <Icon type="md-close-circle" size="20" />
+          </Form-item>
+        </Col>
+      </Row>
+      <Row>
+        <Col span=7 offset=1>
           <Form-item label="Net Total Cost" >
-            <Input v-model="formula.NetTotalCost" placeholder="Enter something..."></Input>
-            <Input v-model="formula.NetTotalCostgs" placeholder="公式..."></Input>
+            <Input clearable v-model="formula.NetTotalCost" placeholder="Enter something..."></Input>
           </Form-item>
         </Col>
-        <Col span=6>
+        <Col span=4>
+          <Form-item :label-width="15">
+            <Input clearable v-model="formula.NetTotalCostgs" placeholder="Please enter formula..."></Input>
+          </Form-item>
+        </Col>
+        <Col span=2 >
+          <Form-item :label-width="20">
+            <Icon type="md-close-circle" size="20" />
+          </Form-item>
+        </Col>
+      </Row>
+      <Row>
+        <Col span=7 offset=1>
           <Form-item label="Total Cost" >
-            <Input v-model="formula.TotalCost" placeholder="Enter something..."></Input>
-            <Input v-model="formula.TotalCostgs" placeholder="公式..."></Input>
+            <Input clearable v-model="formula.TotalCost" placeholder="Enter something..."></Input>
           </Form-item>
         </Col>
-        <Col span=6 v-if="item.status" :key="i" v-for="(item, i) in formula.calcuitems">
+        <Col span=4>
+          <Form-item :label-width="15">
+            <Input clearable v-model="formula.TotalCostgs" placeholder="Please enter formula..."></Input>
+          </Form-item>
+        </Col>
+        <Col span=2 >
+          <Form-item :label-width="20">
+            <Icon type="md-close-circle" size="20" />
+          </Form-item>
+        </Col>
+      </Row>
+      <Row>
+        <Col span=7 offset=1 v-if="item.status" :key="i" v-for="(item, i) in formula.calcuitems">
           <FormItem
-            :label="'Item ' + item.index"
-            :prop="'items.' + i + '.value'">
-              <Input placeholder="Enter something..."></Input>
-              <Input placeholder="公式..."></Input>
+            :label="'Item ' + item.index">
+              <Input clearable placeholder="Enter something..."></Input>
+          </FormItem>
+        </Col>
+        <Col span=4 v-if="item.status" :key="i" v-for="(item, i) in formula.calcuitems">
+          <FormItem
+            :label-width="15">
+              <Input clearable placeholder="Please enter formula..."></Input>
+          </FormItem>
+        </Col>
+        <Col span=2 v-if="item.status" :key="i" v-for="(item, i) in formula.calcuitems">
+          <FormItem
+            :label-width="20">
+            <Icon type="md-close-circle" size="20" />
           </FormItem>
         </Col>
       </Row>
@@ -373,31 +551,31 @@ export default {
         // POLICY
         Funding1: '',
         Funding1sel: '',
-        Funding1sels: '',
+        Funding1sels: [1, 2, 3, 4, 5],
         Funding2: '',
         Funding2sel: '',
-        Funding2sels: '',
+        Funding2sels: [],
         Funding3: '',
         Funding3sel: '',
-        Funding3sels: '',
+        Funding3sels: [],
         GEOFunding: '',
         GEOFundingsel: '',
-        GEOFundingsels: '',
+        GEOFundingsels: [],
         RegionFunding: '',
         RegionFundingsel: '',
-        RegionFundingsels: '',
+        RegionFundingsels: [],
         WWFunding: '',
         WWFundingsel: '',
-        WWFundingsels: '',
+        WWFundingsels: [],
         GEOFundingother: '',
         GEOFundingothersel: '',
-        GEOFundingothersels: '',
+        GEOFundingothersels: [],
         Otherlocal: '',
         Otherlocalsel: '',
-        Otherlocalsels: '',
+        Otherlocalsels: [],
         CustomDuty: '',
         CustomDutysel: '',
-        CustomDutysels: '',
+        CustomDutysels: [],
         // 计算
         NetBMCCost: '',
         NetBMCCostgs: '',
@@ -513,9 +691,9 @@ h4 {
 .ivu-form-item-content {
   // float: left;
 }
-.ivu-select {
-  width: 162px;
-}
+// .ivu-select {
+//   width: 162px;
+// }
 .ivu-form-item {
   margin-bottom: 10px;
 }
