@@ -26,42 +26,42 @@
       <Form :model="form" label-position="left" ref="form" >
         <Row type="flex" justify="start" :gutter="15">
           <Col span=4>
-            <Form-item label="systemType" style="padding-left: 20px;">
+            <FormItem label="systemType" style="padding-left: 20px;">
               <Select v-model="form.systemType" placeholder="Please select">
                 <Option v-for="(item, index) in form.selects" :value="item" :key="index">{{item}}</Option>
             </Select>
-            </Form-item>
+            </FormItem>
           </Col>
           <Col span=4>
-            <Form-item label="lineUpGeo">
+            <FormItem label="lineUpGeo">
               <Input v-model="form.lineUpGeo" placeholder="Enter something..."></Input>
-            </Form-item>
+            </FormItem>
           </Col>
           <Col span=3>
-            <Form-item label="key">
+            <FormItem label="key">
               <Input v-model="form.key" placeholder="Enter something..."></Input>
-            </Form-item>
+            </FormItem>
           </Col>
           <Col span=3>
-            <Form-item label="mtmNo">
+            <FormItem label="mtmNo">
               <Input v-model="form.mtmNo" placeholder="Enter something..."></Input>
-            </Form-item>
+            </FormItem>
           </Col>
           <Col span=3>
-            <Form-item label="plant">
+            <FormItem label="plant">
               <Input v-model="form.plant" placeholder="Enter something..."></Input>
-            </Form-item>
+            </FormItem>
           </Col>
           <Col span=3>
-            <Form-item label="country">
+            <FormItem label="country">
               <Input v-model="form.country" placeholder="Enter something..."></Input>
-            </Form-item>
+            </FormItem>
           </Col>
           <Col span=3>
-            <Form-item>
+            <FormItem>
               <!-- <br/> -->
               <Button style="background: #fff;" type="" @click="model=true">More Filters</Button>
-            </Form-item>
+            </FormItem>
           </Col>
         </Row>
       </Form>
@@ -405,14 +405,14 @@ h3 {
 .ivu-tabs-bar {
   margin-bottom: 2px;
 }
-.ivu-form-label-left .ivu-form-item-label,
-.ivu-form-item-content {
+.ivu-form-label-left .ivu-FormItem-label,
+.ivu-FormItem-content {
   float: left;
 }
 .ivu-select {
   width: 162px;
 }
-.ivu-form-item {
+.ivu-FormItem {
   margin-bottom: 10px;
 }
 .marginBottom {

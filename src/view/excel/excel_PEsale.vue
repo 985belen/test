@@ -319,33 +319,33 @@
     <Form :model="transFormItem" label-position="left" ref="transFormItem" >
       <Row type="flex" justify="start" :gutter="15">
         <Col span=6>
-          <Form-item label="Business Partner">
+          <FormItem label="Business Partner">
             <Input v-model="transFormItem.BusinessPartner" placeholder="Enter something..."></Input>
-          </Form-item>
+          </FormItem>
         </Col>
         <Col span=6>
-          <Form-item label="Select">
+          <FormItem label="Select">
             <Select v-model="transFormItem.select" placeholder="Please select..">
               <Option v-for="(item, index) in transFormItem.selects" :value="item" :key="index">{{item}}</Option>
           </Select>
-          </Form-item>
+          </FormItem>
         </Col>
         <Col span=6>
-          <Form-item label="Transaction ID">
+          <FormItem label="Transaction ID">
             <Input v-model="transFormItem.TransactionID" placeholder="Enter something..."></Input>
-          </Form-item>
+          </FormItem>
         </Col>
         <Col span=2>
-          <Form-item>
+          <FormItem>
             <br/>
             <Button type="primary">Search</Button>
-          </Form-item>
+          </FormItem>
         </Col>
         <Col span=2>
-          <Form-item>
+          <FormItem>
             <br/>
             <Button type="primary">Attach</Button>
-          </Form-item>
+          </FormItem>
         </Col>
       </Row>
     </Form>
@@ -455,9 +455,10 @@ export default {
       transColumns: [
         {
           headerCheckboxSelection: true,
-          headerCheckboxSelectionFilteredOnly: false,
+          headerCheckboxSelectionFilteredOnly: true,
           editable: false,
           checkboxSelection: true,
+          suppressFilter: true,
           width: 60
         },
         {

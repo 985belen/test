@@ -278,5 +278,39 @@ export default [
         component: () => import('@/view/iframe/FinanceReview.vue')
       }
     ]
+  },
+  {
+    path: '/dashboard',
+    name: 'dashboard',
+    component: Main,
+    children: [
+      {
+        path: 'FinDashboard',
+        name: 'FinDashboard',
+        meta: {
+          icon: '',
+          title: ''
+        },
+        component: () => import('@/view/dashboard/FinDashboard.vue')
+      },
+      {
+        path: 'CreateDashboard',
+        name: 'CreateDashboard',
+        meta: {
+          icon: '',
+          title: ''
+        },
+        component: () => import('@/view/dashboard/CreateDashboard.vue')
+      },
+      {
+        path: 'CreateNewDashboard',
+        name: 'CreateNewDashboard',
+        meta: {
+          icon: '',
+          title: ''
+        },
+        component: () => import('@/view/dashboard/CreateNewDashboard.vue')
+      }
+    ]
   }
 ]

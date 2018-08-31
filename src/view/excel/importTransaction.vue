@@ -3,27 +3,27 @@
   <Form :model="FormItem" ref="FormItem" >
     <Row>
       <Col span=7>
-        <Form-item label="Business Partner">
+        <FormItem label="Business Partner">
           <Input size="small" v-model="FormItem.BusinessPartner" placeholder="Enter something..."></Input>
-        </Form-item>
+        </FormItem>
       </Col>
       <Col span=7>
-        <Form-item label="select">
+        <FormItem label="select">
           <Select size="small" v-model="select" style="width:200px">
             <Option v-for="(item, index) in FormItem.selects" :value="item" :key="index">{{item}}</Option>
         </Select>
-        </Form-item>
+        </FormItem>
       </Col>
       <Col span=7>
-        <Form-item label="Transaction ID">
+        <FormItem label="Transaction ID">
           <Input size="small" v-model="FormItem.TransactionID" placeholder="Enter something..."></Input>
-        </Form-item>
+        </FormItem>
       </Col>
       <Col span=3>
-        <Form-item>
+        <FormItem>
           <Button size="small" type="primary">Search</Button>
           <Button size="small" type="primary">Attach</Button>
-        </Form-item>
+        </FormItem>
       </Col>
     </row>
   </Form>
@@ -205,14 +205,14 @@ export default {
   height: 100%;
   padding: 10px;
 }
-.ivu-form-item-label{
+.ivu-FormItem-label{
   float: left;
 }
-.ivu-form-item-content{
+.ivu-FormItem-content{
   float: left;
   margin-left: -8px !important;
 }
-.ivu-form-item{
+.ivu-FormItem{
   margin-bottom:5px;
 }
 </style>

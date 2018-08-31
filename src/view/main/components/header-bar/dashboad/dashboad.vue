@@ -13,27 +13,27 @@
             <Icon style=" margin-left: 30px;"  size="64" type="ios-cog" />
             <ul class="submenu">
               <li><router-link style="color: #515a6e" to="/price/CTO_Config">Price Simulation</router-link></li>
-              <li ><router-link style="color: #515a6e" to="/price_lists/price_list">Price Evaluation</router-link></li>
-              <li><router-link style="color: #515a6e" to="">Price Recommendation</router-link></li>
+              <li ><router-link style="color: #515a6e" to="/price_lists/price_list">Price Estimation</router-link></li>
             </ul>
           </Col>
           <Col class="hover" span=6>
-            <DropdownItem style="font-size:20px!important;">Profit Margin  Analysis</DropdownItem>
+            <DropdownItem style="font-size:20px!important;">Profit Margin Analysis</DropdownItem>
             <Icon style=" margin-left: 30px;"  size="64" type="ios-contacts" />
             <ul class="submenu">
               <li><router-link to="/price/CTO_ListPrice" style="color: #515a6e">Finance Review</router-link></li>
               <li><router-link to="/iframe/iframe_HistoricalSummary" style="color: #515a6e">Historical Summary Report</router-link></li>
               <li><router-link to="/iframe/iframe_clv" style="color: #515a6e">CLV Report</router-link></li>
               <li><router-link to="/iframe/iframe_DealTracking" style="color: #515a6e">Deal Tracking Report</router-link></li>
+              <li><router-link style="color: #515a6e" to="">Price Recommendation</router-link></li>
             </ul>
           </Col>
           <Col class="hover" span=6>
             <DropdownItem style="font-size: 20px!important;">Financial Dashboard</DropdownItem>
             <Icon style=" margin-left: 30px;"  size="64" type="md-grid" />
             <ul class="submenu">
-              <li><router-link style="color: #515a6e" to="">Financial Dashboard</router-link></li>
+              <li><router-link style="color: #515a6e" to="/dashboard/FinDashboard">Financial Dashboard</router-link></li>
             </ul>
-            </Col>
+          </Col>
           <Col class="hover" span=6>
             <DropdownItem style="font-size: 20px!important;">Price Engine</DropdownItem>
             <Icon style=" margin-left: 30px;"  size="64" type="md-settings" />
@@ -43,7 +43,6 @@
             </ul>
           </Col>
         </Row>
-          <!-- <DropdownItem divided>北京烤鸭</DropdownItem> -->
       </DropdownMenu>
     </Dropdown>
   </div>

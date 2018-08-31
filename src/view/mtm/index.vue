@@ -5,20 +5,20 @@
       <Form :model="formLeft" label-position="left">
         <Row type="flex" :gutter="10">
          <Col span=6>
-            <Form-item label="MTM_NO">
+            <FormItem label="MTM_NO">
               <Input v-model="formLeft.MTM_NO"></Input>
-            </Form-item>
+            </FormItem>
           </Col>
           <Col span=6>
-            <Form-item label="COUNTRY">
+            <FormItem label="COUNTRY">
               <Input v-model="formLeft.COUNTRY"></Input>
-            </Form-item>
+            </FormItem>
           </Col>
           <Col span=6>
-            <Form-item>
+            <FormItem>
               <Button type="" style="margin-right: 15px;" @click='searchAjax'>Search</Button>
               <Button type="">Export</Button>
-            </Form-item>
+            </FormItem>
          </Col>
         </Row>
       </Form>
@@ -45,25 +45,25 @@
       <Form :model="formRight" label-position="left">
         <Row type="flex" :gutter="10">
          <Col span=6>
-            <Form-item label="MTM_NO">
+            <FormItem label="MTM_NO">
               <Input v-model="formRight.MTM_NO"></Input>
-            </Form-item>
+            </FormItem>
           </Col>
           <Col span=6>
-            <Form-item label="SALES_ORG">
+            <FormItem label="SALES_ORG">
               <Input v-model="formRight.SALES_ORG"></Input>
-            </Form-item>
+            </FormItem>
           </Col>
           <Col span=6>
-            <Form-item label="SALES_OFFICE">
+            <FormItem label="SALES_OFFICE">
               <Input v-model="formRight.SALES_OFFICE"></Input>
-            </Form-item>
+            </FormItem>
           </Col>
           <Col span=6>
-            <Form-item>
+            <FormItem>
               <Button type="primary" style="margin-right: 15px;">Search</Button>
               <Button type="primary">Export</Button>
-            </Form-item>
+            </FormItem>
          </Col>
         </Row>
       </Form>
@@ -440,8 +440,8 @@ export default {
   padding: 10px;
   background: #fff;
 }
-.ivu-form-label-left .ivu-form-item-label,
-.ivu-form-item-content{
+.ivu-form-label-left .ivu-FormItem-label,
+.ivu-FormItem-content{
   float:left;
 }
 </style>

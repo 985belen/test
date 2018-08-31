@@ -24,10 +24,10 @@
       <Form :model="form" label-position="left" ref="form" >
         <Row type="flex" justify="start" :gutter="10">
           <Col style="padding-left: 20px">
-            <Form-item label="pns">
+            <FormItem label="pns">
               <Input style="width:400px" v-model="form.pns" placeholder="Enter something..."></Input>
               *以逗号分隔
-            </Form-item>
+            </FormItem>
           </Col>
         </Row>
       </Form>
@@ -190,11 +190,11 @@ h3{
 .ivu-tabs-bar{
   margin-bottom: 2px;
 }
-.ivu-form-label-left .ivu-form-item-label,
-.ivu-form-item-content{
+.ivu-form-label-left .ivu-FormItem-label,
+.ivu-FormItem-content{
   float:left;
 }
-.ivu-form-item{
+.ivu-FormItem{
   margin-bottom:10px;
 }
 </style>

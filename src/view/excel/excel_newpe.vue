@@ -8,43 +8,43 @@
     </Row>
     <Row>
       <Col span=6 offset="3">
-        <Form-item label="ID">
+        <FormItem label="ID">
           <Input v-model="FormItem.id" placeholder="Enter something..."></Input>
-        </Form-item>
+        </FormItem>
       </Col>
       <Col span=6>
-        <Form-item label="Created Date">
+        <FormItem label="Created Date">
           <Input v-model="FormItem.CreatedDate" placeholder="Enter something..."></Input>
-        </Form-item>
+        </FormItem>
       </Col>
       <Col span=6>
-        <Form-item label="Last Modified">
+        <FormItem label="Last Modified">
           <Input v-model="FormItem.LastModified" placeholder="Enter something..."></Input>
-        </Form-item>
+        </FormItem>
       </Col>
     </Row>
     <Row>
       <Col span=6 offset="3">
-        <Form-item label="Original Rmap ID">
+        <FormItem label="Original Rmap ID">
           <Input v-model="FormItem.OriginalRmapID" placeholder="Enter something..."></Input>
-        </Form-item>
+        </FormItem>
       </Col>
       <Col span=6>
-        <Form-item label="Created By">
+        <FormItem label="Created By">
           <Input v-model="FormItem.CreatedBy" placeholder="Enter something..."></Input>
-        </Form-item>
+        </FormItem>
       </Col>
       <Col span=6>
-        <Form-item label="Last Modified by">
+        <FormItem label="Last Modified by">
           <Input v-model="FormItem.LastModifiedby" placeholder="Enter something..."></Input>
-        </Form-item>
+        </FormItem>
       </Col>
     </Row>
     <Row>
       <Col span=15 offset="3">
-        <Form-item label="Description" prop="Description">
+        <FormItem label="Description" prop="Description">
           <Input v-model="FormItem.Description" type="textarea" placeholder="Enter something..."></Input>
-        </Form-item>
+        </FormItem>
       </Col>
     </Row>
     <Row>
@@ -57,57 +57,57 @@
     </Row>
     <Row>
       <Col span=6 offset="3">
-        <Form-item label="DMU Name"  prop="DMUName">
+        <FormItem label="DMU Name"  prop="DMUName">
           <Input v-model="FormItem.DMUName" placeholder="Enter something..."></Input>
-        </Form-item>
+        </FormItem>
       </Col>
       <Col span=6 offset="1">
-        <Form-item label="Channel" prop="Channel">
+        <FormItem label="Channel" prop="Channel">
           <Input v-model="FormItem.Channel" placeholder="Enter something..."></Input>
-        </Form-item>
+        </FormItem>
       </Col>
     </Row>
     <Row>
       <Col span=6 offset="3">
-        <Form-item label="Business Group">
+        <FormItem label="Business Group">
           <Input v-model="FormItem.BusinessGroup" placeholder="Enter something..."></Input>
-        </Form-item>
+        </FormItem>
       </Col>
       <Col span=6 offset="1">
-        <Form-item label="Pricing Group" prop="PricingGroup">
+        <FormItem label="Pricing Group" prop="PricingGroup">
           <Input v-model="FormItem.PricingGroup" placeholder="Enter something..."></Input>
-        </Form-item>
+        </FormItem>
       </Col>
       </Col>
     </Row>
     <Row>
       <Col span=6 offset="3">
-        <Form-item label="Country">
+        <FormItem label="Country">
           <Input v-model="FormItem.Country" placeholder="Enter something..."></Input>
-        </Form-item>
+        </FormItem>
       </Col>
       <Col span=6 offset="1">
-        <Form-item label="Validity Period">
+        <FormItem label="Validity Period">
           <Input v-model="FormItem.ValidityPeriod" placeholder="Enter something..."></Input>
-        </Form-item>
+        </FormItem>
       </Col>
     </Row>
     <Row>
       <Col span=6 offset="3">
-        <Form-item label="Sub Region">
+        <FormItem label="Sub Region">
           <Input v-model="FormItem.SubRegion" placeholder="Enter something..."></Input>
-        </Form-item>
-        <Form-item label="Region">
+        </FormItem>
+        <FormItem label="Region">
           <Input v-model="FormItem.Region" placeholder="Enter something..."></Input>
-        </Form-item>
-        <Form-item label="Geo">
+        </FormItem>
+        <FormItem label="Geo">
           <Input v-model="FormItem.Geo" placeholder="Enter something..."></Input>
-        </Form-item>
+        </FormItem>
       </Col>
       <Col span=6 offset="1">
-        <Form-item label="Comments">
+        <FormItem label="Comments">
           <Input v-model="FormItem.Comments" type="textarea" :rows="6" placeholder="Enter something..."></Input>
-        </Form-item>
+        </FormItem>
       </Col>
     </Row>
   </Form>

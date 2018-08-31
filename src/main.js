@@ -17,8 +17,8 @@ import '../node_modules/ag-grid/dist/styles/ag-theme-balham.css'
 import VueAxios from 'vue-axios'
 import 'ag-grid-enterprise'
 Vue.use(axios)
-Vue.prototype.axios=axios;
-Vue.use(VueAxios, axios);
+Vue.prototype.axios=axios
+Vue.use(VueAxios, axios)
 // import '@/mock'
 // 实际打包时应该不引入mock
 import env from '../config/env'

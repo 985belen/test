@@ -28,29 +28,29 @@
       <Form :model="form" label-position="left" ref="form" >
         <Row type="flex" justify="start" :gutter="15">
           <Col span=5 style="padding-left: 20px;">
-            <Form-item label="PN CODE" >
+            <FormItem label="PN CODE" >
               <Input v-model="form.pn" placeholder="Enter something..."></Input>
-            </Form-item>
+            </FormItem>
           </Col>
           <Col span=5>
-            <Form-item label="COUNTRY" style="padding-left: 20px;">
+            <FormItem label="COUNTRY" style="padding-left: 20px;">
               <Select v-model="form.country" placeholder="Please select">
                 <Option v-for="(item, index) in form.countrySelects" :value="item" :key="index">{{item}}</Option>
             </Select>
-            </Form-item>
+            </FormItem>
           </Col>
           <Col span=5>
-            <Form-item label="PLANT" style="padding-left: 20px;">
+            <FormItem label="PLANT" style="padding-left: 20px;">
               <Select v-model="form.plant" placeholder="Please select">
                 <Option v-for="(item, index) in form.plantSelects" :value="item" :key="index">{{item}}</Option>
             </Select>
-            </Form-item>
+            </FormItem>
           </Col>
           <Col span=5>
-            <Form-item>
+            <FormItem>
               <!-- <br/> -->
               <Button style="background: #fff;" type="" @click="model=true">More Filters</Button>
-            </Form-item>
+            </FormItem>
           </Col>
         </Row>
       </Form>
@@ -394,14 +394,14 @@ h3 {
 .ivu-tabs-bar {
   margin-bottom: 2px;
 }
-.ivu-form-label-left .ivu-form-item-label,
-.ivu-form-item-content {
+.ivu-form-label-left .ivu-FormItem-label,
+.ivu-FormItem-content {
   float: left;
 }
 .ivu-select {
   width: 162px;
 }
-.ivu-form-item {
+.ivu-FormItem {
   margin-bottom: 10px;
 }
 .marginBottom {

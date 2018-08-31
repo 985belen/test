@@ -266,28 +266,28 @@
     <Form :model="transFormItem" label-position="left" ref="transFormItem" >
       <Row type="flex" justify="start" :gutter="15">
         <Col span=6>
-          <Form-item label="Business Partner">
+          <FormItem label="Business Partner">
             <Input v-model="transFormItem.BusinessPartner" placeholder="Enter something..."></Input>
-          </Form-item>
+          </FormItem>
         </Col>
         <Col span=6>
-          <Form-item label="Select">
+          <FormItem label="Select">
             <Select v-model="transFormItem.select" placeholder="Please select...">
               <Option v-for="(item, index) in transFormItem.selects" :value="item" :key="index">{{item}}</Option>
           </Select>
-          </Form-item>
+          </FormItem>
         </Col>
         <Col span=6>
-          <Form-item label="Transaction ID">
+          <FormItem label="Transaction ID">
             <Input v-model="transFormItem.TransactionID" placeholder="Enter something..."></Input>
-          </Form-item>
+          </FormItem>
         </Col>
         <Col span=6>
-          <Form-item>
+          <FormItem>
             <br/>
             <Button type="primary" style="margin-right:15px">Search</Button>
             <Button type="primary">Attach</Button>
-          </Form-item>
+          </FormItem>
         </Col>
       </Row>
     </Form>
@@ -321,7 +321,7 @@
       <ag-grid-vue
         style="width: 100%; height:100%;"
         class="ag-theme-balham"
-        v-if="ComponentsListcolumn"
+        v-if="modelComponentsList"
         :columnDefs="ComponentsListcolumn"
         :rowData="ComponentsListData"
         :gridAutoHeight="true"
