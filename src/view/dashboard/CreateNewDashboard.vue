@@ -48,8 +48,8 @@
               <Icon type="ios-arrow-down"></Icon>
             </Button>
             <DropdownMenu slot="list">
-              <span class="spanstyle" @click="barstackshow=true">sample2</span>
-              <span class="spanstyle" @click="barshow=true">sample3</span>
+              <span class="spanstyle" @click="barshow=true">sample2</span>
+              <span class="spanstyle" @click="barstackshow=true">sample3</span>
             </DropdownMenu>
           </Dropdown>
           <Button size="small" type="primary">Update Report</Button>
@@ -65,9 +65,9 @@
     </Row>
   </Form>
   <!-- <div class="pieGraph" ref="pieGraph" style="width: 1100px;height:400px;margin: 0 auto;background:#eee"></div> -->
-  <div v-show="lineshow" ref="lineGraph" style="width: 1100px;height:400px;margin: 0 auto;background:#fafaf0"></div>
-  <div v-show="barshow" ref="barchart" style="width: 1100px;height:400px;margin: 0 auto;background:#f0fefa"></div>
-  <div v-show="barstackshow" ref="barstack" style="width: 1100px;height:400px;margin: 0 auto;background:#f0fefa"></div>
+  <div v-show="lineshow" ref="lineGraph" style="width: 1100px;height:400px;margin: 10px auto;background:#fafaf0"></div>
+  <div v-show="barshow" ref="barchart" style="width: 1100px;height:400px;margin: 10px auto;background:#fafefa"></div>
+  <div v-show="barstackshow" ref="barstack" style="width: 1100px;height:400px;margin: 10px auto;background:#f0fefa"></div>
   <!-- <divider></divider> -->
 </div>
 </template>
@@ -154,7 +154,7 @@ export default {
         },
         grid: {
           left: '3%',
-          right: '3%',
+          right: '6%',
           top: '15%',
           containLabel: true
         },
@@ -408,6 +408,7 @@ export default {
 .dashboard-box{
   width:100%;
   height:100%;
+  min-height: 500px;
   padding: 10px 0;
   background: #fff;
   .ivu-col-span-8{

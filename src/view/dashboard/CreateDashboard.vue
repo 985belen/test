@@ -66,9 +66,9 @@
     </Row>
   </Form>
     <!-- <div class="pieGraph" ref="pieGraph" style="width: 90%;height:400px;margin: 0 auto;background:#eee"></div> -->
-    <div class="lineGraph" ref="lineGraph" style="width: 90%;height:400px;margin: 0 auto;background:#fafaf0"></div>
-    <div class="barchart" ref="barchart" style="width: 90%;height:400px;margin: 0 auto;background:#f0fefa"></div>
-    <div class="barchart" ref="barstack" style="width: 90%;height:400px;margin: 0 auto;background:#f0fefa"></div>
+    <div ref="lineGraph" style="width: 90%;height:400px;margin: 10px auto;background:#fafaf0"></div>
+    <div ref="barchart" style="width: 90%;height:400px;margin: 10px auto;background:#fafefa"></div>
+    <div ref="barstack" style="width: 90%;height:400px;margin: 10px auto;background:#f0fefa"></div>
 </div>
 </template>
 <script>
@@ -153,7 +153,7 @@ export default {
         },
         grid: {
           left: '3%',
-          right: '3%',
+          right: '6%',
           top: '15%',
           containLabel: true
         },
