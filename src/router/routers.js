@@ -138,24 +138,6 @@ export default [
         component: () => import('@/view/excel/excel_PEsale.vue')
       },
       {
-        path: 'excel_PEpricer',
-        name: 'excel_PEpricer',
-        meta: {
-          icon: 'excel_PEpricer',
-          title: 'excel_PEpricer'
-        },
-        component: () => import('@/view/excel/excel_PEpricer.vue')
-      },
-      {
-        path: 'excel_importTransaction',
-        name: 'excel_importTransaction',
-        meta: {
-          icon: 'excel_importTransaction',
-          title: 'excel_importTransaction'
-        },
-        component: () => import('@/view/excel/importTransaction.vue')
-      },
-      {
         path: 'excel_listpage',
         name: 'excel_listpage',
         meta: {

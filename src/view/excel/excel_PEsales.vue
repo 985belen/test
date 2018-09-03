@@ -266,28 +266,28 @@
     <Form :model="transFormItem" label-position="left" ref="transFormItem" >
       <Row type="flex" justify="start" :gutter="15">
         <Col span=6>
-          <FormItem label="Business Partner">
+          <Form-item label="Business Partner">
             <Input v-model="transFormItem.BusinessPartner" placeholder="Enter something..."></Input>
-          </FormItem>
+          </Form-item>
         </Col>
         <Col span=6>
-          <FormItem label="Select">
+          <Form-item label="Select">
             <Select v-model="transFormItem.select" placeholder="Please select...">
               <Option v-for="(item, index) in transFormItem.selects" :value="item" :key="index">{{item}}</Option>
           </Select>
-          </FormItem>
+          </Form-item>
         </Col>
         <Col span=6>
-          <FormItem label="Transaction ID">
+          <Form-item label="Transaction ID">
             <Input v-model="transFormItem.TransactionID" placeholder="Enter something..."></Input>
-          </FormItem>
+          </Form-item>
         </Col>
         <Col span=6>
-          <FormItem>
+          <Form-item>
             <br/>
             <Button type="primary" style="margin-right:15px">Search</Button>
             <Button type="primary">Attach</Button>
-          </FormItem>
+          </Form-item>
         </Col>
       </Row>
     </Form>
@@ -302,11 +302,12 @@
         :enableSorting="true"
         :floatingFilter="true"
         :enableFilter="true"
-        :showToolPanel="true"
+        :showToolPanel="false"
         :singleClickEdit="true"
         :suppressSizeToFit="true"
         :suppressResize="true"
         :enableColResize="true"
+        :gridReady="onGridReady"
         rowSelection="multiple">
       </ag-grid-vue>
     </div>
@@ -321,13 +322,13 @@
       <ag-grid-vue
         style="width: 100%; height:100%;"
         class="ag-theme-balham"
-        v-if="modelComponentsList"
+        v-if="ComponentsListcolumn"
         :columnDefs="ComponentsListcolumn"
         :rowData="ComponentsListData"
         :gridAutoHeight="true"
         :enableSorting="true"
         :enableFilter="true"
-        :showToolPanel="true"
+        :showToolPanel="false"
         :sizeColumnsToFit="true"
         :floatingFilter="true"
         :singleClickEdit="true"
@@ -1883,6 +1884,9 @@ export default {
     })
   },
   methods: {
+    onGridReady (params) {
+      params.api.sizeColumnsToFit()
+    },
     ok(){
       var obj = [{
           id: 1,

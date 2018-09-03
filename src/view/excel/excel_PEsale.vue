@@ -319,33 +319,33 @@
     <Form :model="transFormItem" label-position="left" ref="transFormItem" >
       <Row type="flex" justify="start" :gutter="15">
         <Col span=6>
-          <FormItem label="Business Partner">
+          <Form-item label="Business Partner">
             <Input v-model="transFormItem.BusinessPartner" placeholder="Enter something..."></Input>
-          </FormItem>
+          </Form-item>
         </Col>
         <Col span=6>
-          <FormItem label="Select">
+          <Form-item label="Select">
             <Select v-model="transFormItem.select" placeholder="Please select..">
               <Option v-for="(item, index) in transFormItem.selects" :value="item" :key="index">{{item}}</Option>
           </Select>
-          </FormItem>
+          </Form-item>
         </Col>
         <Col span=6>
-          <FormItem label="Transaction ID">
+          <Form-item label="Transaction ID">
             <Input v-model="transFormItem.TransactionID" placeholder="Enter something..."></Input>
-          </FormItem>
+          </Form-item>
         </Col>
         <Col span=2>
-          <FormItem>
+          <Form-item>
             <br/>
             <Button type="primary">Search</Button>
-          </FormItem>
+          </Form-item>
         </Col>
         <Col span=2>
-          <FormItem>
+          <Form-item>
             <br/>
             <Button type="primary">Attach</Button>
-          </FormItem>
+          </Form-item>
         </Col>
       </Row>
     </Form>
@@ -364,8 +364,8 @@
         :singleClickEdit="true"
         :suppressSizeToFit="true"
         :suppressResize="true"
-        :gridReady="onGridReady"
         :enableColResize="true"
+        :gridReady="onGridReady"
         rowSelection="multiple">
       </ag-grid-vue>
     </div>
@@ -457,10 +457,9 @@ export default {
       transColumns: [
         {
           headerCheckboxSelection: true,
-          headerCheckboxSelectionFilteredOnly: true,
+          headerCheckboxSelectionFilteredOnly: false,
           editable: false,
           checkboxSelection: true,
-          suppressFilter: true,
           width: 60
         },
         {
