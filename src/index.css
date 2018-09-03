@@ -1,3 +1,6 @@
 .ag-theme-balham .ag-row-odd {
   background: #deebf7!important;
 }
+.dashboard-box .ivu-select-dropdown {
+  height: 80px!important;
+}

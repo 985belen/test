@@ -163,7 +163,7 @@ export default {
             name: 'Margin',
             type: 'category',
             boundaryGap: false,
-            data: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']
+            data: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JLY', 'AUG', 'SEP', 'OTC', 'NOV', 'DEC']
           }
         ],
         yAxis: {
@@ -262,7 +262,7 @@ export default {
         ],
         xAxis: {
           type: 'category',
-          data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+          data: ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN']
         },
         yAxis: {
           type: 'value',
@@ -348,7 +348,7 @@ export default {
         xAxis: {
           name: 'Quarter',
           type: 'category',
-          data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+          data: ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN']
         },
         yAxis: {
           type: 'value',
@@ -431,6 +431,9 @@ export default {
     height:100%;
     text-align:center;
     cursor:pointer;
+    &:hover{
+      background: #eee;
+    }
   }
 }
 </style>
