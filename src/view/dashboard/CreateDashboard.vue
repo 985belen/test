@@ -43,12 +43,14 @@
       </Col>
       <Col span=2 offset=1>
         <FormItem>
-          <Button size="small" type="primary" @click="line">Add</Button>
+          <Button size="small" type="primary">Add</Button>
           <Dropdown style="width: 100%">
-            <Button size="small" type="primary">Add More</Button>
+            <Button size="small" type="primary">Add More
+              <Icon type="ios-arrow-down"></Icon>
+            </Button>
             <DropdownMenu slot="list">
-              <DropdownItem @click="line">sample2</DropdownItem>
-              <DropdownItem @click="bar">sample3</DropdownItem>
+              <span class="spanstyle">sample2</span>
+              <span class="spanstyle">sample3</span>
             </DropdownMenu>
           </Dropdown>
           <Button size="small" type="primary">Update Report</Button>
@@ -63,13 +65,10 @@
       </Col>
     </Row>
   </Form>
-  <div class="graph">
     <!-- <div class="pieGraph" ref="pieGraph" style="width: 90%;height:400px;margin: 0 auto;background:#eee"></div> -->
     <div class="lineGraph" ref="lineGraph" style="width: 90%;height:400px;margin: 0 auto;background:#fafaf0"></div>
     <div class="barchart" ref="barchart" style="width: 90%;height:400px;margin: 0 auto;background:#f0fefa"></div>
     <div class="barchart" ref="barstack" style="width: 90%;height:400px;margin: 0 auto;background:#f0fefa"></div>
-  </div>
-  <!-- <divider></divider> -->
 </div>
 </template>
 <script>
@@ -80,6 +79,7 @@ export default {
     return {
       lineshow: false,
       barshow: false,
+      barstackshow: false,
       FormItem: {
         Createdby: '',
         Keywords: '',
@@ -423,6 +423,13 @@ export default {
     .ivu-btn{
       width:100%;
     }
+  }
+  .spanstyle{
+    display: block;
+    width: 100%;
+    height:100%;
+    text-align:center;
+    cursor:pointer;
   }
 }
 </style>
