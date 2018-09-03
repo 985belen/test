@@ -59,7 +59,7 @@
       </Col>
       <Col span=2 offset=1>
         <FormItem>
-          <Button size="small" type="primary">Pulish</Button>
+          <Button size="small" type="primary">Publish</Button>
           <Button size="small" type="primary">Download</Button>
         </FormItem>
       </Col>

@@ -58,7 +58,7 @@
       </Col>
       <Col span=2 offset=1>
         <FormItem>
-          <Button size="small" type="primary">Pulish</Button>
+          <Button size="small" type="primary">Publish</Button>
           <Button size="small" type="primary">Download</Button>
         </FormItem>
       </Col>
@@ -68,7 +68,6 @@
   <div v-show="lineshow" ref="lineGraph" style="width: 1100px;height:400px;margin: 10px auto;background:#fafaf0"></div>
   <div v-show="barshow" ref="barchart" style="width: 1100px;height:400px;margin: 10px auto;background:#fafefa"></div>
   <div v-show="barstackshow" ref="barstack" style="width: 1100px;height:400px;margin: 10px auto;background:#f0fefa"></div>
-  <!-- <divider></divider> -->
 </div>
 </template>
 <script>
