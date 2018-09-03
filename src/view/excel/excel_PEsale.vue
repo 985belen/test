@@ -360,10 +360,11 @@
         :enableSorting="true"
         :floatingFilter="true"
         :enableFilter="true"
-        :showToolPanel="true"
+        :showToolPanel="false"
         :singleClickEdit="true"
         :suppressSizeToFit="true"
         :suppressResize="true"
+        :gridReady="onGridReady"
         :enableColResize="true"
         rowSelection="multiple">
       </ag-grid-vue>
@@ -386,13 +387,14 @@
         :gridAutoHeight="true"
         :enableSorting="true"
         :enableFilter="true"
-        :showToolPanel="true"
+        :showToolPanel="false"
         :sizeColumnsToFit="true"
         :floatingFilter="true"
         :singleClickEdit="true"
         :suppressSizeToFit="true"
         :suppressResize="true"
         :enableColResize="true"
+        :gridReady="onGridReady"
         rowSelection="multiple">
       </ag-grid-vue>
     </div>
@@ -2289,6 +2291,9 @@ export default {
     })
   },
   methods: {
+    onGridReady (params) {
+      params.api.sizeColumnsToFit()
+    },
     calcGridHeight () {
       var screenHeight = window.innerHeight
       var t1 = document.getElementsByClassName('split-pane-page-wrapper')[0]

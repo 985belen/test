@@ -49,8 +49,8 @@
               <Icon type="ios-arrow-down"></Icon>
             </Button>
             <DropdownMenu slot="list">
-              <span class="spanstyle">sample2</span>
-              <span class="spanstyle">sample3</span>
+              <span class="spanstyle">Sample2</span>
+              <span class="spanstyle">Sample3</span>
             </DropdownMenu>
           </Dropdown>
           <Button size="small" type="primary">Update Report</Button>

@@ -48,8 +48,8 @@
               <Icon type="ios-arrow-down"></Icon>
             </Button>
             <DropdownMenu slot="list">
-              <span class="spanstyle" @click="barshow=true">sample2</span>
-              <span class="spanstyle" @click="barstackshow=true">sample3</span>
+              <span class="spanstyle" @click="barshow=true">Sample2</span>
+              <span class="spanstyle" @click="barstackshow=true">Sample3</span>
             </DropdownMenu>
           </Dropdown>
           <Button size="small" type="primary">Update Report</Button>

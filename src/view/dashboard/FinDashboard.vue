@@ -33,13 +33,14 @@
       :rowData="rowData"
       :floatingFilter="true"
       :gridAutoHeight="false"
-      :showToolPanel="true"
+      :showToolPanel="false"
       :enableSorting="true"
       :enableFilter="true"
       :singleClickEdit="true"
       :suppressSizeToFit="true"
       :suppressResize="true"
       :enableColResize="true"
+      :gridReady="onGridReady"
       rowSelection="multiple">
     </ag-grid-vue>
   </div>
@@ -64,6 +65,7 @@ export default {
         {
           headerName: 'Dashboard ID',
           cellStyle: {'text-align': 'left'},
+          width: 180,
           cellRenderer: (params) => { return '<a href="#/dashboard/CreateDashboard">' + params.value + '</a>'},
           field: 'DashboardID'
         },
@@ -71,6 +73,7 @@ export default {
           headerName: 'Description',
           cellStyle: {'text-align': 'left'},
           field: 'Description',
+          width: 280,
           cellRenderer: (params) => {
             return '<div class="longData" title="' + params.value +'">' + params.value + '</div>'
           }
@@ -78,11 +81,13 @@ export default {
         {
           headerName: 'Created Date',
           cellStyle: {'text-align': 'left'},
-          field: 'CreatedDate'
+          field: 'CreatedDate',
+          width: 280
         },
         {
           headerName: 'Created by',
           cellStyle: {'text-align': 'left'},
+          width: 280,
           field: 'Createdby'
         }
       ],
@@ -122,6 +127,9 @@ export default {
   methods: {
     CreateNewDashboard () {
       this.$router.push({name: 'CreateNewDashboard'})
+    },
+    onGridReady (params) {
+      params.api.sizeColumnsToFit()
     }
   }
 }
