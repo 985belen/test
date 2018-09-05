@@ -124,7 +124,7 @@
     <ag-grid-vue
       style="width: 100%; height:100%;"
       class="ag-theme-balham"
-      v-if="detailcolumns1"
+      v-if="modeldetail"
       :columnDefs="detailcolumns1"
       :rowData="detaildata1"
       :gridAutoHeight="true"
@@ -339,6 +339,118 @@
       </ag-grid-vue>
     </div>
   </Modal>
+  <Modal
+    v-model="modelBMC"
+    title="BMC"
+    :styles="{width:'800px'}"
+    ok-text="Apply"
+    cancel-text="Cancel">
+    <Table border :columns="bmcColumn" :data="bmcData"></Table>
+  </Modal>
+  <Modal
+    v-model="modelTMC"
+    title="TMC"
+    :styles="{width:'800px'}"
+    ok-text="Apply"
+    cancel-text="Cancel">
+    <Table border :columns="tmcColumn" :data="tmcData"></Table>
+  </Modal>
+  <Modal
+    v-model="modelNetBMC"
+    title="Net BMC"
+    :styles="{width:'800px'}"
+    ok-text="Apply"
+    cancel-text="Cancel">
+    <Table border :columns="netbmcColumn" :data="netbmcData"></Table>
+  </Modal>
+  <Modal v-model="modelCostAdjustment" width="800">
+    <p slot="header">
+      <Icon type="ios-information-circle"></Icon>
+      <span>Cost Adjustment</span>
+    </p>
+    <div style="text-align:center">
+      <Table border :columns="CostAdjustmentColumn" :data="CostAdjustmentData"></Table>
+    </div>
+    <div slot="footer">
+      <!-- <Button type="error" size="large" @click="del">Delete</Button> -->
+    </div>
+  </Modal>
+  <Modal v-model="modalbmc" width='600'>
+    <p slot="header">
+      <Icon type="ios-information-circle"></Icon>
+      <span>BMC</span>
+    </p>
+    <div style="height: 50px">
+      <Form :label-width="60">
+        <Col span="12">
+          <FormItem label="Cost">
+            <Input placeholder="Please enter something..." v-model="modalBMCdata.Cost"/>
+          </FormItem>
+        </Col>
+      </Form>
+    </div>
+    <div slot="footer">
+      <Button type="text" size="small" @click="modalbmc=false">Cancel</Button>
+      <Button type="primary" size="small" @click="tableBMCSave">OK</Button>
+    </div>
+  </Modal>
+  <Modal v-model="modaltmc" width='600'>
+    <p slot="header">
+      <Icon type="ios-information-circle"></Icon>
+      <span>TMC</span>
+    </p>
+    <div style="height: 50px">
+      <Form :label-width="60">
+        <Col span="12">
+          <FormItem label="Cost">
+            <Input placeholder="Please enter something..." v-model="modalTMCdata.Cost"/>
+          </FormItem>
+        </Col>
+      </Form>
+    </div>
+    <div slot="footer">
+      <Button type="text" size="small" @click="modaltmc=false">Cancel</Button>
+      <Button type="primary" size="small" @click="tableTMCSave">OK</Button>
+    </div>
+  </Modal>
+  <Modal v-model="modalnetbmc" width='600'>
+    <p slot="header">
+      <Icon type="ios-information-circle"></Icon>
+      <span>Net BMC</span>
+    </p>
+    <div style="height: 50px">
+      <Form :label-width="60">
+        <Col span="12">
+          <FormItem label="Cost">
+            <Input placeholder="Please enter something..." v-model="modalnetBMCdata.Cost"/>
+          </FormItem>
+        </Col>
+      </Form>
+    </div>
+    <div slot="footer">
+      <Button type="text" size="small" @click="modalnetbmc=false">Cancel</Button>
+      <Button type="primary" size="small" @click="tableNetBMCSave">OK</Button>
+    </div>
+  </Modal>
+  <Modal v-model="modelcostadjustment" width='600'>
+    <p slot="header">
+      <Icon type="ios-information-circle"></Icon>
+      <span>Cost Adjustment</span>
+    </p>
+    <div style="height: 50px">
+      <Form :label-width="60">
+        <Col span="12">
+          <FormItem label="Cost">
+            <Input placeholder="Please enter something..." v-model="modalcostadjustmentdata.Cost"/>
+          </FormItem>
+        </Col>
+      </Form>
+    </div>
+    <div slot="footer">
+      <Button type="text" size="small" @click="modelcostadjustment=false">Cancel</Button>
+      <Button type="primary" size="small" @click="tableCostaAjustmentSave">OK</Button>
+    </div>
+  </Modal>
 </div>
 </template>
 <script>
@@ -347,6 +459,27 @@ import SplitPane from '_c/split-pane'
 export default {
   data () {
     return {
+      // 新建编辑数据
+      modalTMCdata: {
+        Cost: null
+      },
+      modalBMCdata: {
+        Cost: null
+      },
+      modalnetBMCdata: {
+        Cost: null
+      },
+      modalcostadjustmentdata: {
+        Cost: null
+      },
+      modalbmc: false,
+      modaltmc: false,
+      modalnetbmc: false,
+      modelcostadjustment: false,
+      modelBMC: false,
+      modelTMC: false,
+      modelNetBMC: false,
+      modelCostAdjustment: false,
       toggle: true,
       toggle1: false,
       toggle2: true,
@@ -652,7 +785,7 @@ export default {
         },
         {
           headerName: 'Brand Summary',
-          width: 100,
+          width: 130,
           field: 'brsum',
           cellStyle: {'text-align': 'left'}
         },
@@ -707,7 +840,7 @@ export default {
           cellStyle: {'text-align': 'left'}
         },
         {
-          headerName: 'Request price',
+          headerName: 'Req`st price',
           width: 120,
           field: 'respri',
           cellStyle: {'text-align': 'left'}
@@ -730,7 +863,7 @@ export default {
         },
         {
           headerName: 'Discount %',
-          width: 100,
+          width: 110,
           field: 'disc',
           editable: true,
           headerClass:'headerColor4',
@@ -740,12 +873,54 @@ export default {
           headerName: 'BMC',
           width: 100,
           field: 'bmc',
-          cellStyle: {'text-align': 'left'}
+          cellStyle: {'text-align': 'left'},
+          cellRenderer: (params) => {
+            return '<a title="' + params.value +'"href="#">' + params.value + '</a>'
+          },
+          onCellClicked: () => {
+            this.modelBMC = true
+          }
+        },
+        {
+          headerName: 'Net BMC',
+          width: 100,
+          field: 'netbmc',
+          cellStyle: {'text-align': 'left'},
+          cellRenderer: (params) => {
+            return '<a title="' + params.value +'"href="#">' + params.value + '</a>'
+          },
+          onCellClicked: () => {
+            this.modelNetBMC = true
+          }
         },
         {
           headerName: 'TMC',
           width: 100,
           field: 'tmc',
+          cellStyle: {'text-align': 'left'},
+          cellRenderer: (params) => {
+            return '<a title="' + params.value +'"href="#">' + params.value + '</a>'
+          },
+          onCellClicked: () => {
+            this.modelTMC = true
+          }
+        },
+        {
+          headerName: 'Cost Adjustment',
+          width: 140,
+          field: 'CostAdjustment',
+          cellStyle: {'text-align': 'left'},
+          cellRenderer: (params) => {
+            return '<a title="' + params.value +'"href="#">' + params.value + '</a>'
+          },
+          onCellClicked: () => {
+            this.modelCostAdjustment = true
+          }
+        },
+        {
+          headerName: 'Final TMC',
+          width: 120,
+          field: 'FinalTMC',
           cellStyle: {'text-align': 'left'}
         },
         {
@@ -790,13 +965,13 @@ export default {
         },
         {
           headerName: 'GR Reduce %',
-          width: 110,
+          width: 120,
           field: 'grre',
           cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'Net Revenue',
-          width: 100,
+          width: 110,
           field: 'netre',
           cellStyle: {'text-align': 'left'}
         },
@@ -820,6 +995,216 @@ export default {
         }
       ],
       rowData: [],
+      netbmcColumn: [
+        {
+          title: 'Adder Type',
+          key: 'AdderType'
+        },
+        {
+          title: 'Description',
+          key: 'Description'
+        },
+        {
+          title: 'Cost',
+          key: 'Cost'
+        },
+        {
+          title: 'Action',
+          key: 'action',
+          render: (h, params) => {
+            return h('div', [
+              h('Button', {
+                props: {
+                  type: 'text',
+                  size: 'small'
+                },
+                on: {
+                  click: () => {
+                    this.editnetBMC(params.index)
+                  }
+                }
+              }, 'Edit')
+            ])
+          }
+        }
+      ],
+      netbmcData: [
+        {
+          AdderType: 'Backend Funding',
+          Description: 'Intel Core i5-7500T 2.7G 4C',
+          Cost: 2
+        },
+        {
+          AdderType: 'Segment Funding',
+          Description: '',
+          Cost: null
+        },
+        {
+          AdderType: 'Customer Funding',
+          Description: '',
+          Cost: 10
+        },
+        {
+          AdderType: 'Special Funding(manually input)',
+          Description: '',
+          Cost: null
+        }
+      ],
+      bmcColumn: [
+        {
+          title: 'Adder Type',
+          key: 'AdderType'
+        },
+        {
+          title: 'Description',
+          key: 'Description'
+        },
+        {
+          title: 'Cost',
+          key: 'Cost'
+        },
+        {
+          title: 'Action',
+          key: 'action',
+          render: (h, params) => {
+            return h('div', [
+              h('Button', {
+                props: {
+                  type: 'text',
+                  size: 'small'
+                },
+                on: {
+                  click: () => {
+                    this.editBMC(params.index)
+                  }
+                }
+              }, 'Edit')
+            ])
+          }
+        }
+      ],
+      bmcData: [
+        {
+          AdderType: 'MOT',
+          Description: 'MIX',
+          Cost: 14.73
+        },
+        {
+          AdderType: 'BMC of missing Key part（manually input)',
+          Description: '',
+          Cost: null
+        }
+      ],
+      tmcColumn: [
+        {
+          title: 'Adder Type',
+          key: 'AdderType'
+        },
+        {
+          title: 'Description',
+          key: 'Description'
+        },
+        {
+          title: 'Cost',
+          key: 'Cost'
+        },
+        {
+          title: 'Action',
+          key: 'action',
+          render: (h, params) => {
+            return h('div', [
+              h('Button', {
+                props: {
+                  type: 'text',
+                  size: 'small'
+                },
+                on: {
+                  click: () => {
+                    this.editTMC(params.index)
+                  }
+                }
+              }, 'Edit')
+            ])
+          }
+        }
+      ],
+      tmcData: [
+        {
+          AdderType: 'Warranty Cost',
+          Description: '3 year',
+          Cost: 67.1
+        },
+        {
+          AdderType: 'Non-BMC Uplift',
+          Description: '',
+          Cost: 0
+        },
+        {
+          AdderType: 'EO',
+          Description: '',
+          Cost: 3.29
+        },
+        {
+          AdderType: 'GSC Real Cost Group',
+          Description: '',
+          Cost: 0
+        },
+        {
+          AdderType: 'Country Adjustment',
+          Description: '',
+          Cost: null
+        },
+        {
+          AdderType: 'TMC of missing Key part(manually input)',
+          Description: '',
+          Cost: null
+        }
+      ],
+      CostAdjustmentColumn: [
+        {
+          title: 'Adder Type',
+          key: 'AdderType'
+        },
+        {
+          title: 'Description',
+          key: 'Description'
+        },
+        {
+          title: 'Cost',
+          key: 'Cost'
+        },
+        {
+          title: 'Action',
+          key: 'action',
+          render: (h, params) => {
+            return h('div', [
+              h('Button', {
+                props: {
+                  type: 'text',
+                  size: 'small'
+                },
+                on: {
+                  click: () => {
+                    this.editCostAdjustment(params.index)
+                  }
+                }
+              }, 'Edit')
+            ])
+          }
+        }
+      ],
+      CostAdjustmentData: [
+        {
+          AdderType: 'MOT',
+          Description: 'Ocean',
+          Cost: 3.04
+        },
+        {
+          AdderType: 'Customer Funding',
+          Description: '',
+          Cost: 10
+        }
+      ],
       detailcolumns1: [
         {
           headerName: ' ',
@@ -1866,9 +2251,6 @@ export default {
       ]
     }
   },
-  // beforeDestroy () {
-  //   off(window, 'resize', this.resize())
-  // },
   created () {
     this.toggleList()
     this.toggleList1()
@@ -1884,121 +2266,145 @@ export default {
     })
   },
   methods: {
+    editTMC (index) {
+      var _self = this
+      _self.modaltmc = true
+      _self.modalTMCdata = _self.tmcData[index]
+    },
+    editBMC (index) {
+      var _self = this
+      _self.modalbmc = true
+      _self.modalBMCdata = _self.bmcData[index]
+    },
+    editnetBMC (index) {
+      var _self = this
+      _self.modalnetbmc = true
+      _self.modalnetBMCdata = _self.netbmcData[index]
+    },
+    editCostAdjustment (index) {
+      var _self = this
+      _self.modelcostadjustment = true
+      _self.modalcostadjustmentdata = _self.CostAdjustmentData[index]
+    },
+    tableBMCSave (index) {
+      var _self = this
+      _self.bmcData[index] = _self.modalBMCdata
+      _self.modalbmc = false
+    },
+    tableTMCSave (index) {
+      var _self = this
+      _self.tmcData[index] = _self.modalTMCdata
+      _self.modaltmc = false
+    },
+    tableNetBMCSave (index) {
+      var _self = this
+      _self.netbmcData[index] = _self.modalNetBMCdata
+      _self.modalnetbmc = false
+    },
+    tableCostaAjustmentSave (index) {
+      var _self = this
+      _self.CostAdjustmentData[index] = _self.modalcostadjustmentdata
+      _self.modelcostadjustment = false
+    },
     onGridReady (params) {
       params.api.sizeColumnsToFit()
     },
-    ok(){
-      var obj = [{
+    ok () {
+      var obj = [
+        {
           id: 1,
           quarter: 'F1Q 18/19',
           brand: 'ThinkPad Classic',
           brsum: 'Notebook',
           subser: 'X280',
+          prono: '20KECTO1WW',
+          prodesc: 'Notebook ThinkPad X280 20KECTO1WW Rx',
+          vol: '1',
+          listpri: '1905.72',
+          stndpri: '1905.72',
+          respri: '600',
+          estpri: '655',
+          finalpri: '0',
+          disc: '65.6',
+          bmc: '1050.7',
+          netbmc: '1040.70',
+          CostAdjustment: 21.7,
+          FinalTMC: 1057.3,
+          tmc: '1079',
+          bmcmar: '-374.2',
+          tmcmar: '-402.5',
+          bmcb: '-57.1%',
+          tmcb: '-61.4%',
+          gr: '4875',
+          grre: '0',
+          netre: '655',
+          pti: '1149.86',
+          ptipro: '-494.86',
+          ptimar: '-75.6%'
+        },
+        {
+          id: '',
+          quarter: 'F2Q 18/19',
+          brand: 'ThinkPad Classic',
+          brsum: 'Notebook',
+          subser: 'X280',
           prono: '20KECTO1WW config',
           prodesc: 'Notebook ThinkPad X280 20KECTO1WW Rx',
-          vol: '300',
-          listpri: '10641.64',
-          stndpri: '10641.64',
-          respri: '817',
-          estpri: '850',
+          vol: '1',
+          listpri: '1905.72',
+          stndpri: '1905.72',
+          respri: '600',
+          estpri: '655',
           finalpri: '0',
-          disc: '1',
-          bmc: '786.03',
-          tmc: '801.7',
-          bmcmar: '19.69',
-          tmcmar: '19.69',
-          bmcb: '2.00',
-          tmcb: '2.00',
+          disc: '65.6',
+          bmc: '1009.85',
+          netbmc: '999.85',
+          CostAdjustment: 21.7,
+          FinalTMC: 1017.51,
+          tmc: '1039.21',
+          bmcmar: '-333.35',
+          tmcmar: '-362.71',
+          bmcb: '-50.9%',
+          tmcb: '-55.4%',
           gr: '4875',
           grre: '0',
-          netre: '4875',
-          pti: '1075.23',
-          ptipro: '-100.23',
-          ptimar: '-10.30%'
+          netre: '655',
+          pti: '1110.07',
+          ptipro: '-455.06',
+          ptimar: '-69.5%'
         },
         {
           id: '',
-          quarter: 'F2Q 18/19',
+          quarter: 'F3Q 18/19',
           brand: 'ThinkPad Classic',
           brsum: 'Notebook',
           subser: 'X280',
-          prono: '20KECTO1WW',
+          prono: '20KECTO1WW config',
           prodesc: 'Notebook ThinkPad X280 20KECTO1WW Rx',
-          vol: '300',
-          listpri: '10641.64',
-          stndpri: '10641.64',
-          respri: '817',
-          estpri: '850',
+          vol: '1',
+          listpri: '1905.72',
+          stndpri: '1905.72',
+          respri: '600',
+          estpri: '655',
           finalpri: '0',
-          disc: '1',
-          bmc: '786.03',
-          tmc: '804.92',
-          bmcmar: '19.69',
-          tmcmar: '21.01',
-          bmcb: '2.00',
-          tmcb: '2.00',
+          disc: '65.6',
+          bmc: '985.33',
+          netbmc: '975.33',
+          CostAdjustment: 21.7,
+          FinalTMC: 992.95,
+          tmc: '1014.65',
+          bmcmar: '-308.83',
+          tmcmar: '-338.15',
+          bmcb: '-47.2%',
+          tmcb: '-51.6%',
           gr: '4875',
           grre: '0',
-          netre: '4875',
-          pti: '1073.91',
-          ptipro: '-98.92',
-          ptimar: '-10.30%'
-        },{
-          id: '',
-          quarter: 'F2Q 18/19',
-          brand: 'ThinkPad Classic',
-          brsum: 'Notebook',
-          subser: 'X280',
-          prono: '20KECTO1WW',
-          prodesc: 'Notebook ThinkPad X280 20KECTO1WW Rx',
-          vol: '300',
-          listpri: '10641.64',
-          stndpri: '10641.64',
-          respri: '817',
-          estpri: '850',
-          finalpri: '0',
-          disc: '1',
-          bmc: '786.03',
-          tmc: '804.92',
-          bmcmar: '19.69',
-          tmcmar: '21.01',
-          bmcb: '2.00',
-          tmcb: '2.00',
-          gr: '4875',
-          grre: '0',
-          netre: '4875',
-          pti: '1073.91',
-          ptipro: '-98.92',
-          ptimar: '-10.30%'
-        },
-        {
-          id: '',
-          quarter: 'F2Q 18/19',
-          brand: 'ThinkPad Classic',
-          brsum: 'Notebook',
-          subser: 'X280',
-          prono: '20KECTO1WW',
-          prodesc: 'Notebook ThinkPad X280 20KECTO1WW Rx',
-          vol: '300',
-          listpri: '10641.64',
-          stndpri: '10641.64',
-          respri: '817',
-          estpri: '850',
-          finalpri: '0',
-          disc: '1',
-          bmc: '786.03',
-          tmc: '804.92',
-          bmcmar: '19.69',
-          tmcmar: '21.01',
-          bmcb: '2.00',
-          tmcb: '2.00',
-          gr: '4875',
-          grre: '0',
-          netre: '4875',
-          pti: '1073.91',
-          ptipro: '-98.92',
-          ptimar: '-10.30%'
-        }]
+          netre: '655',
+          pti: '1085.51',
+          ptipro: '-430.5',
+          ptimar: '-65.7%'
+        }
+      ]
       this.rowData = obj
     },
     calcGridHeight () {
@@ -2044,9 +2450,6 @@ export default {
     },
     handleMoving (e) {
       console.log(e.atMin, e.atMax)
-    },
-    importTransaction () {
-      this.$router.push('/excel/excel_importTransaction')
     },
     toggleList () {
       let boxitem = document.getElementsByClassName('boxitem')[0]
@@ -2195,5 +2598,7 @@ h3{
 .headerColor4{
   background: #B4C6E7
 }
-
+.ivu-table td, .ivu-table th{
+  height:35px;
+}
 </style>

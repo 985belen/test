@@ -130,7 +130,7 @@
             </ag-grid-vue>
           </Card>
         </div>
-             <div v-if="tab2" style="width: 100%; padding:10px; border-collapse: collapse; min-height: 300px;">
+          <div v-if="tab2" style="width: 100%; padding:10px; border-collapse: collapse; min-height: 300px;">
             <ag-grid-vue
               style="width: 100%; height:100%;"
               class="ag-theme-balham"
@@ -148,7 +148,7 @@
               rowSelection="multiple">
             </ag-grid-vue>
           </div>
-             <div v-if="tab3" style="width: 100%; padding:10px; border-collapse: collapse; min-height: 300px;">
+          <div v-if="tab3" style="width: 100%; padding:10px; border-collapse: collapse; min-height: 300px;">
             <ag-grid-vue
               style="width: 100%; height:100%;"
               class="ag-theme-balham"
@@ -235,7 +235,7 @@
     <ag-grid-vue
       style="width: 100%; height:100%;"
       class="ag-theme-balham"
-      v-if="productcolumns1"
+      v-if="modelProduct"
       :columnDefs="productcolumns1"
       :rowData="productdata1"
       :floatingFilter="true"
@@ -399,6 +399,118 @@
       </ag-grid-vue>
     </div>
   </Modal>
+  <Modal
+    v-model="modelBMC"
+    title="BMC"
+    :styles="{width:'800px'}"
+    ok-text="Apply"
+    cancel-text="Cancel">
+    <Table border :columns="bmcColumn" :data="bmcData"></Table>
+  </Modal>
+  <Modal
+    v-model="modelTMC"
+    title="TMC"
+    :styles="{width:'800px'}"
+    ok-text="Apply"
+    cancel-text="Cancel">
+    <Table border :columns="tmcColumn" :data="tmcData"></Table>
+  </Modal>
+  <Modal
+    v-model="modelNetBMC"
+    title="Net BMC"
+    :styles="{width:'800px'}"
+    ok-text="Apply"
+    cancel-text="Cancel">
+    <Table border :columns="netbmcColumn" :data="netbmcData"></Table>
+  </Modal>
+  <Modal v-model="modelCostAdjustment" width="800">
+    <p slot="header">
+      <Icon type="ios-information-circle"></Icon>
+      <span>Cost Adjustment</span>
+    </p>
+    <div style="text-align:center">
+      <Table border :columns="CostAdjustmentColumn" :data="CostAdjustmentData"></Table>
+    </div>
+    <div slot="footer">
+      <!-- <Button type="error" size="large" @click="del">Delete</Button> -->
+    </div>
+  </Modal>
+  <Modal v-model="modalbmc" width='600'>
+    <p slot="header">
+      <Icon type="ios-information-circle"></Icon>
+      <span>BMC</span>
+    </p>
+    <div style="height: 50px">
+      <Form :label-width="60">
+        <Col span="12">
+          <FormItem label="Cost">
+            <Input placeholder="Please enter something..." number v-model="modalBMCdata.Cost"/>
+          </FormItem>
+        </Col>
+      </Form>
+    </div>
+    <div slot="footer">
+      <Button type="text" size="small" @click="modalbmc=false">Cancel</Button>
+      <Button type="primary" size="small" @click="tableBMCSave">OK</Button>
+    </div>
+  </Modal>
+  <Modal v-model="modaltmc" width='600'>
+    <p slot="header">
+      <Icon type="ios-information-circle"></Icon>
+      <span>TMC</span>
+    </p>
+    <div style="height: 50px">
+      <Form :label-width="60">
+        <Col span="12">
+          <FormItem label="Cost">
+            <Input placeholder="Please enter something..." number v-model="modalTMCdata.Cost"/>
+          </FormItem>
+        </Col>
+      </Form>
+    </div>
+    <div slot="footer">
+      <Button type="text" size="small" @click="modaltmc=false">Cancel</Button>
+      <Button type="primary" size="small" @click="tableTMCSave">OK</Button>
+    </div>
+  </Modal>
+  <Modal v-model="modalnetbmc" width='600'>
+    <p slot="header">
+      <Icon type="ios-information-circle"></Icon>
+      <span>Net BMC</span>
+    </p>
+    <div style="height: 50px">
+      <Form :label-width="60">
+        <Col span="12">
+          <FormItem label="Cost">
+            <Input placeholder="Please enter something..." number v-model="modalnetBMCdata.Cost"/>
+          </FormItem>
+        </Col>
+      </Form>
+    </div>
+    <div slot="footer">
+      <Button type="text" size="small" @click="modalnetbmc=false">Cancel</Button>
+      <Button type="primary" size="small" @click="tableNetBMCSave">OK</Button>
+    </div>
+  </Modal>
+  <Modal v-model="modelcostadjustment" width='600'>
+    <p slot="header">
+      <Icon type="ios-information-circle"></Icon>
+      <span>Cost Adjustment</span>
+    </p>
+    <div style="height: 50px">
+      <Form :label-width="60">
+        <Col span="12">
+          <FormItem label="Cost">
+            <Input placeholder="Please enter something..." number v-model="modalcostadjustmentdata.Cost"/>
+          </FormItem>
+        </Col>
+      </Form>
+    </div>
+    <div slot="footer">
+      <Button type="text" size="small" @click="modelcostadjustment=false">Cancel</Button>
+      <Button type="primary" size="small" @click="tableCostaAjustmentSave">OK</Button>
+    </div>
+  </Modal>
 </div>
 </template>
 <script>
@@ -407,6 +519,27 @@ import SplitPane from '_c/split-pane'
 export default {
   data () {
     return {
+      // 新建编辑数据
+      modalTMCdata: {
+        Cost: null
+      },
+      modalBMCdata: {
+        Cost: null
+      },
+      modalnetBMCdata: {
+        Cost: null
+      },
+      modalcostadjustmentdata: {
+        Cost: null
+      },
+      modalbmc: false,
+      modaltmc: false,
+      modalnetbmc: false,
+      modelcostadjustment: false,
+      modelBMC: false,
+      modelTMC: false,
+      modelNetBMC: false,
+      modelCostAdjustment: false,
       toggle: true,
       toggle1: false,
       toggle2: true,
@@ -542,7 +675,7 @@ export default {
           Currency: 'USD'
         },
         {
-          TransactionID: '0002297646',
+          TransactionID: '0002214846',
           Description: 'CAT:KPMG _ RFP Turkey',
           ProductID: 'Notebook ThinkPad T480 20L6CTO1WW Rx',
           ProductDesc: '20L6CTO1WW',
@@ -628,7 +761,7 @@ export default {
       ComponentsListData: [
         {
           CategoryID: 'SBB0M45830',
-          Description: ' Intel Core i5-7500T 2.7G 4C',
+          Description: ' Intel Core i5-6550T 2.7G 4C',
           QTY: '1',
           TMC: ' 183.07'
         },
@@ -724,7 +857,7 @@ export default {
         },
         {
           headerName: 'Brand Summary',
-          width: 100,
+          width: 130,
           field: 'brsum',
           cellStyle: {'text-align': 'left'}
         },
@@ -779,7 +912,7 @@ export default {
           cellStyle: {'text-align': 'left'}
         },
         {
-          headerName: 'Request price',
+          headerName: 'Req`st price',
           width: 120,
           field: 'respri',
           cellStyle: {'text-align': 'left'}
@@ -802,7 +935,7 @@ export default {
         },
         {
           headerName: 'Discount %',
-          width: 100,
+          width: 110,
           field: 'disc',
           editable: true,
           headerClass:'headerColor4',
@@ -812,12 +945,54 @@ export default {
           headerName: 'BMC',
           width: 100,
           field: 'bmc',
-          cellStyle: {'text-align': 'left'}
+          cellStyle: {'text-align': 'left'},
+          cellRenderer: (params) => {
+            return '<a title="' + params.value +'"href="#">' + params.value + '</a>'
+          },
+          onCellClicked: () => {
+            this.modelBMC = true
+          }
+        },
+        {
+          headerName: 'Net BMC',
+          width: 100,
+          field: 'netbmc',
+          cellStyle: {'text-align': 'left'},
+          cellRenderer: (params) => {
+            return '<a title="' + params.value +'"href="#">' + params.value + '</a>'
+          },
+          onCellClicked: () => {
+            this.modelNetBMC = true
+          }
         },
         {
           headerName: 'TMC',
           width: 100,
           field: 'tmc',
+          cellStyle: {'text-align': 'left'},
+          cellRenderer: (params) => {
+            return '<a title="' + params.value +'"href="#">' + params.value + '</a>'
+          },
+          onCellClicked: () => {
+            this.modelTMC = true
+          }
+        },
+        {
+          headerName: 'Cost Adjustment',
+          width: 140,
+          field: 'CostAdjustment',
+          cellStyle: {'text-align': 'left'},
+          cellRenderer: (params) => {
+            return '<a title="' + params.value +'"href="#">' + params.value + '</a>'
+          },
+          onCellClicked: () => {
+            this.modelCostAdjustment = true
+          }
+        },
+        {
+          headerName: 'Final TMC',
+          width: 120,
+          field: 'FinalTMC',
           cellStyle: {'text-align': 'left'}
         },
         {
@@ -862,13 +1037,13 @@ export default {
         },
         {
           headerName: 'GR Reduce %',
-          width: 110,
+          width: 120,
           field: 'grre',
           cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'Net Revenue',
-          width: 100,
+          width: 110,
           field: 'netre',
           cellStyle: {'text-align': 'left'}
         },
@@ -898,55 +1073,61 @@ export default {
           brand: 'ThinkPad Classic',
           brsum: 'Notebook',
           subser: 'X280',
-          prono: '20KECTO1WW config',
+          prono: '20KECTO1WW',
           prodesc: 'Notebook ThinkPad X280 20KECTO1WW Rx',
-          vol: '300',
-          listpri: '10641.64',
-          stndpri: '10641.64',
-          respri: '817',
-          estpri: '850',
+          vol: '1',
+          listpri: '1905.72',
+          stndpri: '1905.72',
+          respri: '600',
+          estpri: '655',
           finalpri: '0',
-          disc: '1',
-          bmc: '786.03',
-          tmc: '801.7',
-          bmcmar: '19.69',
-          tmcmar: '19.69',
-          bmcb: '2.00',
-          tmcb: '2.00',
+          disc: '65.6',
+          bmc: '1050.7',
+          netbmc: '1040.70',
+          CostAdjustment: 21.7,
+          FinalTMC: 1057.3,
+          tmc: '1079',
+          bmcmar: '-374.2',
+          tmcmar: '-402.5',
+          bmcb: '-57.1%',
+          tmcb: '-61.4%',
           gr: '4875',
           grre: '0',
-          netre: '4875',
-          pti: '1075.23',
-          ptipro: '-100.23',
-          ptimar: '-10.30%'
+          netre: '655',
+          pti: '1149.86',
+          ptipro: '-494.86',
+          ptimar: '-75.6%'
         },
         {
-          id: '2',
+          id: '',
           quarter: 'F2Q 18/19',
           brand: 'ThinkPad Classic',
           brsum: 'Notebook',
           subser: 'X280',
-          prono: '20KECTO1WW',
+          prono: '20KECTO1WW config',
           prodesc: 'Notebook ThinkPad X280 20KECTO1WW Rx',
-          vol: '300',
-          listpri: '10641.64',
-          stndpri: '10641.64',
-          respri: '817',
-          estpri: '850',
+          vol: '1',
+          listpri: '1905.72',
+          stndpri: '1905.72',
+          respri: '600',
+          estpri: '655',
           finalpri: '0',
-          disc: '1',
-          bmc: '786.03',
-          tmc: '804.92',
-          bmcmar: '19.69',
-          tmcmar: '21.01',
-          bmcb: '2.00',
-          tmcb: '2.00',
+          disc: '65.6',
+          bmc: '1009.85',
+          netbmc: '999.85',
+          CostAdjustment: 21.7,
+          FinalTMC: 1017.51,
+          tmc: '1039.21',
+          bmcmar: '-333.35',
+          tmcmar: '-362.71',
+          bmcb: '-50.9%',
+          tmcb: '-55.4%',
           gr: '4875',
           grre: '0',
-          netre: '4875',
-          pti: '1073.91',
-          ptipro: '-98.92',
-          ptimar: '-10.30%'
+          netre: '655',
+          pti: '1110.07',
+          ptipro: '-455.06',
+          ptimar: '-69.5%'
         },
         {
           id: '',
@@ -956,25 +1137,28 @@ export default {
           subser: 'X280',
           prono: '20KECTO1WW config',
           prodesc: 'Notebook ThinkPad X280 20KECTO1WW Rx',
-          vol: '300',
-          listpri: '10641.64',
-          stndpri: '10641.64',
-          respri: '817',
-          estpri: '850',
+          vol: '1',
+          listpri: '1905.72',
+          stndpri: '1905.72',
+          respri: '600',
+          estpri: '655',
           finalpri: '0',
-          disc: '1',
-          bmc: '786.03',
-          tmc: '806.12',
-          bmcmar: '19.69',
-          tmcmar: '18.82',
-          bmcb: '2.00',
-          tmcb: '2.00',
+          disc: '65.6',
+          bmc: '985.33',
+          netbmc: '975.33',
+          CostAdjustment: 21.7,
+          FinalTMC: 992.95,
+          tmc: '1014.65',
+          bmcmar: '-308.83',
+          tmcmar: '-338.15',
+          bmcb: '-47.2%',
+          tmcb: '-51.6%',
           gr: '4875',
           grre: '0',
-          netre: '4875',
-          pti: '1076.11',
-          ptipro: '-101.11',
-          ptimar: '-10.4%'
+          netre: '655',
+          pti: '1085.51',
+          ptipro: '-430.5',
+          ptimar: '-65.7%'
         },
         {
           id: '',
@@ -984,249 +1168,362 @@ export default {
           subser: 'X280',
           prono: '20KECTO1WW config',
           prodesc: 'Notebook ThinkPad X280 20KECTO1WW Rx',
-          vol: '300',
-          listpri: '10641.64',
-          stndpri: '10641.64',
-          respri: '817',
-          estpri: '850',
+          vol: '1',
+          listpri: '1905.72',
+          stndpri: '1905.72',
+          respri: '600',
+          estpri: '655',
           finalpri: '0',
-          disc: '1',
-          bmc: '786.03',
-          tmc: '806.12',
-          bmcmar: '19.69',
-          tmcmar: '18.82',
-          bmcb: '2.00',
-          tmcb: '2.00',
+          disc: '65.6',
+          bmc: '980.95',
+          netbmc: '907.75',
+          CostAdjustment: 21.7,
+          FinalTMC: 992.95,
+          tmc: '1014.65',
+          bmcmar: '-304.45',
+          tmcmar: '-333.76',
+          bmcb: '-46.5%',
+          tmcb: '-51%',
           gr: '4875',
           grre: '0',
-          netre: '4875',
-          pti: '1076.11',
-          ptipro: '-101.11',
-          ptimar: '-10.4%'
+          netre: '655',
+          pti: '1081.12',
+          ptipro: '-426.12',
+          ptimar: '-65.1%'
         },
         {
           id: 2,
           quarter: 'F1Q 18/19',
-          brand: 'ThinkStation',
-          brsum: 'Workstation',
-          subser: 'ThinkStation P520',
-          prono: '30BFCTO1WW',
-          prodesc: 'Workstation TS P520_C442_ES_TW_R',
+          brand: 'Notebook',
+          brsum: 'Server Options',
+          subser: 'TP Hybrid USB-C Dock',
+          prono: '40AF0135CH',
+          prodesc: 'TP Hybrid USB-C Dock - CH',
           vol: '5',
-          listpri: '1197302.47',
-          stndpri: '1197302.47',
-          respri: '976',
+          listpri: '277.47',
+          stndpri: '277.47',
+          respri: '149',
           estpri: '1200',
-          finalpri: '975',
-          disc: '0.999',
-          bmc: '786.03',
-          tmc: '955.31',
-          bmcmar: '19.69',
-          tmcmar: '19.69',
-          bmcb: '-2.00',
-          tmcb: '-2.00',
+          finalpri: '149',
+          disc: '46.3',
+          bmc: '102,76',
+          netbmc: '102,76',
+          CostAdjustment: 4.68,
+          FinalTMC: 98.08,
+          tmc: '102,76',
+          bmcmar: '43.74',
+          tmcmar: '43.74',
+          bmcb: '30.3%',
+          tmcb: '30.3%',
           gr: '29525',
-          grre: '0',
-          netre: '29525',
-          pti: '1391.72',
-          ptipro: '-210.72',
-          ptimar: '-17.8%'
+          grre: '-3%',
+          netre: '1445',
+          pti: '121.35',
+          ptipro: '23.18',
+          ptimar: '-16%'
         },
         {
           id: '',
           quarter: 'F2Q 18/19',
-          brand: 'ThinkStation',
-          brsum: 'Workstation',
-          subser: 'ThinkStation P520',
-          prono: '30BFCTO1WW',
-          prodesc: 'Workstation TS P520_C442_ES_TW_R',
+          brand: 'Notebook',
+          brsum: 'Server Options',
+          subser: 'TP Hybrid USB-C Dock',
+          prono: '40AF0135CH',
+          prodesc: 'TP Hybrid USB-C Dock - CH',
           vol: '5',
-          listpri: '1197302.47',
-          stndpri: '1197302.47',
-          respri: '976',
+          listpri: '277.47',
+          stndpri: '277.47',
+          respri: '149',
           estpri: '1200',
-          finalpri: '975',
-          disc: '0.999',
-          bmc: '786.03',
-          tmc: '953.99',
-          bmcmar: '19.69',
-          tmcmar: '21.01',
-          bmcb: '2.00',
-          tmcb: '2.00',
+          finalpri: '149',
+          disc: '46.3',
+          bmc: '102,76',
+          netbmc: '102,77',
+          CostAdjustment: 4.68,
+          FinalTMC: 98.08,
+          tmc: '102,76',
+          bmcmar: '43.74',
+          tmcmar: '43.74',
+          bmcb: '30.3%',
+          tmcb: '30.3%',
           gr: '29525',
-          grre: '0',
-          netre: '29525',
-          pti: '1387.21',
-          ptipro: '-206.21',
-          ptimar: '-17.5%'
+          grre: '-3%',
+          netre: '1445',
+          pti: '121.35',
+          ptipro: '23.18',
+          ptimar: '-16%'
         },
         {
           id: '',
           quarter: 'F3Q 18/19',
-          brand: 'ThinkStation',
-          brsum: 'Workstation',
-          subser: 'ThinkStation P520',
-          prono: '30BFCTO1WW',
-          prodesc: 'Workstation TS P520_C442_ES_TW_R',
+          brand: 'Notebook',
+          brsum: 'Server Options',
+          subser: 'TP Hybrid USB-C Dock',
+          prono: '40AF0135CH',
+          prodesc: 'TP Hybrid USB-C Dock - CH',
           vol: '5',
-          listpri: '1197302.47',
-          stndpri: '1197302.47',
-          respri: '976',
+          listpri: '277.47',
+          stndpri: '277.47',
+          respri: '149',
           estpri: '1200',
-          finalpri: '975',
-          disc: '0.999',
-          bmc: '786.03',
-          tmc: '956.18',
-          bmcmar: '19.69',
-          tmcmar: '18.82',
-          bmcb: '2.00',
-          tmcb: '2.00',
+          finalpri: '149',
+          disc: '46.3',
+          bmc: '102,76',
+          netbmc: '102,78',
+          CostAdjustment: 4.68,
+          FinalTMC: 98.08,
+          tmc: '102.76',
+          bmcmar: '43.74',
+          tmcmar: '43.74',
+          bmcb: '30.3%',
+          tmcb: '30.3%',
           gr: '29525',
-          grre: '0',
-          netre: '29525',
-          pti: '1386.51',
-          ptipro: '-205.51',
-          ptimar: '-17.4%'
+          grre: '-3%',
+          netre: '1445',
+          pti: '121.35',
+          ptipro: '23.18',
+          ptimar: '-16%'
         },
         {
           id: '',
           quarter: 'F4Q 18/19',
-          brand: 'ThinkStation',
-          brsum: 'Workstation',
-          subser: 'ThinkStation P520',
-          prono: '30BFCTO1WW',
-          prodesc: 'Workstation TS P520_C442_ES_TW_R',
+          brand: 'Notebook',
+          brsum: 'Server Options',
+          subser: 'TP Hybrid USB-C Dock',
+          prono: '40AF0135CH',
+          prodesc: 'TP Hybrid USB-C Dock - CH',
           vol: '5',
-          listpri: '1197302.47',
-          stndpri: '1197302.47',
-          respri: '976',
+          listpri: '277.47',
+          stndpri: '277.47',
+          respri: '149',
           estpri: '1200',
-          finalpri: '975',
-          disc: '0.999',
-          bmc: '786.03',
-          tmc: '956.18',
-          bmcmar: '19.69',
-          tmcmar: '18.82',
-          bmcb: '-2.00',
-          tmcb: '-2.00',
+          finalpri: '149',
+          disc: '46.3',
+          bmc: '102,76',
+          netbmc: '102,79',
+          CostAdjustment: 4.68,
+          FinalTMC: 98.08,
+          tmc: '102.76',
+          bmcmar: '43.74',
+          tmcmar: '43.74',
+          bmcb: '30.3%',
+          tmcb: '30.3%',
           gr: '29525',
-          grre: '0',
-          netre: '29525',
-          pti: '1386.51',
-          ptipro: '-205.51',
-          ptimar: '-17.4%'
+          grre: '-3%',
+          netre: '1445',
+          pti: '121.35',
+          ptipro: '23.18',
+          ptimar: '-16%'
+        }
+      ],
+      netbmcColumn: [
+        {
+          title: 'Adder Type',
+          key: 'AdderType'
         },
         {
-          id: 3,
-          quarter: 'F1Q 18/19',
-          brand: 'ThinkStation',
-          brsum: 'Workstation',
-          subser: 'ThinkStation P520',
-          prono: '30BFCTO1WW',
-          prodesc: 'Workstation TS P520_C442_ES_TW_R',
-          vol: '5',
-          listpri: '1197302.47',
-          stndpri: '1197302.47',
-          respri: '976',
-          estpri: '1200',
-          finalpri: '975',
-          disc: '0.999',
-          bmc: '786.03',
-          tmc: '955.31',
-          bmcmar: '19.69',
-          tmcmar: '19.69',
-          bmcb: '2.00',
-          tmcb: '2.00',
-          gr: '29525',
-          grre: '0',
-          netre: '29525',
-          pti: '1391.72',
-          ptipro: '-210.72',
-          ptimar: '-17.8%'
+          title: 'Description',
+          key: 'Description'
         },
         {
-          id: '',
-          quarter: 'F2Q 18/19',
-          brand: 'ThinkStation',
-          brsum: 'Workstation',
-          subser: 'ThinkStation P520',
-          prono: '30BFCTO1WW',
-          prodesc: 'Workstation TS P520_C442_ES_TW_R',
-          vol: '5',
-          listpri: '1197302.47',
-          stndpri: '1197302.47',
-          respri: '976',
-          estpri: '1200',
-          finalpri: '975',
-          disc: '0.999',
-          bmc: '786.03',
-          tmc: '953.99',
-          bmcmar: '19.69',
-          tmcmar: '21.01',
-          bmcb: '2.00',
-          tmcb: '2.00',
-          gr: '29525',
-          grre: '0',
-          netre: '29525',
-          pti: '1387.21',
-          ptipro: '-206.21',
-          ptimar: '-17.5%'
+          title: 'Cost',
+          key: 'Cost'
         },
         {
-          id: '',
-          quarter: 'F3Q 18/19',
-          brand: 'ThinkStation',
-          brsum: 'Workstation',
-          subser: 'ThinkStation P520',
-          prono: '30BFCTO1WW',
-          prodesc: 'Workstation TS P520_C442_ES_TW_R',
-          vol: '5',
-          listpri: '1197302.47',
-          stndpri: '1197302.47',
-          respri: '976',
-          estpri: '1200',
-          finalpri: '975',
-          disc: '0.999',
-          bmc: '786.03',
-          tmc: '956.18',
-          bmcmar: '19.69',
-          tmcmar: '18.82',
-          bmcb: '2.00',
-          tmcb: '2.00',
-          gr: '29525',
-          grre: '0',
-          netre: '29525',
-          pti: '1386.51',
-          ptipro: '-205.51',
-          ptimar: '-17.4%'
+          title: 'Action',
+          key: 'action',
+          render: (h, params) => {
+            return h('div', [
+              h('Button', {
+                props: {
+                  type: 'text',
+                  size: 'small'
+                },
+                on: {
+                  click: () => {
+                    this.editnetBMC(params.index)
+                  }
+                }
+              }, 'Edit')
+            ])
+          }
+        }
+      ],
+      netbmcData: [
+        {
+          AdderType: 'Backend Funding',
+          Description: 'Intel Core i5-7500T 2.7G 4C',
+          Cost: 2
         },
         {
-          id: '',
-          quarter: 'F4Q 18/19',
-          brand: 'ThinkStation',
-          brsum: 'Workstation',
-          subser: 'ThinkStation P520',
-          prono: '30BFCTO1WW',
-          prodesc: 'Workstation TS P520_C442_ES_TW_R',
-          vol: '5',
-          listpri: '1197302.47',
-          stndpri: '1197302.47',
-          respri: '976',
-          estpri: '1200',
-          finalpri: '975',
-          disc: '0.999',
-          bmc: '786.03',
-          tmc: '956.18',
-          bmcmar: '19.69',
-          tmcmar: '18.82',
-          bmcb: '-2.00',
-          tmcb: '2.00',
-          gr: '29525',
-          grre: '0',
-          netre: '29525',
-          pti: '1386.51',
-          ptipro: '-205.51',
-          ptimar: '-17.4%'
+          AdderType: 'Segment Funding',
+          Description: '',
+          Cost: null
+        },
+        {
+          AdderType: 'Customer Funding',
+          Description: '',
+          Cost: 10
+        },
+        {
+          AdderType: 'Special Funding(manually input)',
+          Description: '',
+          Cost: null
+        }
+      ],
+      bmcColumn: [
+        {
+          title: 'Adder Type',
+          key: 'AdderType'
+        },
+        {
+          title: 'Description',
+          key: 'Description'
+        },
+        {
+          title: 'Cost',
+          key: 'Cost'
+        },
+        {
+          title: 'Action',
+          key: 'action',
+          render: (h, params) => {
+            return h('div', [
+              h('Button', {
+                props: {
+                  type: 'text',
+                  size: 'small'
+                },
+                on: {
+                  click: () => {
+                    this.editBMC(params.index)
+                  }
+                }
+              }, 'Edit')
+            ])
+          }
+        }
+      ],
+      bmcData: [
+        {
+          AdderType: 'MOT',
+          Description: 'MIX',
+          Cost: 14.73
+        },
+        {
+          AdderType: 'BMC of missing Key part（manually input)',
+          Description: '',
+          Cost: null
+        }
+      ],
+      tmcColumn: [
+        {
+          title: 'Adder Type',
+          key: 'AdderType'
+        },
+        {
+          title: 'Description',
+          key: 'Description'
+        },
+        {
+          title: 'Cost',
+          key: 'Cost'
+        },
+        {
+          title: 'Action',
+          key: 'action',
+          render: (h, params) => {
+            return h('div', [
+              h('Button', {
+                props: {
+                  type: 'text',
+                  size: 'small'
+                },
+                on: {
+                  click: () => {
+                    this.editTMC(params.index)
+                  }
+                }
+              }, 'Edit')
+            ])
+          }
+        }
+      ],
+      tmcData: [
+        {
+          AdderType: 'Warranty Cost',
+          Description: '3 year',
+          Cost: 67.1
+        },
+        {
+          AdderType: 'Non-BMC Uplift',
+          Description: '',
+          Cost: 0
+        },
+        {
+          AdderType: 'EO',
+          Description: '',
+          Cost: 3.29
+        },
+        {
+          AdderType: 'GSC Real Cost Group',
+          Description: '',
+          Cost: 0
+        },
+        {
+          AdderType: 'Country Adjustment',
+          Description: '',
+          Cost: null
+        },
+        {
+          AdderType: 'TMC of missing Key part(manually input)',
+          Description: '',
+          Cost: null
+        }
+      ],
+      CostAdjustmentColumn: [
+        {
+          title: 'Adder Type',
+          key: 'AdderType'
+        },
+        {
+          title: 'Description',
+          key: 'Description'
+        },
+        {
+          title: 'Cost',
+          key: 'Cost'
+        },
+        {
+          title: 'Action',
+          key: 'action',
+          render: (h, params) => {
+            return h('div', [
+              h('Button', {
+                props: {
+                  type: 'text',
+                  size: 'small'
+                },
+                on: {
+                  click: () => {
+                    this.editCostAdjustment(params.index)
+                  }
+                }
+              }, 'Edit')
+            ])
+          }
+        }
+      ],
+      CostAdjustmentData: [
+        {
+          AdderType: 'MOT',
+          Description: 'Ocean',
+          Cost: 3.04
+        },
+        {
+          AdderType: 'Customer Funding',
+          Description: '',
+          Cost: 10
         }
       ],
       detailcolumns1: [
@@ -2290,6 +2587,46 @@ export default {
     })
   },
   methods: {
+    editTMC (index) {
+      var _self = this
+      _self.modaltmc = true
+      _self.modalTMCdata = _self.tmcData[index]
+    },
+    editBMC (index) {
+      var _self = this
+      _self.modalbmc = true
+      _self.modalBMCdata = _self.bmcData[index]
+    },
+    editnetBMC (index) {
+      var _self = this
+      _self.modalnetbmc = true
+      _self.modalnetBMCdata = _self.netbmcData[index]
+    },
+    editCostAdjustment (index) {
+      var _self = this
+      _self.modelcostadjustment = true
+      _self.modalcostadjustmentdata = _self.CostAdjustmentData[index]
+    },
+    tableBMCSave (index) {
+      var _self = this
+      _self.bmcData[index] = _self.modalBMCdata
+      _self.modalbmc = false
+    },
+    tableTMCSave (index) {
+      var _self = this
+      _self.tmcData[index] = _self.modalTMCdata
+      _self.modaltmc = false
+    },
+    tableNetBMCSave (index) {
+      var _self = this
+      _self.netbmcData[index] = _self.modalNetBMCdata
+      _self.modalnetbmc = false
+    },
+    tableCostaAjustmentSave (index) {
+      var _self = this
+      _self.CostAdjustmentData[index] = _self.modalcostadjustmentdata
+      _self.modelcostadjustment = false
+    },
     onGridReady (params) {
       params.api.sizeColumnsToFit()
     },
@@ -2343,9 +2680,6 @@ export default {
     },
     handleMoving (e) {
       console.log(e.atMin, e.atMax)
-    },
-    importTransaction () {
-      this.$router.push('/excel/excel_importTransaction')
     },
     toggleList () {
       let boxitem = document.getElementsByClassName('boxitem')[0]
@@ -2493,5 +2827,8 @@ h3{
 }
 .headerColor4{
   background: #B4C6E7
+}
+.ivu-table td, .ivu-table th{
+  height:35px;
 }
 </style>
