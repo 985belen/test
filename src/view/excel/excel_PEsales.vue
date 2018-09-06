@@ -2409,15 +2409,14 @@ export default {
     },
     calcGridHeight () {
       var screenHeight = window.innerHeight
-      // console.log('topHeight:' + topHeight)
       var t1 = document.getElementsByClassName('split-pane-page-wrapper')[0]
       var topBox = document.getElementsByClassName('topBox')[0]
       var ag = document.getElementsByClassName('ag-theme-balham')[0]
       var acontainer = document.getElementsByClassName('ag-body-container')[0]
       // ag-body-container
-      ag.style.height = screenHeight - 64-285+ 'px' // 64是头部的高度，10是padding
-      t1.style.height = screenHeight - 64-285 + 'px'
-      acontainer.style.height = screenHeight - 64-64-285+ 'px'
+      ag.style.height = screenHeight - 64 - 320 + 'px'
+      t1.style.height = screenHeight - 64 - 320 + 'px'
+      acontainer.style.height = screenHeight - 64 - 320 + 'px'
       this.$nextTick(() => {
         this.toggleList1()
       }, 3000)
