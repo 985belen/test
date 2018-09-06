@@ -621,13 +621,12 @@ export default {
   methods: {
     calcGridHeight () {
       var screenHeight = window.innerHeight
-      // var topHeight = this.$refs.toolBar.offsetHeight
-      var topHeight = document.getElementsByClassName('tool-bar')[0].offsetHeight
+      var topHeight = document.getElementsByClassName('tool-bar')[0]
       // console.log('topHeight:' + topHeight)
       var ag = document.getElementsByClassName('ag-theme-balham')[0]
       var acontainer = document.getElementsByClassName('agcontainer')[0]
-      ag.style.height = screenHeight - topHeight - 64 - 40 + 'px' // 64是头部的高度，10是padding
-      acontainer.style.height = screenHeight - topHeight - 64 - 40 + 'px'
+      ag.style.height = screenHeight - topHeight.style.height - 64 - 65 + 'px' // 64是头部的高度，10是padding
+      acontainer.style.height = screenHeight - topHeight.style.height - 64 - 65 + 'px'
     },
     ok () {
      this.$router.push({

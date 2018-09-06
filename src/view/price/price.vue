@@ -905,9 +905,9 @@ export default {
       var t1 = document.getElementsByClassName('split-pane-page-wrapper')[0]
       var ag = document.getElementsByClassName('ag-theme-balham')[0]
       var acontainer = document.getElementsByClassName('agcontainer')[0]
-      ag.style.height = screenHeight - topHeight - 64 - 10 - 10 + 'px' // 64是头部的高度，10是padding
-      t1.style.height = screenHeight - topHeight - 64 - 10 - 10 + 'px'
-      acontainer.style.height = screenHeight - topHeight - 64 - 10 - 10 + 'px'
+      ag.style.height = screenHeight - topHeight - 64 - 10 - 20 + 'px' // 64是头部的高度，10是padding
+      t1.style.height = screenHeight - topHeight - 64 - 10 - 20 + 'px'
+      acontainer.style.height = screenHeight - topHeight - 64 - 20 - 10 + 'px'
       this.$nextTick(() => {
         this.toggleList1()
       }, 3000)

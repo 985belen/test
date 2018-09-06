@@ -1,33 +1,34 @@
 <template>
 <div class="dashboard-box">
-  <Form :model="FormItem" class="form-box" :label-position="left">
-    <Row>
-      <Col span=6 >
-        <FormItem label="Created by" :label-width="120">
-          <Input v-model="FormItem.Createdby" placeholder="Enter something..."/>
-        </FormItem>
-      </Col>
-      <Col span=6>
-        <FormItem label="Key words" :label-width="120">
-          <Input v-model="FormItem.Keywords" placeholder="Enter something..."/>
-        </FormItem>
-      </Col>
-      <Col span=2 offset=1>
-        <FormItem>
-          <Button type="primary" @click="CreateNewDashboard">New Dashboard</Button>
-        </FormItem>
-      </Col>
-      <Col span=2 offset=1>
-        <FormItem>
-          <Button type="primary">Search</Button>
-        </FormItem>
-      </Col>
-    </Row>
-  </Form>
-  <!-- <divider></divider> -->
+  <div class="topBox">
+    <Form :model="FormItem" class="form-box" :label-position="left">
+      <Row>
+        <Col span=6 >
+          <FormItem label="Created by" :label-width="120">
+            <Input v-model="FormItem.Createdby" placeholder="Enter something..."/>
+          </FormItem>
+        </Col>
+        <Col span=6>
+          <FormItem label="Key words" :label-width="120">
+            <Input v-model="FormItem.Keywords" placeholder="Enter something..."/>
+          </FormItem>
+        </Col>
+        <Col span=2 offset=1>
+          <FormItem>
+            <Button type="primary" @click="CreateNewDashboard">New Dashboard</Button>
+          </FormItem>
+        </Col>
+        <Col span=2 offset=1>
+          <FormItem>
+            <Button type="primary">Search</Button>
+          </FormItem>
+        </Col>
+      </Row>
+    </Form>
+  </div>
   <div class="agcontainer" style="width: 100%;height:100%;">
     <ag-grid-vue
-      style="width: 100%;height:600px;"
+      style="width: 100%;"
       class="ag-theme-balham"
       :columnDefs="columnDefs"
       :rowData="rowData"
@@ -123,6 +124,13 @@ export default {
     AgGridVue
   },
   mounted () {
+    this.calcGridHeight()
+    window.addEventListener('resize', () => {
+      window.clearTimeout(this.timer)
+      this.timer = window.setTimeout(() => {
+        this.calcGridHeight()
+      }, 100)
+    })
   },
   methods: {
     CreateNewDashboard () {
@@ -130,6 +138,15 @@ export default {
     },
     onGridReady (params) {
       params.api.sizeColumnsToFit()
+    },
+    calcGridHeight () {
+      var screenHeight = window.innerHeight
+      var topBox = document.getElementsByClassName('topBox')[0]
+      var ag = document.getElementsByClassName('ag-root-wrapper-body')[0]
+      var acontainer = document.getElementsByClassName('ag-theme-balham')[0]
+      // ag-body-container
+      ag.style.height = screenHeight - 64 - topBox.style.height - 90 + 'px'
+      acontainer.style.height = screenHeight - 64 - topBox.style.height - 90 + 'px'
     }
   }
 }
@@ -140,5 +157,10 @@ export default {
   height:100%;
   padding: 10px 0;
   background: #fff;
+}
+.form-box{
+  width: 100%;
+  height: auto;
+  overflow: hidden;
 }
 </style>

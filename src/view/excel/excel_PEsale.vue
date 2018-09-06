@@ -2579,7 +2579,7 @@ export default {
   },
   mounted () {
     this.calcGridHeight()
-     window.addEventListener('resize', () => {
+    window.addEventListener('resize', () => {
       window.clearTimeout(this.timer)
       this.timer = window.setTimeout(() => {
         this.calcGridHeight()
@@ -2637,9 +2637,9 @@ export default {
       var ag = document.getElementsByClassName('ag-theme-balham')[0]
       var acontainer = document.getElementsByClassName('ag-body-container')[0]
       // ag-body-container
-      ag.style.height = screenHeight - 64 - 285 + 'px'
-      t1.style.height = screenHeight - 64 - 285 + 'px'
-      acontainer.style.height = screenHeight - 64 - 64 - 285 + 'px'
+      ag.style.height = screenHeight - 64 - 320 + 'px'
+      t1.style.height = screenHeight - 64 - 320 + 'px'
+      acontainer.style.height = screenHeight - 64 - 320 + 'px'
       this.$nextTick(() => {
         this.toggleList1()
       }, 3000)

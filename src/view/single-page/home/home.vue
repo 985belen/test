@@ -1,6 +1,5 @@
 <template>
   <div>
-
     <Row :gutter="20">
       <i-col span="4" v-for="(infor, i) in inforCardData" :key="`infor-${i}`" style="height: 120px;">
         <infor-card shadow :color="infor.color" :icon="infor.icon" :icon-size="36">
