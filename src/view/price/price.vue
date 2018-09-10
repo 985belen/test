@@ -59,14 +59,10 @@
             :columnDefs="columnDefs"
             :rowData="rowData"
             :floatingFilter="true"
-            :enableSorting="true"
+            :frameworkComponents="frameworkComponents"
+            :enableSorting="false"
             :enableFilter="true"
-            :toolPanelSuppressGroups="true"
-            :toolPanelSuppressValues="true"
-            :toolPanelSuppressSideButtons="false"
             :singleClickEdit="true"
-            :suppressSizeToFit="true"
-            :suppressResize="true"
             :enableColResize="true"
             rowSelection="multiple">
           </ag-grid-vue>
@@ -147,15 +143,59 @@
       </div>
     </split-pane>
   </div>
+  <Modal
+    v-model="modelBMC"
+    title="BMC"
+    :styles="{width:'800px'}"
+    ok-text="Apply"
+    cancel-text="Cancel">
+    <Table border :columns="bmcColumn" :data="bmcData"></Table>
+  </Modal>
+  <Modal
+    v-model="modelTMC"
+    title="TMC"
+    :styles="{width:'800px'}"
+    ok-text="Apply"
+    cancel-text="Cancel">
+    <Table border :columns="tmcColumn" :data="tmcData"></Table>
+  </Modal>
+  <Modal
+    v-model="modelNetBMC"
+    title="Net BMC"
+    :styles="{width:'800px'}"
+    ok-text="Apply"
+    cancel-text="Cancel">
+    <Table border :columns="netbmcColumn" :data="netbmcData"></Table>
+  </Modal>
+  <Modal v-model="modelCostAdjustment" width="800">
+    <p slot="header">
+      <Icon type="ios-information-circle"></Icon>
+      <span>Cost Adjustment</span>
+    </p>
+    <div style="text-align:center">
+      <Table border :columns="CostAdjustmentColumn" :data="CostAdjustmentData"></Table>
+    </div>
+    <div slot="footer">
+      <!-- <Button type="error" size="large" @click="del">Delete</Button> -->
+    </div>
+  </Modal>
 </div>
 </template>
 <script>
 import {AgGridVue} from 'ag-grid-vue'
 import SplitPane from '_c/split-pane'
 import { ChartPie, ChartBar } from '_c/charts'
+import bmcCQ from './bmcCQ.vue'
+import tmcCQ from './tmcCQ.vue'
+import netbmcCQ from './netbmcCQ.vue'
+import costCQ from './costCQ.vue'
 export default {
   data () {
     return {
+      modelBMC: false,
+      modelTMC: false,
+      modelNetBMC: false,
+      modelCostAdjustment: false,
       windowHeight:null,
       dom: null,
       offset: 0.97,
@@ -257,6 +297,21 @@ export default {
             headerClass:'headerColor',
             cellStyle: {'text-align': 'left'}},
             {headerName: 'Entitled Price', width: 120, field: 'Entitled Price', cellStyle: {'text-align': 'left'}},
+          ],
+        },
+        {
+          headerName: 'Qty', cellStyle: {'text-align': 'left'},
+          children: [
+            {headerName: 'CQ', width: 120, editable: true, field: 'QtyCQ',
+            headerClass: 'headerColor', cellStyle: {'text-align': 'left'}},
+            {headerName: 'CQ+1', width: 120, editable: true, field: 'QtyCQ+1',
+            headerClass: 'headerColor', cellStyle: {'text-align': 'left'}},
+            {headerName: 'CQ+2', width: 120, editable: true, field: 'QtyCQ+2', headerClass: 'headerColor', cellStyle: {'text-align': 'left'}}
+          ]
+        },
+        {
+          headerName: 'Group',
+          children: [
             {headerName: 'Total Quantity', width: 120, field: 'Total Quantity', cellStyle: {'text-align': 'left'}},
             {headerName: 'MOT', field: 'MOT', width: 120},
             {headerName: 'D Price', field: 'D Price', width: 120},
@@ -272,51 +327,136 @@ export default {
               cellStyle: {'text-align': 'left'}}
           ]
         },
-        {headerName: 'Qty', cellStyle: {'text-align': 'left'},
-          children: [
-            {headerName: 'CQ', width: 120, editable: true, field: 'QtyCQ',
-            headerClass: 'headerColor', cellStyle: {'text-align': 'left'}},
-            {headerName: 'CQ+1', width: 120, editable: true, field: 'QtyCQ+1',
-            headerClass: 'headerColor', cellStyle: {'text-align': 'left'}},
-            {headerName: 'CQ+2', width: 120, editable: true, field: 'QtyCQ+2',
-              headerClass: 'headerColor', cellStyle: {'text-align': 'left'}}
-          ]
-        },
         {headerName: 'BMC', cellStyle: {'text-align': 'left'},
-          children: [
-            {headerName: 'CQ', width: 120, field: 'BMCCQ', cellStyle: {'text-align': 'left'}},
-            {headerName: 'CQ+1', width: 120, field: 'BMCCQ+1', cellStyle: {'text-align': 'left'}},
-            {headerName: 'CQ+2', width: 120, field: 'BMCCQ+2', cellStyle: {'text-align': 'left'}},
-            {headerName: 'CQ+3', width: 120, field: 'BMCCQ+3', cellStyle: {'text-align': 'left'}}
+        children: [
+          {headerName: 'CQ', width: 120, field: 'BMCCQ', cellStyle: {'text-align': 'left'}, cellRenderer: (params) => {
+            return '<a title="' + params.value +'"href="#">' + params.value + '</a>'
+          },
+          headerComponent: "bmcCQComponent",
+          onCellClicked: () => {
+            this.modelBMC = true
+          }},
+            {headerName: 'CQ+1', width: 120, field: 'BMCCQ+1', cellStyle: {'text-align': 'left'}, cellRenderer: (params) => {
+            return '<a title="' + params.value +'"href="#">' + params.value + '</a>'
+          },
+          headerComponent: "bmcCQComponent",
+          onCellClicked: () => {
+            this.modelBMC = true
+          }},
+            {headerName: 'CQ+2', width: 120, field: 'BMCCQ+2', cellStyle: {'text-align': 'left'}, cellRenderer: (params) => {
+            return '<a title="' + params.value +'"href="#">' + params.value + '</a>'
+          },
+          headerComponent: "bmcCQComponent",
+          onCellClicked: () => {
+            this.modelBMC = true
+          }},
+            {headerName: 'CQ+3', width: 120, field: 'BMCCQ+3', cellStyle: {'text-align': 'left'}, cellRenderer: (params) => {
+            return '<a title="' + params.value +'"href="#">' + params.value + '</a>'
+          },
+          headerComponent: "bmcCQComponent",
+          onCellClicked: () => {
+            this.modelBMC = true
+          }}
           ]
         },
         {headerName: 'Net BMC', cellStyle: {'text-align': 'left'},
           children: [
-            {headerName: 'CQ', width: 120, field: 'NetBMCCQ', cellStyle: {'text-align': 'left'}},
-            {headerName: 'CQ+1', width: 120, field: 'NetBMCCQ+1', cellStyle: {'text-align': 'left'}},
-            {headerName: 'CQ+2', width: 120, field: 'NetBMCCQ+2', cellStyle: {'text-align': 'left'}},
-            {headerName: 'CQ+3', width: 120, field: 'NetBMCCQ+3', cellStyle: {'text-align': 'left'}}
+            {headerName: 'CQ', width: 120, field: 'NetBMCCQ', cellStyle: {'text-align': 'left'}, cellRenderer: (params) => {
+            return '<a title="' + params.value +'"href="#">' + params.value + '</a>'
+          },
+          headerComponent: "netbmcCQComponent",
+          onCellClicked: () => {
+            this.modelNetBMC = true
+          }},
+            {headerName: 'CQ+1', width: 120, field: 'NetBMCCQ+1', cellStyle: {'text-align': 'left'}, cellRenderer: (params) => {
+            return '<a title="' + params.value +'"href="#">' + params.value + '</a>'
+          },
+          headerComponent: "netbmcCQComponent",
+          onCellClicked: () => {
+            this.modelNetBMC = true
+          }},
+            {headerName: 'CQ+2', width: 120, field: 'NetBMCCQ+2', cellStyle: {'text-align': 'left'}, cellRenderer: (params) => {
+            return '<a title="' + params.value +'"href="#">' + params.value + '</a>'
+          },
+          headerComponent: "netbmcCQComponent",
+          onCellClicked: () => {
+            this.modelNetBMC = true
+          }},
+            {headerName: 'CQ+3', width: 120, field: 'NetBMCCQ+3', cellStyle: {'text-align': 'left'}, cellRenderer: (params) => {
+            return '<a title="' + params.value +'"href="#">' + params.value + '</a>'
+          },
+          headerComponent: "netbmcCQComponent",
+          onCellClicked: () => {
+            this.modelNetBMC = true
+          }}
           ]
         },
         {headerName: 'TMC', cellStyle: {'text-align': 'left'},
           children: [
-            {headerName: 'CQ', width: 120, field: 'TMCCQ', cellStyle: {'text-align': 'left'}},
-            {headerName: 'CQ+1', width: 120, field: 'TMCCQ+1', cellStyle: {'text-align': 'left'}},
-            {headerName: 'CQ+2', width: 120, field: 'TMCCQ+2', cellStyle: {'text-align': 'left'}},
-            {headerName: 'CQ+3', width: 120, field: 'TMCCQ+3', cellStyle: {'text-align': 'left'}}
+            {headerName: 'CQ', width: 120, field: 'TMCCQ', cellStyle: {'text-align': 'left'}, cellRenderer: (params) => {
+            return '<a title="' + params.value +'"href="#">' + params.value + '</a>'
+          },
+          headerComponent: "tmcCQComponent",
+          onCellClicked: () => {
+            this.modelTMC = true
+          }},
+            {headerName: 'CQ+1', width: 120, field: 'TMCCQ+1', cellStyle: {'text-align': 'left'}, cellRenderer: (params) => {
+            return '<a title="' + params.value +'"href="#">' + params.value + '</a>'
+          },
+          headerComponent: "tmcCQComponent",
+          onCellClicked: () => {
+            this.modelTMC = true
+          }},
+            {headerName: 'CQ+2', width: 120, field: 'TMCCQ+2', cellStyle: {'text-align': 'left'}, cellRenderer: (params) => {
+            return '<a title="' + params.value +'"href="#">' + params.value + '</a>'
+          },
+          headerComponent: "tmcCQComponent",
+          onCellClicked: () => {
+            this.modelTMC = true
+          }},
+            {headerName: 'CQ+3', width: 120, field: 'TMCCQ+3', cellStyle: {'text-align': 'left'}, cellRenderer: (params) => {
+            return '<a title="' + params.value +'"href="#">' + params.value + '</a>'
+          },
+          headerComponent: "tmcCQComponent",
+          onCellClicked: () => {
+            this.modelTMC = true
+          }}
           ]
         },
         {headerName: 'Cost Adjustment', cellStyle: {'text-align': 'left'},
           children: [
-            {headerName: 'CQ', width: 120, field: 'CostAdjustmentCQ', cellStyle: {'text-align': 'left'}},
-            {headerName: 'CQ+1', width: 120, field: 'CostAdjustmentCQ+1', cellStyle: {'text-align': 'left'}},
-            {headerName: 'CQ+2', width: 120, field: 'CostAdjustmentCQ+2', cellStyle: {'text-align': 'left'}},
-            {headerName: 'CQ+3', width: 120, field: 'CostAdjustmentCQ+3', cellStyle: {'text-align': 'left'}}
+            {headerName: 'CQ', width: 120, field: 'CostAdjustmentCQ', cellStyle: {'text-align': 'left'}, cellRenderer: (params) => {
+            return '<a title="' + params.value +'"href="#">' + params.value + '</a>'
+          },
+          headerComponent: "costCQComponent",
+          onCellClicked: () => {
+            this.modelCostAdjustment = true
+          }},
+            {headerName: 'CQ+1', width: 120, field: 'CostAdjustmentCQ+1', cellStyle: {'text-align': 'left'}, cellRenderer: (params) => {
+            return '<a title="' + params.value +'"href="#">' + params.value + '</a>'
+          },
+          headerComponent: "costCQComponent",
+          onCellClicked: () => {
+            this.modelCostAdjustment = true
+          }},
+            {headerName: 'CQ+2', width: 120, field: 'CostAdjustmentCQ+2', cellStyle: {'text-align': 'left'}, cellRenderer: (params) => {
+            return '<a title="' + params.value +'"href="#">' + params.value + '</a>'
+          },
+          headerComponent: "costCQComponent",
+          onCellClicked: () => {
+            this.modelCostAdjustment = true
+          }},
+            {headerName: 'CQ+3', width: 120, field: 'CostAdjustmentCQ+3', cellStyle: {'text-align': 'left'}, cellRenderer: (params) => {
+            return '<a title="' + params.value +'"href="#">' + params.value + '</a>'
+          },
+          headerComponent: "costCQComponent",
+          onCellClicked: () => {
+            this.modelCostAdjustment = true
+          }}
           ]
         },
         {headerName: 'Final TMC', cellStyle: {'text-align': 'left'},
           children: [
-            {headerName: 'CQ', width: 120, field: 'FinalTMCCQ', cellStyle: {'text-align': 'left'}},
             {headerName: 'CQ+1', width: 120, field: 'FinalTMCCQ+1', cellStyle: {'text-align': 'left'}},
             {headerName: 'CQ+2', width: 120, field: 'FinalTMCCQ+2', cellStyle: {'text-align': 'left'}},
             {headerName: 'CQ+3', width: 120, field: 'FinalTMCCQ+3', cellStyle: {'text-align': 'left'}}
@@ -488,6 +628,192 @@ export default {
           'TotalNETCQ+1': 0,
           'TotalNETCQ+2': 0,
           'TotalNETCQ+3': 0
+        }
+      ],
+      netbmcColumn: [
+        {
+          title: 'Adder Type',
+          key: 'AdderType'
+        },
+        {
+          title: 'Description',
+          key: 'Description'
+        },
+        {
+          title: 'Cost',
+          key: 'Cost',
+          render: function (h, params) {
+            var self = this
+            return h('input', {
+              domProps: {
+                value: params.row.Cost
+              },
+              on: {
+                input: function (event) {
+                  self.$emit('input', event.target.value)
+                }
+              }
+            })
+          }
+        }
+      ],
+      netbmcData: [
+        {
+          AdderType: 'Backend Funding',
+          Description: 'Intel Core i5-7500T 2.7G 4C',
+          Cost: 2
+        },
+        {
+          AdderType: 'Segment Funding',
+          Description: '',
+          Cost: null
+        },
+        {
+          AdderType: 'Customer Funding',
+          Description: '',
+          Cost: 10
+        },
+        {
+          AdderType: 'Special Funding(manually input)',
+          Description: '',
+          Cost: null
+        }
+      ],
+      bmcColumn: [
+        {
+          title: 'Adder Type',
+          key: 'AdderType'
+        },
+        {
+          title: 'Description',
+          key: 'Description'
+        },
+        {
+          title: 'Cost',
+          key: 'Cost',
+          render: function (h, params) {
+            var self = this
+            return h('input', {
+              domProps: {
+                value: params.row.Cost
+              },
+              on: {
+                input: function (event) {
+                  self.$emit('input', event.target.value)
+                }
+              }
+            })
+          }
+        },
+      ],
+      bmcData: [
+        {
+          AdderType: 'MOT',
+          Description: 'MIX',
+          Cost: 14.73
+        },
+        {
+          AdderType: 'BMC of missing Key part（manually input)',
+          Description: '',
+          Cost: null
+        }
+      ],
+      tmcColumn: [
+        {
+          title: 'Adder Type',
+          key: 'AdderType'
+        },
+        {
+          title: 'Description',
+          key: 'Description'
+        },
+        {
+          title: 'Cost',
+          key: 'Cost',
+          render: function (h, params) {
+            var self = this
+            return h('input', {
+              domProps: {
+                value: params.row.Cost
+              },
+              on: {
+                input: function (event) {
+                  self.$emit('input', event.target.value)
+                }
+              }
+            })
+          }
+        }
+      ],
+      tmcData: [
+        {
+          AdderType: 'Warranty Cost',
+          Description: '3 year',
+          Cost: 67.1
+        },
+        {
+          AdderType: 'Non-BMC Uplift',
+          Description: '',
+          Cost: 0
+        },
+        {
+          AdderType: 'EO',
+          Description: '',
+          Cost: 3.29
+        },
+        {
+          AdderType: 'GSC Real Cost Group',
+          Description: '',
+          Cost: 0
+        },
+        {
+          AdderType: 'Country Adjustment',
+          Description: '',
+          Cost: null
+        },
+        {
+          AdderType: 'TMC of missing Key part(manually input)',
+          Description: '',
+          Cost: null
+        }
+      ],
+      CostAdjustmentColumn: [
+        {
+          title: 'Adder Type',
+          key: 'AdderType'
+        },
+        {
+          title: 'Description',
+          key: 'Description'
+        },
+        {
+          title: 'Cost',
+          key: 'Cost',
+          render: function (h, params) {
+            var self = this
+            return h('input', {
+              domProps: {
+                value: params.row.Cost
+              },
+              on: {
+                input: function (event) {
+                  self.$emit('input', event.target.value)
+                }
+              }
+            })
+          }
+        }
+      ],
+      CostAdjustmentData: [
+        {
+          AdderType: 'MOT',
+          Description: 'Ocean',
+          Cost: 3.04
+        },
+        {
+          AdderType: 'Customer Funding',
+          Description: '',
+          Cost: 10
         }
       ],
       columnDefs1: [
@@ -883,6 +1209,15 @@ export default {
     ChartPie,
     ChartBar
   },
+  beforeMount() {
+    this.frameworkComponents = {
+      bmcCQComponent: bmcCQ,
+      tmcCQComponent: tmcCQ,
+      netbmcCQComponent: netbmcCQ,
+      costCQComponent: costCQ
+    }
+    this.defaultcolDef = {width:100}
+  },
   created () {
     // this.windowHeight = window.innerHeight -330+'px'
     // console.log(window.innerHeight)
@@ -970,9 +1305,6 @@ export default {
         tableCQ.style.display = 'block'
       }
       this.toggle1 = !this.toggle1
-    },
-    handleReset (name) {
-      this.$refs[name].resetFields()
     }
   }
 }

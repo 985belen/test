@@ -81,15 +81,13 @@
           <ag-grid-vue
             style="width: 100%; height:100%;"
             class="ag-theme-balham"
-            v-if="columns"
             :columnDefs="columns"
             :rowData="rowData"
+            :frameworkComponents="frameworkComponents"
             :floatingFilter="true"
-            :enableSorting="true"
+            :enableSorting="false"
             :enableFilter="true"
             :singleClickEdit="true"
-            :suppressSizeToFit="true"
-            :suppressResize="true"
             :enableColResize="true"
             rowSelection="multiple">
           </ag-grid-vue>
@@ -121,7 +119,6 @@
               :enableSorting="true"
               :enableFilter="true"
               :floatingFilter="true"
-              :defaultColDef='{editable: true}'
               :singleClickEdit="true"
               :suppressSizeToFit="true"
               :suppressResize="true"
@@ -140,7 +137,6 @@
               :enableSorting="true"
               :floatingFilter="true"
               :enableFilter="true"
-              :defaultColDef='{editable: true}'
               :singleClickEdit="true"
               :suppressSizeToFit="true"
               :suppressResize="true"
@@ -158,7 +154,6 @@
               :enableSorting="true"
               :floatingFilter="true"
               :enableFilter="true"
-              :defaultColDef='{editable: true}'
               :singleClickEdit="true"
               :suppressSizeToFit="true"
               :suppressResize="true"
@@ -201,7 +196,6 @@
       :gridAutoHeight="true"
       :enableSorting="true"
       :enableFilter="true"
-      :defaultColDef='{editable: true}'
       :singleClickEdit="true"
       :suppressSizeToFit="true"
       :suppressResize="true"
@@ -218,7 +212,6 @@
       :gridAutoHeight="true"
       :enableSorting="true"
       :enableFilter="true"
-      :defaultColDef='{editable: true}'
       :singleClickEdit="true"
       :suppressSizeToFit="true"
       :suppressResize="true"
@@ -435,107 +428,18 @@
       <!-- <Button type="error" size="large" @click="del">Delete</Button> -->
     </div>
   </Modal>
-  <Modal v-model="modalbmc" width='600'>
-    <p slot="header">
-      <Icon type="ios-information-circle"></Icon>
-      <span>BMC</span>
-    </p>
-    <div style="height: 50px">
-      <Form :label-width="60">
-        <Col span="12">
-          <FormItem label="Cost">
-            <Input placeholder="Please enter something..." number v-model="modalBMCdata.Cost"/>
-          </FormItem>
-        </Col>
-      </Form>
-    </div>
-    <div slot="footer">
-      <Button type="text" size="small" @click="modalbmc=false">Cancel</Button>
-      <Button type="primary" size="small" @click="tableBMCSave">OK</Button>
-    </div>
-  </Modal>
-  <Modal v-model="modaltmc" width='600'>
-    <p slot="header">
-      <Icon type="ios-information-circle"></Icon>
-      <span>TMC</span>
-    </p>
-    <div style="height: 50px">
-      <Form :label-width="60">
-        <Col span="12">
-          <FormItem label="Cost">
-            <Input placeholder="Please enter something..." number v-model="modalTMCdata.Cost"/>
-          </FormItem>
-        </Col>
-      </Form>
-    </div>
-    <div slot="footer">
-      <Button type="text" size="small" @click="modaltmc=false">Cancel</Button>
-      <Button type="primary" size="small" @click="tableTMCSave">OK</Button>
-    </div>
-  </Modal>
-  <Modal v-model="modalnetbmc" width='600'>
-    <p slot="header">
-      <Icon type="ios-information-circle"></Icon>
-      <span>Net BMC</span>
-    </p>
-    <div style="height: 50px">
-      <Form :label-width="60">
-        <Col span="12">
-          <FormItem label="Cost">
-            <Input placeholder="Please enter something..." number v-model="modalnetBMCdata.Cost"/>
-          </FormItem>
-        </Col>
-      </Form>
-    </div>
-    <div slot="footer">
-      <Button type="text" size="small" @click="modalnetbmc=false">Cancel</Button>
-      <Button type="primary" size="small" @click="tableNetBMCSave">OK</Button>
-    </div>
-  </Modal>
-  <Modal v-model="modelcostadjustment" width='600'>
-    <p slot="header">
-      <Icon type="ios-information-circle"></Icon>
-      <span>Cost Adjustment</span>
-    </p>
-    <div style="height: 50px">
-      <Form :label-width="60">
-        <Col span="12">
-          <FormItem label="Cost">
-            <Input placeholder="Please enter something..." number v-model="modalcostadjustmentdata.Cost"/>
-          </FormItem>
-        </Col>
-      </Form>
-    </div>
-    <div slot="footer">
-      <Button type="text" size="small" @click="modelcostadjustment=false">Cancel</Button>
-      <Button type="primary" size="small" @click="tableCostaAjustmentSave">OK</Button>
-    </div>
-  </Modal>
 </div>
 </template>
 <script>
 import {AgGridVue} from 'ag-grid-vue'
 import SplitPane from '_c/split-pane'
+import bmcCQ from './bmcCQ.vue'
+import tmcCQ from './tmcCQ.vue'
+import netbmcCQ from './netbmcCQ.vue'
+import costCQ from './costCQ.vue'
 export default {
   data () {
     return {
-      // 新建编辑数据
-      modalTMCdata: {
-        Cost: null
-      },
-      modalBMCdata: {
-        Cost: null
-      },
-      modalnetBMCdata: {
-        Cost: null
-      },
-      modalcostadjustmentdata: {
-        Cost: null
-      },
-      modalbmc: false,
-      modaltmc: false,
-      modalnetbmc: false,
-      modelcostadjustment: false,
       modelBMC: false,
       modelTMC: false,
       modelNetBMC: false,
@@ -592,6 +496,7 @@ export default {
           headerCheckboxSelection: true,
           headerCheckboxSelectionFilteredOnly: false,
           editable: false,
+          suppressFilter: true,
           checkboxSelection: true,
           width: 60
         },
@@ -680,38 +585,6 @@ export default {
           ProductID: 'Notebook ThinkPad T480 20L6CTO1WW Rx',
           ProductDesc: '20L6CTO1WW',
           StartDate: '2018/07/23',
-          Currency: 'USD'
-        },
-        {
-          TransactionID: '0002223182',
-          Description: 'RX - KPMG - Norway - M910q',
-          ProductID: 'Desktop TC M910q_Intel Q270_TINY_ES_R',
-          ProductDesc: '10MUCTO1WW',
-          StartDate: '2018/01/25',
-          Currency: 'USD'
-        },
-        {
-          TransactionID: '0002102225',
-          Description: 'CAT:KPMG - KBY NB Turkey T470 v1.0',
-          ProductID: 'Notebook ThinkPad T470 20HECTO1WW Rx',
-          ProductDesc: '20HECTO1WW',
-          StartDate: '2018/08/21',
-          Currency: 'USD'
-        },
-        {
-          TransactionID: '0002175497',
-          Description: 'NonCAT:KPMG - Forensic NB',
-          ProductID: 'Notebook ThinkPad X1 Yoga 2G 20JECTO1WW 20JECTO1WW',
-          ProductDesc: '20JECTO1WW',
-          StartDate: '2018/11/08',
-          Currency: 'USD'
-        },
-        {
-          TransactionID: '0002260500',
-          Description: 'CAT:KPMG-KBY-R T480s Yoga380 Canada',
-          ProductID: 'Notebook ThinkPad X380 Yoga 20LJCTO1WW R',
-          ProductDesc: '20LJCTO1WW',
-          StartDate: '2018/04/05',
           Currency: 'USD'
         },
         {
@@ -896,7 +769,8 @@ export default {
           field: 'vol',
           width: 100,
           editable: true,
-          headerClass:'headerColor1',
+          sortable: false,
+          headerClass:'headerColor',
           cellStyle: {'text-align': 'left',}
         },
         {
@@ -922,7 +796,7 @@ export default {
           width: 135,
           field: 'estpri',
           editable: true,
-          headerClass:'headerColor2',
+          headerClass:'headerColor',
           cellStyle: {'text-align': 'left'}
         },
         {
@@ -930,7 +804,7 @@ export default {
           width: 100,
           field: 'finalpri',
           editable: true,
-          headerClass:'headerColor3',
+          headerClass:'headerColor',
           cellStyle: {'text-align': 'left'}
         },
         {
@@ -938,7 +812,7 @@ export default {
           width: 110,
           field: 'disc',
           editable: true,
-          headerClass:'headerColor4',
+          headerClass:'headerColor',
           cellStyle: {'text-align': 'left'}
         },
         {
@@ -949,6 +823,7 @@ export default {
           cellRenderer: (params) => {
             return '<a title="' + params.value +'"href="#">' + params.value + '</a>'
           },
+          headerComponent: "bmcCQComponent",
           onCellClicked: () => {
             this.modelBMC = true
           }
@@ -961,6 +836,7 @@ export default {
           cellRenderer: (params) => {
             return '<a title="' + params.value +'"href="#">' + params.value + '</a>'
           },
+          headerComponent: "netbmcCQComponent",
           onCellClicked: () => {
             this.modelNetBMC = true
           }
@@ -973,6 +849,7 @@ export default {
           cellRenderer: (params) => {
             return '<a title="' + params.value +'"href="#">' + params.value + '</a>'
           },
+          headerComponent: "tmcCQComponent",
           onCellClicked: () => {
             this.modelTMC = true
           }
@@ -985,6 +862,7 @@ export default {
           cellRenderer: (params) => {
             return '<a title="' + params.value +'"href="#">' + params.value + '</a>'
           },
+          headerComponent: "costCQComponent",
           onCellClicked: () => {
             this.modelCostAdjustment = true
           }
@@ -1014,7 +892,7 @@ export default {
           cellStyle: {'text-align': 'left'},
           cellClassRules: {
             lessThan0IsRed: function (params) {
-              return params.value < 0
+              return parseInt(params.value) < 0
             }
           }
         },
@@ -1025,7 +903,7 @@ export default {
           cellStyle: {'text-align': 'left'},
           cellClassRules: {
             lessThan0IsRed: function (params) {
-              return params.value < 0
+              return parseInt(params.value) < 0
             }
           }
         },
@@ -1327,25 +1205,19 @@ export default {
         },
         {
           title: 'Cost',
-          key: 'Cost'
-        },
-        {
-          title: 'Action',
-          key: 'action',
-          render: (h, params) => {
-            return h('div', [
-              h('Button', {
-                props: {
-                  type: 'text',
-                  size: 'small'
-                },
-                on: {
-                  click: () => {
-                    this.editnetBMC(params.index)
-                  }
+          key: 'Cost',
+          render: function (h, params) {
+            var self = this
+            return h('input', {
+              domProps: {
+                value: params.row.Cost
+              },
+              on: {
+                input: function (event) {
+                  self.$emit('input', event.target.value)
                 }
-              }, 'Edit')
-            ])
+              }
+            })
           }
         }
       ],
@@ -1382,27 +1254,21 @@ export default {
         },
         {
           title: 'Cost',
-          key: 'Cost'
-        },
-        {
-          title: 'Action',
-          key: 'action',
-          render: (h, params) => {
-            return h('div', [
-              h('Button', {
-                props: {
-                  type: 'text',
-                  size: 'small'
-                },
-                on: {
-                  click: () => {
-                    this.editBMC(params.index)
-                  }
+          key: 'Cost',
+          render: function (h, params) {
+            var self = this
+            return h('input', {
+              domProps: {
+                value: params.row.Cost
+              },
+              on: {
+                input: function (event) {
+                  self.$emit('input', event.target.value)
                 }
-              }, 'Edit')
-            ])
+              }
+            })
           }
-        }
+        },
       ],
       bmcData: [
         {
@@ -1427,25 +1293,19 @@ export default {
         },
         {
           title: 'Cost',
-          key: 'Cost'
-        },
-        {
-          title: 'Action',
-          key: 'action',
-          render: (h, params) => {
-            return h('div', [
-              h('Button', {
-                props: {
-                  type: 'text',
-                  size: 'small'
-                },
-                on: {
-                  click: () => {
-                    this.editTMC(params.index)
-                  }
+          key: 'Cost',
+          render: function (h, params) {
+            var self = this
+            return h('input', {
+              domProps: {
+                value: params.row.Cost
+              },
+              on: {
+                input: function (event) {
+                  self.$emit('input', event.target.value)
                 }
-              }, 'Edit')
-            ])
+              }
+            })
           }
         }
       ],
@@ -1492,25 +1352,19 @@ export default {
         },
         {
           title: 'Cost',
-          key: 'Cost'
-        },
-        {
-          title: 'Action',
-          key: 'action',
-          render: (h, params) => {
-            return h('div', [
-              h('Button', {
-                props: {
-                  type: 'text',
-                  size: 'small'
-                },
-                on: {
-                  click: () => {
-                    this.editCostAdjustment(params.index)
-                  }
+          key: 'Cost',
+          render: function (h, params) {
+            var self = this
+            return h('input', {
+              domProps: {
+                value: params.row.Cost
+              },
+              on: {
+                input: function (event) {
+                  self.$emit('input', event.target.value)
                 }
-              }, 'Edit')
-            ])
+              }
+            })
           }
         }
       ],
@@ -2577,6 +2431,15 @@ export default {
     this.toggleList1()
     this.toggleList2()
   },
+  beforeMount() {
+    this.frameworkComponents = {
+      bmcCQComponent: bmcCQ,
+      tmcCQComponent: tmcCQ,
+      netbmcCQComponent: netbmcCQ,
+      costCQComponent: costCQ
+    }
+    this.defaultcolDef = {width:100}
+  },
   mounted () {
     this.calcGridHeight()
     window.addEventListener('resize', () => {
@@ -2587,46 +2450,6 @@ export default {
     })
   },
   methods: {
-    editTMC (index) {
-      var _self = this
-      _self.modaltmc = true
-      _self.modalTMCdata = _self.tmcData[index]
-    },
-    editBMC (index) {
-      var _self = this
-      _self.modalbmc = true
-      _self.modalBMCdata = _self.bmcData[index]
-    },
-    editnetBMC (index) {
-      var _self = this
-      _self.modalnetbmc = true
-      _self.modalnetBMCdata = _self.netbmcData[index]
-    },
-    editCostAdjustment (index) {
-      var _self = this
-      _self.modelcostadjustment = true
-      _self.modalcostadjustmentdata = _self.CostAdjustmentData[index]
-    },
-    tableBMCSave (index) {
-      var _self = this
-      _self.bmcData[index] = _self.modalBMCdata
-      _self.modalbmc = false
-    },
-    tableTMCSave (index) {
-      var _self = this
-      _self.tmcData[index] = _self.modalTMCdata
-      _self.modaltmc = false
-    },
-    tableNetBMCSave (index) {
-      var _self = this
-      _self.netbmcData[index] = _self.modalNetBMCdata
-      _self.modalnetbmc = false
-    },
-    tableCostaAjustmentSave (index) {
-      var _self = this
-      _self.CostAdjustmentData[index] = _self.modalcostadjustmentdata
-      _self.modelcostadjustment = false
-    },
     onGridReady (params) {
       params.api.sizeColumnsToFit()
     },
@@ -2816,16 +2639,7 @@ h3{
     color:#999;
   }
 }
-.headerColor1{
-  background: #B4C6E7
-}
-.headerColor2{
-  background: #A9D08E
-}
-.headerColor3{
-  background: #B4C6E7
-}
-.headerColor4{
+.headerColor{
   background: #B4C6E7
 }
 .ivu-table td, .ivu-table th{

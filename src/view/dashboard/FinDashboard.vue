@@ -98,24 +98,6 @@ export default {
           Description: 'Country level deal consolidation',
           CreatedDate: '2018/6/13',
           Createdby: 'xingshuo1'
-        },
-        {
-          DashboardID: '20180613001',
-          Description: 'Country level deal consolidation',
-          CreatedDate: '2018/6/13',
-          Createdby: 'xingshuo1'
-        },
-        {
-          DashboardID: '20180613001',
-          Description: 'Country level deal consolidation',
-          CreatedDate: '2018/6/13',
-          Createdby: 'xingshuo1'
-        },
-        {
-          DashboardID: '20180613001',
-          Description: 'Country level deal consolidation',
-          CreatedDate: '2018/6/13',
-          Createdby: 'xingshuo1'
         }
       ]
     }
