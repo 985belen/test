@@ -35,7 +35,6 @@
       :suppressSizeToFit="true"
       :suppressResize="true"
       :enableColResize="true"
-      :gridOptions="gridOptions"
       rowSelection="multiple">
     </ag-grid-vue>
   </div>

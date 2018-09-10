@@ -88,6 +88,7 @@
             :enableSorting="false"
             :enableFilter="true"
             :singleClickEdit="true"
+            :suppressResize="true"
             :enableColResize="true"
             rowSelection="multiple">
           </ag-grid-vue>

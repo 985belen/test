@@ -1,6 +1,6 @@
 <template>
     <div class="ag-header-group-cell-label">
-      <div class="customHeaderLabel" @click="onclick">{{params.displayName}}</div>
+      <a href="#" class="customHeaderLabel" @click="onclick">{{params.displayName}}</a>
       <Modal
         v-model="modelTMC"
         title="TMC"
