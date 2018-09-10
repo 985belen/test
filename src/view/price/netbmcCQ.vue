@@ -3,7 +3,7 @@
       <div class="customHeaderLabel" @click="onclick">{{params.displayName}}</div>
       <Modal
         v-model="modelNetBMC"
-        title="BMC"
+        title="Net BMC"
         :styles="{width:'800px'}"
         ok-text="Apply"
         cancel-text="Cancel">

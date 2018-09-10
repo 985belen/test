@@ -418,7 +418,6 @@
   </Modal>
   <Modal v-model="modelCostAdjustment" width="800">
     <p slot="header">
-      <Icon type="ios-information-circle"></Icon>
       <span>Cost Adjustment</span>
     </p>
     <div style="text-align:center">
@@ -1326,17 +1325,7 @@ export default {
           Cost: 3.29
         },
         {
-          AdderType: 'GSC Real Cost Group',
-          Description: '',
-          Cost: 0
-        },
-        {
           AdderType: 'Country Adjustment',
-          Description: '',
-          Cost: null
-        },
-        {
-          AdderType: 'TMC of missing Key part(manually input)',
           Description: '',
           Cost: null
         }

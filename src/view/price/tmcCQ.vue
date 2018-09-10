@@ -3,7 +3,7 @@
       <div class="customHeaderLabel" @click="onclick">{{params.displayName}}</div>
       <Modal
         v-model="modelTMC"
-        title="BMC"
+        title="TMC"
         :styles="{width:'800px'}"
         ok-text="Apply"
         cancel-text="Cancel">
@@ -61,17 +61,7 @@ export default Vue.extend({
           Cost: 3.29
         },
         {
-          AdderType: 'GSC Real Cost Group',
-          Description: '',
-          Cost: 0
-        },
-        {
           AdderType: 'Country Adjustment',
-          Description: '',
-          Cost: null
-        },
-        {
-          AdderType: 'TMC of missing Key part(manually input)',
           Description: '',
           Cost: null
         }
