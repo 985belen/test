@@ -75,26 +75,6 @@ export default [
         },
         component: () =>
           import ('@/view/price/CTO_ListPrice.vue')
-      },
-      {
-        path: 'Exec_Summary',
-        name: 'Exec_Summary',
-        meta: {
-          icon: 'Exec_Summary',
-          title: 'Exec_Summary'
-        },
-        component: () =>
-          import ('@/view/price/Exec_Summary.vue')
-      },
-      {
-        path: 'Pricing_Simulation',
-        name: 'Pricing_Simulation',
-        meta: {
-          icon: 'Pricing_Simulation',
-          title: 'Pricing_Simulation'
-        },
-        component: () =>
-          import ('@/view/price/Pricing_Simulation.vue')
       }
     ]
   },
