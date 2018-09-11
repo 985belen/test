@@ -40,7 +40,7 @@ export default [
         path: 'price_index',
         name: 'price_index',
         meta: {
-          icon: '_price',
+          icon: '',
           title: 'price'
         },
         component: () =>
@@ -50,7 +50,7 @@ export default [
         path: 'Portal',
         name: 'Portal',
         meta: {
-          icon: 'Portal',
+          icon: '',
           title: 'Portal'
         },
         component: () =>
@@ -60,7 +60,7 @@ export default [
         path: 'CTO_Config',
         name: 'CTO_Config',
         meta: {
-          icon: 'CTO_Config',
+          icon: '',
           title: 'CTO_Config'
         },
         component: () =>
@@ -70,7 +70,7 @@ export default [
         path: 'CTO_ListPrice',
         name: 'CTO_ListPrice',
         meta: {
-          icon: 'CTO_ListPrice',
+          icon: '',
           title: 'CTO_ListPrice'
         },
         component: () =>
@@ -87,7 +87,7 @@ export default [
         path: 'price_list',
         name: 'price_list',
         meta: {
-          icon: '_price',
+          icon: '',
           title: 'price_list'
         },
         component: () => import('@/view/price_list/index/index.vue')
@@ -100,19 +100,10 @@ export default [
     component: Main,
     children: [
       {
-        path: 'excel_newpe',
-        name: 'excel_newpe',
-        meta: {
-          icon: 'excel_newpe',
-          title: 'excel_newpe'
-        },
-        component: () => import('@/view/excel/excel_newpe.vue')
-      },
-      {
         path: 'excel_PEsale',
         name: 'excel_PEsale',
         meta: {
-          icon: 'excel_PEsale',
+          icon: '',
           title: 'excel_PEsale'
         },
         component: () => import('@/view/excel/excel_PEsale.vue')
@@ -130,7 +121,7 @@ export default [
         path: 'excel_empty',
         name: 'excel_empty',
         meta: {
-          icon: 'excel_PEsale',
+          icon: '',
           title: 'excel_PEsale'
         },
         component: () => import('@/view/excel/excel_PEsales.vue')
@@ -146,7 +137,7 @@ export default [
         path: 'mtm_index',
         name: 'mtm_index',
         meta: {
-          icon: 'mtm_index',
+          icon: '',
           title: 'mtm_index'
         },
         component: () => import('@/view/mtm/index.vue')
@@ -155,7 +146,7 @@ export default [
         path: 'mtm_mtm',
         name: 'mtm_mtm',
         meta: {
-          icon: 'mtm_mtm',
+          icon: '',
           title: 'mtm_mtm'
         },
         component: () => import('@/view/mtm/mtm.vue')
@@ -164,7 +155,7 @@ export default [
         path: 'mtm_Cost',
         name: 'mtm_Cost',
         meta: {
-          icon: 'mtm_Cost',
+          icon: '',
           title: 'mtm_Cost'
         },
         component: () => import('@/view/mtm/mtmCost.vue')
@@ -173,7 +164,7 @@ export default [
         path: 'mtm_Cv',
         name: 'mtm_Cv',
         meta: {
-          icon: 'mtm_Cv',
+          icon: '',
           title: 'mtm_Cv'
         },
         component: () => import('@/view/mtm/mtmCv.vue')
@@ -182,7 +173,7 @@ export default [
         path: 'mtm_Formula',
         name: 'mtm_Formula',
         meta: {
-          icon: 'mtm_Formula',
+          icon: '',
           title: 'mtm_Formula'
         },
         component: () => import('@/view/mtm/mtmFormula.vue')
@@ -198,7 +189,7 @@ export default [
         path: 'iframe_clv',
         name: 'iframe_clv',
         meta: {
-          icon: 'iframe_clv',
+          icon: '',
           title: 'iframe_clv'
         },
         component: () => import('@/view/iframe/clv.vue')
@@ -207,7 +198,7 @@ export default [
         path: 'iframe_DealTracking',
         name: 'iframe_DealTracking',
         meta: {
-          icon: 'iframe_DealTracking',
+          icon: '',
           title: 'iframe_DealTracking'
         },
         component: () => import('@/view/iframe/DealTracking.vue')
@@ -216,7 +207,7 @@ export default [
         path: 'iframe_HistoricalSummary',
         name: 'iframe_HistoricalSummary',
         meta: {
-          icon: 'iframe_HistoricalSummary',
+          icon: '',
           title: 'iframe_HistoricalSummary'
         },
         component: () => import('@/view/iframe/HistoricalSummary.vue')
@@ -225,7 +216,7 @@ export default [
         path: 'iframe_PricingProfitMargin',
         name: 'iframe_PricingProfitMargin',
         meta: {
-          icon: 'iframe_PricingProfitMargin',
+          icon: '',
           title: 'iframe_PricingProfitMargin'
         },
         component: () => import('@/view/iframe/PricingProfitMargin.vue')
@@ -234,7 +225,7 @@ export default [
         path: 'iframe_FinanceReview',
         name: 'iframe_FinanceReview',
         meta: {
-          icon: 'iframe_FinanceReview',
+          icon: '',
           title: 'iframe_FinanceReview'
         },
         component: () => import('@/view/iframe/FinanceReview.vue')
