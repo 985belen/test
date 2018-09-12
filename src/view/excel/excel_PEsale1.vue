@@ -2,17 +2,15 @@
 <div class="newpage" style="overflow: hidden;">
   <div class="topBox">
     <div class="tool-bar">
-      <!-- <a href="#" class="item" @click="resize,modelProduct = true"><Icon class="icon" size=16 type="md-stats" />Summary By Product</a>
-      <Divider type="vertical" />
-      <a href="#" class="item" @click="resize,modelBrand = true"><Icon class="icon" size=16 type="md-search" />Summary By Brand</a>
-      <Divider type="vertical" /> -->
       <a href="#" class="item" @click="modeltransction = true"><Icon class="icon" size=16 type="md-add" />Import Transaction</a>
       <Divider type="vertical" />
       <a href="#" class="item" ><Icon class="icon" size=16 type="md-stats" />Import Products</a>
       <Divider type="vertical" />
       <a href="#" class="item" ><Icon class="icon" size=16 type="md-add" />Add Dummy Item</a>
       <Divider type="vertical" />
-      <a href="#" class="item"><Icon class="icon" size=16 type="md-stats" />Recommendation Price</a>
+      <a href="#" class="item" ><Icon class="icon" size=16 type="md-stats" />Accepted</a>
+      <Divider type="vertical" />
+      <a href="#" class="item" ><Icon class="icon" size=16 type="md-stats" />Recommendation Price</a>
     </div>
     <h3 class="marginBottom"><a href="javascript:;" style="display:block;color: #333;" @click="toggleList1"><Icon type="ios-podium" />PE Information</a></h3>
     <div class="peinformation">
@@ -25,13 +23,13 @@
         <Form :model="FormItem" :label-width="120" :rules="ruleValidate">
           <Row>
             <Col span=5 offset="1">
-              <strong>PE ID: </strong><span>3324324</span>
+              <strong>PE ID: </strong><span>PE-20188081041-357</span>
             </Col>
             <Col span=5>
-              <strong>DMU Name: </strong><span>tonny</span>
+              <strong>DMU Name: </strong><span>State Administration</span>
             </Col>
             <Col span=5>
-              <strong>Country: </strong><span>China</span>
+              <strong>Country: </strong><span>Bulgaria</span>
             </Col>
             <Col span=5>
               <strong>Channel: </strong><span>Direct</span>
@@ -58,19 +56,19 @@
     <div class="SummaryInformation">
       <Row type="flex" justify="center">
         <Col span=5>
-          <strong>System Volume: </strong><span></span>
+          <strong>System Volume: </strong><span style="font-size: 14px; font-weight: bold;">450</span>
         </Col>
         <Col span=5>
-          <strong>Gross Revenue: </strong><span></span>
+          <strong>Gross Revenue: </strong><span style="font-size: 14px; font-weight: bold;">337100</span>
         </Col>
         <Col span=5>
-          <strong>Net Revenue: </strong><span></span>
+          <strong>Net Revenue: </strong><span style="font-size: 14px; font-weight: bold;">337100</span>
         </Col>
         <Col span=5>
-          <strong>TMC Margin: </strong><span></span>
+          <strong>TMC Margin: </strong><span style="font-size: 14px; font-weight: bold;">33323</span>
         </Col>
         <Col span=4>
-          <strong>TMC Margin %: </strong><span></span>
+          <strong>TMC Margin %: </strong><span style="font-size: 14px; font-weight: bold;">10.2</span>
         </Col>
       </Row>
     </div>
@@ -83,15 +81,13 @@
           <ag-grid-vue
             style="width: 100%; height:100%;"
             class="ag-theme-balham"
-            v-if="columns"
             :columnDefs="columns"
             :rowData="rowData"
             :frameworkComponents="frameworkComponents"
             :floatingFilter="true"
-            :enableSorting="true"
+            :enableSorting="false"
             :enableFilter="true"
             :singleClickEdit="true"
-            :suppressSizeToFit="true"
             :suppressResize="true"
             :enableColResize="true"
             rowSelection="multiple">
@@ -113,6 +109,59 @@
              <Icon @click="three" style="margin-left: -5px;" size=20 type="md-grid" />
           </div>
         </h3>
+        <div v-if="tab1" style="width: 100%; padding:10px; border-collapse: collapse; min-height: 300px;">
+          <Card shadow>
+            <ag-grid-vue
+              style="width: 100%; height:100%;"
+              class="ag-theme-balham"
+              :columnDefs="detailcolumns1"
+              :rowData="detaildata1"
+              :gridAutoHeight="true"
+              :enableSorting="true"
+              :enableFilter="true"
+              :floatingFilter="true"
+              :singleClickEdit="true"
+              :suppressSizeToFit="true"
+              :suppressResize="true"
+              :enableColResize="true"
+              rowSelection="multiple">
+            </ag-grid-vue>
+          </Card>
+        </div>
+          <div v-if="tab2" style="width: 100%; padding:10px; border-collapse: collapse; min-height: 300px;">
+            <ag-grid-vue
+              style="width: 100%; height:100%;"
+              class="ag-theme-balham"
+              :columnDefs="detailcolumns2"
+              :rowData="detaildata2"
+              :gridAutoHeight="true"
+              :enableSorting="true"
+              :floatingFilter="true"
+              :enableFilter="true"
+              :singleClickEdit="true"
+              :suppressSizeToFit="true"
+              :suppressResize="true"
+              :enableColResize="true"
+              rowSelection="multiple">
+            </ag-grid-vue>
+          </div>
+          <div v-if="tab3" style="width: 100%; padding:10px; border-collapse: collapse; min-height: 300px;">
+            <ag-grid-vue
+              style="width: 100%; height:100%;"
+              class="ag-theme-balham"
+              :columnDefs="detailcolumns3"
+              :rowData="detaildata3"
+              :gridAutoHeight="true"
+              :enableSorting="true"
+              :floatingFilter="true"
+              :enableFilter="true"
+              :singleClickEdit="true"
+              :suppressSizeToFit="true"
+              :suppressResize="true"
+              :enableColResize="true"
+              rowSelection="multiple">
+            </ag-grid-vue>
+        </div>
       </div>
     </split-pane>
   </div>
@@ -125,7 +174,7 @@
     <ag-grid-vue
       style="width: 100%; height:100%;"
       class="ag-theme-balham"
-      v-if="modeldetail"
+      v-if="detailcolumns1"
       :columnDefs="detailcolumns1"
       :rowData="detaildata1"
       :gridAutoHeight="true"
@@ -148,7 +197,6 @@
       :gridAutoHeight="true"
       :enableSorting="true"
       :enableFilter="true"
-      :defaultColDef='{editable: true}'
       :singleClickEdit="true"
       :suppressSizeToFit="true"
       :suppressResize="true"
@@ -165,7 +213,6 @@
       :gridAutoHeight="true"
       :enableSorting="true"
       :enableFilter="true"
-      :defaultColDef='{editable: true}'
       :singleClickEdit="true"
       :suppressSizeToFit="true"
       :suppressResize="true"
@@ -182,7 +229,7 @@
     <ag-grid-vue
       style="width: 100%; height:100%;"
       class="ag-theme-balham"
-      v-if="productcolumns1"
+      v-if="modelProduct"
       :columnDefs="productcolumns1"
       :rowData="productdata1"
       :floatingFilter="true"
@@ -262,7 +309,6 @@
     title="Transaction"
     :styles="{width:'1000px'}"
     ok-text="OK"
-    @on-ok="ok"
     cancel-text="Cancel">
     <Form :model="transFormItem" label-position="left" ref="transFormItem" >
       <Row type="flex" justify="start" :gutter="15">
@@ -273,7 +319,7 @@
         </Col>
         <Col span=6>
           <Form-item label="Select">
-            <Select v-model="transFormItem.select" placeholder="Please select...">
+            <Select v-model="transFormItem.select" placeholder="Please select..">
               <Option v-for="(item, index) in transFormItem.selects" :value="item" :key="index">{{item}}</Option>
           </Select>
           </Form-item>
@@ -283,10 +329,15 @@
             <Input v-model="transFormItem.TransactionID" placeholder="Enter something..."></Input>
           </Form-item>
         </Col>
-        <Col span=6>
+        <Col span=2>
           <Form-item>
             <br/>
-            <Button type="primary" style="margin-right:15px">Search</Button>
+            <Button type="primary">Search</Button>
+          </Form-item>
+        </Col>
+        <Col span=2>
+          <Form-item>
+            <br/>
             <Button type="primary">Attach</Button>
           </Form-item>
         </Col>
@@ -318,6 +369,7 @@
     title="Components List-->20KECTO1WW"
     :styles="{width:'800px'}"
     ok-text="OK"
+    @on-ok="ok"
     cancel-text="Cancel">
     <div class="table-box">
       <ag-grid-vue
@@ -330,20 +382,16 @@
         :enableSorting="true"
         :enableFilter="true"
         :showToolPanel="false"
+        :sizeColumnsToFit="true"
         :floatingFilter="true"
         :singleClickEdit="true"
+        :suppressSizeToFit="true"
+        :suppressResize="true"
         :enableColResize="true"
+        :gridReady="onGridReady"
         rowSelection="multiple">
       </ag-grid-vue>
     </div>
-  </Modal>
-  <Modal
-    v-model="modelBMC"
-    title="BMC"
-    :styles="{width:'800px'}"
-    ok-text="Apply"
-    cancel-text="Cancel">
-    <Table border :columns="bmcColumn" :data="bmcData"></Table>
   </Modal>
   <Modal
     v-model="modelTMC"
@@ -353,15 +401,7 @@
     cancel-text="Cancel">
     <Table border :columns="tmcColumn" :data="tmcData"></Table>
   </Modal>
-  <Modal
-    v-model="modelNetBMC"
-    title="Net BMC"
-    :styles="{width:'800px'}"
-    ok-text="Apply"
-    cancel-text="Cancel">
-    <Table border :columns="netbmcColumn" :data="netbmcData"></Table>
-  </Modal>
-  <Modal v-model="modelCostAdjustment" width="800">
+  <Modal v-model="modelTMCAdjustment" width="800">
     <p slot="header">
       <span>Cost Adjustment</span>
     </p>
@@ -384,18 +424,17 @@ import costCQ from './costCQ.vue'
 export default {
   data () {
     return {
-      modelBMC: false,
       modelTMC: false,
-      modelNetBMC: false,
-      modelCostAdjustment: false,
+      modelTMCAdjustment: false,
       toggle: true,
       toggle1: false,
       toggle2: true,
       tab1: false,
       tab2: false,
+      tab3: false,
       pullFlag: true,
       dom: null,
-      offset: 0.95,
+      offset: 0.97,
       FormItem: {
         id: '',
         CreatedDate: '2018/8/8 11:05:51',
@@ -437,11 +476,11 @@ export default {
       transColumns: [
         {
           headerCheckboxSelection: true,
-          headerCheckboxSelectionFilteredOnly: true,
+          headerCheckboxSelectionFilteredOnly: false,
           editable: false,
+          suppressFilter: true,
           checkboxSelection: true,
-          width: 60,
-          suppressFilter: true
+          width: 60
         },
         {
           headerName: 'Transaction ID',
@@ -453,30 +492,39 @@ export default {
           headerName: 'Description',
           field: 'Description',
           width: 200,
-          cellStyle: {'text-align': 'left'}
+          cellStyle: {'text-align': 'left'},
+          cellRenderer: (params) => {
+            return '<div class="longData" title="' + params.value +'">' + params.value + '</div>'
+          }
         },
         {
           headerName: 'Product ID',
           field: 'ProductID',
           width: 200,
-          cellStyle: {'text-align': 'left'}
+          cellStyle: {'text-align': 'left'},
+          cellRenderer: (params) => {
+            return '<div class="longData" title="' + params.value +'">' + params.value + '</div>'
+          }
         },
         {
           headerName: 'Product Desc',
           field: 'ProductDesc',
-          width: 120,
-          cellStyle: {'text-align': 'left'}
+          width: 160,
+          cellStyle: {'text-align': 'left'},
+          cellRenderer: (params) => {
+            return '<div class="longData" title="' + params.value +'">' + params.value + '</div>'
+          }
         },
         {
           headerName: 'Start Date',
           field: 'StartDate',
-          width: 180,
+          width: 120,
           cellStyle: {'text-align': 'left'}
         },
         {
           headerName: 'Currency',
           field: 'Currency',
-          width: 100,
+          width: 120,
           cellStyle: {'text-align': 'left'}
         }
       ],
@@ -543,29 +591,32 @@ export default {
         {
           headerName: 'Category ID',
           field: 'CategoryID',
-          fixed: 'left',
+          width: 200,
           cellStyle: {'text-align': 'left'}
         }, {
           headerName: 'Description',
-          fixed: 'left',
           field: 'Description',
-          cellStyle: {'text-align': 'left'}
+          width: 250,
+          cellStyle: {'text-align': 'left'},
+          cellRenderer: (params) => {
+            return '<div class="longData" title="' + params.value +'">' + params.value + '</div>'
+          }
         }, {
           headerName: 'QTY',
-          fixed: 'left',
           field: 'QTY',
+          width: 155,
           cellStyle: {'text-align': 'left'}
         }, {
           headerName: 'TMC',
-          fixed: 'left',
           field: 'TMC',
+          width: 160,
           cellStyle: {'text-align': 'left'}
         }
       ],
       ComponentsListData: [
         {
           CategoryID: 'SBB0M45830',
-          Description: ' Intel Core i5-7500T 2.7G 4C',
+          Description: ' Intel Core i5-6550T 2.7G 4C',
           QTY: '1',
           TMC: ' 183.07'
         },
@@ -746,32 +797,6 @@ export default {
           cellStyle: {'text-align': 'left'}
         },
         {
-          headerName: 'BMC',
-          width: 100,
-          field: 'bmc',
-          cellStyle: {'text-align': 'left'},
-          cellRenderer: (params) => {
-            return '<a title="' + params.value +'"href="#">' + params.value + '</a>'
-          },
-          headerComponent: "bmcCQComponent",
-          onCellClicked: () => {
-            this.modelBMC = true
-          }
-        },
-        {
-          headerName: 'Net BMC',
-          width: 100,
-          field: 'netbmc',
-          cellStyle: {'text-align': 'left'},
-          cellRenderer: (params) => {
-            return '<a title="' + params.value +'"href="#">' + params.value + '</a>'
-          },
-          headerComponent: "netbmcCQComponent",
-          onCellClicked: () => {
-            this.modelNetBMC = true
-          }
-        },
-        {
           headerName: 'TMC',
           width: 100,
           field: 'tmc',
@@ -785,16 +810,16 @@ export default {
           }
         },
         {
-          headerName: 'Cost Adjustment',
+          headerName: 'TMC Adjustment',
           width: 140,
-          field: 'CostAdjustment',
+          field: 'TMCAdjustment',
           cellStyle: {'text-align': 'left'},
           cellRenderer: (params) => {
             return '<a title="' + params.value +'"href="#">' + params.value + '</a>'
           },
           headerComponent: "costCQComponent",
           onCellClicked: () => {
-            this.modelCostAdjustment = true
+            this.modelTMCAdjustment = true
           }
         },
         {
@@ -804,27 +829,10 @@ export default {
           cellStyle: {'text-align': 'left'}
         },
         {
-          headerName: 'BMC Margin',
-          width: 110,
-          field: 'bmcmar',
-          cellStyle: {'text-align': 'left'}
-        },
-        {
           headerName: 'TMC Margin',
           width: 110,
           field: 'tmcmar',
           cellStyle: {'text-align': 'left'}
-        },
-        {
-          headerName: 'BMC %',
-          width: 100,
-          field: 'bmcb',
-          cellStyle: {'text-align': 'left'},
-          cellClassRules: {
-            lessThan0IsRed: function (params) {
-              return parseInt(params.value) < 0
-            }
-          }
         },
         {
           headerName: 'TMC %',
@@ -833,7 +841,7 @@ export default {
           cellStyle: {'text-align': 'left'},
           cellClassRules: {
             lessThan0IsRed: function (params) {
-              return parseInt(params.value) < 0
+              return params.value < 0
             }
           }
         },
@@ -874,7 +882,224 @@ export default {
           cellStyle: {'text-align': 'left'}
         }
       ],
-      rowData: [],
+      rowData: [
+        {
+          id: 1,
+          quarter: 'F1Q 18/19',
+          brand: 'ThinkPad Classic',
+          brsum: 'Notebook',
+          subser: 'X280',
+          prono: '20KECTO1WW',
+          prodesc: 'Notebook ThinkPad X280 20KECTO1WW Rx',
+          vol: '1',
+          listpri: '1905.72',
+          stndpri: '1905.72',
+          respri: '600',
+          estpri: '655',
+          finalpri: '0',
+          disc: '65.6',
+          TMCAdjustment: 21.7,
+          FinalTMC: 1057.3,
+          tmc: '1079',
+          tmcmar: '-402.5',
+          tmcb: '-61.4%',
+          gr: '4875',
+          grre: '0',
+          netre: '655',
+          pti: '1149.86',
+          ptipro: '-494.86',
+          ptimar: '-75.6%'
+        },
+        {
+          id: '',
+          quarter: 'F2Q 18/19',
+          brand: 'ThinkPad Classic',
+          brsum: 'Notebook',
+          subser: 'X280',
+          prono: '20KECTO1WW config',
+          prodesc: 'Notebook ThinkPad X280 20KECTO1WW Rx',
+          vol: '1',
+          listpri: '1905.72',
+          stndpri: '1905.72',
+          respri: '600',
+          estpri: '655',
+          finalpri: '0',
+          disc: '65.6',
+          TMCAdjustment: 21.7,
+          FinalTMC: 1017.51,
+          tmc: '1039.21',
+          tmcmar: '-362.71',
+          tmcb: '-55.4%',
+          gr: '4875',
+          grre: '0',
+          netre: '655',
+          pti: '1110.07',
+          ptipro: '-455.06',
+          ptimar: '-69.5%'
+        },
+        {
+          id: '',
+          quarter: 'F3Q 18/19',
+          brand: 'ThinkPad Classic',
+          brsum: 'Notebook',
+          subser: 'X280',
+          prono: '20KECTO1WW config',
+          prodesc: 'Notebook ThinkPad X280 20KECTO1WW Rx',
+          vol: '1',
+          listpri: '1905.72',
+          stndpri: '1905.72',
+          respri: '600',
+          estpri: '655',
+          finalpri: '0',
+          disc: '65.6',
+          TMCAdjustment: 21.7,
+          FinalTMC: 992.95,
+          tmc: '1014.65',
+          tmcmar: '-338.15',
+          tmcb: '-51.6%',
+          gr: '4875',
+          grre: '0',
+          netre: '655',
+          pti: '1085.51',
+          ptipro: '-430.5',
+          ptimar: '-65.7%'
+        },
+        {
+          id: '',
+          quarter: 'F4Q 18/19',
+          brand: 'ThinkPad Classic',
+          brsum: 'Notebook',
+          subser: 'X280',
+          prono: '20KECTO1WW config',
+          prodesc: 'Notebook ThinkPad X280 20KECTO1WW Rx',
+          vol: '1',
+          listpri: '1905.72',
+          stndpri: '1905.72',
+          respri: '600',
+          estpri: '655',
+          finalpri: '0',
+          disc: '65.6',
+          TMCAdjustment: 21.7,
+          FinalTMC: 992.95,
+          tmc: '1014.65',
+          tmcmar: '-333.76',
+          tmcb: '-51%',
+          gr: '4875',
+          grre: '0',
+          netre: '655',
+          pti: '1081.12',
+          ptipro: '-426.12',
+          ptimar: '-65.1%'
+        },
+        {
+          id: 2,
+          quarter: 'F1Q 18/19',
+          brand: 'Notebook',
+          brsum: 'Server Options',
+          subser: 'TP Hybrid USB-C Dock',
+          prono: '40AF0135CH',
+          prodesc: 'TP Hybrid USB-C Dock - CH',
+          vol: '5',
+          listpri: '277.47',
+          stndpri: '277.47',
+          respri: '149',
+          estpri: '1200',
+          finalpri: '149',
+          disc: '46.3',
+          TMCAdjustment: 4.68,
+          FinalTMC: 98.08,
+          tmc: '102,76',
+          tmcmar: '43.74',
+          tmcb: '30.3%',
+          gr: '29525',
+          grre: '-3%',
+          netre: '1445',
+          pti: '121.35',
+          ptipro: '23.18',
+          ptimar: '-16%'
+        },
+        {
+          id: '',
+          quarter: 'F2Q 18/19',
+          brand: 'Notebook',
+          brsum: 'Server Options',
+          subser: 'TP Hybrid USB-C Dock',
+          prono: '40AF0135CH',
+          prodesc: 'TP Hybrid USB-C Dock - CH',
+          vol: '5',
+          listpri: '277.47',
+          stndpri: '277.47',
+          respri: '149',
+          estpri: '1200',
+          finalpri: '149',
+          disc: '46.3',
+          TMCAdjustment: 4.68,
+          FinalTMC: 98.08,
+          tmc: '102,76',
+          tmcmar: '43.74',
+          tmcb: '30.3%',
+          gr: '29525',
+          grre: '-3%',
+          netre: '1445',
+          pti: '121.35',
+          ptipro: '23.18',
+          ptimar: '-16%'
+        },
+        {
+          id: '',
+          quarter: 'F3Q 18/19',
+          brand: 'Notebook',
+          brsum: 'Server Options',
+          subser: 'TP Hybrid USB-C Dock',
+          prono: '40AF0135CH',
+          prodesc: 'TP Hybrid USB-C Dock - CH',
+          vol: '5',
+          listpri: '277.47',
+          stndpri: '277.47',
+          respri: '149',
+          estpri: '1200',
+          finalpri: '149',
+          disc: '46.3',
+          TMCAdjustment: 4.68,
+          FinalTMC: 98.08,
+          tmc: '102.76',
+          tmcmar: '43.74',
+          tmcb: '30.3%',
+          gr: '29525',
+          grre: '-3%',
+          netre: '1445',
+          pti: '121.35',
+          ptipro: '23.18',
+          ptimar: '-16%'
+        },
+        {
+          id: '',
+          quarter: 'F4Q 18/19',
+          brand: 'Notebook',
+          brsum: 'Server Options',
+          subser: 'TP Hybrid USB-C Dock',
+          prono: '40AF0135CH',
+          prodesc: 'TP Hybrid USB-C Dock - CH',
+          vol: '5',
+          listpri: '277.47',
+          stndpri: '277.47',
+          respri: '149',
+          estpri: '1200',
+          finalpri: '149',
+          disc: '46.3',
+          TMCAdjustment: 4.68,
+          FinalTMC: 98.08,
+          tmc: '102.76',
+          tmcmar: '43.74',
+          tmcb: '30.3%',
+          gr: '29525',
+          grre: '-3%',
+          netre: '1445',
+          pti: '121.35',
+          ptipro: '23.18',
+          ptimar: '-16%'
+        }
+      ],
       netbmcColumn: [
         {
           title: 'Adder Type',
@@ -941,9 +1166,11 @@ export default {
           title: 'Adder Type',
           key: 'AdderType',
           render: function (h, params) {
+            // console.log(params.row.AdderType)
             if (!params.row._index) {
               return h('div', params.row.AdderType)
             } else {
+              var self = this
               return h('div', [
                 h('Checkbox', {
                   props: {
@@ -952,8 +1179,8 @@ export default {
                   style: {
                     marginRight: '5px'
                   }
-                }, params.row.AdderType)
-              ])
+              }, params.row.AdderType)
+            ])
             }
           }
         },
@@ -989,25 +1216,7 @@ export default {
         {
           AdderType: 'MOT',
           Description: 'MIX',
-          Cost: 14.73,
-          render: function (h, params) {
-            // console.log(params.row.AdderType)
-            if (!params.row._index) {
-              return h('div', params.row.AdderType)
-            } else {
-              var self = this
-              return h('div', [
-                h('Checkbox', {
-                  props: {
-                    size: 'large'
-                  },
-                  style: {
-                    marginRight: '5px'
-                  }
-              }, params.row.AdderType)
-            ])
-            }
-          }
+          Cost: 14.73
         },
         {
           AdderType: 'BMC of missing Key part',
@@ -2162,15 +2371,13 @@ export default {
   },
   beforeMount () {
     this.frameworkComponents = {
-      bmcCQComponent: bmcCQ,
       tmcCQComponent: tmcCQ,
-      netbmcCQComponent: netbmcCQ,
       costCQComponent: costCQ
     }
   },
   mounted () {
     this.calcGridHeight()
-     window.addEventListener('resize', () => {
+    window.addEventListener('resize', () => {
       window.clearTimeout(this.timer)
       this.timer = window.setTimeout(() => {
         this.calcGridHeight()
@@ -2180,104 +2387,6 @@ export default {
   methods: {
     onGridReady (params) {
       params.api.sizeColumnsToFit()
-    },
-    ok () {
-      var obj = [
-        {
-          id: 1,
-          quarter: 'F1Q 18/19',
-          brand: 'ThinkPad Classic',
-          brsum: 'Notebook',
-          subser: 'X280',
-          prono: '20KECTO1WW',
-          prodesc: 'Notebook ThinkPad X280 20KECTO1WW Rx',
-          vol: '1',
-          listpri: '1905.72',
-          stndpri: '1905.72',
-          respri: '600',
-          estpri: '655',
-          finalpri: '0',
-          disc: '65.6',
-          bmc: '1050.7',
-          netbmc: '1040.70',
-          CostAdjustment: 21.7,
-          FinalTMC: 1057.3,
-          tmc: '1079',
-          bmcmar: '-374.2',
-          tmcmar: '-402.5',
-          bmcb: '-57.1%',
-          tmcb: '-61.4%',
-          gr: '4875',
-          grre: '0',
-          netre: '655',
-          pti: '1149.86',
-          ptipro: '-494.86',
-          ptimar: '-75.6%'
-        },
-        {
-          id: '',
-          quarter: 'F2Q 18/19',
-          brand: 'ThinkPad Classic',
-          brsum: 'Notebook',
-          subser: 'X280',
-          prono: '20KECTO1WW config',
-          prodesc: 'Notebook ThinkPad X280 20KECTO1WW Rx',
-          vol: '1',
-          listpri: '1905.72',
-          stndpri: '1905.72',
-          respri: '600',
-          estpri: '655',
-          finalpri: '0',
-          disc: '65.6',
-          bmc: '1009.85',
-          netbmc: '999.85',
-          CostAdjustment: 21.7,
-          FinalTMC: 1017.51,
-          tmc: '1039.21',
-          bmcmar: '-333.35',
-          tmcmar: '-362.71',
-          bmcb: '-50.9%',
-          tmcb: '-55.4%',
-          gr: '4875',
-          grre: '0',
-          netre: '655',
-          pti: '1110.07',
-          ptipro: '-455.06',
-          ptimar: '-69.5%'
-        },
-        {
-          id: '',
-          quarter: 'F3Q 18/19',
-          brand: 'ThinkPad Classic',
-          brsum: 'Notebook',
-          subser: 'X280',
-          prono: '20KECTO1WW config',
-          prodesc: 'Notebook ThinkPad X280 20KECTO1WW Rx',
-          vol: '1',
-          listpri: '1905.72',
-          stndpri: '1905.72',
-          respri: '600',
-          estpri: '655',
-          finalpri: '0',
-          disc: '65.6',
-          bmc: '985.33',
-          netbmc: '975.33',
-          CostAdjustment: 21.7,
-          FinalTMC: 992.95,
-          tmc: '1014.65',
-          bmcmar: '-308.83',
-          tmcmar: '-338.15',
-          bmcb: '-47.2%',
-          tmcb: '-51.6%',
-          gr: '4875',
-          grre: '0',
-          netre: '655',
-          pti: '1085.51',
-          ptipro: '-430.5',
-          ptimar: '-65.7%'
-        }
-      ]
-      this.rowData = obj
     },
     calcGridHeight () {
       var screenHeight = window.innerHeight
@@ -2296,11 +2405,19 @@ export default {
     one () {
       this.tab1 = true
       this.tab2 = false
+      this.tab3 = false
       return false
     },
     two () {
       this.tab1 = false
       this.tab2 = true
+      this.tab3 = false
+      return false
+    },
+    three () {
+      this.tab1 = false
+      this.tab2 = false
+      this.tab3 = true
       return false
     },
     resize () {

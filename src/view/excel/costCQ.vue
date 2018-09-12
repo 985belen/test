@@ -28,20 +28,20 @@ export default Vue.extend({
         },
         {
           title: 'Cost',
-          key: 'Cost',
-          render: function (h, params) {
-            var self = this
-            return h('input', {
-              domProps: {
-                value: params.row.Cost
-              },
-              on: {
-                input: function (event) {
-                  self.$emit('input', event.target.value)
-                }
-              }
-            })
-          }
+          key: 'Cost'
+          // render: function (h, params) {
+          //   var self = this
+          //   return h('input', {
+          //     domProps: {
+          //       value: params.row.Cost
+          //     },
+          //     on: {
+          //       input: function (event) {
+          //         self.$emit('input', event.target.value)
+          //       }
+          //     }
+          //   })
+          // }
         }
       ],
       CostAdjustmentData: [

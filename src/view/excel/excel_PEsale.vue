@@ -1197,7 +1197,19 @@ export default {
       netbmcColumn: [
         {
           title: 'Adder Type',
-          key: 'AdderType'
+          key: 'AdderType',
+          render: function (h, params) {
+              return h('div', [
+                h('Checkbox', {
+                  props: {
+                    size: 'large'
+                  },
+                  style: {
+                    marginRight: '5px'
+                  }
+              }, params.row.AdderType)
+            ])
+          }
         },
         {
           title: 'Description',
@@ -1207,17 +1219,22 @@ export default {
           title: 'Cost',
           key: 'Cost',
           render: function (h, params) {
-            var self = this
-            return h('input', {
-              domProps: {
-                value: params.row.Cost
-              },
-              on: {
-                input: function (event) {
-                  self.$emit('input', event.target.value)
+            // console.log(params.row.Cost)
+            if (params.row._index !==2) {
+              return h('div', params.row.Cost)
+            } else {
+              var self = this
+              return h('input', {
+                domProps: {
+                  value: params.row.Cost
+                },
+                on: {
+                  input: function (event) {
+                    self.$emit('input', event.target.value)
+                  }
                 }
-              }
-            })
+              })
+            }
           }
         }
       ],
@@ -1228,17 +1245,12 @@ export default {
           Cost: 2
         },
         {
-          AdderType: 'Segment Funding',
-          Description: '',
-          Cost: null
-        },
-        {
           AdderType: 'Customer Funding',
           Description: '',
           Cost: 10
         },
         {
-          AdderType: 'Special Funding(manually input)',
+          AdderType: 'Special Funding',
           Description: '',
           Cost: null
         }
@@ -1246,7 +1258,25 @@ export default {
       bmcColumn: [
         {
           title: 'Adder Type',
-          key: 'AdderType'
+          key: 'AdderType',
+          render: function (h, params) {
+            // console.log(params.row.AdderType)
+            if (!params.row._index) {
+              return h('div', params.row.AdderType)
+            } else {
+              var self = this
+              return h('div', [
+                h('Checkbox', {
+                  props: {
+                    size: 'large'
+                  },
+                  style: {
+                    marginRight: '5px'
+                  }
+              }, params.row.AdderType)
+            ])
+            }
+          }
         },
         {
           title: 'Description',
@@ -1256,17 +1286,23 @@ export default {
           title: 'Cost',
           key: 'Cost',
           render: function (h, params) {
-            var self = this
-            return h('input', {
-              domProps: {
-                value: params.row.Cost
-              },
-              on: {
-                input: function (event) {
-                  self.$emit('input', event.target.value)
+            // console.log(params.row.Cost)
+            if (!params.row._index) {
+              return h('div', params.row.Cost)
+            } else {
+              var self = this
+              return h('input', {
+                domProps: {
+                  value: params.row.Cost
+                },
+                on: {
+                  input: function (event) {
+                    self.$emit('input', event.target.value)
+                  }
                 }
-              }
-            })
+              })
+
+            }
           }
         },
       ],
@@ -1277,7 +1313,7 @@ export default {
           Cost: 14.73
         },
         {
-          AdderType: 'BMC of missing Key part（manually input)',
+          AdderType: 'BMC of missing Key part',
           Description: '',
           Cost: null
         }
@@ -1293,20 +1329,26 @@ export default {
         },
         {
           title: 'Cost',
-          key: 'Cost',
-          render: function (h, params) {
-            var self = this
-            return h('input', {
-              domProps: {
-                value: params.row.Cost
-              },
-              on: {
-                input: function (event) {
-                  self.$emit('input', event.target.value)
-                }
-              }
-            })
-          }
+          key: 'Cost'
+          // render: function (h, params) {
+          //   // console.log(params.row.Cost)
+          //   if (!params.row._index) {
+          //     return h('div', params.row.Cost)
+          //   } else {
+          //     var self = this
+          //     return h('input', {
+          //       domProps: {
+          //         value: params.row.Cost
+          //       },
+          //       on: {
+          //         input: function (event) {
+          //           self.$emit('input', event.target.value)
+          //         }
+          //       }
+          //     })
+
+          //   }
+          // }
         }
       ],
       tmcData: [
@@ -1342,20 +1384,20 @@ export default {
         },
         {
           title: 'Cost',
-          key: 'Cost',
-          render: function (h, params) {
-            var self = this
-            return h('input', {
-              domProps: {
-                value: params.row.Cost
-              },
-              on: {
-                input: function (event) {
-                  self.$emit('input', event.target.value)
-                }
-              }
-            })
-          }
+          key: 'Cost'
+          // render: function (h, params) {
+          //   var self = this
+          //   return h('input', {
+          //     domProps: {
+          //       value: params.row.Cost
+          //     },
+          //     on: {
+          //       input: function (event) {
+          //         self.$emit('input', event.target.value)
+          //       }
+          //     }
+          //   })
+          // }
         }
       ],
       CostAdjustmentData: [
@@ -2421,14 +2463,13 @@ export default {
     this.toggleList1()
     this.toggleList2()
   },
-  beforeMount() {
+  beforeMount () {
     this.frameworkComponents = {
       bmcCQComponent: bmcCQ,
       tmcCQComponent: tmcCQ,
       netbmcCQComponent: netbmcCQ,
       costCQComponent: costCQ
     }
-    this.defaultcolDef = {width:100}
   },
   mounted () {
     this.calcGridHeight()

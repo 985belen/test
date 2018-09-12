@@ -20,7 +20,24 @@ export default Vue.extend({
       bmcColumn: [
         {
           title: 'Adder Type',
-          key: 'AdderType'
+          key: 'AdderType',
+          render: function (h, params) {
+            // console.log(params.row.AdderType)
+            if (!params.row._index) {
+              return h('div', params.row.AdderType)
+            } else {
+              return h('div', [
+                h('Checkbox', {
+                  props: {
+                    size: 'large'
+                  },
+                  style: {
+                    marginRight: '5px'
+                  }
+              }, params.row.AdderType)
+            ])
+            }
+          }
         },
         {
           title: 'Description',
@@ -30,17 +47,23 @@ export default Vue.extend({
           title: 'Cost',
           key: 'Cost',
           render: function (h, params) {
-            var self = this
-            return h('input', {
-              domProps: {
-                value: params.row.Cost
-              },
-              on: {
-                input: function (event) {
-                  self.$emit('input', event.target.value)
+            // console.log(params.row.Cost)
+            if (!params.row._index) {
+              return h('div', params.row.Cost)
+            } else {
+              var self = this
+              return h('input', {
+                domProps: {
+                  value: params.row.Cost
+                },
+                on: {
+                  input: function (event) {
+                    self.$emit('input', event.target.value)
+                  }
                 }
-              }
-            })
+              })
+
+            }
           }
         },
       ],
@@ -51,7 +74,7 @@ export default Vue.extend({
           Cost: 14.73
         },
         {
-          AdderType: 'BMC of missing Key part（manually input)',
+          AdderType: 'BMC of missing Key part',
           Description: '',
           Cost: null
         }

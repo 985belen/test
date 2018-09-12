@@ -20,7 +20,25 @@ export default Vue.extend({
       netbmcColumn: [
         {
           title: 'Adder Type',
-          key: 'AdderType'
+          key: 'AdderType',
+          render: function (h, params) {
+            // console.log(params.row.AdderType)
+            // if (!params.row._index) {
+            //   return h('div', params.row.AdderType)
+            // } else {
+              var self = this
+              return h('div', [
+                h('Checkbox', {
+                  props: {
+                    size: 'large'
+                  },
+                  style: {
+                    marginRight: '5px'
+                  }
+              }, params.row.AdderType)
+            ])
+            // }
+          }
         },
         {
           title: 'Description',
@@ -30,17 +48,22 @@ export default Vue.extend({
           title: 'Cost',
           key: 'Cost',
           render: function (h, params) {
-            var self = this
-            return h('input', {
-              domProps: {
-                value: params.row.Cost
-              },
-              on: {
-                input: function (event) {
-                  self.$emit('input', event.target.value)
+            // console.log(params.row.Cost)
+            if (params.row._index !==2) {
+              return h('div', params.row.Cost)
+            } else {
+              var self = this
+              return h('input', {
+                domProps: {
+                  value: params.row.Cost
+                },
+                on: {
+                  input: function (event) {
+                    self.$emit('input', event.target.value)
+                  }
                 }
-              }
-            })
+              })
+            }
           }
         }
       ],
@@ -51,17 +74,12 @@ export default Vue.extend({
           Cost: 2
         },
         {
-          AdderType: 'Segment Funding',
-          Description: '',
-          Cost: null
-        },
-        {
           AdderType: 'Customer Funding',
           Description: '',
           Cost: 10
         },
         {
-          AdderType: 'Special Funding(manually input)',
+          AdderType: 'Special Funding',
           Description: '',
           Cost: null
         }

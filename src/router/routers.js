@@ -47,16 +47,6 @@ export default [
           import ('@/view/price/price.vue')
       },
       {
-        path: 'Portal',
-        name: 'Portal',
-        meta: {
-          icon: '',
-          title: 'Portal'
-        },
-        component: () =>
-          import ('@/view/price/Portal.vue')
-      },
-      {
         path: 'CTO_Config',
         name: 'CTO_Config',
         meta: {
@@ -107,6 +97,15 @@ export default [
           title: 'excel_PEsale'
         },
         component: () => import('@/view/excel/excel_PEsale.vue')
+      },
+      {
+        path: 'excel_PEsale1',
+        name: 'excel_PEsale1',
+        meta: {
+          icon: '',
+          title: 'excel_PEsale1'
+        },
+        component: () => import('@/view/excel/excel_PEsale1.vue')
       },
       {
         path: 'excel_listpage',
