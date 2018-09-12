@@ -664,15 +664,9 @@ export default {
             if (params.row._index !== 2) {
               return h('div', params.row.Cost)
             } else {
-              var self = this
-              return h('input', {
-                domProps: {
-                  value: params.row.Cost
-                },
-                on: {
-                  input: function (event) {
-                    self.$emit('input', event.target.value)
-                  }
+              return h('Input', {
+                props: {
+                  size: 'small'
                 }
               })
             }
@@ -726,17 +720,15 @@ export default {
           title: 'Cost',
           key: 'Cost',
           render: function (h, params) {
-            var self = this
-            return h('input', {
-              domProps: {
-                value: params.row.Cost
-              },
-              on: {
-                input: function (event) {
-                  self.$emit('input', event.target.value)
+            if (!params.row._index) {
+              return h('div', params.row.Cost)
+            } else {
+              return h('Input', {
+                props: {
+                  size: 'small'
                 }
-              }
-            })
+              })
+            }
           }
         }
       ],

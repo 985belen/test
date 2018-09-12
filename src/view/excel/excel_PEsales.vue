@@ -88,7 +88,7 @@
             :rowData="rowData"
             :frameworkComponents="frameworkComponents"
             :floatingFilter="true"
-            :enableSorting="true"
+            :enableSorting="false"
             :enableFilter="true"
             :singleClickEdit="true"
             :suppressSizeToFit="true"
@@ -716,6 +716,18 @@ export default {
           cellStyle: {'text-align': 'left'}
         },
         {
+          headerName: 'Recommendation Discount',
+          width: 190,
+          field: 'RecommendationDiscount',
+          cellStyle: {'text-align': 'left'}
+        },
+        {
+          headerName: 'Walkaway Discount',
+          width: 150,
+          field: 'WalkawayDiscount',
+          cellStyle: {'text-align': 'left'}
+        },
+        {
           headerName: 'Req`st price',
           width: 120,
           field: 'respri',
@@ -904,15 +916,9 @@ export default {
             if (params.row._index !==2) {
               return h('div', params.row.Cost)
             } else {
-              var self = this
-              return h('input', {
-                domProps: {
-                  value: params.row.Cost
-                },
-                on: {
-                  input: function (event) {
-                    self.$emit('input', event.target.value)
-                  }
+              return h('Input', {
+                props: {
+                  size: 'small'
                 }
               })
             }
@@ -969,18 +975,11 @@ export default {
             if (!params.row._index) {
               return h('div', params.row.Cost)
             } else {
-              var self = this
-              return h('input', {
-                domProps: {
-                  value: params.row.Cost
-                },
-                on: {
-                  input: function (event) {
-                    self.$emit('input', event.target.value)
-                  }
+              return h('Input', {
+                props: {
+                  size: 'small'
                 }
               })
-
             }
           }
         },
@@ -1027,25 +1026,6 @@ export default {
         {
           title: 'Cost',
           key: 'Cost'
-          // render: function (h, params) {
-          //   // console.log(params.row.Cost)
-          //   if (!params.row._index) {
-          //     return h('div', params.row.Cost)
-          //   } else {
-          //     var self = this
-          //     return h('input', {
-          //       domProps: {
-          //         value: params.row.Cost
-          //       },
-          //       on: {
-          //         input: function (event) {
-          //           self.$emit('input', event.target.value)
-          //         }
-          //       }
-          //     })
-
-          //   }
-          // }
         }
       ],
       tmcData: [
@@ -1082,19 +1062,6 @@ export default {
         {
           title: 'Cost',
           key: 'Cost'
-          // render: function (h, params) {
-          //   var self = this
-          //   return h('input', {
-          //     domProps: {
-          //       value: params.row.Cost
-          //     },
-          //     on: {
-          //       input: function (event) {
-          //         self.$emit('input', event.target.value)
-          //       }
-          //     }
-          //   })
-          // }
         }
       ],
       CostAdjustmentData: [
@@ -2194,6 +2161,8 @@ export default {
           vol: '1',
           listpri: '1905.72',
           stndpri: '1905.72',
+          RecommendationDiscount: '51%',
+          WalkawayDiscount: '59%',
           respri: '600',
           estpri: '655',
           finalpri: '0',
@@ -2225,6 +2194,8 @@ export default {
           vol: '1',
           listpri: '1905.72',
           stndpri: '1905.72',
+          RecommendationDiscount: '51%',
+          WalkawayDiscount: '59%',
           respri: '600',
           estpri: '655',
           finalpri: '0',
@@ -2256,6 +2227,8 @@ export default {
           vol: '1',
           listpri: '1905.72',
           stndpri: '1905.72',
+          RecommendationDiscount: '51%',
+          WalkawayDiscount: '59%',
           respri: '600',
           estpri: '655',
           finalpri: '0',

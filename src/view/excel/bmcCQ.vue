@@ -51,18 +51,11 @@ export default Vue.extend({
             if (!params.row._index) {
               return h('div', params.row.Cost)
             } else {
-              var self = this
-              return h('input', {
-                domProps: {
-                  value: params.row.Cost
-                },
-                on: {
-                  input: function (event) {
-                    self.$emit('input', event.target.value)
-                  }
+              return h('Input', {
+                props: {
+                  size: 'small'
                 }
               })
-
             }
           }
         },
