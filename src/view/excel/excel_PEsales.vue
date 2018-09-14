@@ -892,14 +892,14 @@ export default {
           title: 'Adder Type',
           key: 'AdderType',
           render: function (h, params) {
-              return h('div', [
-                h('Checkbox', {
-                  props: {
-                    size: 'large'
-                  },
-                  style: {
-                    marginRight: '5px'
-                  }
+            return h('div', [
+              h('Checkbox', {
+                props: {
+                  size: 'large'
+                },
+                style: {
+                  marginRight: '5px'
+                }
               }, params.row.AdderType)
             ])
           }
@@ -913,7 +913,7 @@ export default {
           key: 'Cost',
           render: function (h, params) {
             // console.log(params.row.Cost)
-            if (params.row._index !==2) {
+            if (params.row._index !==7) {
               return h('div', params.row.Cost)
             } else {
               return h('Input', {
@@ -927,14 +927,39 @@ export default {
       ],
       netbmcData: [
         {
-          AdderType: 'Backend Funding',
-          Description: 'Intel Core i5-7500T 2.7G 4C',
+          AdderType: 'Backend CPU Funding',
+          Description: 'Intel Core i5',
           Cost: 2
+        },
+        {
+          AdderType: 'Backend HDD Funding',
+          Description: '',
+          Cost: null
+        },
+        {
+          AdderType: 'Backend Other Funding',
+          Description: '',
+          Cost: null
         },
         {
           AdderType: 'Customer Funding',
           Description: '',
           Cost: 10
+        },
+        {
+          AdderType: 'Geo Funding',
+          Description: '',
+          Cost: null
+        },
+        {
+          AdderType: 'Region Funding',
+          Description: '',
+          Cost: null
+        },
+        {
+          AdderType: 'WW Funding',
+          Description: '',
+          Cost: null
         },
         {
           AdderType: 'Special Funding',
@@ -1040,9 +1065,14 @@ export default {
           Cost: 0
         },
         {
-          AdderType: 'EO',
+          AdderType: 'E&O',
           Description: '',
           Cost: 3.29
+        },
+        {
+          AdderType: 'GSC Real Cost Group',
+          Description: '',
+          Cost: 0
         },
         {
           AdderType: 'Country Adjustment',

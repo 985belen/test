@@ -43,9 +43,14 @@ export default Vue.extend({
           Cost: 0
         },
         {
-          AdderType: 'EO',
+          AdderType: 'E&O',
           Description: '',
           Cost: 3.29
+        },
+        {
+          AdderType: 'GSC Real Cost Group',
+          Description: '',
+          Cost: 0
         },
         {
           AdderType: 'Country Adjustment',
@@ -57,13 +62,15 @@ export default Vue.extend({
   },
   methods: {
     onclick () {
-      // this.params.hideModal()
       this.modelTMC = true
-      // alert(23)
     }
   }
 })
 </script>
 <style scoped>
- 
+ .customHeaderLabel{
+   display: block;
+   width: 100%;
+   height: 100%
+ }
 </style>

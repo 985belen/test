@@ -76,13 +76,15 @@ export default Vue.extend({
   },
   methods: {
     onclick () {
-      // this.params.hideModal()
       this.modelBMC = true
-      // alert(23)
     }
   }
 })
 </script>
 <style scoped>
- 
+ .customHeaderLabel{
+   display: block;
+   width: 100%;
+   height: 100%
+ }
 </style>

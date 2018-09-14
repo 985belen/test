@@ -1,13 +1,16 @@
 <template>
     <div class="ag-header-group-cell-label">
       <a href="#" class="customHeaderLabel" @click="onclick">{{params.displayName}}</a>
-      <Modal
-        v-model="modelCostAdjustment"
-        title="Cost Adjustment"
-        :styles="{width:'800px'}"
-        ok-text="Apply"
-        cancel-text="Cancel">
-        <Table border :columns="CostAdjustmentColumn" :data="CostAdjustmentData"></Table>
+      <Modal v-model="modelCostAdjustment" width="800">
+        <p slot="header">
+          <span>Cost Adjustment</span>
+        </p>
+        <div style="text-align:center">
+          <Table border :columns="CostAdjustmentColumn" :data="CostAdjustmentData"></Table>
+        </div>
+        <div slot="footer">
+          <!-- <Button type="error" size="large" @click="del">Delete</Button> -->
+        </div>
       </Modal>
     </div>
 </template>
@@ -47,13 +50,15 @@ export default Vue.extend({
   },
   methods: {
     onclick () {
-      // this.params.hideModal()
       this.modelCostAdjustment = true
-      // alert(23)
     }
   }
 })
 </script>
 <style scoped>
- 
+ .customHeaderLabel{
+   display: block;
+   width: 100%;
+   height: 100%
+ }
 </style>

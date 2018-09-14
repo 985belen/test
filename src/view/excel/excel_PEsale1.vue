@@ -767,6 +767,18 @@ export default {
           cellStyle: {'text-align': 'left'}
         },
         {
+          headerName: 'Recommendation Discount',
+          width: 190,
+          field: 'RecommendationDiscount',
+          cellStyle: {'text-align': 'left'}
+        },
+        {
+          headerName: 'Walkaway Discount',
+          width: 150,
+          field: 'WalkawayDiscount',
+          cellStyle: {'text-align': 'left'}
+        },
+        {
           headerName: 'Req`st price',
           width: 120,
           field: 'respri',
@@ -921,6 +933,8 @@ export default {
           vol: '1',
           listpri: '1905.72',
           stndpri: '1905.72',
+          RecommendationDiscount: '51%',
+          WalkawayDiscount: '59%',
           respri: '600',
           estpri: '655',
           finalpri: '0',
@@ -948,6 +962,8 @@ export default {
           vol: '1',
           listpri: '1905.72',
           stndpri: '1905.72',
+          RecommendationDiscount: '51%',
+          WalkawayDiscount: '59%',
           respri: '600',
           estpri: '655',
           finalpri: '0',
@@ -975,6 +991,8 @@ export default {
           vol: '1',
           listpri: '1905.72',
           stndpri: '1905.72',
+          RecommendationDiscount: '51%',
+          WalkawayDiscount: '59%',
           respri: '600',
           estpri: '655',
           finalpri: '0',
@@ -1002,6 +1020,8 @@ export default {
           vol: '5',
           listpri: '277.47',
           stndpri: '277.47',
+          RecommendationDiscount: '35%',
+          WalkawayDiscount: '45%',
           respri: '149',
           estpri: '1200',
           finalpri: '149',
@@ -1029,6 +1049,8 @@ export default {
           vol: '5',
           listpri: '277.47',
           stndpri: '277.47',
+          RecommendationDiscount: '35%',
+          WalkawayDiscount: '45%',
           respri: '149',
           estpri: '1200',
           finalpri: '149',
@@ -1056,6 +1078,8 @@ export default {
           vol: '5',
           listpri: '277.47',
           stndpri: '277.47',
+          RecommendationDiscount: '35%',
+          WalkawayDiscount: '45%',
           respri: '149',
           estpri: '1200',
           finalpri: '149',
@@ -1083,6 +1107,8 @@ export default {
           vol: '5',
           listpri: '277.47',
           stndpri: '277.47',
+          RecommendationDiscount: '35%',
+          WalkawayDiscount: '45%',
           respri: '149',
           estpri: '1200',
           finalpri: '149',
@@ -1098,130 +1124,6 @@ export default {
           pti: '121.35',
           ptipro: '23.18',
           ptimar: '-16%'
-        }
-      ],
-      netbmcColumn: [
-        {
-          title: 'Adder Type',
-          key: 'AdderType',
-          render: function (h, params) {
-              return h('div', [
-                h('Checkbox', {
-                  props: {
-                    size: 'large'
-                  },
-                  style: {
-                    marginRight: '5px'
-                  }
-              }, params.row.AdderType)
-            ])
-          }
-        },
-        {
-          title: 'Description',
-          key: 'Description'
-        },
-        {
-          title: 'Cost',
-          key: 'Cost',
-          render: function (h, params) {
-            // console.log(params.row.Cost)
-            if (params.row._index !==2) {
-              return h('div', params.row.Cost)
-            } else {
-              var self = this
-              return h('input', {
-                domProps: {
-                  value: params.row.Cost
-                },
-                on: {
-                  input: function (event) {
-                    self.$emit('input', event.target.value)
-                  }
-                }
-              })
-            }
-          }
-        }
-      ],
-      netbmcData: [
-        {
-          AdderType: 'Backend Funding',
-          Description: 'Intel Core i5-7500T 2.7G 4C',
-          Cost: 2
-        },
-        {
-          AdderType: 'Customer Funding',
-          Description: '',
-          Cost: 10
-        },
-        {
-          AdderType: 'Special Funding',
-          Description: '',
-          Cost: null
-        }
-      ],
-      bmcColumn: [
-        {
-          title: 'Adder Type',
-          key: 'AdderType',
-          render: function (h, params) {
-            // console.log(params.row.AdderType)
-            if (!params.row._index) {
-              return h('div', params.row.AdderType)
-            } else {
-              var self = this
-              return h('div', [
-                h('Checkbox', {
-                  props: {
-                    size: 'large'
-                  },
-                  style: {
-                    marginRight: '5px'
-                  }
-              }, params.row.AdderType)
-            ])
-            }
-          }
-        },
-        {
-          title: 'Description',
-          key: 'Description'
-        },
-        {
-          title: 'Cost',
-          key: 'Cost',
-          render: function (h, params) {
-            // console.log(params.row.Cost)
-            if (!params.row._index) {
-              return h('div', params.row.Cost)
-            } else {
-              var self = this
-              return h('input', {
-                domProps: {
-                  value: params.row.Cost
-                },
-                on: {
-                  input: function (event) {
-                    self.$emit('input', event.target.value)
-                  }
-                }
-              })
-
-            }
-          }
-        },
-      ],
-      bmcData: [
-        {
-          AdderType: 'MOT',
-          Description: 'MIX',
-          Cost: 14.73
-        },
-        {
-          AdderType: 'BMC of missing Key part',
-          Description: '',
-          Cost: null
         }
       ],
       tmcColumn: [
@@ -1269,9 +1171,14 @@ export default {
           Cost: 0
         },
         {
-          AdderType: 'EO',
+          AdderType: 'E&O',
           Description: '',
           Cost: 3.29
+        },
+        {
+          AdderType: 'GSC Real Cost Group',
+          Description: '',
+          Cost: 0
         },
         {
           AdderType: 'Country Adjustment',
