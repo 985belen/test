@@ -1077,7 +1077,7 @@ export default {
         {
           AdderType: 'Country Adjustment',
           Description: '',
-          Cost: null
+          Cost: 0
         }
       ],
       CostAdjustmentColumn: [

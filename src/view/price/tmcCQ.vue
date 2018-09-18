@@ -55,7 +55,7 @@ export default Vue.extend({
         {
           AdderType: 'Country Adjustment',
           Description: '',
-          Cost: null
+          Cost: 0
         }
       ]
     }

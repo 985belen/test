@@ -496,7 +496,7 @@ export default {
       rowData: [
         {
           'Item NO': 1,
-          Flag: 'NP ESS',
+          Flag: 'CM',
           'Part Number': '20KECTO1WW',
           Description: 'ThinkVision T24i-10 23.8 inch Wide FHD IPS type Monitor',
           'Category': 'Notebook ThinkPad X280 20KECTO1WW Rx',
@@ -559,7 +559,7 @@ export default {
         },
         {
           'Item NO': 2,
-          Flag: 'CM',
+          Flag: 'NP ESS',
           'Part Number': '40AF0135CH',
           Description: 'ThinkVision T23i-10 23 inch Wide FHD IPS type Monitor',
           'Category': 'TP Hybrid USB-C Dock - CH',
@@ -792,7 +792,7 @@ export default {
         {
           AdderType: 'Country Adjustment',
           Description: '',
-          Cost: null
+          Cost: 0
         }
       ],
       CostAdjustmentColumn: [

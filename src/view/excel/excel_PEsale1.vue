@@ -1138,25 +1138,6 @@ export default {
         {
           title: 'Cost',
           key: 'Cost'
-          // render: function (h, params) {
-          //   // console.log(params.row.Cost)
-          //   if (!params.row._index) {
-          //     return h('div', params.row.Cost)
-          //   } else {
-          //     var self = this
-          //     return h('input', {
-          //       domProps: {
-          //         value: params.row.Cost
-          //       },
-          //       on: {
-          //         input: function (event) {
-          //           self.$emit('input', event.target.value)
-          //         }
-          //       }
-          //     })
-
-          //   }
-          // }
         }
       ],
       tmcData: [
@@ -1183,7 +1164,7 @@ export default {
         {
           AdderType: 'Country Adjustment',
           Description: '',
-          Cost: null
+          Cost: 0
         }
       ],
       CostAdjustmentColumn: [
