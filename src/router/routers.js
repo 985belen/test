@@ -99,15 +99,6 @@ export default [
         component: () => import('@/view/excel/excel_PEsale.vue')
       },
       {
-        path: 'excel_PEsale1',
-        name: 'excel_PEsale1',
-        meta: {
-          icon: '',
-          title: 'excel_PEsale1'
-        },
-        component: () => import('@/view/excel/excel_PEsale1.vue')
-      },
-      {
         path: 'excel_listpage',
         name: 'excel_listpage',
         meta: {

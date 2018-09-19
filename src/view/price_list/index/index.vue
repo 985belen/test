@@ -8,18 +8,6 @@
     <a href="#" class="item"><Icon class="icon" size=16 type="ios-copy" />Copy</a>
     <Divider type="vertical" />
     <a href="#" class="item"><Icon class="icon" size=16 type="ios-download" />Export</a>
-    <!-- <Divider type="vertical" />
-    <a href="#" class="item"><Icon class="icon" size=16 type="md-link" />Email</a>
-    <Divider type="vertical" />
-    <a href="#" class="item"><Icon class="icon" size=16 type="md-appstore" />Generate Report</a>
-    <Divider type="vertical" />
-    <a href="#" class="item"><Icon class="icon" size=16 type="md-list-box" />Export Template</a>
-    <Divider type="vertical" />
-    <a href="#" class="item"><Icon class="icon" size=16 type="md-notifications" />Import Template</a>
-    <Divider type="vertical" />
-    <a href="#" class="item"><Icon class="icon" size=16 type="md-exit" />Upload Data</a>
-    <Divider type="vertical" />
-    <a href="#" class="item"><Icon class="icon" size=16 type="md-stats" />Summary Report</a> -->
   </div>
   <div class="agcontainer" style="width: 100%;height:100%;overflow:hidden;">
     <ag-grid-vue
@@ -465,6 +453,9 @@ export default {
 }
 .ivu-FormItem{
   margin-bottom: 5px!important;
+}
+.ivu-form-item{
+  margin-bottom:5px;
 }
 .tool-bar{
   width:100%;
