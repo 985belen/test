@@ -262,6 +262,17 @@
     cancel-text="Cancel">
     <Table border :columns="tmcColumn" :data="tmcData"></Table>
   </Modal>
+  <Modal v-model="modelCostAdjustment" width="800">
+    <p slot="header">
+      <span>Cost Adjustment</span>
+    </p>
+    <div style="text-align:center">
+      <Table border :columns="CostAdjustmentColumn" :data="CostAdjustmentData"></Table>
+    </div>
+    <div slot="footer">
+      <!-- <Button type="error" size="large" @click="del">Delete</Button> -->
+    </div>
+  </Modal>
 </div>
 </template>
 <script>
@@ -275,6 +286,7 @@ export default {
   data () {
     return {
       modelTMC: false,
+      modelCostAdjustment: false,
       toggle: true,
       toggle1: false,
       toggle2: true,
@@ -672,6 +684,25 @@ export default {
           }
         },
         {
+          headerName: 'Cost Adjustment',
+          width: 140,
+          field: 'CostAdjustment',
+          cellStyle: {'text-align': 'left'},
+          cellRenderer: (params) => {
+            return '<a title="' + params.value +'"href="#">' + params.value + '</a>'
+          },
+          headerComponent: "costCQComponent",
+          onCellClicked: () => {
+            this.modelCostAdjustment = true
+          }
+        },
+        {
+          headerName: 'Final TMC',
+          width: 120,
+          field: 'FinalTMC',
+          cellStyle: {'text-align': 'left'}
+        },
+        {
           headerName: 'TMC Margin',
           width: 110,
           field: 'tmcmar',
@@ -765,6 +796,32 @@ export default {
           AdderType: 'Country Adjustment',
           Description: '',
           Cost: 0
+        }
+      ],
+      CostAdjustmentColumn: [
+        {
+          title: 'Adder Type',
+          key: 'AdderType'
+        },
+        {
+          title: 'Description',
+          key: 'Description'
+        },
+        {
+          title: 'Cost',
+          key: 'Cost'
+        }
+      ],
+      CostAdjustmentData: [
+        {
+          AdderType: 'MOT',
+          Description: 'Ocean',
+          Cost: 3.04
+        },
+        {
+          AdderType: 'Customer Funding',
+          Description: '',
+          Cost: 10
         }
       ],
       detailcolumns1: [
@@ -1861,6 +1918,8 @@ export default {
           finalpri: 0,
           disc: 65.6,
           tmc: 1079,
+          CostAdjustment: 21.7,
+          FinalTMC: 1057.3,
           tmcmar: -402.5,
           tmcb: '-61.4%',
           gr: 4875,
@@ -1888,6 +1947,8 @@ export default {
           finalpri: 0,
           disc: 65.6,
           tmc: 1039.21,
+          CostAdjustment: 21.7,
+          FinalTMC: 1017.51,
           tmcmar: -362.71,
           tmcb: '-55.4%',
           gr: 4875,
@@ -1915,6 +1976,8 @@ export default {
           finalpri: 0,
           disc: 65.6,
           tmc: 1014.65,
+          CostAdjustment: 21.7,
+          FinalTMC: 992.95,
           tmcmar: -338.15,
           tmcb: '-51.6%',
           gr: '4875',
@@ -1942,6 +2005,8 @@ export default {
           finalpri: '0',
           disc: '65.6',
           tmc: '1014.65',
+          CostAdjustment: 21.7,
+          FinalTMC: 992.95,
           tmcmar: '-333.76',
           tmcb: '-51%',
           gr: 4875,
@@ -1969,6 +2034,8 @@ export default {
           finalpri: 149,
           disc: 46.3,
           tmc: 10276,
+          CostAdjustment: 4.68,
+          FinalTMC: 98.08,
           tmcmar: 43.74,
           tmcb: '30.3%',
           gr: 29525,
@@ -1997,6 +2064,8 @@ export default {
           disc: 46.3,
           bmc: 10276,
           tmc: 10276,
+          CostAdjustment: 4.68,
+          FinalTMC: 98.08,
           tmcmar: 43.74,
           tmcb: '30.3%',
           gr: 29525,
@@ -2024,6 +2093,8 @@ export default {
           finalpri: 149,
           disc: 46.3,
           tmc: 102.76,
+          CostAdjustment: 4.68,
+          FinalTMC: 98.08,
           tmcmar: 43.74,
           tmcb: '30.3%',
           gr: 29525,
@@ -2051,6 +2122,8 @@ export default {
           finalpri: 149,
           disc: 46.3,
           tmc: 102.76,
+          CostAdjustment: 4.68,
+          FinalTMC: 98.08,
           tmcmar: 43.74,
           tmcb: '30.3%',
           gr: 29525,
