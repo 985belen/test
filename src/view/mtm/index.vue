@@ -6,12 +6,12 @@
         <Row type="flex" :gutter="10">
          <Col span=6>
             <FormItem label="MTM_NO">
-              <Input v-model="formLeft.MTM_NO"></Input>
+              <Input v-model="formLeft.MTM_NO"/>
             </FormItem>
           </Col>
           <Col span=6>
             <FormItem label="COUNTRY">
-              <Input v-model="formLeft.COUNTRY"></Input>
+              <Input v-model="formLeft.COUNTRY"/>
             </FormItem>
           </Col>
           <Col span=6>
@@ -46,17 +46,17 @@
         <Row type="flex" :gutter="10">
          <Col span=6>
             <FormItem label="MTM_NO">
-              <Input v-model="formRight.MTM_NO"></Input>
+              <Input v-model="formRight.MTM_NO"/>
             </FormItem>
           </Col>
           <Col span=6>
             <FormItem label="SALES_ORG">
-              <Input v-model="formRight.SALES_ORG"></Input>
+              <Input v-model="formRight.SALES_ORG"/>
             </FormItem>
           </Col>
           <Col span=6>
             <FormItem label="SALES_OFFICE">
-              <Input v-model="formRight.SALES_OFFICE"></Input>
+              <Input v-model="formRight.SALES_OFFICE"/>
             </FormItem>
           </Col>
           <Col span=6>

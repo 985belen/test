@@ -59,7 +59,7 @@
       class="ag-theme-balham"
       :columnDefs="columnDefs"
       :rowData="rowData"
-      :gridAutoHeight="true"
+      :gridAutoHeight="false"
       :floatingFilter="true"
       :enableSorting="true"
       :enableFilter="true"
@@ -308,8 +308,8 @@ export default {
       var topMain = document.getElementsByClassName('topMain')[0].offsetHeight
       var agcontainer = document.getElementsByClassName('agcontainer')[0]
       var agBody = document.getElementsByClassName('ag-theme-balham')[0]
-      agcontainer.style.height = screenHeight - 64 - topMain - 10 + 'px'
-      agBody.style.height = screenHeight - 64 - topMain - 10 - 30 + 'px'
+      agcontainer.style.height = screenHeight - 64 - topMain - 10 - 20 + 'px'
+      agBody.style.height = screenHeight - 64 - topMain - 20 - 30 + 'px'
     }
   }
 }

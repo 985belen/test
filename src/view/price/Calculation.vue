@@ -4,12 +4,12 @@
     <h3 class="marginBottom">
       <a href="javascript:;" style="display:inline-block;color: #333;"><Icon type="md-pricetags" />Price Log</a>
       <div style="float: right; margin-top: -3px;">
-        <Button size='small' type="default">Search</Button>
-        <Button  size='small' type="default" @click="NewFormula=true">Create New Formula</Button>
-        <Button  size='small' type="default">View</Button>
-        <Button  size='small' type="default">Copy</Button>
-        <Button  size='small' type="default">Edit</Button>
-        <Button  size='small' type="default">Delete</Button>
+        <Button size='small'>Search</Button>
+        <Button  size='small' @click="NewFormula=true">Create New Formula</Button>
+        <Button  size='small'>View</Button>
+        <Button  size='small'>Copy</Button>
+        <Button  size='small'>Edit</Button>
+        <Button  size='small'>Delete</Button>
       </div>
     </h3>
     <div class="middle-box" style="display: block;">
@@ -48,7 +48,7 @@
       class="ag-theme-balham"
       :columnDefs="columnDefs"
       :rowData="rowData"
-      :gridAutoHeight="true"
+      :gridAutoHeight="false"
       :floatingFilter="true"
       :enableSorting="true"
       :enableFilter="true"
@@ -199,7 +199,7 @@ export default {
           PriceType: 'List Price',
           SalesOrg: 'IN10',
           SalesOffice: 'IN00',
-          Productgroup: '',
+          Productgroup: 'NB',
           Createdby: 'zhangxm29',
           Updatedby: 'zhangxm29 ',
           CreatedDate: '2018/9/21 12:30',
@@ -209,7 +209,7 @@ export default {
           PriceType: 'List Price',
           SalesOrg: 'HK65',
           SalesOffice: 'OM10',
-          Productgroup: 'ZM',
+          Productgroup: 'DT',
           Createdby: 'wuch4',
           Updatedby: 'wuch4 ',
           CreatedDate: '2018/9/18 11:30',
@@ -224,29 +224,28 @@ export default {
   },
   created () {},
   mounted () {
-    // this.calcGridHeight()
-    // window.addEventListener('resize', () => {
-    //   window.clearTimeout(this.timer)
-    //   this.timer = window.setTimeout(() => {
-    //     this.calcGridHeight()
-    //   }, 100)
-    // })
+    this.calcGridHeight()
+    window.addEventListener('resize', () => {
+      window.clearTimeout(this.timer)
+      this.timer = window.setTimeout(() => {
+        this.calcGridHeight()
+      }, 100)
+    })
   },
   methods: {
     onGridReady (params) {
       params.api.sizeColumnsToFit()
     },
     addInput (label) {
-      this.formDynamic.formula +=  label + ' + '
+      this.formDynamic.formula +=  label
     },
     calcGridHeight () {
       var screenHeight = window.innerHeight
       var topHeight = this.$refs.topMain.offsetHeight
-      // console.log(topHeight)
       var ag = document.getElementsByClassName('ag-theme-balham')[0]
       var agcontainer = document.getElementsByClassName('agcontainer')[0]
-      ag.style.height = screenHeight - topHeight - 64 - 40 + 'px'
-      agcontainer.style.height = screenHeight - topHeight - 64 - 10 + 'px'
+      agcontainer.style.height = screenHeight - topHeight - 64 - 70 + 'px'
+      ag.style.height = screenHeight - topHeight - 64 - 50 + 'px'
     }
   }
 }
