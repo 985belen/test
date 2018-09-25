@@ -57,6 +57,26 @@ export default [
           import ('@/view/price/CTO_Config.vue')
       },
       {
+        path: 'calculation',
+        name: 'calculation',
+        meta: {
+          icon: '',
+          title: 'calculation'
+        },
+        component: () =>
+          import ('@/view/price/Calculation.vue')
+      },
+      {
+        path: 'publish',
+        name: 'publish',
+        meta: {
+          icon: '',
+          title: 'publish'
+        },
+        component: () =>
+          import ('@/view/price/Publish.vue')
+      },
+      {
         path: 'CTO_ListPrice',
         name: 'CTO_ListPrice',
         meta: {

@@ -151,13 +151,16 @@
     cancel-text="Cancel">
     <Table border :columns="bmcColumn" :data="bmcData"></Table>
   </Modal>
-  <Modal
-    v-model="modelTMC"
-    title="TMC"
-    :styles="{width:'800px'}"
-    ok-text="Apply"
-    cancel-text="Cancel">
-    <Table border :columns="tmcColumn" :data="tmcData"></Table>
+  <Modal v-model="modelTMC" width="800">
+    <p slot="header">
+      <span>TMC</span>
+    </p>
+    <div style="text-align:center">
+      <Table border :columns="tmcColumn" :data="tmcData"></Table>
+    </div>
+    <div slot="footer">
+      <!-- <Button type="error" size="large" @click="del">Delete</Button> -->
+    </div>
   </Modal>
   <Modal
     v-model="modelNetBMC"
@@ -1313,7 +1316,7 @@ export default {
   }
 }
 </script>
-<style lang="less">
+<style lang="less" scoped>
 .price-box{
   width: 100%;
   height: 100%;

@@ -1,15 +1,18 @@
 <template>
-    <div class="ag-header-group-cell-label">
-      <a href="#" class="customHeaderLabel" @click="onclick">{{params.displayName}}</a>
-      <Modal
-        v-model="modelTMC"
-        title="TMC"
-        :styles="{width:'800px'}"
-        ok-text="Apply"
-        cancel-text="Cancel">
+  <div class="ag-header-group-cell-label">
+    <a href="#" class="customHeaderLabel" @click="onclick">{{params.displayName}}</a>
+    <Modal v-model="modelTMC" width="800">
+      <p slot="header">
+        <span>TMC</span>
+      </p>
+      <div style="text-align:center">
         <Table border :columns="tmcColumn" :data="tmcData"></Table>
-      </Modal>
-    </div>
+      </div>
+      <div slot="footer">
+        <!-- <Button type="error" size="large" @click="del">Delete</Button> -->
+      </div>
+    </Modal>
+  </div>
 </template>
 <script>
 import Vue from 'vue';

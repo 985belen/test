@@ -63,41 +63,41 @@
       <Row>
         <Col span=8>
           <Form-item label="ID">
-            <Input size="small" v-model="FormItem.id" placeholder="Enter something..."></Input>
+            <Input size="small" v-model="FormItem.id" placeholder="Enter something..."/>>
           </Form-item>
         </Col>
         <Col span=8>
           <Form-item label="Created Date">
-            <Input size="small" v-model="FormItem.CreatedDate" placeholder="Enter something..."></Input>
+            <Input size="small" v-model="FormItem.CreatedDate" placeholder="Enter something..."/>
           </Form-item>
         </Col>
         <Col span=8>
           <Form-item label="Last Modified">
-            <Input size="small" v-model="FormItem.LastModified" placeholder="Enter something..."></Input>
+            <Input size="small" v-model="FormItem.LastModified" placeholder="Enter something..."/>
           </Form-item>
         </Col>
       </Row>
       <Row>
         <Col span=8>
           <Form-item label="Original Rmap ID">
-            <Input size="small" v-model="FormItem.OriginalRmapID" placeholder="Enter something..."></Input>
+            <Input size="small" v-model="FormItem.OriginalRmapID" placeholder="Enter something..."/>
           </Form-item>
         </Col>
         <Col span=8>
           <Form-item label="Created By">
-            <Input size="small" v-model="FormItem.CreatedBy" placeholder="Enter something..."></Input>
+            <Input size="small" v-model="FormItem.CreatedBy" placeholder="Enter something..."/>
           </Form-item>
         </Col>
         <Col span=8>
           <Form-item label="Last Modified by">
-            <Input size="small" v-model="FormItem.LastModifiedby" placeholder="Enter something..."></Input>
+            <Input size="small" v-model="FormItem.LastModifiedby" placeholder="Enter something..."/>
           </Form-item>
         </Col>
       </Row>
       <Row>
         <Col span=24>
           <Form-item label="Description" prop="Description">
-            <Input size="small" v-model="FormItem.Description" type="textarea" placeholder="Enter something..."></Input>
+            <Input size="small" v-model="FormItem.Description" type="textarea" placeholder="Enter something..."/>
           </Form-item>
         </Col>
       </Row>
@@ -112,24 +112,24 @@
       <Row>
         <Col span=12>
           <Form-item label="DMU Name"  prop="DMUName">
-            <Input size="small" v-model="FormItem.DMUName" placeholder="Enter something..."></Input>
+            <Input size="small" v-model="FormItem.DMUName" placeholder="Enter something..."/>
           </Form-item>
         </Col>
         <Col span=12>
           <Form-item label="Channel" prop="Channel">
-            <Input size="small" v-model="FormItem.Channel" placeholder="Enter something..."></Input>
+            <Input size="small" v-model="FormItem.Channel" placeholder="Enter something..."/>
           </Form-item>
         </Col>
       </Row>
       <Row>
         <Col span=12>
           <Form-item label="Business Group">
-            <Input size="small" v-model="FormItem.BusinessGroup" placeholder="Enter something..."></Input>
+            <Input size="small" v-model="FormItem.BusinessGroup" placeholder="Enter something..."/>
           </Form-item>
         </Col>
         <Col span=12>
           <Form-item label="Pricing Group" prop="PricingGroup">
-            <Input size="small" v-model="FormItem.PricingGroup" placeholder="Enter something..."></Input>
+            <Input size="small" v-model="FormItem.PricingGroup" placeholder="Enter something..."/>
           </Form-item>
         </Col>
         </Col>
@@ -137,30 +137,30 @@
       <Row>
         <Col span=12>
           <Form-item label="Country">
-            <Input size="small" v-model="FormItem.Country" placeholder="Enter something..."></Input>
+            <Input size="small" v-model="FormItem.Country" placeholder="Enter something..."/>
           </Form-item>
         </Col>
         <Col span=12>
           <Form-item label="Validity Period">
-            <Input size="small" v-model="FormItem.ValidityPeriod" placeholder="Enter something..."></Input>
+            <Input size="small" v-model="FormItem.ValidityPeriod" placeholder="Enter something..."/>
           </Form-item>
         </Col>
       </Row>
       <Row>
         <Col span=12>
           <Form-item label="Sub Region">
-            <Input size="small" v-model="FormItem.SubRegion" placeholder="Enter something..."></Input>
+            <Input size="small" v-model="FormItem.SubRegion" placeholder="Enter something..."/>
           </Form-item>
           <Form-item label="Region">
-            <Input size="small" v-model="FormItem.Region" placeholder="Enter something..."></Input>
+            <Input size="small" v-model="FormItem.Region" placeholder="Enter something..."/>
           </Form-item>
           <Form-item label="Geo">
-            <Input size="small" v-model="FormItem.Geo" placeholder="Enter something..."></Input>
+            <Input size="small" v-model="FormItem.Geo" placeholder="Enter something..."/>
           </Form-item>
         </Col>
         <Col span=12>
           <Form-item label="Comments">
-            <Input size="small" v-model="FormItem.Comments" type="textarea" :rows="4" placeholder="Enter something..."></Input>
+            <Input size="small" v-model="FormItem.Comments" type="textarea" :rows="4" placeholder="Enter something..."/>
           </Form-item>
         </Col>
       </Row>

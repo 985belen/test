@@ -417,31 +417,31 @@ export default {
     searchAjax () {
       var _url = 'http://10.120.116.169:8082/api/cfebmcbymtmnoandcountry'
       var _params = {
-            "changeAt": "2018-08-22T09:09:25.559Z",
-            "country": this.formLeft.COUNTRY||"ES",
-            "mtm_NO": this.formLeft.MTM_NO||"10GQS0VU0C",
-            "plant": "string",
-            "product_GROUP": "string",
-            "subgeo": "string",
-            "tableName": "CFE_MTM_BMC_20180821035509"
-          }
-        axios.post(_url,_params).then((res)=>{
-            this.pcgdata = res.data.data
-        })
+        'changeAt': '2018-08-22T09:09:25.559Z',
+        'country': this.formLeft.COUNTRY || 'ES',
+        'mtm_NO': this.formLeft.MTM_NO || '10GQS0VU0C',
+        'plant': 'string',
+        'product_GROUP': 'string',
+        'subgeo': 'string',
+        'tableName': 'CFE_MTM_BMC_20180821035509'
+      }
+      axios.post(_url,_params).then((res)=>{
+        this.pcgdata = res.data.data
+      })
     }
 
   }
 }
 </script>
-<style>
+<style lang="less">
 .box{
-  width:100%;
-  height:100%;
+  width: 100%;
+  height: 100%;
   padding: 10px;
   background: #fff;
 }
 .ivu-form-label-left .ivu-FormItem-label,
 .ivu-FormItem-content{
-  float:left;
+  float: left;
 }
 </style>

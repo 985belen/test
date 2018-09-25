@@ -4,3 +4,29 @@
 .dashboard-box .ivu-select-dropdown {
   height: 80px!important;
 }
+.ivu-form-item {
+  margin-bottom: 5px;
+}
+.ivu-select {
+  width: 160px!important;
+}
+.pricePublish .ivu-form-item-label,
+.priceCalculation .ivu-form-item-label {
+  float: left !important;
+  min-width: 160px !important;
+  text-align: right !important;
+}
+.pricePublish .ivu-form-item-content,
+.priceCalculation .ivu-form-item-content {
+  float: right !important;
+  min-width: 160px;
+}
+.addform .ivu-form-item-label {
+  float: left !important;
+  min-width: 120px !important;
+  text-align: right !important;
+}
+.addform .ivu-form-item-content {
+  float: right !important;
+  min-width: 160px;
+}

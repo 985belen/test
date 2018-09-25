@@ -119,18 +119,18 @@ export default {
       var screenHeight = window.innerHeight
       var ag = document.getElementsByClassName('ag-theme-balham')[0]
       var acontainer = document.getElementsByClassName('agcontainer')[0]
-      ag.style.height = screenHeight - 64 -20 +'px' // 64是头部的高度
+      ag.style.height = screenHeight - 64 - 20 +'px'
       acontainer.style.height = screenHeight - 64 - 20 + 'px'
     }
   }
 }
 </script>
-<style lang="less">
+<style lang="less" scoped>
 .price-box{
   width: 100%;
   height: 100%;
-  overflow:hidden;
-  padding-bottom:10px;
+  overflow: hidden;
+  padding-bottom: 10px;
   background: #fff
 }
 </style>

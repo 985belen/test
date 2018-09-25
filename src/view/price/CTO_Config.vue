@@ -3,7 +3,7 @@
   <div class="tool-bar" ref="toolBar">
     <a href="#" class="item"><Icon class="icon" size=16 type="md-download" />Download</a>
   </div>
-  <div class="agcontainer" style="width: 100%;height:100%;overflow:hidden;">
+  <div class="agcontainer">
     <ag-grid-vue
       style="width: 100%;height:100%;"
       class="ag-theme-balham"
@@ -121,43 +121,46 @@ export default {
   methods: {
     calcGridHeight () {
       var screenHeight = window.innerHeight
-      // var topHeight = this.$refs.toolBar.offsetHeight
-      // console.log('topHeight:' + topHeight)
       var topHeight = document.getElementsByClassName('tool-bar')[0].offsetHeight
       var ag = document.getElementsByClassName('ag-theme-balham')[0]
       var acontainer = document.getElementsByClassName('agcontainer')[0]
-      ag.style.height = screenHeight - topHeight - 64 - 40 + 'px' // 64是头部的高度，10是padding
+      ag.style.height = screenHeight - topHeight - 64 - 40 + 'px'
       acontainer.style.height = screenHeight - topHeight - 64 - 40 + 'px'
     }
   }
 }
 </script>
-<style lang="less">
+<style lang="less" scoped>
 .price-box{
   width: 100%;
   height: 100%;
-  overflow:hidden;
+  overflow: hidden;
   padding-bottom:10px;
   background: #fff
 }
 .tool-bar{
-  width:100%;
-  height:32px;
+  width: 100%;
+  height: 32px;
   box-shadow: 0 0 5px #ccc;
-  margin-bottom:10px;
+  margin-bottom: 10px;
   padding: 0 10px;
   .item{
-    color:#666;
-    height:32px;
+    color: #666;
+    height: 32px;
     line-height: 32px;
     &:hover{
-      color:rgb(40, 122, 245);
+      color: rgb(40, 122, 245);
     }
     .icon{
       padding: 0 2px;
-      height:32px;
+      height: 32px;
       line-height: 32px;
     }
   }
+}
+.agcontainer{
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 </style>

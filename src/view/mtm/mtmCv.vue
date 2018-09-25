@@ -13,19 +13,22 @@
       <a href="#" class="item"><Icon class="icon" size=16 type="md-notifications" />Import Template</a>
       <Divider type="vertical" />
       <a href="#" class="item"><Icon class="icon" size=16 type="md-exit" />Upload Data</a>
-      <Divider type="vertical" /> 
+      <Divider type="vertical" />
       <a href="#" class="item"><Icon class="icon" size=16 type="md-add" />Accepted</a>
     </div>
-    <h3 class="marginBottom"><Icon type="md-pricetags" />Input Information<div style="float: right; margin-top: -3px;">
-          <Button size='small' @click='searchAjax' type="defalut" style="margin-right:15px;">Call</Button>
-          <Button  size='small' type="defalut">Import</Button>
-      </div></h3>
+    <h3 class="marginBottom">
+      <Icon type="md-pricetags" />Input Information
+      <div style="float: right; margin-top: -3px;">
+        <Button size='small' @click='searchAjax' type="defalut" style="margin-right:15px;">Call</Button>
+        <Button size='small' type="defalut">Import</Button>
+      </div>
+    </h3>
     <div class="middle-box"  style="display: block;">
       <Form :model="form" label-position="left" ref="form" >
         <Row type="flex" justify="start" :gutter="10">
           <Col style="padding-left: 20px">
             <FormItem label="pns">
-              <Input style="width:400px" v-model="form.pns" placeholder="Enter something..."></Input>
+              <Input style="width:400px" v-model="form.pns" placeholder="Enter something..."/>
               *以逗号分隔
             </FormItem>
           </Col>
@@ -33,7 +36,8 @@
       </Form>
     </div>
   </div>
-  <h3 class="marginBottom" style="margin-bottom: 10px;"><Icon type="ios-podium" />Output Information</h3>
+  <h3 class="marginBottom" style="margin-bottom: 10px;">
+    <Icon type="ios-podium" />Output Information</h3>
   <div class="ag2">
     <ag-grid-vue
       style="width:1200px; height:100%;"

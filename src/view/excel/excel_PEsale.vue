@@ -310,36 +310,28 @@
     :styles="{width:'1000px'}"
     ok-text="OK"
     cancel-text="Cancel">
-    <Form :model="transFormItem" label-position="left" ref="transFormItem" >
-      <Row type="flex" justify="start" :gutter="15">
-        <Col span=6>
-          <Form-item label="Business Partner">
-            <Input v-model="transFormItem.BusinessPartner" placeholder="Enter something..."></Input>
+    <Form :model="transFormItem" label-position="left" :label-width="110" ref="transFormItem" >
+      <Row type="flex" justify="start" :gutter="8">
+        <Col span=7>
+          <Form-item label="Business Partner" :label-width="110">
+            <Input v-model="transFormItem.BusinessPartner" placeholder="Enter something..."/>
           </Form-item>
         </Col>
         <Col span=6>
-          <Form-item label="Select">
+          <Form-item label="Select" :label-width="60">
             <Select v-model="transFormItem.select" placeholder="Please select..">
               <Option v-for="(item, index) in transFormItem.selects" :value="item" :key="index">{{item}}</Option>
           </Select>
           </Form-item>
         </Col>
-        <Col span=6>
-          <Form-item label="Transaction ID">
-            <Input v-model="transFormItem.TransactionID" placeholder="Enter something..."></Input>
+        <Col span=7>
+          <Form-item label="Transaction ID" :label-width="100">
+            <Input v-model="transFormItem.TransactionID" placeholder="Enter something..."/>
           </Form-item>
         </Col>
-        <Col span=2>
-          <Form-item>
-            <br/>
-            <Button type="primary">Search</Button>
-          </Form-item>
-        </Col>
-        <Col span=2>
-          <Form-item>
-            <br/>
-            <Button type="primary">Attach</Button>
-          </Form-item>
+        <Col span=4>
+          <Button type="primary" style="margin-right:5px;float:left">Search</Button>
+          <Button type="primary" style="float:left">Attach</Button>
         </Col>
       </Row>
     </Form>
@@ -401,13 +393,16 @@
     cancel-text="Cancel">
     <Table border :columns="bmcColumn" :data="bmcData"></Table>
   </Modal>
-  <Modal
-    v-model="modelTMC"
-    title="TMC"
-    :styles="{width:'800px'}"
-    ok-text="Apply"
-    cancel-text="Cancel">
-    <Table border :columns="tmcColumn" :data="tmcData"></Table>
+  <Modal v-model="modelTMC" width="800">
+    <p slot="header">
+      <span>TMC</span>
+    </p>
+    <div style="text-align:center">
+      <Table border :columns="tmcColumn" :data="tmcData"></Table>
+    </div>
+    <div slot="footer">
+      <!-- <Button type="error" size="large" @click="del">Delete</Button> -->
+    </div>
   </Modal>
   <Modal
     v-model="modelNetBMC"

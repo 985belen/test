@@ -38,8 +38,8 @@
             <DropdownItem style="font-size: 20px!important;">Price Engine</DropdownItem>
             <Icon style=" margin-left: 30px;"  size="64" type="md-settings" />
             <ul class="submenu">
-              <li><router-link style="color: #515a6e" to="">Price Auto Calculation</router-link></li>
-              <li><router-link style="color: #515a6e" to="">Price Auto Publish</router-link></li>
+              <li><router-link style="color: #515a6e" to="/price/Calculation">Price Auto Calculation</router-link></li>
+              <li><router-link style="color: #515a6e" to="/price/Publish">Price Auto Publish</router-link></li>
             </ul>
           </Col>
         </Row>

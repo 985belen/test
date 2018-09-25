@@ -20,7 +20,7 @@
           </CheckboxGroup>
         </FormItem>
       </Col>
-      <Col span=8>
+      <Col span=10>
         <FormItem label="DataSource" :label-width="130">
           <CheckboxGroup v-model="FormItem.checkData">
             <Checkbox label="Country"></Checkbox>
@@ -64,10 +64,9 @@
       </Col>
     </Row>
   </Form>
-  <!-- <div class="pieGraph" ref="pieGraph" style="width: 1100px;height:400px;margin: 0 auto;background:#eee"></div> -->
-  <div v-show="lineshow" ref="lineGraph" style="width: 1100px;height:400px;margin: 10px auto;background:#fafaf0"></div>
-  <div v-show="barshow" ref="barchart" style="width: 1100px;height:400px;margin: 10px auto;background:#fafefa"></div>
-  <div v-show="barstackshow" ref="barstack" style="width: 1100px;height:400px;margin: 10px auto;background:#f0fefa"></div>
+  <div v-show="lineshow" ref="lineGraph" style="width: 900px;height:300px;margin: 15px auto;background:#fafaf0"></div>
+  <div v-show="barshow" ref="barchart" style="width: 900px;height:300px;margin: 15px auto;background:#fafefa"></div>
+  <div v-show="barstackshow" ref="barstack" style="width: 900px;height:300px;margin: 15px auto;background:#f0fefa"></div>
 </div>
 </template>
 <script>
@@ -93,57 +92,17 @@ export default {
   },
   mounted () {
     this.$nextTick(() => {
-      // this.pie()
       this.line()
       this.bar()
       this.barstack()
     }, 3000)
   },
   methods: {
-    pie () {
-      var option = {
-        tooltip: {
-          trigger: 'item',
-          formatter: '{a} <br/>{b}: {c} ({d}%)'
-        },
-        color: ['#559DF2', '#36F050', '#F0C136', '#F00FBC', '#F00F39'],
-        legend: {
-          // orient: 'vertical',
-          right: '0',
-          top: '10%',
-          data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎']
-        },
-        series: [
-          {
-            name: '访问来源',
-            type: 'pie',
-            radius: '40%',
-            center: ['45%', '60%'],
-            data: [
-              {value: 335, name: '直接访问'},
-              {value: 310, name: '邮件营销'},
-              {value: 234, name: '联盟广告'},
-              {value: 135, name: '视频广告'},
-              {value: 1548, name: '搜索引擎'}
-            ],
-            itemStyle: {
-              emphasis: {
-                shadowBlur: 10,
-                shadowOffsetX: 0,
-                shadowColor: 'rgba(0, 0, 0, 0.5)'
-              }
-            }
-          }
-        ]
-      }
-      let pieGraph = echarts.init(this.$refs.pieGraph)
-      pieGraph.setOption(option)
-    },
     line () {
       var option = {
         title: {
           text: 'SO PSD Accuracy',
-          left: '6%',
+          left: '10%',
           textStyle: {
             fontSize: 14
           }
@@ -153,7 +112,7 @@ export default {
         },
         grid: {
           left: '3%',
-          right: '6%',
+          right: '8%',
           top: '15%',
           containLabel: true
         },
@@ -230,6 +189,7 @@ export default {
       var option = {
         title: {
           text: '虚拟订单有效期情况统计',
+          left: '10%',
           textStyle: {
             fontSize: 14
           }
@@ -245,7 +205,7 @@ export default {
         },
         grid: {
           left: '3%',
-          right: '4%',
+          right: '8%',
           containLabel: true
         },
         dataZoom: [
@@ -314,6 +274,7 @@ export default {
       var option = {
         title: {
           text: 'CA(Units)',
+          left: '10%',
           textStyle: {
             fontSize: 14
           }
@@ -330,7 +291,7 @@ export default {
         color: ['pink', 'cyan', 'orange'],
         grid: {
           left: '3%',
-          right: '6%',
+          right: '8%',
           containLabel: true
         },
         dataZoom: [
@@ -410,9 +371,9 @@ export default {
   min-height: 500px;
   padding: 10px 0;
   background: #fff;
-  .ivu-col-span-8{
+  .ivu-col-span-10{
     .ivu-checkbox-group-item{
-      width:45%;
+      width: 30%;
     }
   }
   .ivu-col-span-6{
