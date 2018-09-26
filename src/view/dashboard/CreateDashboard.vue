@@ -29,7 +29,7 @@
             <Checkbox label="Customer"></Checkbox>
             <Checkbox label="CA(Units)"></Checkbox>
             <Checkbox label="BMC Margin"></Checkbox>
-            <Checkbox label="TMC Margin"></Checkbox>
+            <Checkbox label="Total Cost Margin"></Checkbox>
             <Checkbox label="Revenue"></Checkbox>
             <Checkbox label="Product"></Checkbox>
             <Checkbox label="Product Series"></Checkbox>
@@ -37,7 +37,7 @@
             <Checkbox label="List Price"></Checkbox>
             <Checkbox label="Request Price"></Checkbox>
             <Checkbox label="BMC Cost"></Checkbox>
-            <Checkbox label="TMC Cost"></Checkbox>
+            <Checkbox label="Total Cost"></Checkbox>
           </CheckboxGroup>
         </FormItem>
       </Col>
@@ -132,7 +132,7 @@ export default {
         },
         series: [
           {
-            name: 'TMC Margin',
+            name: 'Total Cost Margin',
             type: 'line',
             areaStyle: {
               normal: {

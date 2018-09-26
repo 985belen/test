@@ -10,6 +10,7 @@
         <Button  size='small'>Copy</Button>
         <Button  size='small'>Edit</Button>
         <Button  size='small'>Delete</Button>
+        <Button  size='small'>{{this.$store.state.name}}</Button>
       </div>
     </h3>
     <div class="middle-box" style="display: block;">
@@ -95,7 +96,7 @@
           </Col>
           <Col>
             <FormItem>
-              <Button type="primary" @click="addInput('TMC Cost')">TMC Cost</Button>
+              <Button type="primary" @click="addInput('Total Cost Cost')">Total Cost Cost</Button>
             </FormItem>
           </Col>
           <Col>

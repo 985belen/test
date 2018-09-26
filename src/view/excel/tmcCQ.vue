@@ -3,7 +3,7 @@
     <a href="#" class="customHeaderLabel" @click="onclick">{{params.displayName}}</a>
     <Modal v-model="modelTMC" width="800">
       <p slot="header">
-        <span>TMC</span>
+        <span>Total Cost</span>
       </p>
       <div style="text-align:center">
         <Table border :columns="tmcColumn" :data="tmcData"></Table>

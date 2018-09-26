@@ -39,7 +39,10 @@
       <li><span>Valid To Date:</span><i :title="form.toDate">{{form.toDate}}</i></li>
       <li><span>Opportunity ID:</span><i :title="form.OpportunityID">{{form.OpportunityID}}</i></li>
       <li><span>Deal Reg Indicator:</span><i :title="form.DealRegIndicator">{{form.DealRegIndicator}}</i></li>
-      <li><span>MOT:</span><i :title="form.MOT">{{form.MOT}}</i></li>
+      <li><span>MOT:</span><select v-model="form.MOT" style="margin-left:5px;float:left;display:inline;width:80px;">
+        <option v-for="item in form.MOTs" :value="item" :key="item">{{item}}</Option>
+        </select>
+      </li>
       <li><span>Bid Funding:</span><i :title="form.BidFunding">{{form.BidFunding}}</i></li>
       <li><span>RTM:</span><i :title="form.RTM">{{form.RTM}}</i></li>
       <li><span>Sub Type:</span><i :title="form.SubType">{{form.SubType}}</i></li>
@@ -153,7 +156,7 @@
   </Modal>
   <Modal v-model="modelTMC" width="800">
     <p slot="header">
-      <span>TMC</span>
+      <span>Total Cost</span>
     </p>
     <div style="text-align:center">
       <Table border :columns="tmcColumn" :data="tmcData"></Table>
@@ -226,7 +229,8 @@ export default {
         BidFunding: 'asc',
         RTM: 'Indirect',
         SubType: 'asasas',
-        MOT: 'asas',
+        MOTs: ['Mix', 'Air', 'Ocean', 'Rail', 'Truck'],
+        MOT: 'Air',
         PriceNotes: 'asas',
         SalesComments: 'asa',
         SpecialTSCs: 'asas',
@@ -322,17 +326,17 @@ export default {
             {headerName: 'YBMD', field: 'YBMD', width: 120},
             {headerName: 'YBMC', field: 'YBMC', width: 120},
             {headerName: 'YBMB', field: 'YBMB', width: 120},
-            {headerName: 'YBMA', field: 'YBMA', width: 120},
-            {headerName: 'MOT', field: 'MOT', width: 120, editable: true,
-              headerClass:'headerColor',
-              cellStyle: {'text-align': 'left'},
-              cellRenderer: (params) => {return params.value},
-              cellEditor: 'agRichSelectCellEditor',
-              cellEditorParams: {
-                cellRenderer: (params) => {return params.value},
-                values: ['Mix', 'Air', 'Ocean', 'Rail', 'Truck']
-              }
-            }
+            {headerName: 'YBMA', field: 'YBMA', width: 120}
+            // {headerName: 'MOT', field: 'MOT', width: 120, editable: true,
+            //   headerClass:'headerColor',
+            //   cellStyle: {'text-align': 'left'},
+            //   cellRenderer: (params) => {return params.value},
+            //   cellEditor: 'agRichSelectCellEditor',
+            //   cellEditorParams: {
+            //     cellRenderer: (params) => {return params.value},
+            //     values: ['Mix', 'Air', 'Ocean', 'Rail', 'Truck']
+            //   }
+            // }
           ]
         },
         {headerName: 'BMC', field: 'BMC', cellStyle: {'text-align': 'left'}, headerGroupComponent: 'bmcCQComponent',
@@ -391,7 +395,7 @@ export default {
             }}
           ]
         },
-        {headerName: 'TMC', cellStyle: {'text-align': 'left'}, headerGroupComponent: 'tmcCQComponent',
+        {headerName: 'Total Cost', cellStyle: {'text-align': 'left'}, headerGroupComponent: 'tmcCQComponent',
           children: [
             {headerName: 'CQ', width: 120, field: 'TMCCQ', cellStyle: {'text-align': 'left'}, cellRenderer: (params) => {
               return '<a title="' + params.value + '"href="#">' + params.value + '</a>'
@@ -447,7 +451,7 @@ export default {
             }}
           ]
         },
-        {headerName: 'Final TMC', cellStyle: {'text-align': 'left'},
+        {headerName: 'Final Total Cost', cellStyle: {'text-align': 'left'},
           children: [
             {headerName: 'CQ', width: 120, field: 'FinalTMCCQ', cellStyle: {'text-align': 'left'}},
             {headerName: 'CQ+1', width: 120, field: 'FinalTMCCQ+1', cellStyle: {'text-align': 'left'}},
@@ -471,7 +475,7 @@ export default {
             {headerName: 'CQ+3', width: 120, field: 'BMCMarginCQ+3', cellStyle: {'text-align': 'left'}}
           ]
         },
-        {headerName: 'TMC Margin', cellStyle: {'text-align': 'left'},
+        {headerName: 'Total Cost Margin', cellStyle: {'text-align': 'left'},
           children: [
             {headerName: 'CQ', width: 120, field: 'TMCMarginCQ', cellStyle: {'text-align': 'left'}},
             {headerName: 'CQ+1', width: 120, field: 'TMCMarginCQ+1', cellStyle: {'text-align': 'left'}},
@@ -520,7 +524,6 @@ export default {
           'YBMC': '0%',
           'YBMB': '-3%',
           'YBMA': '0%',
-          'MOT': 'Alr',
           BMCCQ: 1050.7,
           'BMCCQ+1': 1009.85,
           'BMCCQ+2': 985.33,
@@ -583,7 +586,6 @@ export default {
           'YBMC': '0%',
           'YBMB': '-3%',
           'YBMA': '0%',
-          'MOT': 'Alr',
           BMCCQ: 10276,
           'BMCCQ+1': 10276,
           'BMCCQ+2': 10276,
@@ -877,7 +879,7 @@ export default {
           Total: '56,698'
         },
         {
-          first: 'TMC %',
+          first: 'Total Cost %',
           CQ: '32.08%',
           'CQ+1': '32.09%',
           'CQ+2': '32.33%',
@@ -885,7 +887,7 @@ export default {
           Total: '31.4%'
         },
         {
-          first: 'TMC %',
+          first: 'Total Cost %',
           CQ: '9325.28',
           'CQ+1': '8460.58',
           'CQ+2': '21134.80',
@@ -1010,7 +1012,7 @@ export default {
           Total: '25'
         },
         {
-          first: 'Final TMC cost',
+          first: 'Final Total Cost cost',
           CQ: '201.72',
           'CQ+1': '203.72',
           'CQ+2': '203.00',
@@ -1026,7 +1028,7 @@ export default {
           Total: '56,698'
         },
         {
-          first: 'TMC %',
+          first: 'Total Cost %',
           CQ: '32.08%',
           'CQ+1': '32.09%',
           'CQ+2': '32.33%',
@@ -1034,7 +1036,7 @@ export default {
           Total: '31.4%'
         },
         {
-          first: 'TMC',
+          first: 'Total Cost',
           CQ: '9325.28',
           'CQ+1': '8460.58',
           'CQ+2': '21134.80',
@@ -1159,7 +1161,7 @@ export default {
           Total: '25'
         },
         {
-          first: 'Final TMC cost',
+          first: 'Final Total Cost cost',
           CQ: '201.72',
           'CQ+1': '203.72',
           'CQ+2': '203.00',
@@ -1175,7 +1177,7 @@ export default {
           Total: '56,698'
         },
         {
-          first: 'TMC %',
+          first: 'Total Cost %',
           CQ: '32.08%',
           'CQ+1': '32.09%',
           'CQ+2': '32.33%',
@@ -1183,7 +1185,7 @@ export default {
           Total: '31.4%'
         },
         {
-          first: 'TMC',
+          first: 'Total Cost',
           CQ: '9325.28',
           'CQ+1': '8460.58',
           'CQ+2': '21134.80',

@@ -65,10 +65,10 @@
           <strong>Net Revenue: </strong><span style="font-size: 14px; font-weight: bold;">337100</span>
         </Col>
         <Col span=5>
-          <strong>TMC Margin: </strong><span style="font-size: 14px; font-weight: bold;">33323</span>
+          <strong>Total Cost Margin: </strong><span style="font-size: 14px; font-weight: bold;">33323</span>
         </Col>
         <Col span=4>
-          <strong>TMC Margin %: </strong><span style="font-size: 14px; font-weight: bold;">10.2</span>
+          <strong>Total Cost Margin %: </strong><span style="font-size: 14px; font-weight: bold;">10.2</span>
         </Col>
       </Row>
     </div>
@@ -260,11 +260,11 @@
           <span>555,480</span>
         </li>
         <li>
-          <strong>Total TMC Profit</strong>
+          <strong>Total Total Cost Profit</strong>
           <span>-2,954,341</span>
         </li>
         <li>
-          <strong>TMC Profit %</strong>
+          <strong>Total Cost Profit %</strong>
           <span>-531.9%</span>
         </li>
       </ul>
@@ -395,7 +395,7 @@
   </Modal>
   <Modal v-model="modelTMC" width="800">
     <p slot="header">
-      <span>TMC</span>
+      <span>Total Cost</span>
     </p>
     <div style="text-align:center">
       <Table border :columns="tmcColumn" :data="tmcData"></Table>
@@ -620,8 +620,8 @@ export default {
           width: 155,
           cellStyle: {'text-align': 'left'}
         }, {
-          headerName: 'TMC',
-          field: 'TMC',
+          headerName: 'Total Cost',
+          field: 'Total Cost',
           width: 160,
           cellStyle: {'text-align': 'left'}
         }
@@ -629,75 +629,75 @@ export default {
       ComponentsListData: [
         {
           CategoryID: 'SBB0M45830',
-          Description: ' Intel Core i5-6550T 2.7G 4C',
+          Description: 'Intel Core i5-6550T 2.7G 4C',
           QTY: '1',
-          TMC: ' 183.07'
+          'Total Cost': 183.07
         },
         {
           CategoryID: 'SBB0J05441',
           Description: ' W10 Pro',
           QTY: '1',
-          TMC: '112.00'
+          'Total Cost': 112.00
         },
         {
           CategoryID: 'SBB0L54434',
           Description: 'Tiny B250 WW',
           QTY: '1',
-          TMC: '88.87'
+          'Total Cost': 88.87
         },
         {
           CategoryID: 'VK00028880',
           Description: '8GB DDR4 2400 SoDIMM',
           QTY: '1',
-          TMC: '72.44'
+          'Total Cost': 72.44
         },
         {
           CategoryID: 'VK00008845',
           Description: '3 Year On-site',
           QTY: '1',
-          TMC: '7.70'
+          'Total Cost': 7.70
         },
         {
           CategoryID: 'SBB0J04751',
           Description: 'Intel 3165+BT 1x1ac Tiny',
           QTY: '1',
-          TMC: '6.89'
+          'Total Cost': 6.89
         },
         {
           CategoryID: 'SBB0L53089',
           Description: 'USB Calliope KB BK 189 FRA',
           QTY: '1',
-          TMC: '6.80'
+          'Total Cost': 6.80
         },
         {
           CategoryID: 'SBB0J02811',
           Description: 'Optional VGA Port',
           QTY: '1',
-          TMC: '6.03'
+          'Total Cost': 6.03
         },
         {
           CategoryID: 'SBB0J03380',
           Description: 'Thermal Kit 35W Tiny',
           QTY: '1',
-          TMC: '4.87'
+          'Total Cost': 4.87
         },
         {
           CategoryID: 'SBB0J04752',
           Description: 'Tiny 65W adapter',
           QTY: '1',
-          TMC: '4.80'
+          'Total Cost': 4.80
         },
         {
           CategoryID: 'VK00041036',
           Description: 'Win10 Ready to Provision',
           QTY: '1',
-          TMC: '3.18'
+          'Total Cost': 3.18
         },
         {
           CategoryID: 'SBB0L52928',
           Description: 'USB Calliope Mouse BK',
           QTY: '1',
-          TMC: '2.14'
+          'Total Cost': 2.14
         }
       ],
       columns: [
@@ -849,7 +849,7 @@ export default {
           }
         },
         {
-          headerName: 'TMC',
+          headerName: 'Total Cost',
           width: 100,
           field: 'tmc',
           cellStyle: {'text-align': 'left'},
@@ -875,7 +875,7 @@ export default {
           }
         },
         {
-          headerName: 'Final TMC',
+          headerName: 'Final Total Cost',
           width: 120,
           field: 'FinalTMC',
           cellStyle: {'text-align': 'left'}
@@ -887,7 +887,7 @@ export default {
           cellStyle: {'text-align': 'left'}
         },
         {
-          headerName: 'TMC Margin',
+          headerName: 'Total Cost Margin',
           width: 110,
           field: 'tmcmar',
           cellStyle: {'text-align': 'left'}
@@ -904,7 +904,7 @@ export default {
           }
         },
         {
-          headerName: 'TMC %',
+          headerName: 'Total Cost %',
           width: 100,
           field: 'tmcb',
           cellStyle: {'text-align': 'left'},
@@ -1496,7 +1496,7 @@ export default {
           total: '-502.0%'
         },
         {
-          f0q: 'TMC GP',
+          f0q: 'Total Cost GP',
           f1q: -736835,
           f2q: -738145,
           f3q: -739124,
@@ -1622,19 +1622,19 @@ export default {
           className: 'pxt'
         },
         {
-          headerName: 'Wtd Average TMC Cost',
+          headerName: 'Wtd Average Total Cost Cost',
           field: 'watc',
           cellStyle: {'text-align': 'left'},
           className: 'pxt'
         },
         {
-          headerName: 'TMC GP',
+          headerName: 'Total Cost GP',
           field: 'tg',
           cellStyle: {'text-align': 'left'},
           className: 'pxt'
         },
         {
-          headerName: 'TMC GP%',
+          headerName: 'Total Cost GP%',
           field: 'tgb',
           cellStyle: {'text-align': 'left'},
           className: 'pxt'
@@ -1652,7 +1652,7 @@ export default {
           className: 'pxt'
         },
         {
-          headerName: 'Total TMC GP',
+          headerName: 'Total Total Cost GP',
           field: 'ttg',
           cellStyle: {'text-align': 'left'},
           className: 'pxt'
