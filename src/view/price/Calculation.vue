@@ -10,7 +10,6 @@
         <Button  size='small'>Copy</Button>
         <Button  size='small'>Edit</Button>
         <Button  size='small'>Delete</Button>
-        <Button  size='small'>{{this.$store.state.name}}</Button>
       </div>
     </h3>
     <div class="middle-box" style="display: block;">
