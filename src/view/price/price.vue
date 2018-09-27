@@ -13,8 +13,14 @@
       <a href="#" class="item"><Icon class="icon" size=16 type="md-notifications" />Import Template</a>
       <Divider type="vertical" />
       <a href="#" class="item"><Icon class="icon" size=16 type="md-exit" />Upload Data</a>
-      <Divider type="vertical" /> 
+      <Divider type="vertical" />
       <a href="#" class="item"><Icon class="icon" size=16 type="md-add" />Accepted</a>
+      <Divider type="vertical" />
+      <router-link to="/iframe/iframe_HistoricalSummary" style="color: #515a6e"><Icon class="icon" size=16 type="md-add" />Historical Report</router-link>
+      <Divider type="vertical" />
+      <router-link to="/iframe/iframe_clv" style="color: #515a6e"><Icon class="icon" size=16 type="md-add" />CLV Report</router-link>
+      <Divider type="vertical" />
+      <router-link to="/iframe/iframe_DealTracking" style="color: #515a6e"><Icon class="icon" size=16 type="md-add" />Tracking Report</router-link>
     </div>
     <h3 ref=""><a href="javascript:;" style="display:block;color: #333;" @click="toggleList"><Icon type="md-pricetags" /> Quotation Infomation <span style="float: right; font-weight: normal; font-size: 12px;">More</span></a></h3>
     <ul class="item-box" v-if="isStatus">
@@ -47,7 +53,9 @@
       <li><span>RTM:</span><i :title="form.RTM">{{form.RTM}}</i></li>
       <li><span>Sub Type:</span><i :title="form.SubType">{{form.SubType}}</i></li>
     </ul>
-    <h3 class="marginBottom" style="margin-bottom: 10px;"><a href="javascript:;" style="display:block;color: #333;" @click="toggleList1"><Icon type="ios-podium" /> CQ</a></h3>
+    <h3 class="marginBottom" style="margin-bottom: 10px;">
+      <a href="javascript:;" style="display:block;color: #333;" @click="toggleList1"><Icon type="ios-podium" />Quarter</a>
+    </h3>
     <div class="table-CQ">
       <Table border :columns="formcolumns" :data="formdata"></Table>
     </div>
@@ -255,19 +263,19 @@ export default {
           key: 'hedgerife'
         },
         {
-          title: 'CQ',
+          title: 'FYQ1 18/19',
           key: 'CQ'
         },
         {
-          title: 'CQ+1',
+          title: 'FYQ2 18/19',
           key: 'CQ1'
         },
         {
-          title: 'CQ+2',
+          title: 'FYQ3 18/19',
           key: 'CQ2'
         },
         {
-          title: 'CQ+3',
+          title: 'FYQ4 18/19',
           key: 'CQ3'
         }
       ],
@@ -308,11 +316,12 @@ export default {
         {
           headerName: 'Qty', cellStyle: {'text-align': 'left'},
           children: [
-            {headerName: 'CQ', width: 120, editable: true, field: 'QtyCQ',
+            {headerName: 'FYQ1 18/19', width: 120, editable: true, field: 'QtyCQ',
             headerClass: 'headerColor', cellStyle: {'text-align': 'left'}},
-            {headerName: 'CQ+1', width: 120, editable: true, field: 'QtyCQ+1',
+            {headerName: 'FYQ2 18/19', width: 120, editable: true, field: 'QtyCQ+1',
             headerClass: 'headerColor', cellStyle: {'text-align': 'left'}},
-            {headerName: 'CQ+2', width: 120, editable: true, field: 'QtyCQ+2', headerClass: 'headerColor', cellStyle: {'text-align': 'left'}}
+            {headerName: 'FYQ3 18/19', width: 120, editable: true, field: 'QtyCQ+2', headerClass: 'headerColor', cellStyle: {'text-align': 'left'}},
+            {headerName: 'FYQ4 18/19', width: 120, editable: true, field: 'QtyCQ+3', headerClass: 'headerColor', cellStyle: {'text-align': 'left'}}
           ]
         },
         {
@@ -341,25 +350,25 @@ export default {
         },
         {headerName: 'BMC', field: 'BMC', cellStyle: {'text-align': 'left'}, headerGroupComponent: 'bmcCQComponent',
         children: [
-          {headerName: 'CQ', width: 120, field: 'BMCCQ', cellStyle: {'text-align': 'left'}, cellRenderer: (params) => {
+          {headerName: 'FYQ1 18/19', width: 120, field: 'BMCCQ', cellStyle: {'text-align': 'left'}, cellRenderer: (params) => {
             return '<a title="' + params.value + '"href="#">' + params.value + '</a>'
           },
           onCellClicked: () => {
             this.modelBMC = true
           }},
-            {headerName: 'CQ+1', width: 120, field: 'BMCCQ+1', cellStyle: {'text-align': 'left'}, cellRenderer: (params) => {
+            {headerName: 'FYQ2 18/19', width: 120, field: 'BMCCQ+1', cellStyle: {'text-align': 'left'}, cellRenderer: (params) => {
             return '<a title="' + params.value + '"href="#">' + params.value + '</a>'
           },
           onCellClicked: () => {
             this.modelBMC = true
           }},
-            {headerName: 'CQ+2', width: 120, field: 'BMCCQ+2', cellStyle: {'text-align': 'left'}, cellRenderer: (params) => {
+            {headerName: 'FYQ3 18/19', width: 120, field: 'BMCCQ+2', cellStyle: {'text-align': 'left'}, cellRenderer: (params) => {
             return '<a title="' + params.value + '"href="#">' + params.value + '</a>'
           },
           onCellClicked: () => {
             this.modelBMC = true
           }},
-            {headerName: 'CQ+3', width: 120, field: 'BMCCQ+3', cellStyle: {'text-align': 'left'}, cellRenderer: (params) => {
+            {headerName: 'FYQ4 18/19', width: 120, field: 'BMCCQ+3', cellStyle: {'text-align': 'left'}, cellRenderer: (params) => {
             return '<a title="' + params.value + '"href="#">' + params.value + '</a>'
           },
           onCellClicked: () => {
@@ -369,25 +378,25 @@ export default {
         },
         {headerName: 'Net BMC', cellStyle: {'text-align': 'left'}, headerGroupComponent: 'netbmcCQComponent',
           children: [
-            {headerName: 'CQ', width: 120, field: 'NetBMCCQ', cellStyle: {'text-align': 'left'}, cellRenderer: (params) => {
+            {headerName: 'FYQ1 18/19', width: 120, field: 'NetBMCCQ', cellStyle: {'text-align': 'left'}, cellRenderer: (params) => {
             return '<a title="' + params.value + '"href="#">' + params.value + '</a>'
           },
           onCellClicked: () => {
             this.modelNetBMC = true
           }},
-          {headerName: 'CQ+1', width: 120, field: 'NetBMCCQ+1', cellStyle: {'text-align': 'left'}, cellRenderer: (params) => {
+          {headerName: 'FYQ2 18/19', width: 120, field: 'NetBMCCQ+1', cellStyle: {'text-align': 'left'}, cellRenderer: (params) => {
             return '<a title="' + params.value + '"href="#">' + params.value + '</a>'
             },
             onCellClicked: () => {
               this.modelNetBMC = true
             }},
-          {headerName: 'CQ+2', width: 120, field: 'NetBMCCQ+2', cellStyle: {'text-align': 'left'}, cellRenderer: (params) => {
+          {headerName: 'FYQ3 18/19', width: 120, field: 'NetBMCCQ+2', cellStyle: {'text-align': 'left'}, cellRenderer: (params) => {
             return '<a title="' + params.value + '"href="#">' + params.value + '</a>'
             },
             onCellClicked: () => {
               this.modelNetBMC = true
             }},
-          {headerName: 'CQ+3', width: 120, field: 'NetBMCCQ+3', cellStyle: {'text-align': 'left'}, cellRenderer: (params) => {
+          {headerName: 'FYQ4 18/19', width: 120, field: 'NetBMCCQ+3', cellStyle: {'text-align': 'left'}, cellRenderer: (params) => {
             return '<a title="' + params.value + '"href="#">' + params.value + '</a>'
             },
             onCellClicked: () => {
@@ -397,25 +406,25 @@ export default {
         },
         {headerName: 'Total Cost', cellStyle: {'text-align': 'left'}, headerGroupComponent: 'tmcCQComponent',
           children: [
-            {headerName: 'CQ', width: 120, field: 'TMCCQ', cellStyle: {'text-align': 'left'}, cellRenderer: (params) => {
+            {headerName: 'FYQ1 18/19', width: 120, field: 'TMCCQ', cellStyle: {'text-align': 'left'}, cellRenderer: (params) => {
               return '<a title="' + params.value + '"href="#">' + params.value + '</a>'
             },
             onCellClicked: () => {
               this.modelTMC = true
             }},
-            {headerName: 'CQ+1', width: 120, field: 'TMCCQ+1', cellStyle: {'text-align': 'left'}, cellRenderer: (params) => {
+            {headerName: 'FYQ2 18/19', width: 120, field: 'TMCCQ+1', cellStyle: {'text-align': 'left'}, cellRenderer: (params) => {
               return '<a title="' + params.value + '"href="#">' + params.value + '</a>'
             },
             onCellClicked: () => {
               this.modelTMC = true
             }},
-            {headerName: 'CQ+2', width: 120, field: 'TMCCQ+2', cellStyle: {'text-align': 'left'}, cellRenderer: (params) => {
+            {headerName: 'FYQ3 18/19', width: 120, field: 'TMCCQ+2', cellStyle: {'text-align': 'left'}, cellRenderer: (params) => {
               return '<a title="' + params.value + '"href="#">' + params.value + '</a>'
             },
             onCellClicked: () => {
               this.modelTMC = true
             }},
-            {headerName: 'CQ+3', width: 120, field: 'TMCCQ+3', cellStyle: {'text-align': 'left'}, cellRenderer: (params) => {
+            {headerName: 'FYQ4 18/19', width: 120, field: 'TMCCQ+3', cellStyle: {'text-align': 'left'}, cellRenderer: (params) => {
               return '<a title="' + params.value + '"href="#">' + params.value + '</a>'
             },
             onCellClicked: () => {
@@ -425,25 +434,25 @@ export default {
         },
         {headerName: 'Cost Adjustment', cellStyle: {'text-align': 'left'}, headerGroupComponent: 'costCQComponent',
           children: [
-            {headerName: 'CQ', width: 120, field: 'CostAdjustmentCQ', cellStyle: {'text-align': 'left'}, cellRenderer: (params) => {
+            {headerName: 'FYQ1 18/19', width: 120, field: 'CostAdjustmentCQ', cellStyle: {'text-align': 'left'}, cellRenderer: (params) => {
               return '<a title="' + params.value + '"href="#">' + params.value + '</a>'
             },
             onCellClicked: () => {
               this.modelCostAdjustment = true
             }},
-            {headerName: 'CQ+1', width: 120, field: 'CostAdjustmentCQ+1', cellStyle: {'text-align': 'left'}, cellRenderer: (params) => {
+            {headerName: 'FYQ2 18/19', width: 120, field: 'CostAdjustmentCQ+1', cellStyle: {'text-align': 'left'}, cellRenderer: (params) => {
               return '<a title="' + params.value + '"href="#">' + params.value + '</a>'
             },
             onCellClicked: () => {
               this.modelCostAdjustment = true
             }},
-            {headerName: 'CQ+2', width: 120, field: 'CostAdjustmentCQ+2', cellStyle: {'text-align': 'left'}, cellRenderer: (params) => {
+            {headerName: 'FYQ3 18/19', width: 120, field: 'CostAdjustmentCQ+2', cellStyle: {'text-align': 'left'}, cellRenderer: (params) => {
               return '<a title="' + params.value + '"href="#">' + params.value + '</a>'
             },
             onCellClicked: () => {
               this.modelCostAdjustment = true
             }},
-              {headerName: 'CQ+3', width: 120, field: 'CostAdjustmentCQ+3', cellStyle: {'text-align': 'left'}, cellRenderer: (params) => {
+              {headerName: 'FYQ4 18/19', width: 120, field: 'CostAdjustmentCQ+3', cellStyle: {'text-align': 'left'}, cellRenderer: (params) => {
               return '<a title="' + params.value + '"href="#">' + params.value + '</a>'
             },
             onCellClicked: () => {
@@ -453,10 +462,10 @@ export default {
         },
         {headerName: 'Final Total Cost', cellStyle: {'text-align': 'left'},
           children: [
-            {headerName: 'CQ', width: 120, field: 'FinalTMCCQ', cellStyle: {'text-align': 'left'}},
-            {headerName: 'CQ+1', width: 120, field: 'FinalTMCCQ+1', cellStyle: {'text-align': 'left'}},
-            {headerName: 'CQ+2', width: 120, field: 'FinalTMCCQ+2', cellStyle: {'text-align': 'left'}},
-            {headerName: 'CQ+3', width: 120, field: 'FinalTMCCQ+3', cellStyle: {'text-align': 'left'}}
+            {headerName: 'FYQ1 18/19', width: 120, field: 'FinalTMCCQ', cellStyle: {'text-align': 'left'}},
+            {headerName: 'FYQ2 18/19', width: 120, field: 'FinalTMCCQ+1', cellStyle: {'text-align': 'left'}},
+            {headerName: 'FYQ3 18/19', width: 120, field: 'FinalTMCCQ+2', cellStyle: {'text-align': 'left'}},
+            {headerName: 'FYQ4 18/19', width: 120, field: 'FinalTMCCQ+3', cellStyle: {'text-align': 'left'}}
           ]
         },
         {headerName: '',
@@ -469,34 +478,34 @@ export default {
         },
         {headerName: 'BMC Margin', cellStyle: {'text-align': 'left'},
           children: [
-            {headerName: 'CQ', width: 120, field: 'BMCMarginCQ', cellStyle: {'text-align': 'left'}},
-            {headerName: 'CQ+1', width: 120, field: 'BMCMarginCQ+1', cellStyle: {'text-align': 'left'}},
-            {headerName: 'CQ+2', width: 120, field: 'BMCMarginCQ+2', cellStyle: {'text-align': 'left'}},
-            {headerName: 'CQ+3', width: 120, field: 'BMCMarginCQ+3', cellStyle: {'text-align': 'left'}}
+            {headerName: 'FYQ1 18/19', width: 120, field: 'BMCMarginCQ', cellStyle: {'text-align': 'left'}},
+            {headerName: 'FYQ2 18/19', width: 120, field: 'BMCMarginCQ+1', cellStyle: {'text-align': 'left'}},
+            {headerName: 'FYQ3 18/19', width: 120, field: 'BMCMarginCQ+2', cellStyle: {'text-align': 'left'}},
+            {headerName: 'FYQ4 18/19', width: 120, field: 'BMCMarginCQ+3', cellStyle: {'text-align': 'left'}}
           ]
         },
         {headerName: 'Total Cost Margin', cellStyle: {'text-align': 'left'},
           children: [
-            {headerName: 'CQ', width: 120, field: 'TMCMarginCQ', cellStyle: {'text-align': 'left'}},
-            {headerName: 'CQ+1', width: 120, field: 'TMCMarginCQ+1', cellStyle: {'text-align': 'left'}},
-            {headerName: 'CQ+2', width: 120, field: 'TMCMarginCQ+2', cellStyle: {'text-align': 'left'}},
-            {headerName: 'CQ+3', width: 120, field: 'TMCMarginCQ+3', cellStyle: {'text-align': 'left'}}
+            {headerName: 'FYQ1 18/19', width: 120, field: 'TMCMarginCQ', cellStyle: {'text-align': 'left'}},
+            {headerName: 'FYQ2 18/19', width: 120, field: 'TMCMarginCQ+1', cellStyle: {'text-align': 'left'}},
+            {headerName: 'FYQ3 18/19', width: 120, field: 'TMCMarginCQ+2', cellStyle: {'text-align': 'left'}},
+            {headerName: 'FYQ4 18/19', width: 120, field: 'TMCMarginCQ+3', cellStyle: {'text-align': 'left'}}
           ]
         },
         {headerName: 'TOTAL GROSS REVENUE', cellStyle: {'text-align': 'left'},
           children: [
-            {headerName: 'CQ', width: 120, field: 'TotalGROSSCQ', cellStyle: {'text-align': 'left'}},
-            {headerName: 'CQ+1', width: 120, field: 'TotalGROSSCQ+1', cellStyle: {'text-align': 'left'}},
-            {headerName: 'CQ+2', width: 120, field: 'TotalGROSSCQ+2', cellStyle: {'text-align': 'left'}},
-            {headerName: 'CQ+3', width: 120, field: 'TotalGROSSCQ+3', cellStyle: {'text-align': 'left'}}
+            {headerName: 'FYQ1 18/19', width: 120, field: 'TotalGROSSCQ', cellStyle: {'text-align': 'left'}},
+            {headerName: 'FYQ2 18/19', width: 120, field: 'TotalGROSSCQ+1', cellStyle: {'text-align': 'left'}},
+            {headerName: 'FYQ3 18/19', width: 120, field: 'TotalGROSSCQ+2', cellStyle: {'text-align': 'left'}},
+            {headerName: 'FYQ4 18/19', width: 120, field: 'TotalGROSSCQ+3', cellStyle: {'text-align': 'left'}}
           ]
         },
         {headerName: 'TOTAL NET REVENUE', cellStyle: {'text-align': 'left'},
           children: [
-            {headerName: 'CQ', width: 120, field: 'TotalNETCQ', cellStyle: {'text-align': 'left'}},
-            {headerName: 'CQ+1', width: 120, field: 'TotalNETCQ+1', cellStyle: {'text-align': 'left'}},
-            {headerName: 'CQ+2', width: 120, field: 'TotalNETCQ+2', cellStyle: {'text-align': 'left'}},
-            {headerName: 'CQ+3', width: 120, field: 'TotalNETCQ+3', cellStyle: {'text-align': 'left'}}
+            {headerName: 'FYQ1 18/19', width: 120, field: 'TotalNETCQ', cellStyle: {'text-align': 'left'}},
+            {headerName: 'FYQ2 18/19', width: 120, field: 'TotalNETCQ+1', cellStyle: {'text-align': 'left'}},
+            {headerName: 'FYQ3 18/19', width: 120, field: 'TotalNETCQ+2', cellStyle: {'text-align': 'left'}},
+            {headerName: 'FYQ4 18/19CQ+3', width: 120, field: 'TotalNETCQ+3', cellStyle: {'text-align': 'left'}}
           ]
         }
       ],
@@ -836,22 +845,22 @@ export default {
           }
         },
         {
-          headerName: 'CQ',
+          headerName: 'FYQ1 18/19',
           field: 'CQ',
           width: 120
         },
         {
-          headerName: 'CQ+1',
+          headerName: 'FYQ2 18/19',
           field: 'CQ+1',
           width: 120
         },
         {
-          headerName: 'CQ+2',
+          headerName: 'FYQ3 18/19',
           field: 'CQ+2',
           width: 120
         },
         {
-          headerName: 'CQ+3',
+          headerName: 'FYQ4 18/19',
           field: 'CQ+3',
           width: 120
         },
@@ -921,22 +930,22 @@ export default {
           }
         },
         {
-          headerName: 'CQ',
+          headerName: 'FYQ1 18/19',
           field: 'CQ',
           width: 120
         },
         {
-          headerName: 'CQ+1',
+          headerName: 'FYQ2 18/19',
           field: 'CQ+1',
           width: 120
         },
         {
-          headerName: 'CQ+2',
+          headerName: 'FYQ3 18/19',
           field: 'CQ+2',
           width: 120
         },
         {
-          headerName: 'CQ+3',
+          headerName: 'FYQ4 18/19',
           field: 'CQ+3',
           width: 120
         },
@@ -1070,22 +1079,22 @@ export default {
           width: 120
         },
         {
-          headerName: 'CQ',
+          headerName: 'FYQ1 18/19',
           field: 'CQ',
           width: 120
         },
         {
-          headerName: 'CQ+1',
+          headerName: 'FYQ2 18/19',
           field: 'CQ+1',
           width: 120
         },
         {
-          headerName: 'CQ+2',
+          headerName: 'FYQ3 18/19',
           field: 'CQ+2',
           width: 120
         },
         {
-          headerName: 'CQ+3',
+          headerName: 'FYQ4 18/19',
           field: 'CQ+3',
           width: 120
         },
@@ -1274,9 +1283,6 @@ export default {
       this.tab3 = true
       return false
     },
-    resize () {
-      this.dom.resize()
-    },
     pullFnc () {
       if (this.pullFlag) {
         this.pullFlag = false
@@ -1291,13 +1297,12 @@ export default {
       }
     },
     handleMoving (e) {
-      console.log(e.atMin, e.atMax)
+      // console.log(e.atMin, e.atMax)
     },
     toggleList () {
       let itembox = document.getElementsByClassName('item-box')[0]
       if (this.toggle) {
         this.isStatus = false
-        // itembox.style.height = '24px'
         itembox.style.border = '0'
       } else {
         this.isStatus = true

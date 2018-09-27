@@ -1,7 +1,6 @@
 <template>
   <div ref="dom" class="charts chart-pie"></div>
 </template>
-
 <script>
 import echarts from 'echarts'
 import tdTheme from './theme.json'
@@ -48,14 +47,15 @@ export default {
         ]
       }
       let dom = echarts.init(this.$refs.dom, 'tdTheme')
+      dom.on('click', params => {
+        this.$router.push({
+          path: '/iframe/iframe_FinanceReview'
+        })
+      })
       dom.setOption(option)
     })
   }
 }
 </script>
-
 <style lang="less">
-.charts{
-  //
-}
 </style>

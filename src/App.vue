@@ -24,9 +24,6 @@ html,body{
 #app {
   .size;
 }
-.ag-header-cell-color{
-  background: #3ce43c
-}
 .lessThan0IsRed{
   color: red
 }

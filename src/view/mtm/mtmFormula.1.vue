@@ -4,9 +4,9 @@
     <h3 class="marginBottom"><a href="javascript:;" style="display:inline-block;color: #333;"><Icon type="md-pricetags" />Formula For</a>
       <div style="float: right; margin-top: -3px;">
         <Button size='small' type="default" style="margin-right:15px;">Search</Button>
-        <Button  size='small' type="default">Download</Button>
-        <Button  size='small' type="default">upload</Button>
-        <Button  size='small' type="default">DownloadTemplate</Button>
+        <Button size='small' type="default">Download</Button>
+        <Button size='small' type="default">upload</Button>
+        <Button size='small' type="default">DownloadTemplate</Button>
       </div>
     </h3>
     <div class="middle-box" style="display: block;">

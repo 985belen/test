@@ -47,6 +47,15 @@ export default [
           import ('@/view/price/price.vue')
       },
       {
+        path: 'price_list',
+        name: 'price_list',
+        meta: {
+          icon: '',
+          title: 'price_list'
+        },
+        component: () => import('@/view/price/pricelist.vue')
+      },
+      {
         path: 'CTO_Config',
         name: 'CTO_Config',
         meta: {
@@ -85,22 +94,6 @@ export default [
         },
         component: () =>
           import ('@/view/price/CTO_ListPrice.vue')
-      }
-    ]
-  },
-  {
-    path: '/price_lists',
-    name: 'price_lists',
-    component: Main,
-    children: [
-      {
-        path: 'price_list',
-        name: 'price_list',
-        meta: {
-          icon: '',
-          title: 'price_list'
-        },
-        component: () => import('@/view/price_list/index/index.vue')
       }
     ]
   },

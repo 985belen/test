@@ -2,15 +2,23 @@
 <div class="newpage" style="overflow: hidden;">
   <div class="topBox">
     <div class="tool-bar">
-      <a href="#" class="item" @click="modeltransction = true"><Icon class="icon" size=16 type="md-add" />Import Transaction</a>
+      <a href="#" class="item" @click="modeltransction = true"><Icon class="icon" size=16 type="md-add" />Import MTM</a>
       <Divider type="vertical" />
-      <a href="#" class="item" ><Icon class="icon" size=16 type="md-stats" />Import Products</a>
+      <a href="#" class="item" ><Icon class="icon" size=16 type="md-stats" />Import CTO</a>
+      <Divider type="vertical" />
+      <a href="#" class="item" ><Icon class="icon" size=16 type="md-add" />Submit Button</a>
       <Divider type="vertical" />
       <a href="#" class="item" ><Icon class="icon" size=16 type="md-add" />Add Dummy Item</a>
       <Divider type="vertical" />
       <a href="#" class="item" ><Icon class="icon" size=16 type="md-stats" />Accepted</a>
       <Divider type="vertical" />
       <a href="#" class="item" ><Icon class="icon" size=16 type="md-stats" />Recommendation Price</a>
+      <Divider type="vertical" />
+      <router-link to="/iframe/iframe_HistoricalSummary" style="color: #515a6e">Historical Report</router-link>
+      <Divider type="vertical" />
+      <router-link to="/iframe/iframe_clv" style="color: #515a6e">CLV Report</router-link>
+      <Divider type="vertical" />
+      <router-link to="/iframe/iframe_DealTracking" style="color: #515a6e">Tracking Report</router-link>
     </div>
     <h3 class="marginBottom"><a href="javascript:;" style="display:block;color: #333;" @click="toggleList1"><Icon type="ios-podium" />PE Information</a></h3>
     <div class="peinformation">

@@ -36,14 +36,14 @@
             <FormItem label="COUNTRY" style="padding-left: 20px;">
               <Select v-model="form.country" placeholder="Please select">
                 <Option v-for="(item, index) in form.countrySelects" :value="item" :key="index">{{item}}</Option>
-            </Select>
+              </Select>
             </FormItem>
           </Col>
           <Col span=5>
             <FormItem label="PLANT" style="padding-left: 20px;">
               <Select v-model="form.plant" placeholder="Please select">
                 <Option v-for="(item, index) in form.plantSelects" :value="item" :key="index">{{item}}</Option>
-            </Select>
+              </Select>
             </FormItem>
           </Col>
           <Col span=5>
@@ -98,181 +98,180 @@
 </div>
 </template>
 <script>
-import { AgGridVue } from "ag-grid-vue";
-// import axios from '@/libs/api.request'
-import axios from "axios";
+import { AgGridVue } from 'ag-grid-vue'
+import axios from 'axios'
 
 export default {
   data() {
     return {
       model: false,
       form: {
-        pn: "",
-        country: "",
-        countrySelects: ["Beijing", "Tianjin"],
-        plantSelects: ["plant1", "plant2"]
+        pn: '',
+        country: '',
+        countrySelects: ['Beijing', 'Tianjin'],
+        plantSelects: ['plant1', 'plant2']
       },
       columns: [
-        { headerName: "key", field: "key", width: 150, editable: true},
-        { headerName: "mtmNo", field: "mtmNo", width: 150, editable: true },
-        { headerName: "plant", field: "plant", width: 150, editable: true },
-        { headerName: "country", field: "country", width: 150, editable: true }
+        { headerName: 'key', field: 'key', width: 150, editable: true},
+        { headerName: 'mtmNo', field: 'mtmNo', width: 150, editable: true },
+        { headerName: 'plant', field: 'plant', width: 150, editable: true },
+        { headerName: 'country', field: 'country', width: 150, editable: true }
       ],
       rowData: [
         {
-          key: "",
-          mtmNo: "",
-          plant: "",
-          country: ""
+          key: '',
+          mtmNo: '',
+          plant: '',
+          country: ''
         },
         {
-          key: "",
-          mtmNo: "",
-          plant: "",
-          country: ""
+          key: '',
+          mtmNo: '',
+          plant: '',
+          country: ''
         },
         {
-          key: "",
-          mtmNo: "",
-          plant: "",
-          country: ""
+          key: '',
+          mtmNo: '',
+          plant: '',
+          country: ''
         },
         {
-          key: "",
-          mtmNo: "",
-          plant: "",
-          country: ""
+          key: '',
+          mtmNo: '',
+          plant: '',
+          country: ''
         },
         {
-          key: "",
-          mtmNo: "",
-          plant: "",
-          country: ""
+          key: '',
+          mtmNo: '',
+          plant: '',
+          country: ''
         }
       ],
       columnDefs: [
         {
-          headerName: "KEY",
+          headerName: 'KEY',
           width: 120,
-          field: "key",
-          cellStyle: { "text-align": "left" }
+          field: 'key',
+          cellStyle: { 'text-align': 'left' }
         },
         {
-          headerName: "MTM_NO",
+          headerName: 'MTM_NO',
           width: 120,
-          field: "mtm_NO",
-          cellStyle: { "text-align": "left" }
+          field: 'mtm_NO',
+          cellStyle: { 'text-align': 'left' }
         },
         {
-          headerName: "PLANT",
+          headerName: 'PLANT',
           width: 120,
-          field: "plant",
-          cellStyle: { "text-align": "left" }
+          field: 'plant',
+          cellStyle: { 'text-align': 'left' }
         },
         {
-          headerName: "COUNTRY",
+          headerName: 'COUNTRY',
           width: 120,
-          field: "country",
-          cellStyle: { "text-align": "left" }
+          field: 'country',
+          cellStyle: { 'text-align': 'left' }
           // cellRenderer: (params) => {
-          //   return '<div class="longData" title="' + params.value +'">' + params.value + '</div>'
+          //   return '<div class='longData' title='' + params.value +''>' + params.value + '</div>'
           // }
         },
         {
-          headerName: "CFECOUNTRY",
+          headerName: 'CFECOUNTRY',
           width: 120,
-          field: "cfecountry",
-          cellStyle: { "text-align": "left" }
+          field: 'cfecountry',
+          cellStyle: { 'text-align': 'left' }
         },
         {
-          headerName: "Pre_M3",
+          headerName: 'Pre_M3',
           width: 120,
-          field: "pre_M3",
-          cellStyle: { "text-align": "left" }
+          field: 'pre_M3',
+          cellStyle: { 'text-align': 'left' }
         },
         {
-          headerName: "Pre_M2",
+          headerName: 'Pre_M2',
           width: 120,
-          field: "pre_M2",
-          cellStyle: { "text-align": "left" }
+          field: 'pre_M2',
+          cellStyle: { 'text-align': 'left' }
         },
         {
-          headerName: "Pre_M1",
+          headerName: 'Pre_M1',
           width: 120,
-          field: "pre_M1",
-          cellStyle: { "text-align": "left" }
+          field: 'pre_M1',
+          cellStyle: { 'text-align': 'left' }
         },
         {
-          headerName: "M1",
+          headerName: 'M1',
           width: 120,
-          field: "m1",
-          cellStyle: { "text-align": "left" }
+          field: 'm1',
+          cellStyle: { 'text-align': 'left' }
         },
         {
-          headerName: "M2",
+          headerName: 'M2',
           width: 120,
-          field: "m2",
-          cellStyle: { "text-align": "left" }
+          field: 'm2',
+          cellStyle: { 'text-align': 'left' }
         },
         {
-          headerName: "M3",
+          headerName: 'M3',
           width: 120,
-          field: "m3",
-          cellStyle: { "text-align": "left" }
+          field: 'm3',
+          cellStyle: { 'text-align': 'left' }
         },
         {
-          headerName: "M4",
+          headerName: 'M4',
           width: 120,
-          field: "m4",
-          cellStyle: { "text-align": "left" }
+          field: 'm4',
+          cellStyle: { 'text-align': 'left' }
         },
         {
-          headerName: "M5",
+          headerName: 'M5',
           width: 120,
-          field: "m5",
-          cellStyle: { "text-align": "left" }
+          field: 'm5',
+          cellStyle: { 'text-align': 'left' }
         },
         {
-          headerName: "M6",
+          headerName: 'M6',
           width: 120,
-          field: "m6",
-          cellStyle: { "text-align": "left" }
+          field: 'm6',
+          cellStyle: { 'text-align': 'left' }
         },
         {
-          headerName: "M7",
+          headerName: 'M7',
           width: 120,
-          field: "m7",
-          cellStyle: { "text-align": "left" }
+          field: 'm7',
+          cellStyle: { 'text-align': 'left' }
         },
         {
-          headerName: "M8",
+          headerName: 'M8',
           width: 120,
-          field: "m8",
-          cellStyle: { "text-align": "left" }
+          field: 'm8',
+          cellStyle: { 'text-align': 'left' }
         },
         {
-          headerName: "M9",
+          headerName: 'M9',
           width: 120,
-          field: "m9",
-          cellStyle: { "text-align": "left" }
+          field: 'm9',
+          cellStyle: { 'text-align': 'left' }
         },
         {
-          headerName: "M10",
+          headerName: 'M10',
           width: 120,
-          field: "m10",
-          cellStyle: { "text-align": "left" }
+          field: 'm10',
+          cellStyle: { 'text-align': 'left' }
         },
         {
-          headerName: "M11",
+          headerName: 'M11',
           width: 120,
-          field: "m11",
-          cellStyle: { "text-align": "left" }
+          field: 'm11',
+          cellStyle: { 'text-align': 'left' }
         },
         {
-          headerName: "M12",
+          headerName: 'M12',
           width: 120,
-          field: "m12",
-          cellStyle: { "text-align": "left" }
+          field: 'm12',
+          cellStyle: { 'text-align': 'left' }
         }
       ],
       rowDataDefs: []
@@ -284,7 +283,7 @@ export default {
   created() {},
   mounted() {
     this.calcGridHeight();
-    window.addEventListener("resize", () => {
+    window.addEventListener('resize', () => {
       window.clearTimeout(this.timer)
       this.timer = window.setTimeout(() => {
         this.calcGridHeight()
@@ -293,16 +292,16 @@ export default {
   },
   methods: {
     calcGridHeight() {
-      var screenHeight = window.innerHeight;
-      var topHeight = document.getElementsByClassName("topMain")[0].offsetHeight;
-      var t1 = document.getElementsByClassName("split-pane-page-wrapper")[1];
-      var ag = document.getElementsByClassName("agContainer")[0];
-      ag.style.height = screenHeight - topHeight - 64 - 10 - 10 + "px"; // 64是头部的高度，10是padding
-      t1.style.height = screenHeight - topHeight - 64 - 10 - 10 + "px";
-      acontainer.style.height = screenHeight - topHeight - 64 - 10 - 10 + "px";
+      var screenHeight = window.innerHeight
+      var topHeight = document.getElementsByClassName('topMain')[0].offsetHeight
+      var t1 = document.getElementsByClassName('split-pane-page-wrapper')[1]
+      var ag = document.getElementsByClassName('agContainer')[0]
+      ag.style.height = screenHeight - topHeight - 64 - 10 - 10 + 'px' // 64是头部的高度，10是padding
+      t1.style.height = screenHeight - topHeight - 64 - 10 - 10 + 'px'
+      acontainer.style.height = screenHeight - topHeight - 64 - 10 - 10 + 'px'
     },
     searchAjax() {
-      var _url = "http://10.120.116.171:8082/api/cfebmc";
+      var _url = "http://10.120.116.171:8082/api/cfebmc"
       var _tpl = [
           { country: "TM", key: "1", mtmNo: "80M100ELRU", plant: "BITLAND_NB" },
           { country: "LI", key: "2", mtmNo: "80VR00GJFR", plant: "LCFC_NB" },
@@ -327,15 +326,15 @@ export default {
         ]
       var obj = {
         inputBmcEntityList: _tpl,
-        lineUpGeo: this.form.lineUpGeo||"",
-        systemType: this.form.systemType||"consumer"
-      };
-      axios.post(_url, obj).then(res => {
-        this.rowDataDefs = res.data.data;
-      });
+        lineUpGeo: this.form.lineUpGeo || '',
+        systemType: this.form.systemType || 'consumer'
+      }
+      axios.post(_url, obj).then( res => {
+        this.rowDataDefs = res.data.data
+      })
     }
   }
-};
+}
 </script>
 <style lang="less">
 .price-box {

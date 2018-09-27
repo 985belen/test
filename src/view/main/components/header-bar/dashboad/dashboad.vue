@@ -13,12 +13,12 @@
             <Icon style=" margin-left: 30px;"  size="64" type="ios-cog" />
             <ul class="submenu">
               <li><router-link style="color: #515a6e" to="/price/CTO_Config">Price Simulation</router-link></li>
-              <li ><router-link style="color: #515a6e" to="/price_lists/price_list">Price Estimation</router-link></li>
+              <li ><router-link style="color: #515a6e" to="/price/price_list">Price Estimation</router-link></li>
             </ul>
           </Col>
           <Col class="hover" span=6>
             <DropdownItem style="font-size:20px!important;">Profit Margin Analysis</DropdownItem>
-            <Icon style=" margin-left: 30px;"  size="64" type="ios-contacts" />
+            <Icon style="margin-left: 30px;"  size="64" type="ios-contacts" />
             <ul class="submenu">
               <li><router-link to="/price/CTO_ListPrice" style="color: #515a6e">Finance Review</router-link></li>
               <li><router-link to="/iframe/iframe_HistoricalSummary" style="color: #515a6e">Historical Summary Report</router-link></li>
