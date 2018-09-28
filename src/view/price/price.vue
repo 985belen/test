@@ -16,11 +16,13 @@
       <Divider type="vertical" />
       <a href="#" class="item"><Icon class="icon" size=16 type="md-add" />Accepted</a>
       <Divider type="vertical" />
-      <router-link to="/iframe/iframe_HistoricalSummary" style="color: #515a6e"><Icon class="icon" size=16 type="md-add" />Historical Report</router-link>
+      <a href="#" class="item" @click="HistoricalReport = true"><Icon class="icon" size=16 type="md-stats" />Historical Report</a>
+      <!-- <router-link to="/iframe/iframe_HistoricalSummary" style="color: #515a6e"><Icon class="icon" size=16 type="md-add" />Historical Report</router-link> -->
       <Divider type="vertical" />
-      <router-link to="/iframe/iframe_clv" style="color: #515a6e"><Icon class="icon" size=16 type="md-add" />CLV Report</router-link>
+      <a href="#" class="item" @click="CLVReport = true"><Icon class="icon" size=16 type="md-stats" />CLV Report</a>
+      <!-- <router-link to="/iframe/iframe_clv" style="color: #515a6e"><Icon class="icon" size=16 type="md-add" />CLV Report</router-link> -->
       <Divider type="vertical" />
-      <router-link to="/iframe/iframe_DealTracking" style="color: #515a6e"><Icon class="icon" size=16 type="md-add" />Tracking Report</router-link>
+      <a href="#" class="item" @click="TrackingReport = true"><Icon class="icon" size=16 type="md-stats" />Tracking Report</a>
     </div>
     <h3 ref=""><a href="javascript:;" style="display:block;color: #333;" @click="toggleList"><Icon type="md-pricetags" /> Quotation Infomation <span style="float: right; font-weight: normal; font-size: 12px;">More</span></a></h3>
     <ul class="item-box" v-if="isStatus">
@@ -96,7 +98,7 @@
         </h3>
         <div v-if="tab1" style="width: 100%; padding:10px; border-collapse: collapse; min-height: 300px;">
           <Card shadow>
-            <chart-pie style="height: 300px;" :value="pieData" text="Customer Revenue"></chart-pie>
+            <chart-pie style="height: 300px;" :value="pieData" :text="'Customer Revenue'"></chart-pie>
           </Card>
           <h3 class="marginBottom"><a href="javascript:;" style="display:block;color: #333;"><Icon type="md-pricetags" />Summary </a> </h3>
           <ag-grid-vue
@@ -192,12 +194,91 @@
       <!-- <Button type="error" size="large" @click="del">Delete</Button> -->
     </div>
   </Modal>
+  <Modal v-model="HistoricalReport" width="100%">
+    <p slot="header">
+      <span>Historical Report</span>
+    </p>
+    <div style="text-align:center">
+      <div class="target" >
+        <Tabs>
+          <TabPane label="Historical Data" icon="md-bookmarks">
+            <iframe src='http://localhost:4848/single?appid=D:\Qlik\Pricing Profit Margin 2.qvf&sheet=512b74d1-d88f-46c2-ac4e-a051d8d9e417&opt=currsel&select=clearall' style='border:none;width:1500px;height:800px'>
+              <p>你的浏览器不支持iframe标签</p>
+            </iframe>
+          </TabPane>
+          <TabPane label=" Historical Data Analysis" icon="logo-codepen">
+            <iframe src='http://localhost:4848/single?appid=D:\Qlik\Pricing Profit Margin 2.qvf&sheet=dccedc74-f12a-47bd-8d80-a9d2bc66ef67&opt=currsel&select=clearall' style='border:none;width:1500px;height:800px'>
+              <p>你的浏览器不支持iframe标签</p>
+            </iframe>
+          </TabPane>
+        </Tabs>
+      </div>
+    </div>
+    <div slot="footer">
+      <!-- <Button type="error" size="large" @click="del">Delete</Button> -->
+    </div>
+  </Modal>
+  <Modal v-model="CLVReport" width="100%">
+    <p slot="header">
+      <span>CLV Report</span>
+    </p>
+    <div style="text-align:center">
+      <div class="target" style="width:100%;height:100%;overflow:hidden;">
+        <iframe src='http://localhost:4848/single?appid=D:\Qlik\Pricing Profit Margin.qvf&sheet=8ef34d3c-21db-4420-b530-2f0383d22738&opt=currsel&select=clearall' style='border:none;width:1500px;height:800px'>
+          <p>你的浏览器不支持iframe标签</p>
+        </iframe>
+      </div>
+    </div>
+    <div slot="footer">
+      <!-- <Button type="error" size="large" @click="del">Delete</Button> -->
+    </div>
+  </Modal>
+  <Modal v-model="TrackingReport" width="100%">
+    <p slot="header">
+      <span>Tracking Report</span>
+    </p>
+    <div style="text-align:center">
+      <div class="target" style="width:100%;height:100%;overflow:hidden;">
+        <iframe src='http://localhost:4848/single?appid=D:\Qlik\Pricing Profit Margin 3.qvf&sheet=92715bd0-3927-49e4-9915-0521c96f5b8b&opt=currsel&select=clearall' style='border:none;width:1500px;height:800px'>
+          <p>你的浏览器不支持iframe标签</p>
+        </iframe>
+      </div>
+    </div>
+    <div slot="footer">
+      <!-- <Button type="error" size="large" @click="del">Delete</Button> -->
+    </div>
+  </Modal>
+  <Modal v-model="FinanceReview" width="100%">
+    <p slot="header">
+      <span>Finance Review</span>
+    </p>
+    <div class="tool-bar" ref="toolBar">
+      <a href="#" class="item"><Icon class="icon" size=16 type="md-trash"/>Reject</a>
+      <Divider type="vertical" />
+      <a href="#" class="item"><Icon class="icon" size=16 type="md-link" />Accept</a>
+    </div>
+    <Tabs>
+      <TabPane label="Product Summary Report" icon="logo-codepen">
+        <iframe src='http://localhost:4848/single?appid=D:\Qlik\Pricing Profit Margin 4.qvf&sheet=4a3e5efa-8d62-47f2-ae6f-3be33279bae7&opt=currsel&select=clearall' style='border:none;width:1500px;height:800px'>
+          <p>你的浏览器不支持iframe标签</p>
+        </iframe>
+      </TabPane>
+      <TabPane label="Product Series Report" icon="md-bookmarks">
+        <iframe src='http://localhost:4848/single?appid=D:\Qlik\Pricing Profit Margin 4.qvf&sheet=50f1b6e8-652c-4173-9f5c-90b5f113afb9&opt=currsel&select=clearall' style='border:none;width:1500px;height:800px'>
+          <p>你的浏览器不支持iframe标签</p>
+        </iframe>
+      </TabPane>
+    </Tabs>
+    <div slot="footer">
+      <!-- <Button type="error" size="large" @click="del">Delete</Button> -->
+    </div>
+  </Modal>
 </div>
 </template>
 <script>
 import {AgGridVue} from 'ag-grid-vue'
 import SplitPane from '_c/split-pane'
-import { ChartPie, ChartBar } from '_c/charts'
+import { ChartPie} from '_c/charts'
 import bmcCQ from './bmcCQ.vue'
 import tmcCQ from './tmcCQ.vue'
 import netbmcCQ from './netbmcCQ.vue'
@@ -205,6 +286,10 @@ import costCQ from './costCQ.vue'
 export default {
   data () {
     return {
+      HistoricalReport: false,
+      CLVReport: false,
+      TrackingReport: false,
+      FinanceReview: false,
       modelBMC: false,
       modelTMC: false,
       modelNetBMC: false,
@@ -336,16 +421,6 @@ export default {
             {headerName: 'YBMC', field: 'YBMC', width: 120},
             {headerName: 'YBMB', field: 'YBMB', width: 120},
             {headerName: 'YBMA', field: 'YBMA', width: 120}
-            // {headerName: 'MOT', field: 'MOT', width: 120, editable: true,
-            //   headerClass:'headerColor',
-            //   cellStyle: {'text-align': 'left'},
-            //   cellRenderer: (params) => {return params.value},
-            //   cellEditor: 'agRichSelectCellEditor',
-            //   cellEditorParams: {
-            //     cellRenderer: (params) => {return params.value},
-            //     values: ['Mix', 'Air', 'Ocean', 'Rail', 'Truck']
-            //   }
-            // }
           ]
         },
         {headerName: 'BMC', field: 'BMC', cellStyle: {'text-align': 'left'}, headerGroupComponent: 'bmcCQComponent',
@@ -1225,8 +1300,7 @@ export default {
   components: {
     AgGridVue,
     SplitPane,
-    ChartPie,
-    ChartBar
+    ChartPie
   },
   beforeMount () {
     this.frameworkComponents = {

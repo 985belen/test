@@ -14,13 +14,15 @@
       <Divider type="vertical" />
       <a href="#" class="item" ><Icon class="icon" size=16 type="md-stats" />Recommendation Price</a>
       <Divider type="vertical" />
-      <router-link to="/iframe/iframe_HistoricalSummary" style="color: #515a6e">Historical Report</router-link>
+      <a href="#" class="item" @click="HistoricalReport = true"><Icon class="icon" size=16 type="md-stats" />Historical Report</a>
+      <!-- <router-link to="/iframe/iframe_HistoricalSummary" style="color: #515a6e"><Icon class="icon" size=16 type="md-add" />Historical Report</router-link> -->
       <Divider type="vertical" />
-      <router-link to="/iframe/iframe_clv" style="color: #515a6e">CLV Report</router-link>
+      <a href="#" class="item" @click="CLVReport = true"><Icon class="icon" size=16 type="md-stats" />CLV Report</a>
+      <!-- <router-link to="/iframe/iframe_clv" style="color: #515a6e"><Icon class="icon" size=16 type="md-add" />CLV Report</router-link> -->
       <Divider type="vertical" />
-      <router-link to="/iframe/iframe_DealTracking" style="color: #515a6e">Tracking Report</router-link>
+      <a href="#" class="item" @click="TrackingReport = true"><Icon class="icon" size=16 type="md-stats" />Tracking Report</a>
     </div>
-    <h3 class="marginBottom"><a href="javascript:;" style="display:block;color: #333;" @click="toggleList1"><Icon type="ios-podium" />PE Information</a></h3>
+    <h3 class="marginBottom"><a href="javascript:;" style="display:block;color: #333;" @click="toggleList1"><Icon type="ios-podium" />PS Information</a></h3>
     <div class="peinformation">
       <Row>
         <Col span=12 offset="6">
@@ -31,7 +33,7 @@
         <Form :model="FormItem" :label-width="120" :rules="ruleValidate">
           <Row>
             <Col span=5 offset="1">
-              <strong>PE ID: </strong><span>PE-20188081041-357</span>
+              <strong>PS ID: </strong><span>PS-20188081041-357</span>
             </Col>
             <Col span=5>
               <strong>DMU Name: </strong><span>State Administration</span>
@@ -276,6 +278,60 @@
       <!-- <Button type="error" size="large" @click="del">Delete</Button> -->
     </div>
   </Modal>
+  <Modal v-model="HistoricalReport" width="100%">
+    <p slot="header">
+      <span>Historical Report</span>
+    </p>
+    <div style="text-align:center">
+      <div class="target" >
+        <Tabs>
+          <TabPane label="Historical Data" icon="md-bookmarks">
+            <iframe src='http://localhost:4848/single?appid=D:\Qlik\Pricing Profit Margin 2.qvf&sheet=512b74d1-d88f-46c2-ac4e-a051d8d9e417&opt=currsel&select=clearall' style='border:none;width:1500px;height:800px'>
+              <p>你的浏览器不支持iframe标签</p>
+            </iframe>
+          </TabPane>
+          <TabPane label=" Historical Data Analysis" icon="logo-codepen">
+            <iframe src='http://localhost:4848/single?appid=D:\Qlik\Pricing Profit Margin 2.qvf&sheet=dccedc74-f12a-47bd-8d80-a9d2bc66ef67&opt=currsel&select=clearall' style='border:none;width:1500px;height:800px'>
+              <p>你的浏览器不支持iframe标签</p>
+            </iframe>
+          </TabPane>
+        </Tabs>
+      </div>
+    </div>
+    <div slot="footer">
+      <!-- <Button type="error" size="large" @click="del">Delete</Button> -->
+    </div>
+  </Modal>
+  <Modal v-model="CLVReport" width="100%">
+    <p slot="header">
+      <span>CLV Report</span>
+    </p>
+    <div style="text-align:center">
+      <div class="target" style="width:100%;height:100%;overflow:hidden;">
+        <iframe src='http://localhost:4848/single?appid=D:\Qlik\Pricing Profit Margin.qvf&sheet=8ef34d3c-21db-4420-b530-2f0383d22738&opt=currsel&select=clearall' style='border:none;width:1500px;height:800px'>
+          <p>你的浏览器不支持iframe标签</p>
+        </iframe>
+      </div>
+    </div>
+    <div slot="footer">
+      <!-- <Button type="error" size="large" @click="del">Delete</Button> -->
+    </div>
+  </Modal>
+  <Modal v-model="TrackingReport" width="100%">
+    <p slot="header">
+      <span>Tracking Report</span>
+    </p>
+    <div style="text-align:center">
+      <div class="target" style="width:100%;height:100%;overflow:hidden;">
+        <iframe src='http://localhost:4848/single?appid=D:\Qlik\Pricing Profit Margin 3.qvf&sheet=92715bd0-3927-49e4-9915-0521c96f5b8b&opt=currsel&select=clearall' style='border:none;width:1500px;height:800px'>
+          <p>你的浏览器不支持iframe标签</p>
+        </iframe>
+      </div>
+    </div>
+    <div slot="footer">
+      <!-- <Button type="error" size="large" @click="del">Delete</Button> -->
+    </div>
+  </Modal>
 </div>
 </template>
 <script>
@@ -288,6 +344,9 @@ import costCQ from './costCQ.vue'
 export default {
   data () {
     return {
+      HistoricalReport: false,
+      CLVReport: false,
+      TrackingReport: false,
       modelTMC: false,
       modelCostAdjustment: false,
       toggle: true,

@@ -10,6 +10,7 @@ export default {
   props: {
     value: Array,
     text: String,
+    link: String,
     subtext: String
   },
   mounted () {
@@ -18,6 +19,7 @@ export default {
       let option = {
         title: {
           text: this.text,
+          link: this.link,
           subtext: this.subtext,
           x: 'center'
         },
@@ -47,11 +49,12 @@ export default {
         ]
       }
       let dom = echarts.init(this.$refs.dom, 'tdTheme')
-      dom.on('click', params => {
-        this.$router.push({
-          path: '/iframe/iframe_FinanceReview'
-        })
-      })
+      // dom.title.on('click', params => {
+      //   console.log(params)
+      //   // this.$router.push({
+      //   //   path: '/iframe/iframe_FinanceReview'
+      //   // })
+      // })
       dom.setOption(option)
     })
   }

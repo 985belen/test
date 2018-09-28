@@ -1,7 +1,7 @@
 <template>
 <div class="price-box">
   <div class="tool-bar">
-    <a href="#" class="item" @click="modelnew = true" ><Icon class="icon" size=16 type="md-add" />Create new PE</a>
+    <a href="#" class="item" @click="modelnew = true" ><Icon class="icon" size=16 type="md-add" />Create new PS</a>
     <Divider type="vertical" />
     <a href="#" class="item"><Icon class="icon" size=16 type="md-stats" />copy</a>
     <Divider type="vertical" />
@@ -50,7 +50,7 @@
   <Modal
     v-model="modelnew"
     :styles="{width:'1000px'}"
-    title="create New PE"
+    title="create New PS"
     ok-text="Create"
     @on-ok="topage"
     cancel-text="Cancel">
@@ -230,7 +230,7 @@ export default {
           checkboxSelection: true, width: 60
         },
         {
-          headerName: 'PE Number',
+          headerName: 'PS Number',
           cellStyle: {'text-align': 'left'},
           cellRenderer: (params) => { return '<a href="#/excel/excel_PEsale">' + params.value + '</a>' },
           field: 'peNum',
@@ -329,7 +329,7 @@ export default {
       ],
       rowData: [
         {
-          peNum: 'PE-20176807001',
+          peNum: 'PS-20176807001',
           dmuNum: '1212263935',
           dmuName: 'IPSOS HQ',
           desc: 'RX-DCG-NIMS PRNS',
@@ -347,7 +347,7 @@ export default {
           currency: 'USD'
         },
         {
-          peNum: 'PE-20180807002',
+          peNum: 'PS-20180807002',
           dmuNum: '1213420209',
           dmuName: 'CSC WE RMC DMU',
           desc: 'RX_Tchibo',
@@ -365,7 +365,7 @@ export default {
           currency: 'USD'
         },
         {
-          peNum: 'PE-20180807003',
+          peNum: 'PS-20180807003',
           dmuNum: '1213431990',
           dmuName: 'Evonik MC DMU',
           desc: 'DXC - UHH',
@@ -383,7 +383,7 @@ export default {
           currency: 'USD'
         },
         {
-          peNum: 'PE-20180807004',
+          peNum: 'PS-20180807004',
           dmuNum: '1213445570',
           dmuName: 'CRH MC DMU',
           desc: 'GA Evonik - P52 (incl. Services)',
@@ -401,7 +401,7 @@ export default {
           currency: 'USD'
         },
         {
-          peNum: 'PE-20180807005',
+          peNum: 'PS-20180807005',
           dmuNum: '1214029598',
           dmuName: 'IPSOS HQ',
           desc: 'RX-DCG-NIMS PRNS',
@@ -419,7 +419,7 @@ export default {
           currency: 'USD'
         },
         {
-          peNum: 'PE-20180807001',
+          peNum: 'PS-20180807001',
           dmuNum: '1212263935',
           dmuName: 'IPSOS HQ',
           desc: 'RX-DCG-NIMS PRNS',
@@ -437,7 +437,7 @@ export default {
           currency: 'USD'
         },
         {
-          peNum: 'PE-20180807001',
+          peNum: 'PS-20180807001',
           dmuNum: '1212263935',
           dmuName: 'IPSOS HQ',
           desc: 'RX-DCG-NIMS PRNS',
@@ -455,7 +455,7 @@ export default {
           currency: 'USD'
         },
         {
-          peNum: 'PE-20180807001',
+          peNum: 'PS-20180807001',
           dmuNum: '1212263935',
           dmuName: 'IPSOS HQ',
           desc: 'RX-DCG-NIMS PRNS',
@@ -473,7 +473,7 @@ export default {
           currency: 'USD'
         },
         {
-          peNum: 'PE-20180807001',
+          peNum: 'PS-20180807001',
           dmuNum: '1212263935',
           dmuName: 'IPSOS HQ',
           desc: 'RX-DCG-NIMS PRNS',
@@ -491,7 +491,7 @@ export default {
           currency: 'USD'
         },
         {
-          peNum: 'PE-20180807001',
+          peNum: 'PS-20180807001',
           dmuNum: '1212263935',
           dmuName: 'IPSOS HQ',
           desc: 'RX-DCG-NIMS PRNS',
@@ -509,7 +509,7 @@ export default {
           currency: 'USD'
         },
         {
-          peNum: 'PE-20180807001',
+          peNum: 'PS-20180807001',
           dmuNum: '1212263935',
           dmuName: 'IPSOS HQ',
           desc: 'RX-DCG-NIMS PRNS',
@@ -527,7 +527,7 @@ export default {
           currency: 'USD'
         },
         {
-          peNum: 'PE-20180807001',
+          peNum: 'PS-20180807001',
           dmuNum: '1212263935',
           dmuName: 'IPSOS HQ',
           desc: 'RX-DCG-NIMS PRNS',
