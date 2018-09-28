@@ -98,7 +98,8 @@
         </h3>
         <div v-if="tab1" style="width: 100%; padding:10px; border-collapse: collapse; min-height: 300px;">
           <Card shadow>
-            <chart-pie style="height: 300px;" :value="pieData" :text="'Customer Revenue'"></chart-pie>
+            <h2 style="font-size:16px;text-align:center;cursor:pointer;" @click="FinanceReview = true">Customer Revenue</h2>
+            <chart-pie style="height: 300px;" :value="pieData"></chart-pie>
           </Card>
           <h3 class="marginBottom"><a href="javascript:;" style="display:block;color: #333;"><Icon type="md-pricetags" />Summary </a> </h3>
           <ag-grid-vue
@@ -1324,6 +1325,9 @@ export default {
     })
   },
   methods: {
+    sdcdv () {
+      alert(34)
+    },
     calcGridHeight () {
       var screenHeight = window.innerHeight
       // var topHeight = this.$refs.topMain.offsetHeight

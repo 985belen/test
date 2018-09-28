@@ -6,9 +6,9 @@
       <Divider type="vertical" />
       <a href="#" class="item" ><Icon class="icon" size=16 type="md-stats" />Import CTO</a>
       <Divider type="vertical" />
-      <a href="#" class="item" ><Icon class="icon" size=16 type="md-add" />Submit Button</a>
-      <Divider type="vertical" />
       <a href="#" class="item" ><Icon class="icon" size=16 type="md-add" />Add Dummy Item</a>
+      <Divider type="vertical" />
+      <a href="#" class="item" ><Icon class="icon" size=16 type="md-add" />Submit</a>
       <Divider type="vertical" />
       <a href="#" class="item" ><Icon class="icon" size=16 type="md-stats" />Accepted</a>
       <Divider type="vertical" />

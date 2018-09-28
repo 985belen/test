@@ -317,7 +317,7 @@
   </Modal>
   <Modal
     v-model="modeltransction"
-    title="Transaction"
+    title="Products"
     :styles="{width:'1000px'}"
     ok-text="OK"
     cancel-text="Cancel">
@@ -335,14 +335,18 @@
           </Select>
           </Form-item>
         </Col>
+        <Col span=6>
+          <Form-item label="PN" :label-width="60">
+            <Input v-model="transFormItem.pn" placeholder="Enter something..."/>
+          </Form-item>
+        </Col>
         <Col span=7>
-          <Form-item label="Transaction ID" :label-width="100">
+          <Form-item label="Transaction ID" :label-width="110">
             <Input v-model="transFormItem.TransactionID" placeholder="Enter something..."/>
           </Form-item>
         </Col>
         <Col span=4>
-          <Button type="primary" style="margin-right:5px;float:left">Search</Button>
-          <Button type="primary" style="float:left">Attach</Button>
+          <Button type="primary" size="middle">Search</Button>
         </Col>
       </Row>
     </Form>
@@ -565,7 +569,7 @@ export default {
         {
           headerName: 'Transaction ID',
           field: 'TransactionID',
-          width: 120,
+          width: 130,
           cellStyle: {'text-align': 'left'}
         },
         {
@@ -661,6 +665,7 @@ export default {
       transFormItem: {
         BusinessPartner: '',
         DMUName: '',
+        pn: '',
         PricingEstimationNumber: '',
         CreatedBy: '',
         Country: '',

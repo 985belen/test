@@ -10,7 +10,6 @@ export default {
   props: {
     value: Array,
     text: String,
-    link: String,
     subtext: String
   },
   mounted () {
@@ -19,7 +18,6 @@ export default {
       let option = {
         title: {
           text: this.text,
-          link: this.link,
           subtext: this.subtext,
           x: 'center'
         },
