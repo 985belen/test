@@ -2,14 +2,6 @@
 <div class="newpage" style="overflow: hidden;">
   <div class="topBox">
     <div class="tool-bar">
-      <!-- <a href="#" class="item" @click="modelMTM = true"><Icon class="icon" size=16 type="md-add" />Import MTM</a>
-      <Divider type="vertical" />
-      <a href="#" class="item" @click="modeltransction = true"><Icon class="icon" size=16 type="md-stats" />Import Transaction</a>
-      <Divider type="vertical" />
-      <a href="#" class="item" ><Icon class="icon" size=16 type="md-stats" />Import CTO</a>
-      <Divider type="vertical" />
-      <a href="#" class="item" @click="modeldummy = true"><Icon class="icon" size=16 type="md-add" />Add Dummy Item</a>
-      <Divider type="vertical" /> -->
       <a href="#" class="item" ><Icon class="icon" size=16 type="md-add" />Reject</a>
       <Divider type="vertical" />
       <a href="#" class="item" ><Icon class="icon" size=16 type="md-stats" />Accepted</a>
@@ -22,7 +14,7 @@
       <Divider type="vertical" />
       <a href="#" class="item" @click="TrackingReport = true"><Icon class="icon" size=16 type="md-stats" />Tracking Report</a>
     </div>
-    <h3 class="marginBottom"><a href="javascript:;" style="display:block;color: #333;" @click="toggleList1"><Icon type="ios-podium" />PS Information</a></h3>
+    <h3 class="marginBottom"><a href="javascript:;" style="display:block;color: #333;" @click="toggleList1"><Icon type="ios-podium" />QI Information</a></h3>
     <div class="peinformation">
       <Row>
         <Col span=12 offset="6">
@@ -33,7 +25,7 @@
         <Form :model="FormItem" :label-width="120" :rules="ruleValidate">
           <Row>
             <Col span=5 offset="1">
-              <strong>PS ID: </strong><span>PS-20188081041-357</span>
+              <strong>QI ID: </strong><span>QI-20188081041-357</span>
             </Col>
             <Col span=5>
               <strong>DMU Name: </strong><span>State Administration</span>
@@ -315,134 +307,6 @@
     </ag-grid-vue>
   </Modal>
   <Modal
-    v-model="modelMTM"
-    title="Products"
-    :styles="{width:'1000px'}"
-    ok-text="OK"
-    cancel-text="Cancel">
-    <Form :model="mtmFormItem" label-position="left" ref="mtmFormItem" >
-      <Row type="flex" justify="start" :gutter="15">
-        <Col span=8>
-          <Form-item label="PN" :label-width="60">
-            <Input v-model="mtmFormItem.pn" placeholder="Enter something..."/>
-          </Form-item>
-        </Col>
-        <Col span=4>
-          <Button type="primary">Search</Button>
-        </Col>
-      </Row>
-    </Form>
-    <div class="table-box">
-      <ag-grid-vue
-        style="width: 100%; height:100%;"
-        class="ag-theme-balham"
-        v-if="modelMTM"
-        :columnDefs="transColumns"
-        :rowData="transData"
-        :gridAutoHeight="true"
-        :enableSorting="true"
-        :floatingFilter="true"
-        :enableFilter="true"
-        :showToolPanel="false"
-        :singleClickEdit="true"
-        :suppressSizeToFit="true"
-        :suppressResize="true"
-        :enableColResize="true"
-        :gridReady="onGridReady"
-        rowSelection="multiple">
-      </ag-grid-vue>
-    </div>
-  </Modal>
-  <Modal
-    v-model="modeltransction"
-    title="Transction"
-    :styles="{width:'1000px'}"
-    ok-text="OK"
-    cancel-text="Cancel">
-    <Form :model="transFormItem" label-position="left" ref="transFormItem" >
-      <Row type="flex" justify="start" :gutter="15">
-        <Col span=8>
-          <Form-item label="Business Partner" :label-width="110">
-            <Input v-model="transFormItem.BusinessPartner" placeholder="Enter something..."/>
-          </Form-item>
-        </Col>
-        <Col span=8>
-          <Form-item label="Transction type" :label-width="110">
-            <Select v-model="transFormItem.Transctiontype" placeholder="Please select.." @on-change="transtypeshow">
-              <Option v-for="(item, index) in transFormItem.Transctiontypes" :value="item" :key="index">{{item}}</Option>
-          </Select>
-          </Form-item>
-        </Col>
-        <Col span=8>
-          <Form-item>
-            <Select v-model="transFormItem.Transtype" placeholder="Please select..">
-              <Option v-for="item in transFormItem.Transtypes" :value="item" :key="item">{{item}}</Option>
-          </Select>
-          </Form-item>
-        </Col>
-        <Col span=8>
-          <Form-item label="Transaction ID" :label-width="110">
-            <Input v-model="transFormItem.TransactionID" placeholder="Enter something..."/>
-          </Form-item>
-        </Col>
-        <Col span=4>
-          <Button type="primary" size="middle">Search</Button>
-        </Col>
-      </Row>
-    </Form>
-    <div class="table-box">
-      <ag-grid-vue
-        style="width: 100%; height:100%;"
-        class="ag-theme-balham"
-        v-if="modeltransction"
-        :columnDefs="transColumns"
-        :rowData="transData"
-        :gridAutoHeight="true"
-        :enableSorting="true"
-        :floatingFilter="true"
-        :enableFilter="true"
-        :showToolPanel="false"
-        :singleClickEdit="true"
-        :suppressSizeToFit="true"
-        :suppressResize="true"
-        :enableColResize="true"
-        :gridReady="onGridReady"
-        rowSelection="multiple">
-      </ag-grid-vue>
-    </div>
-  </Modal>
-  <Modal
-    v-model="modeldummy"
-    title="Dummy"
-    :styles="{width:'1000px'}"
-    ok-text="OK"
-    cancel-text="Cancel">
-    <Form :model="dummyForm" label-position="left" :label-width="110" ref="dummyForm" >
-      <Row type="flex" justify="start" :gutter="15">
-        <Col span=8>
-          <Form-item label="Product No" :label-width="100">
-            <Input v-model="dummyForm.ProductNo" placeholder="Enter something..."/>
-          </Form-item>
-        </Col>
-        <Col span=8>
-          <Form-item label="Product Description" :label-width="120">
-            <Input v-model="dummyForm.ProductDescription" placeholder="Enter something..."/>
-          </Form-item>
-        </Col>
-        <Col span=8>
-          <Form-item label="Product Brand" :label-width="100">
-            <Select v-model="dummyForm.ProductBrand" placeholder="Please select..">
-              <Option v-for="(item, index) in dummyForm.ProductBrands" :value="item" :key="index">{{item}}</Option>
-          </Select>
-          </Form-item>
-        </Col>
-      </Row>
-    </Form>
-    <div class="table-box">
-      <Table border :columns="dummyColumn" :data="dummyData"></Table>
-    </div>
-  </Modal>
-  <Modal
     v-model="modelComponentsList"
     title="Components List-->20KECTO1WW"
     :styles="{width:'800px'}"
@@ -581,7 +445,6 @@ export default {
       modelTMC: false,
       modelNetBMC: false,
       modelCostAdjustment: false,
-      modeldummy: false,
       toggle: true,
       toggle1: false,
       toggle2: true,
@@ -610,12 +473,6 @@ export default {
         Geo: '',
         Region: ''
       },
-      dummyForm: {
-        ProductNo: '',
-        ProductBrand: '',
-        ProductBrands: ['Desktop', 'Desktop Options', 'Non-Branded', 'Notebook', 'Notebook Options', 'Others', 'Server', 'Server Options', 'Services', 'Software', 'Visual Options', 'Visuals', 'Workstation', 'Workstation Options'],
-        ProductDescription: ''
-      },
       ruleValidate: {
         Description: [
           { required: true, message: 'The Description cannot be empty', trigger: 'blur' }
@@ -633,134 +490,7 @@ export default {
       modeldetail: false,
       modelProduct: false,
       modelBrand: false,
-      modelMTM: false,
-      modeltransction: false,
       modelComponentsList: false,
-      transColumns: [
-        {
-          headerCheckboxSelection: true,
-          headerCheckboxSelectionFilteredOnly: false,
-          editable: false,
-          suppressFilter: true,
-          checkboxSelection: true,
-          width: 60
-        },
-        {
-          headerName: 'Transaction ID',
-          field: 'TransactionID',
-          width: 130,
-          cellStyle: {'text-align': 'left'}
-        },
-        {
-          headerName: 'Description',
-          field: 'Description',
-          width: 200,
-          cellStyle: {'text-align': 'left'},
-          cellRenderer: (params) => {
-            return '<div class="longData" title="' + params.value +'">' + params.value + '</div>'
-          }
-        },
-        {
-          headerName: 'Product ID',
-          field: 'ProductID',
-          width: 200,
-          cellStyle: {'text-align': 'left'},
-          cellRenderer: (params) => {
-            return '<div class="longData" title="' + params.value +'">' + params.value + '</div>'
-          }
-        },
-        {
-          headerName: 'Product Desc',
-          field: 'ProductDesc',
-          width: 160,
-          cellStyle: {'text-align': 'left'},
-          cellRenderer: (params) => {
-            return '<div class="longData" title="' + params.value +'">' + params.value + '</div>'
-          }
-        },
-        {
-          headerName: 'Start Date',
-          field: 'StartDate',
-          width: 120,
-          cellStyle: {'text-align': 'left'}
-        },
-        {
-          headerName: 'Currency',
-          field: 'Currency',
-          width: 120,
-          cellStyle: {'text-align': 'left'}
-        }
-      ],
-      transData: [
-        {
-          TransactionID: '0002223182',
-          Description: 'RX - KPMG - Norway - M910q',
-          ProductID: 'Desktop TC M910q_Intel Q270_TINY_ES_R',
-          ProductDesc: '10MUCTO1WW',
-          StartDate: '2018/01/25',
-          Currency: 'USD'
-        },
-        {
-          TransactionID: '0002102225',
-          Description: 'CAT:KPMG - KBY NB Turkey T470 v1.0',
-          ProductID: 'Notebook ThinkPad T470 20HECTO1WW Rx',
-          ProductDesc: '20HECTO1WW',
-          StartDate: '2018/08/21',
-          Currency: 'USD'
-        },
-        {
-          TransactionID: '0002175497',
-          Description: 'NonCAT:KPMG - Forensic NB',
-          ProductID: 'Notebook ThinkPad X1 Yoga 2G 20JECTO1WW 20JECTO1WW',
-          ProductDesc: '20JECTO1WW',
-          StartDate: '2018/11/08',
-          Currency: 'USD'
-        },
-        {
-          TransactionID: '0002260500',
-          Description: 'CAT:KPMG-KBY-R T480s Yoga380 Canada',
-          ProductID: 'Notebook ThinkPad X380 Yoga 20LJCTO1WW R',
-          ProductDesc: '20LJCTO1WW',
-          StartDate: '2018/04/05',
-          Currency: 'USD'
-        },
-        {
-          TransactionID: '0002214846',
-          Description: 'CAT:KPMG _ RFP Turkey',
-          ProductID: 'Notebook ThinkPad T480 20L6CTO1WW Rx',
-          ProductDesc: '20L6CTO1WW',
-          StartDate: '2018/07/23',
-          Currency: 'USD'
-        },
-        {
-          TransactionID: '0002297646',
-          Description: 'CAT:KPMG _ RFP Turkey',
-          ProductID: 'Notebook ThinkPad T480 20L6CTO1WW Rx',
-          ProductDesc: '20L6CTO1WW',
-          StartDate: '2018/07/23',
-          Currency: 'USD'
-        }
-      ],
-      transFormItem: {
-        BusinessPartner: '',
-        Transctiontype: '',
-        Transctiontypes: ['opportunity', 'quotation', 'contract'],
-        Transtype: '',
-        Transtypes: [],
-        TransctiontypeArr: {
-          opportunity: ['ZOGA- Opportunity for Muiti Country Account', 'ZOPT - Opportunity for Strategic', 'ZPEM - Opportunity for Emerging Market'],
-          quotation: ['ZQGP - Quotation for Muli- Country Bid', 'ZQCN - Quotation for Sales Contract', 'ZQNQ - Quotation for Non Qty Sales Contract', 'ZQUS - Quotation for Spot Quote', 'ZQHM- Quotation for Back-end Bid', 'ZQBQ - Quotation for Non Qty Back-end Bid'],
-          contract: ['ZCGP ContractMuliCountry Contract', 'ZCNQ - Quantity Contract - Sales Contract', 'ZCOQ - Non Quantity Contract - Sales Contract', 'ZCHM - Lenovo S&D contract', 'ZCBQ - Non Qty Backend Contract- S ales Contract']
-        },
-        PricingEstimationNumber: '',
-        CreatedBy: '',
-        Country: '',
-        select: '',
-        selects: ['opportunity', 'quotation', 'contract']
-      },
-      mtmFormItem: {
-        pn: ''
-      },
       ComponentsListcolumn: [
         {
           headerName: 'Category ID',
@@ -1456,90 +1186,6 @@ export default {
           AdderType: 'Special Funding',
           Description: '',
           Cost: null
-        }
-      ],
-      dummyColumn: [
-        {
-          title: 'Quarter',
-          key: 'Quarter'
-        },
-        {
-          title: 'Volume Forecast',
-          key: 'VolumeForecast',
-          render: function (h, params) {
-            return h('Input', {
-              props: {
-                size: 'small',
-                value: params.row.VolumeForecast
-              }
-            })
-          }
-        },
-        {
-          title: 'Final Requested price',
-          key: 'FinalRequestedprice',
-          render: function (h, params) {
-            return h('Input', {
-              props: {
-                size: 'small',
-                value: params.row.FinalRequestedprice
-              }
-            })
-          }
-        },
-        {
-          title: 'BMC',
-          key: 'BMC',
-          render: function (h, params) {
-            return h('Input', {
-              props: {
-                size: 'small',
-                value: params.row.BMC
-              }
-            })
-          }
-        },
-        {
-          title: 'TMC',
-          key: 'TMC',
-          render: function (h, params) {
-            return h('Input', {
-              props: {
-                size: 'small',
-                value: params.row.TMC
-              }
-            })
-          }
-        }
-      ],
-      dummyData: [
-        {
-          Quarter: 'F2Q 18/19',
-          VolumeForecast: 0,
-          FinalRequestedprice: 0,
-          BMC: 0,
-          TMC: 0
-        },
-        {
-          Quarter: 'F3Q 18/19',
-          VolumeForecast: 0,
-          FinalRequestedprice: 0,
-          BMC: 0,
-          TMC: 0
-        },
-        {
-          Quarter: 'F4Q 18/19',
-          VolumeForecast: 0,
-          FinalRequestedprice: 0,
-          BMC: 0,
-          TMC: 0
-        },
-        {
-          Quarter: 'F1Q 19/20',
-          VolumeForecast: 0,
-          FinalRequestedprice: 0,
-          BMC: 0,
-          TMC: 0
         }
       ],
       bmcColumn: [

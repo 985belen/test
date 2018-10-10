@@ -100,7 +100,7 @@
           </Col>
           <Col>
             <FormItem>
-              <Button type="primary" @click="addInput('Cost adjustment')">Cost adjustment</Button>
+              <Button type="primary" @click="addInput('Adjustment')">Adjustment</Button>
             </FormItem>
           </Col>
           <Col>

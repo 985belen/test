@@ -56,6 +56,15 @@ export default [
         component: () => import('@/view/price/pricelist.vue')
       },
       {
+        path: 'price_list1',
+        name: 'price_list1',
+        meta: {
+          icon: '',
+          title: 'price_list1'
+        },
+        component: () => import('@/view/price/pricelist1.vue')
+      },
+      {
         path: 'CTO_Config',
         name: 'CTO_Config',
         meta: {
@@ -112,6 +121,15 @@ export default [
         component: () => import('@/view/excel/excel_PEsale.vue')
       },
       {
+        path: 'excel_PEsale1',
+        name: 'excel_PEsale1',
+        meta: {
+          icon: '',
+          title: 'excel_PEsale1'
+        },
+        component: () => import('@/view/excel/excel_PEsale1.vue')
+      },
+      {
         path: 'excel_listpage',
         name: 'excel_listpage',
         meta: {
@@ -125,10 +143,19 @@ export default [
         name: 'excel_empty',
         meta: {
           icon: '',
-          title: 'excel_PEsale'
+          title: 'excel_PEsales'
         },
         component: () => import('@/view/excel/excel_PEsales.vue')
       },
+       {
+        path: 'excel_empty1',
+        name: 'excel_empty1',
+        meta: {
+          icon: '',
+          title: 'excel_PEsales1'
+        },
+        component: () => import('@/view/excel/excel_PEsales1.vue')
+      }
     ]
   },
   {

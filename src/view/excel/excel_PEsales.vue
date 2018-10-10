@@ -2,23 +2,23 @@
 <div class="newpage" style="overflow: hidden;">
   <div class="topBox">
     <div class="tool-bar">
-      <a href="#" class="item" @click="modeltransction = true"><Icon class="icon" size=16 type="md-add" />Import MTM</a>
+      <a href="#" class="item" @click="modelMTM = true"><Icon class="icon" size=16 type="md-add" />Import MTM</a>
+      <Divider type="vertical" />
+      <a href="#" class="item" @click="modeltransction = true"><Icon class="icon" size=16 type="md-stats" />Import Transaction</a>
       <Divider type="vertical" />
       <a href="#" class="item" ><Icon class="icon" size=16 type="md-stats" />Import CTO</a>
       <Divider type="vertical" />
-      <a href="#" class="item" ><Icon class="icon" size=16 type="md-add" />Add Dummy Item</a>
+      <a href="#" class="item" @click="modeldummy = true"><Icon class="icon" size=16 type="md-add" />Add Dummy Item</a>
       <Divider type="vertical" />
       <a href="#" class="item" ><Icon class="icon" size=16 type="md-add" />Submit</a>
       <Divider type="vertical" />
-      <a href="#" class="item" ><Icon class="icon" size=16 type="md-stats" />Accepted</a>
-      <Divider type="vertical" />
+      <!-- <a href="#" class="item" ><Icon class="icon" size=16 type="md-stats" />Accepted</a>
+      <Divider type="vertical" /> -->
       <a href="#" class="item" ><Icon class="icon" size=16 type="md-stats" />Recommendation Price</a>
       <Divider type="vertical" />
       <a href="#" class="item" @click="HistoricalReport = true"><Icon class="icon" size=16 type="md-stats" />Historical Report</a>
-      <!-- <router-link to="/iframe/iframe_HistoricalSummary" style="color: #515a6e"><Icon class="icon" size=16 type="md-add" />Historical Report</router-link> -->
       <Divider type="vertical" />
       <a href="#" class="item" @click="CLVReport = true"><Icon class="icon" size=16 type="md-stats" />CLV Report</a>
-      <!-- <router-link to="/iframe/iframe_clv" style="color: #515a6e"><Icon class="icon" size=16 type="md-add" />CLV Report</router-link> -->
       <Divider type="vertical" />
       <a href="#" class="item" @click="TrackingReport = true"><Icon class="icon" size=16 type="md-stats" />Tracking Report</a>
     </div>
@@ -176,34 +176,80 @@
     </split-pane>
   </div>
   <Modal
-    v-model="modeltransction"
-    title="Transaction"
+    v-model="modelMTM"
+    title="Products"
     :styles="{width:'1000px'}"
     ok-text="OK"
-    @on-ok="ok"
+    @on-ok="fourtips"
     cancel-text="Cancel">
-    <Form :model="transFormItem" label-position="left" :label-width="110" ref="transFormItem" >
-      <Row type="flex" justify="start" :gutter="8">
-        <Col span=7>
+    <Form :model="mtmFormItem" label-position="left" ref="mtmFormItem" >
+      <Row type="flex" justify="start" :gutter="15">
+        <Col span=8>
+          <Form-item label="PN" :label-width="60">
+            <Input v-model="mtmFormItem.pn" placeholder="Enter something..."/>
+          </Form-item>
+        </Col>
+        <Col span=4>
+          <Button type="primary">Search</Button>
+        </Col>
+      </Row>
+    </Form>
+    <div class="table-box">
+      <ag-grid-vue
+        style="width: 100%; height:100%;"
+        class="ag-theme-balham"
+        v-if="modelMTM"
+        :columnDefs="transColumns"
+        :rowData="transData"
+        :gridAutoHeight="true"
+        :enableSorting="true"
+        :floatingFilter="true"
+        :enableFilter="true"
+        :showToolPanel="false"
+        :singleClickEdit="true"
+        :suppressSizeToFit="true"
+        :suppressResize="true"
+        :enableColResize="true"
+        :gridReady="onGridReady"
+        rowSelection="multiple">
+      </ag-grid-vue>
+    </div>
+  </Modal>
+  <Modal
+    v-model="modeltransction"
+    title="Transction"
+    :styles="{width:'1000px'}"
+    ok-text="OK"
+    @on-ok="eighttips"
+    cancel-text="Cancel">
+    <Form :model="transFormItem" label-position="left" ref="transFormItem" >
+      <Row type="flex" justify="start" :gutter="15">
+        <Col span=8>
           <Form-item label="Business Partner" :label-width="110">
             <Input v-model="transFormItem.BusinessPartner" placeholder="Enter something..."/>
           </Form-item>
         </Col>
-        <Col span=6>
-          <Form-item label="Select" :label-width="60">
-            <Select v-model="transFormItem.select" placeholder="Please select..">
-              <Option v-for="(item, index) in transFormItem.selects" :value="item" :key="index">{{item}}</Option>
+        <Col span=8>
+          <Form-item label="Transction type" :label-width="110">
+            <Select v-model="transFormItem.Transctiontype" placeholder="Please select.." @on-change="transtypeshow">
+              <Option v-for="(item, index) in transFormItem.Transctiontypes" :value="item" :key="index">{{item}}</Option>
           </Select>
           </Form-item>
         </Col>
-        <Col span=7>
-          <Form-item label="Transaction ID" :label-width="100">
+        <Col span=8>
+          <Form-item>
+            <Select v-model="transFormItem.Transtype" placeholder="Please select..">
+              <Option v-for="item in transFormItem.Transtypes" :value="item" :key="item">{{item}}</Option>
+          </Select>
+          </Form-item>
+        </Col>
+        <Col span=8>
+          <Form-item label="Transaction ID" :label-width="110">
             <Input v-model="transFormItem.TransactionID" placeholder="Enter something..."/>
           </Form-item>
         </Col>
         <Col span=4>
-          <Button type="primary" style="margin-right:5px;float:left">Search</Button>
-          <Button type="primary" style="float:left">Attach</Button>
+          <Button type="primary" size="middle">Search</Button>
         </Col>
       </Row>
     </Form>
@@ -226,6 +272,38 @@
         :gridReady="onGridReady"
         rowSelection="multiple">
       </ag-grid-vue>
+    </div>
+  </Modal>
+  <Modal
+    v-model="modeldummy"
+    title="Dummy"
+    :styles="{width:'1000px'}"
+    ok-text="OK"
+    @on-ok="ok"
+    cancel-text="Cancel">
+    <Form :model="dummyForm" label-position="left" ref="dummyForm" >
+      <Row type="flex" justify="start" :gutter="15">
+        <Col span=8>
+          <Form-item label="Product No" :label-width="100">
+            <Input v-model="dummyForm.ProductNo" placeholder="Enter something..."/>
+          </Form-item>
+        </Col>
+        <Col span=8>
+          <Form-item label="Product Description" :label-width="120">
+            <Input v-model="dummyForm.ProductDescription" placeholder="Enter something..."/>
+          </Form-item>
+        </Col>
+        <Col span=8>
+          <Form-item label="Product Brand" :label-width="100">
+            <Select v-model="dummyForm.ProductBrand" placeholder="Please select..">
+              <Option v-for="(item, index) in dummyForm.ProductBrands" :value="item" :key="index">{{item}}</Option>
+          </Select>
+          </Form-item>
+        </Col>
+      </Row>
+    </Form>
+    <div class="table-box">
+      <Table border :columns="dummyColumn" :data="dummyData"></Table>
     </div>
   </Modal>
   <Modal
@@ -349,6 +427,7 @@ export default {
       TrackingReport: false,
       modelTMC: false,
       modelCostAdjustment: false,
+      modeldummy: false,
       toggle: true,
       toggle1: false,
       toggle2: true,
@@ -377,6 +456,12 @@ export default {
         Geo: '',
         Region: ''
       },
+      dummyForm: {
+        ProductNo: '',
+        ProductBrand: '',
+        ProductBrands: ['Desktop', 'Desktop Options', 'Non-Branded', 'Notebook', 'Notebook Options', 'Others', 'Server', 'Server Options', 'Services', 'Software', 'Visual Options', 'Visuals', 'Workstation', 'Workstation Options'],
+        ProductDescription: ''
+      },
       ruleValidate: {
         Description: [
           { required: true, message: 'The Description cannot be empty', trigger: 'blur' }
@@ -394,6 +479,7 @@ export default {
       modeldetail: false,
       modelProduct: false,
       modelBrand: false,
+      modelMTM: false,
       modeltransction: false,
       modelComponentsList: false,
       transColumns: [
@@ -501,14 +587,109 @@ export default {
           Currency: 'USD'
         }
       ],
+      dummyColumn: [
+        {
+          title: 'Quarter',
+          key: 'Quarter'
+        },
+        {
+          title: 'Volume Forecast',
+          key: 'VolumeForecast',
+          render: function (h, params) {
+            return h('Input', {
+              props: {
+                size: 'small',
+                value: params.row.VolumeForecast
+              }
+            })
+          }
+        },
+        {
+          title: 'Final Requested price',
+          key: 'FinalRequestedprice',
+          render: function (h, params) {
+            return h('Input', {
+              props: {
+                size: 'small',
+                value: params.row.FinalRequestedprice
+              }
+            })
+          }
+        },
+        {
+          title: 'BMC',
+          key: 'BMC',
+          render: function (h, params) {
+            return h('Input', {
+              props: {
+                size: 'small',
+                value: params.row.BMC
+              }
+            })
+          }
+        },
+        {
+          title: 'TMC',
+          key: 'TMC',
+          render: function (h, params) {
+            return h('Input', {
+              props: {
+                size: 'small',
+                value: params.row.TMC
+              }
+            })
+          }
+        }
+      ],
+      dummyData: [
+        {
+          Quarter: 'F2Q 18/19',
+          VolumeForecast: 0,
+          FinalRequestedprice: 0,
+          BMC: 0,
+          TMC: 0
+        },
+        {
+          Quarter: 'F3Q 18/19',
+          VolumeForecast: 0,
+          FinalRequestedprice: 0,
+          BMC: 0,
+          TMC: 0
+        },
+        {
+          Quarter: 'F4Q 18/19',
+          VolumeForecast: 0,
+          FinalRequestedprice: 0,
+          BMC: 0,
+          TMC: 0
+        },
+        {
+          Quarter: 'F1Q 19/20',
+          VolumeForecast: 0,
+          FinalRequestedprice: 0,
+          BMC: 0,
+          TMC: 0
+        }
+      ],
       transFormItem: {
         BusinessPartner: '',
-        DMUName: '',
+        Transctiontype: '',
+        Transctiontypes: ['opportunity', 'quotation', 'contract'],
+        Transtype: '',
+        Transtypes: [],
+        TransctiontypeArr: {
+          opportunity: ['ZOGA- Opportunity for Muiti Country Account', 'ZOPT - Opportunity for Strategic', 'ZPEM - Opportunity for Emerging Market'],
+          quotation: ['ZQGP - Quotation for Muli- Country Bid', 'ZQCN - Quotation for Sales Contract', 'ZQNQ - Quotation for Non Qty Sales Contract', 'ZQUS - Quotation for Spot Quote', 'ZQHM- Quotation for Back-end Bid', 'ZQBQ - Quotation for Non Qty Back-end Bid'],
+          contract: ['ZCGP ContractMuliCountry Contract', 'ZCNQ - Quantity Contract - Sales Contract', 'ZCOQ - Non Quantity Contract - Sales Contract', 'ZCHM - Lenovo S&D contract', 'ZCBQ - Non Qty Backend Contract- S ales Contract']
+        },
         PricingEstimationNumber: '',
         CreatedBy: '',
         Country: '',
         select: '',
         selects: ['opportunity', 'quotation', 'contract']
+      },
+      mtmFormItem: {
+        pn: ''
       },
       ComponentsListcolumn: [
         {
@@ -709,11 +890,11 @@ export default {
           cellStyle: {'text-align': 'left'}
         },
         {
-          headerName: 'Estimation Price',
-          width: 135,
+          headerName: 'Recommendation Price',
+          width: 180,
           field: 'estpri',
-          editable: true,
-          headerClass:'headerColor',
+          editable: false,
+          // headerClass:'headerColor',
           cellStyle: {'text-align': 'left'}
         },
         {
@@ -728,8 +909,8 @@ export default {
           headerName: 'Discount %',
           width: 110,
           field: 'disc',
-          editable: true,
-          headerClass:'headerColor',
+          editable: false,
+          // headerClass:'headerColor',
           cellStyle: {'text-align': 'left'}
         },
         {
@@ -1960,7 +2141,133 @@ export default {
     onGridReady (params) {
       params.api.sizeColumnsToFit()
     },
-    ok () {
+    transtypeshow () {
+      this.transFormItem.Transtypes = []
+      this.transFormItem.Transtype = ''
+      this.transFormItem.Transtypes = this.transFormItem.TransctiontypeArr[this.transFormItem.Transctiontype]
+    },
+    fourtips () {
+      var obj = [
+        {
+          id: 1,
+          quarter: 'F1Q 18/19',
+          brand: 'ThinkPad Classic',
+          brsum: 'Notebook',
+          subser: 'X280',
+          prono: '20KECTO1WW',
+          prodesc: 'Notebook ThinkPad X280 20KECTO1WW Rx',
+          vol: 1,
+          listpri: 1905.72,
+          stndpri: 1905.72,
+          RecommendationDiscount: '51%',
+          WalkawayDiscount: '59%',
+          respri: 600,
+          estpri: 655,
+          finalpri: 0,
+          disc: 65.6,
+          tmc: 1079,
+          CostAdjustment: 21.7,
+          FinalTMC: 1057.3,
+          tmcmar: -402.5,
+          tmcb: '-61.4%',
+          gr: 4875,
+          grre: 0,
+          netre: 655,
+          pti: 1149.86,
+          ptipro: -494.86,
+          ptimar: '-75.6%'
+        },
+        {
+          id: '',
+          quarter: 'F2Q 18/19',
+          brand: 'ThinkPad Classic',
+          brsum: 'Notebook',
+          subser: 'X280',
+          prono: '20KECTO1WW config',
+          prodesc: 'Notebook ThinkPad X280 20KECTO1WW Rx',
+          vol: 1,
+          listpri: 1905.72,
+          stndpri: 1905.72,
+          RecommendationDiscount: '51%',
+          WalkawayDiscount: '59%',
+          respri: 600,
+          estpri: 655,
+          finalpri: 0,
+          disc: 65.6,
+          tmc: 1039.21,
+          CostAdjustment: 21.7,
+          FinalTMC: 1017.51,
+          tmcmar: -362.71,
+          tmcb: '-55.4%',
+          gr: 4875,
+          grre: 0,
+          netre: 655,
+          pti: 1110.07,
+          ptipro: -455.06,
+          ptimar: '-69.5%'
+        },
+        {
+          id: '',
+          quarter: 'F3Q 18/19',
+          brand: 'ThinkPad Classic',
+          brsum: 'Notebook',
+          subser: 'X280',
+          prono: '20KECTO1WW config',
+          prodesc: 'Notebook ThinkPad X280 20KECTO1WW Rx',
+          vol: 1,
+          listpri: 1905.72,
+          stndpri: 1905.72,
+          RecommendationDiscount: '51%',
+          WalkawayDiscount: '59%',
+          respri: 600,
+          estpri: 655,
+          finalpri: 0,
+          disc: 65.6,
+          tmc: 1014.65,
+          CostAdjustment: 21.7,
+          FinalTMC: 992.95,
+          tmcmar: -338.15,
+          tmcb: '-51.6%',
+          gr: '4875',
+          grre: '0',
+          netre: '655',
+          pti: '1085.51',
+          ptipro: '-430.5',
+          ptimar: '-65.7%'
+        },
+        {
+          id: '',
+          quarter: 'F4Q 18/19',
+          brand: 'ThinkPad Classic',
+          brsum: 'Notebook',
+          subser: 'X280',
+          prono: '20KECTO1WW config',
+          prodesc: 'Notebook ThinkPad X280 20KECTO1WW Rx',
+          vol: '1',
+          listpri: '1905.72',
+          stndpri: '1905.72',
+          RecommendationDiscount: '51%',
+          WalkawayDiscount: '59%',
+          respri: '600',
+          estpri: '655',
+          finalpri: '0',
+          disc: '65.6',
+          tmc: '1014.65',
+          CostAdjustment: 21.7,
+          FinalTMC: 992.95,
+          tmcmar: '-333.76',
+          tmcb: '-51%',
+          gr: 4875,
+          grre: 0,
+          netre: 655,
+          pti: 1081.12,
+          ptipro: -426.12,
+          ptimar: '-65.1%'
+        }
+      ]
+      this.rowData = obj
+    },
+    eighttips () {
       var obj = [
         {
           id: 1,

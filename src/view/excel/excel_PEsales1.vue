@@ -2,17 +2,15 @@
 <div class="newpage" style="overflow: hidden;">
   <div class="topBox">
     <div class="tool-bar">
-      <!-- <a href="#" class="item" @click="modelMTM = true"><Icon class="icon" size=16 type="md-add" />Import MTM</a>
+      <a href="#" class="item" @click="modelMTM = true"><Icon class="icon" size=16 type="md-add" />Import MTM</a>
       <Divider type="vertical" />
       <a href="#" class="item" @click="modeltransction = true"><Icon class="icon" size=16 type="md-stats" />Import Transaction</a>
       <Divider type="vertical" />
       <a href="#" class="item" ><Icon class="icon" size=16 type="md-stats" />Import CTO</a>
       <Divider type="vertical" />
       <a href="#" class="item" @click="modeldummy = true"><Icon class="icon" size=16 type="md-add" />Add Dummy Item</a>
-      <Divider type="vertical" /> -->
-      <a href="#" class="item" ><Icon class="icon" size=16 type="md-add" />Reject</a>
       <Divider type="vertical" />
-      <a href="#" class="item" ><Icon class="icon" size=16 type="md-stats" />Accepted</a>
+      <a href="#" class="item" ><Icon class="icon" size=16 type="md-add" />Submit</a>
       <Divider type="vertical" />
       <a href="#" class="item" ><Icon class="icon" size=16 type="md-stats" />Recommendation Price</a>
       <Divider type="vertical" />
@@ -26,7 +24,7 @@
     <div class="peinformation">
       <Row>
         <Col span=12 offset="6">
-          <img src="./pic1.png"/>
+          <img src="./pic2.png"/>
         </Col>
       </Row>
       <div class="boxitem">
@@ -66,19 +64,19 @@
     <div class="SummaryInformation">
       <Row type="flex" justify="center">
         <Col span=5>
-          <strong>System Volume: </strong><span style="font-size: 14px; font-weight: bold;">450</span>
+          <strong>System Volume: </strong><span style="font-size: 14px; font-weight: bold;"></span>
         </Col>
         <Col span=5>
-          <strong>Gross Revenue: </strong><span style="font-size: 14px; font-weight: bold;">337100</span>
+          <strong>Gross Revenue: </strong><span style="font-size: 14px; font-weight: bold;"></span>
         </Col>
         <Col span=5>
-          <strong>Net Revenue: </strong><span style="font-size: 14px; font-weight: bold;">337100</span>
+          <strong>Net Revenue: </strong><span style="font-size: 14px; font-weight: bold;"></span>
         </Col>
         <Col span=5>
-          <strong>Total Cost Margin: </strong><span style="font-size: 14px; font-weight: bold;">33323</span>
+          <strong>Total Cost Margin: </strong><span style="font-size: 14px; font-weight: bold;"></span>
         </Col>
         <Col span=4>
-          <strong>Total Cost Margin %: </strong><span style="font-size: 14px; font-weight: bold;">10.2</span>
+          <strong>Total Cost Margin %: </strong><span style="font-size: 14px; font-weight: bold;"></span>
         </Col>
       </Row>
     </div>
@@ -176,149 +174,11 @@
     </split-pane>
   </div>
   <Modal
-    v-model="modeldetail"
-    :styles="{width:'800px'}"
-    title="Financial Summary"
-    ok-text="OK"
-    cancel-text="Cancel">
-    <ag-grid-vue
-      style="width: 100%; height:100%;"
-      class="ag-theme-balham"
-      v-if="detailcolumns1"
-      :columnDefs="detailcolumns1"
-      :rowData="detaildata1"
-      :gridAutoHeight="true"
-      :floatingFilter="true"
-      :enableSorting="true"
-      :enableFilter="true"
-      :singleClickEdit="true"
-      :suppressSizeToFit="true"
-      :suppressResize="true"
-      :enableColResize="true"
-      rowSelection="multiple">
-    </ag-grid-vue>
-    <Divider />
-    <ag-grid-vue
-      style="width: 100%; height:100%;"
-      class="ag-theme-balham"
-      :columnDefs="detailcolumns2"
-      :rowData="detaildata2"
-      :floatingFilter="true"
-      :gridAutoHeight="true"
-      :enableSorting="true"
-      :enableFilter="true"
-      :singleClickEdit="true"
-      :suppressSizeToFit="true"
-      :suppressResize="true"
-      :enableColResize="true"
-      rowSelection="multiple">
-    </ag-grid-vue>
-    <Divider />
-    <ag-grid-vue
-      style="width: 100%; height:100%;"
-      class="ag-theme-balham"
-      :columnDefs="detailcolumns3"
-      :rowData="detaildata3"
-      :floatingFilter="true"
-      :gridAutoHeight="true"
-      :enableSorting="true"
-      :enableFilter="true"
-      :singleClickEdit="true"
-      :suppressSizeToFit="true"
-      :suppressResize="true"
-      :enableColResize="true"
-      rowSelection="multiple">
-    </ag-grid-vue>
-  </Modal>
-  <Modal
-    v-model="modelProduct"
-    title="Summary by Product"
-    :styles="{width:'1250px'}"
-    ok-text="OK"
-    cancel-text="Cancel">
-    <ag-grid-vue
-      style="width: 100%; height:100%;"
-      class="ag-theme-balham"
-      v-if="modelProduct"
-      :columnDefs="productcolumns1"
-      :rowData="productdata1"
-      :floatingFilter="true"
-      :gridAutoHeight="true"
-      :enableSorting="true"
-      :enableFilter="true"
-      :singleClickEdit="true"
-      :suppressSizeToFit="true"
-      :suppressResize="true"
-      :enableColResize="true"
-      rowSelection="multiple">
-    </ag-grid-vue>
-  </Modal>
-  <Modal
-    v-model="modelBrand"
-    title="Summary by Brand"
-    :styles="{width:'800px'}"
-    ok-text="OK"
-    cancel-text="Cancel">
-    <div style="width:100%;height:auto;overflow:hidden;">
-      <ul>
-        <li>
-          <strong>Total Gross Revenue</strong>
-          <span>555,480</span>
-        </li>
-        <li>
-          <strong>Total Net Revenue</strong>
-          <span>555,480</span>
-        </li>
-        <li>
-          <strong>Total Total Cost Profit</strong>
-          <span>-2,954,341</span>
-        </li>
-        <li>
-          <strong>Total Cost Profit %</strong>
-          <span>-531.9%</span>
-        </li>
-      </ul>
-      <ul>
-        <li>
-        <strong>Notebook Option Attach Rate</strong>
-          <span>40.3%</span>
-        </li>
-        <li>
-          <strong>Desktop Option Attach Rate</strong>
-          <span>0.0%</span>
-        </li>
-        <li>
-          <strong>Services Pen Rate</strong>
-          <span>0.0%</span>
-        </li>
-        <li>
-          <strong>Mobile Mix</strong>
-          <span>98.6%</span>
-        </li>
-      </ul>
-    </div>
-    <ag-grid-vue
-      style="width: 100%; height:100%;"
-      class="ag-theme-balham"
-      v-if="Brandcolumns"
-      :columnDefs="Brandcolumns"
-      :rowData="Branddata"
-      :gridAutoHeight="true"
-      :floatingFilter="true"
-      :enableSorting="true"
-      :enableFilter="true"
-      :singleClickEdit="true"
-      :suppressSizeToFit="true"
-      :suppressResize="true"
-      :enableColResize="true"
-      rowSelection="multiple">
-    </ag-grid-vue>
-  </Modal>
-  <Modal
     v-model="modelMTM"
     title="Products"
     :styles="{width:'1000px'}"
     ok-text="OK"
+    @on-ok="ok"
     cancel-text="Cancel">
     <Form :model="mtmFormItem" label-position="left" ref="mtmFormItem" >
       <Row type="flex" justify="start" :gutter="15">
@@ -358,6 +218,7 @@
     title="Transction"
     :styles="{width:'1000px'}"
     ok-text="OK"
+    @on-ok="ok"
     cancel-text="Cancel">
     <Form :model="transFormItem" label-position="left" ref="transFormItem" >
       <Row type="flex" justify="start" :gutter="15">
@@ -416,8 +277,9 @@
     title="Dummy"
     :styles="{width:'1000px'}"
     ok-text="OK"
+    @on-ok="ok"
     cancel-text="Cancel">
-    <Form :model="dummyForm" label-position="left" :label-width="110" ref="dummyForm" >
+    <Form :model="dummyForm" label-position="left" ref="dummyForm" >
       <Row type="flex" justify="start" :gutter="15">
         <Col span=8>
           <Form-item label="Product No" :label-width="100">
@@ -470,14 +332,6 @@
       </ag-grid-vue>
     </div>
   </Modal>
-  <Modal
-    v-model="modelBMC"
-    title="BMC"
-    :styles="{width:'800px'}"
-    ok-text="Apply"
-    cancel-text="Cancel">
-    <Table border :columns="bmcColumn" :data="bmcData"></Table>
-  </Modal>
   <Modal v-model="modelTMC" width="800">
     <p slot="header">
       <span>Total Cost</span>
@@ -488,14 +342,6 @@
     <div slot="footer">
       <!-- <Button type="error" size="large" @click="del">Delete</Button> -->
     </div>
-  </Modal>
-  <Modal
-    v-model="modelNetBMC"
-    title="Net BMC"
-    :styles="{width:'800px'}"
-    ok-text="Apply"
-    cancel-text="Cancel">
-    <Table border :columns="netbmcColumn" :data="netbmcData"></Table>
   </Modal>
   <Modal v-model="modelCostAdjustment" width="800">
     <p slot="header">
@@ -577,9 +423,7 @@ export default {
       HistoricalReport: false,
       CLVReport: false,
       TrackingReport: false,
-      modelBMC: false,
       modelTMC: false,
-      modelNetBMC: false,
       modelCostAdjustment: false,
       modeldummy: false,
       toggle: true,
@@ -648,7 +492,7 @@ export default {
         {
           headerName: 'Transaction ID',
           field: 'TransactionID',
-          width: 130,
+          width: 120,
           cellStyle: {'text-align': 'left'}
         },
         {
@@ -741,6 +585,90 @@ export default {
           Currency: 'USD'
         }
       ],
+      dummyColumn: [
+        {
+          title: 'Quarter',
+          key: 'Quarter'
+        },
+        {
+          title: 'Volume Forecast',
+          key: 'VolumeForecast',
+          render: function (h, params) {
+            return h('Input', {
+              props: {
+                size: 'small',
+                value: params.row.VolumeForecast
+              }
+            })
+          }
+        },
+        {
+          title: 'Final Requested price',
+          key: 'FinalRequestedprice',
+          render: function (h, params) {
+            return h('Input', {
+              props: {
+                size: 'small',
+                value: params.row.FinalRequestedprice
+              }
+            })
+          }
+        },
+        {
+          title: 'BMC',
+          key: 'BMC',
+          render: function (h, params) {
+            return h('Input', {
+              props: {
+                size: 'small',
+                value: params.row.BMC
+              }
+            })
+          }
+        },
+        {
+          title: 'TMC',
+          key: 'TMC',
+          render: function (h, params) {
+            return h('Input', {
+              props: {
+                size: 'small',
+                value: params.row.TMC
+              }
+            })
+          }
+        }
+      ],
+      dummyData: [
+        {
+          Quarter: 'F2Q 18/19',
+          VolumeForecast: 0,
+          FinalRequestedprice: 0,
+          BMC: 0,
+          TMC: 0
+        },
+        {
+          Quarter: 'F3Q 18/19',
+          VolumeForecast: 0,
+          FinalRequestedprice: 0,
+          BMC: 0,
+          TMC: 0
+        },
+        {
+          Quarter: 'F4Q 18/19',
+          VolumeForecast: 0,
+          FinalRequestedprice: 0,
+          BMC: 0,
+          TMC: 0
+        },
+        {
+          Quarter: 'F1Q 19/20',
+          VolumeForecast: 0,
+          FinalRequestedprice: 0,
+          BMC: 0,
+          TMC: 0
+        }
+      ],
       transFormItem: {
         BusinessPartner: '',
         Transctiontype: '',
@@ -790,75 +718,75 @@ export default {
       ComponentsListData: [
         {
           CategoryID: 'SBB0M45830',
-          Description: 'Intel Core i5-6550T 2.7G 4C',
+          Description: ' Intel Core i5-6550T 2.7G 4C',
           QTY: '1',
-          'Total Cost': 183.07
+          'Total Cost': ' 183.07'
         },
         {
           CategoryID: 'SBB0J05441',
           Description: ' W10 Pro',
           QTY: '1',
-          'Total Cost': 112.00
+          'Total Cost': '112.00'
         },
         {
           CategoryID: 'SBB0L54434',
           Description: 'Tiny B250 WW',
           QTY: '1',
-          'Total Cost': 88.87
+          'Total Cost': '88.87'
         },
         {
           CategoryID: 'VK00028880',
           Description: '8GB DDR4 2400 SoDIMM',
           QTY: '1',
-          'Total Cost': 72.44
+          'Total Cost': '72.44'
         },
         {
           CategoryID: 'VK00008845',
           Description: '3 Year On-site',
           QTY: '1',
-          'Total Cost': 7.70
+          'Total Cost': '7.70'
         },
         {
           CategoryID: 'SBB0J04751',
           Description: 'Intel 3165+BT 1x1ac Tiny',
           QTY: '1',
-          'Total Cost': 6.89
+          'Total Cost': '6.89'
         },
         {
           CategoryID: 'SBB0L53089',
           Description: 'USB Calliope KB BK 189 FRA',
           QTY: '1',
-          'Total Cost': 6.80
+          'Total Cost': '6.80'
         },
         {
           CategoryID: 'SBB0J02811',
           Description: 'Optional VGA Port',
           QTY: '1',
-          'Total Cost': 6.03
+          'Total Cost': '6.03'
         },
         {
           CategoryID: 'SBB0J03380',
           Description: 'Thermal Kit 35W Tiny',
           QTY: '1',
-          'Total Cost': 4.87
+          'Total Cost': '4.87'
         },
         {
           CategoryID: 'SBB0J04752',
           Description: 'Tiny 65W adapter',
           QTY: '1',
-          'Total Cost': 4.80
+          'Total Cost': '4.80'
         },
         {
           CategoryID: 'VK00041036',
           Description: 'Win10 Ready to Provision',
           QTY: '1',
-          'Total Cost': 3.18
+          'Total Cost': '3.18'
         },
         {
           CategoryID: 'SBB0L52928',
           Description: 'USB Calliope Mouse BK',
           QTY: '1',
-          'Total Cost': 2.14
+          'Total Cost': '2.14'
         }
       ],
       columns: [
@@ -984,32 +912,6 @@ export default {
           cellStyle: {'text-align': 'left'}
         },
         {
-          headerName: 'BMC',
-          width: 100,
-          field: 'bmc',
-          cellStyle: {'text-align': 'left'},
-          cellRenderer: (params) => {
-            return '<a title="' + params.value +'"href="#">' + params.value + '</a>'
-          },
-          headerComponent: "bmcCQComponent",
-          onCellClicked: () => {
-            this.modelBMC = true
-          }
-        },
-        {
-          headerName: 'Net BMC',
-          width: 100,
-          field: 'netbmc',
-          cellStyle: {'text-align': 'left'},
-          cellRenderer: (params) => {
-            return '<a title="' + params.value +'"href="#">' + params.value + '</a>'
-          },
-          headerComponent: "netbmcCQComponent",
-          onCellClicked: () => {
-            this.modelNetBMC = true
-          }
-        },
-        {
           headerName: 'Total Cost',
           width: 100,
           field: 'tmc',
@@ -1042,27 +944,10 @@ export default {
           cellStyle: {'text-align': 'left'}
         },
         {
-          headerName: 'BMC Margin',
-          width: 110,
-          field: 'bmcmar',
-          cellStyle: {'text-align': 'left'}
-        },
-        {
           headerName: 'Total Cost Margin',
           width: 110,
           field: 'tmcmar',
           cellStyle: {'text-align': 'left'}
-        },
-        {
-          headerName: 'BMC %',
-          width: 100,
-          field: 'bmcb',
-          cellStyle: {'text-align': 'left'},
-          cellClassRules: {
-            lessThan0IsRed: function (params) {
-              return parseInt(params.value) < 0
-            }
-          }
         },
         {
           headerName: 'Total Cost %',
@@ -1121,29 +1006,25 @@ export default {
           subser: 'X280',
           prono: '20KECTO1WW',
           prodesc: 'Notebook ThinkPad X280 20KECTO1WW Rx',
-          vol: '1',
-          listpri: '1905.72',
-          stndpri: '1905.72',
+          vol: 1,
+          listpri: 1905.72,
+          stndpri: 1905.72,
           RecommendationDiscount: '51%',
           WalkawayDiscount: '59%',
-          respri: '600',
-          estpri: '655',
-          finalpri: '0',
-          disc: '65.6',
-          bmc: '1050.7',
-          netbmc: '1040.70',
+          respri: 600,
+          estpri: 655,
+          finalpri: 0,
+          disc: 65.6,
+          tmc: 1079,
           CostAdjustment: 21.7,
           FinalTMC: 1057.3,
-          tmc: '1079',
-          bmcmar: '-374.2',
-          tmcmar: '-402.5',
-          bmcb: '-57.1%',
+          tmcmar: -402.5,
           tmcb: '-61.4%',
-          gr: '4875',
-          grre: '0',
-          netre: '655',
-          pti: '1149.86',
-          ptipro: '-494.86',
+          gr: 4875,
+          grre: 0,
+          netre: 655,
+          pti: 1149.86,
+          ptipro: -494.86,
           ptimar: '-75.6%'
         },
         {
@@ -1154,29 +1035,25 @@ export default {
           subser: 'X280',
           prono: '20KECTO1WW config',
           prodesc: 'Notebook ThinkPad X280 20KECTO1WW Rx',
-          vol: '1',
-          listpri: '1905.72',
-          stndpri: '1905.72',
+          vol: 1,
+          listpri: 1905.72,
+          stndpri: 1905.72,
           RecommendationDiscount: '51%',
           WalkawayDiscount: '59%',
-          respri: '600',
-          estpri: '655',
-          finalpri: '0',
-          disc: '65.6',
-          bmc: '1009.85',
-          netbmc: '999.85',
+          respri: 600,
+          estpri: 655,
+          finalpri: 0,
+          disc: 65.6,
+          tmc: 1039.21,
           CostAdjustment: 21.7,
           FinalTMC: 1017.51,
-          tmc: '1039.21',
-          bmcmar: '-333.35',
-          tmcmar: '-362.71',
-          bmcb: '-50.9%',
+          tmcmar: -362.71,
           tmcb: '-55.4%',
-          gr: '4875',
-          grre: '0',
-          netre: '655',
-          pti: '1110.07',
-          ptipro: '-455.06',
+          gr: 4875,
+          grre: 0,
+          netre: 655,
+          pti: 1110.07,
+          ptipro: -455.06,
           ptimar: '-69.5%'
         },
         {
@@ -1187,23 +1064,19 @@ export default {
           subser: 'X280',
           prono: '20KECTO1WW config',
           prodesc: 'Notebook ThinkPad X280 20KECTO1WW Rx',
-          vol: '1',
-          listpri: '1905.72',
-          stndpri: '1905.72',
+          vol: 1,
+          listpri: 1905.72,
+          stndpri: 1905.72,
           RecommendationDiscount: '51%',
           WalkawayDiscount: '59%',
-          respri: '600',
-          estpri: '655',
-          finalpri: '0',
-          disc: '65.6',
-          bmc: '985.33',
-          netbmc: '975.33',
+          respri: 600,
+          estpri: 655,
+          finalpri: 0,
+          disc: 65.6,
+          tmc: 1014.65,
           CostAdjustment: 21.7,
           FinalTMC: 992.95,
-          tmc: '1014.65',
-          bmcmar: '-308.83',
-          tmcmar: '-338.15',
-          bmcb: '-47.2%',
+          tmcmar: -338.15,
           tmcb: '-51.6%',
           gr: '4875',
           grre: '0',
@@ -1229,20 +1102,16 @@ export default {
           estpri: '655',
           finalpri: '0',
           disc: '65.6',
-          bmc: '980.95',
-          netbmc: '907.75',
+          tmc: '1014.65',
           CostAdjustment: 21.7,
           FinalTMC: 992.95,
-          tmc: '1014.65',
-          bmcmar: '-304.45',
           tmcmar: '-333.76',
-          bmcb: '-46.5%',
           tmcb: '-51%',
-          gr: '4875',
-          grre: '0',
-          netre: '655',
-          pti: '1081.12',
-          ptipro: '-426.12',
+          gr: 4875,
+          grre: 0,
+          netre: 655,
+          pti: 1081.12,
+          ptipro: -426.12,
           ptimar: '-65.1%'
         },
         {
@@ -1253,29 +1122,25 @@ export default {
           subser: 'TP Hybrid USB-C Dock',
           prono: '40AF0135CH',
           prodesc: 'TP Hybrid USB-C Dock - CH',
-          vol: '5',
-          listpri: '277.47',
-          stndpri: '277.47',
+          vol: 5,
+          listpri: 277.47,
+          stndpri: 277.47,
           RecommendationDiscount: '35%',
           WalkawayDiscount: '45%',
-          respri: '149',
-          estpri: '1200',
-          finalpri: '149',
-          disc: '46.3',
-          bmc: '102,76',
-          netbmc: '102,76',
+          respri: 149,
+          estpri: 1200,
+          finalpri: 149,
+          disc: 46.3,
+          tmc: 10276,
           CostAdjustment: 4.68,
           FinalTMC: 98.08,
-          tmc: '102,76',
-          bmcmar: '43.74',
-          tmcmar: '43.74',
-          bmcb: '30.3%',
+          tmcmar: 43.74,
           tmcb: '30.3%',
-          gr: '29525',
+          gr: 29525,
           grre: '-3%',
-          netre: '1445',
-          pti: '121.35',
-          ptipro: '23.18',
+          netre: 1445,
+          pti: 121.35,
+          ptipro: 23.18,
           ptimar: '-16%'
         },
         {
@@ -1286,29 +1151,26 @@ export default {
           subser: 'TP Hybrid USB-C Dock',
           prono: '40AF0135CH',
           prodesc: 'TP Hybrid USB-C Dock - CH',
-          vol: '5',
-          listpri: '277.47',
-          stndpri: '277.47',
+          vol: 5,
+          listpri: 277.47,
+          stndpri: 277.47,
           RecommendationDiscount: '35%',
           WalkawayDiscount: '45%',
-          respri: '149',
-          estpri: '1200',
-          finalpri: '149',
-          disc: '46.3',
-          bmc: '102,76',
-          netbmc: '102,77',
+          respri: 149,
+          estpri: 1200,
+          finalpri: 149,
+          disc: 46.3,
+          bmc: 10276,
+          tmc: 10276,
           CostAdjustment: 4.68,
           FinalTMC: 98.08,
-          tmc: '102,76',
-          bmcmar: '43.74',
-          tmcmar: '43.74',
-          bmcb: '30.3%',
+          tmcmar: 43.74,
           tmcb: '30.3%',
-          gr: '29525',
+          gr: 29525,
           grre: '-3%',
-          netre: '1445',
-          pti: '121.35',
-          ptipro: '23.18',
+          netre: 1445,
+          pti: 121.35,
+          ptipro: 23.18,
           ptimar: '-16%'
         },
         {
@@ -1319,29 +1181,25 @@ export default {
           subser: 'TP Hybrid USB-C Dock',
           prono: '40AF0135CH',
           prodesc: 'TP Hybrid USB-C Dock - CH',
-          vol: '5',
-          listpri: '277.47',
-          stndpri: '277.47',
+          vol: 5,
+          listpri: 277.47,
+          stndpri: 277.47,
           RecommendationDiscount: '35%',
           WalkawayDiscount: '45%',
-          respri: '149',
-          estpri: '1200',
-          finalpri: '149',
-          disc: '46.3',
-          bmc: '102,76',
-          netbmc: '102,78',
+          respri: 149,
+          estpri: 1200,
+          finalpri: 149,
+          disc: 46.3,
+          tmc: 102.76,
           CostAdjustment: 4.68,
           FinalTMC: 98.08,
-          tmc: '102.76',
-          bmcmar: '43.74',
-          tmcmar: '43.74',
-          bmcb: '30.3%',
+          tmcmar: 43.74,
           tmcb: '30.3%',
-          gr: '29525',
+          gr: 29525,
           grre: '-3%',
-          netre: '1445',
-          pti: '121.35',
-          ptipro: '23.18',
+          netre: 1445,
+          pti: 121.35,
+          ptipro: 23.18,
           ptimar: '-16%'
         },
         {
@@ -1352,250 +1210,26 @@ export default {
           subser: 'TP Hybrid USB-C Dock',
           prono: '40AF0135CH',
           prodesc: 'TP Hybrid USB-C Dock - CH',
-          vol: '5',
-          listpri: '277.47',
-          stndpri: '277.47',
+          vol: 5,
+          listpri: 277.47,
+          stndpri: 277.47,
           RecommendationDiscount: '35%',
           WalkawayDiscount: '45%',
-          respri: '149',
-          estpri: '1200',
-          finalpri: '149',
-          disc: '46.3',
-          bmc: '102,76',
-          netbmc: '102,79',
+          respri: 149,
+          estpri: 1200,
+          finalpri: 149,
+          disc: 46.3,
+          tmc: 102.76,
           CostAdjustment: 4.68,
           FinalTMC: 98.08,
-          tmc: '102.76',
-          bmcmar: '43.74',
-          tmcmar: '43.74',
-          bmcb: '30.3%',
+          tmcmar: 43.74,
           tmcb: '30.3%',
-          gr: '29525',
+          gr: 29525,
           grre: '-3%',
-          netre: '1445',
-          pti: '121.35',
-          ptipro: '23.18',
+          netre: 1445,
+          pti: 121.35,
+          ptipro: 23.18,
           ptimar: '-16%'
-        }
-      ],
-      netbmcColumn: [
-        {
-          title: 'Adder Type',
-          key: 'AdderType',
-          render: function (h, params) {
-              return h('div', [
-                h('Checkbox', {
-                  props: {
-                    size: 'large'
-                  },
-                  style: {
-                    marginRight: '5px'
-                  }
-              }, params.row.AdderType)
-            ])
-          }
-        },
-        {
-          title: 'Description',
-          key: 'Description'
-        },
-        {
-          title: 'Cost',
-          key: 'Cost',
-          render: function (h, params) {
-            // console.log(params.row.Cost)
-            if (params.row._index !==7) {
-              return h('div', params.row.Cost)
-            } else {
-              return h('Input', {
-                props: {
-                  size: 'small'
-                }
-              })
-            }
-          }
-        }
-      ],
-      netbmcData: [
-        {
-          AdderType: 'Backend CPU Funding',
-          Description: 'Intel Core i5',
-          Cost: 2
-        },
-        {
-          AdderType: 'Backend HDD Funding',
-          Description: '',
-          Cost: null
-        },
-        {
-          AdderType: 'Backend Other Funding',
-          Description: '',
-          Cost: null
-        },
-        {
-          AdderType: 'Customer Funding',
-          Description: '',
-          Cost: 10
-        },
-        {
-          AdderType: 'Geo Funding',
-          Description: '',
-          Cost: null
-        },
-        {
-          AdderType: 'Region Funding',
-          Description: '',
-          Cost: null
-        },
-        {
-          AdderType: 'WW Funding',
-          Description: '',
-          Cost: null
-        },
-        {
-          AdderType: 'Special Funding',
-          Description: '',
-          Cost: null
-        }
-      ],
-      dummyColumn: [
-        {
-          title: 'Quarter',
-          key: 'Quarter'
-        },
-        {
-          title: 'Volume Forecast',
-          key: 'VolumeForecast',
-          render: function (h, params) {
-            return h('Input', {
-              props: {
-                size: 'small',
-                value: params.row.VolumeForecast
-              }
-            })
-          }
-        },
-        {
-          title: 'Final Requested price',
-          key: 'FinalRequestedprice',
-          render: function (h, params) {
-            return h('Input', {
-              props: {
-                size: 'small',
-                value: params.row.FinalRequestedprice
-              }
-            })
-          }
-        },
-        {
-          title: 'BMC',
-          key: 'BMC',
-          render: function (h, params) {
-            return h('Input', {
-              props: {
-                size: 'small',
-                value: params.row.BMC
-              }
-            })
-          }
-        },
-        {
-          title: 'TMC',
-          key: 'TMC',
-          render: function (h, params) {
-            return h('Input', {
-              props: {
-                size: 'small',
-                value: params.row.TMC
-              }
-            })
-          }
-        }
-      ],
-      dummyData: [
-        {
-          Quarter: 'F2Q 18/19',
-          VolumeForecast: 0,
-          FinalRequestedprice: 0,
-          BMC: 0,
-          TMC: 0
-        },
-        {
-          Quarter: 'F3Q 18/19',
-          VolumeForecast: 0,
-          FinalRequestedprice: 0,
-          BMC: 0,
-          TMC: 0
-        },
-        {
-          Quarter: 'F4Q 18/19',
-          VolumeForecast: 0,
-          FinalRequestedprice: 0,
-          BMC: 0,
-          TMC: 0
-        },
-        {
-          Quarter: 'F1Q 19/20',
-          VolumeForecast: 0,
-          FinalRequestedprice: 0,
-          BMC: 0,
-          TMC: 0
-        }
-      ],
-      bmcColumn: [
-        {
-          title: 'Adder Type',
-          key: 'AdderType',
-          render: function (h, params) {
-            // console.log(params.row.AdderType)
-            if (!params.row._index) {
-              return h('div', params.row.AdderType)
-            } else {
-              var self = this
-              return h('div', [
-                h('Checkbox', {
-                  props: {
-                    size: 'large'
-                  },
-                  style: {
-                    marginRight: '5px'
-                  }
-              }, params.row.AdderType)
-            ])
-            }
-          }
-        },
-        {
-          title: 'Description',
-          key: 'Description'
-        },
-        {
-          title: 'Cost',
-          key: 'Cost',
-          render: function (h, params) {
-            // console.log(params.row.Cost)
-            if (!params.row._index) {
-              return h('div', params.row.Cost)
-            } else {
-              return h('Input', {
-                props: {
-                  size: 'small'
-                }
-              })
-            }
-          }
-        },
-      ],
-      bmcData: [
-        {
-          AdderType: 'MOT',
-          Description: 'MIX',
-          Cost: 14.73
-        },
-        {
-          AdderType: 'BMC of missing Key part',
-          Description: '',
-          Cost: null
         }
       ],
       tmcColumn: [
@@ -1806,31 +1440,33 @@ export default {
       detailcolumns3: [
         {
           headerName: 'Roadmap Metrics',
-          field: 'tsv',
+          field: 'roadmap',
+          width: 180,
           cellStyle: {'text-align': 'left'}
         },
         {
-          headerName: ' ',
-          field: 'tsvv',
+          headerName: '',
+          field: 'roadmapv',
+          width: 180,
           cellStyle: {'text-align': 'left'}
         }
       ],
       detaildata3: [
         {
-          tsv: 'Notebook Option Attach',
-          tsvv: '40.3%'
+          roadmap: 'Notebook Option Attach',
+          roadmapv: '40.3%'
         },
         {
-          tsv: 'Desktop Option Attach',
-          tsvv: '0.0%'
+          roadmap: 'Desktop Option Attach',
+          roadmapv: '0.0%'
         },
         {
-          tsv: 'Services Pen Rate',
-          tsvv: '0.0%'
+          roadmap: 'Services Pen Rate',
+          roadmapv: '0.0%'
         },
         {
-          tsv: 'Mobile Mix',
-          tsvv: '98.6%'
+          roadmap: 'Mobile Mix',
+          roadmapv: '98.6%'
         }
       ],
       productcolumns1: [
@@ -2741,6 +2377,244 @@ export default {
       this.transFormItem.Transtypes = []
       this.transFormItem.Transtype = ''
       this.transFormItem.Transtypes = this.transFormItem.TransctiontypeArr[this.transFormItem.Transctiontype]
+    },
+    ok () {
+      var obj = [
+        {
+          id: 1,
+          quarter: 'F1Q 18/19',
+          brand: 'ThinkPad Classic',
+          brsum: 'Notebook',
+          subser: 'X280',
+          prono: '20KECTO1WW',
+          prodesc: 'Notebook ThinkPad X280 20KECTO1WW Rx',
+          vol: 1,
+          listpri: 1905.72,
+          stndpri: 1905.72,
+          RecommendationDiscount: '51%',
+          WalkawayDiscount: '59%',
+          respri: 600,
+          estpri: 655,
+          finalpri: 0,
+          disc: 65.6,
+          tmc: 1079,
+          CostAdjustment: 21.7,
+          FinalTMC: 1057.3,
+          tmcmar: -402.5,
+          tmcb: '-61.4%',
+          gr: 4875,
+          grre: 0,
+          netre: 655,
+          pti: 1149.86,
+          ptipro: -494.86,
+          ptimar: '-75.6%'
+        },
+        {
+          id: '',
+          quarter: 'F2Q 18/19',
+          brand: 'ThinkPad Classic',
+          brsum: 'Notebook',
+          subser: 'X280',
+          prono: '20KECTO1WW config',
+          prodesc: 'Notebook ThinkPad X280 20KECTO1WW Rx',
+          vol: 1,
+          listpri: 1905.72,
+          stndpri: 1905.72,
+          RecommendationDiscount: '51%',
+          WalkawayDiscount: '59%',
+          respri: 600,
+          estpri: 655,
+          finalpri: 0,
+          disc: 65.6,
+          tmc: 1039.21,
+          CostAdjustment: 21.7,
+          FinalTMC: 1017.51,
+          tmcmar: -362.71,
+          tmcb: '-55.4%',
+          gr: 4875,
+          grre: 0,
+          netre: 655,
+          pti: 1110.07,
+          ptipro: -455.06,
+          ptimar: '-69.5%'
+        },
+        {
+          id: '',
+          quarter: 'F3Q 18/19',
+          brand: 'ThinkPad Classic',
+          brsum: 'Notebook',
+          subser: 'X280',
+          prono: '20KECTO1WW config',
+          prodesc: 'Notebook ThinkPad X280 20KECTO1WW Rx',
+          vol: 1,
+          listpri: 1905.72,
+          stndpri: 1905.72,
+          RecommendationDiscount: '51%',
+          WalkawayDiscount: '59%',
+          respri: 600,
+          estpri: 655,
+          finalpri: 0,
+          disc: 65.6,
+          tmc: 1014.65,
+          CostAdjustment: 21.7,
+          FinalTMC: 992.95,
+          tmcmar: -338.15,
+          tmcb: '-51.6%',
+          gr: '4875',
+          grre: '0',
+          netre: '655',
+          pti: '1085.51',
+          ptipro: '-430.5',
+          ptimar: '-65.7%'
+        },
+        {
+          id: '',
+          quarter: 'F4Q 18/19',
+          brand: 'ThinkPad Classic',
+          brsum: 'Notebook',
+          subser: 'X280',
+          prono: '20KECTO1WW config',
+          prodesc: 'Notebook ThinkPad X280 20KECTO1WW Rx',
+          vol: '1',
+          listpri: '1905.72',
+          stndpri: '1905.72',
+          RecommendationDiscount: '51%',
+          WalkawayDiscount: '59%',
+          respri: '600',
+          estpri: '655',
+          finalpri: '0',
+          disc: '65.6',
+          tmc: '1014.65',
+          CostAdjustment: 21.7,
+          FinalTMC: 992.95,
+          tmcmar: '-333.76',
+          tmcb: '-51%',
+          gr: 4875,
+          grre: 0,
+          netre: 655,
+          pti: 1081.12,
+          ptipro: -426.12,
+          ptimar: '-65.1%'
+        },
+        {
+          id: 2,
+          quarter: 'F1Q 18/19',
+          brand: 'Notebook',
+          brsum: 'Server Options',
+          subser: 'TP Hybrid USB-C Dock',
+          prono: '40AF0135CH',
+          prodesc: 'TP Hybrid USB-C Dock - CH',
+          vol: 5,
+          listpri: 277.47,
+          stndpri: 277.47,
+          RecommendationDiscount: '35%',
+          WalkawayDiscount: '45%',
+          respri: 149,
+          estpri: 1200,
+          finalpri: 149,
+          disc: 46.3,
+          tmc: 10276,
+          CostAdjustment: 4.68,
+          FinalTMC: 98.08,
+          tmcmar: 43.74,
+          tmcb: '30.3%',
+          gr: 29525,
+          grre: '-3%',
+          netre: 1445,
+          pti: 121.35,
+          ptipro: 23.18,
+          ptimar: '-16%'
+        },
+        {
+          id: '',
+          quarter: 'F2Q 18/19',
+          brand: 'Notebook',
+          brsum: 'Server Options',
+          subser: 'TP Hybrid USB-C Dock',
+          prono: '40AF0135CH',
+          prodesc: 'TP Hybrid USB-C Dock - CH',
+          vol: 5,
+          listpri: 277.47,
+          stndpri: 277.47,
+          RecommendationDiscount: '35%',
+          WalkawayDiscount: '45%',
+          respri: 149,
+          estpri: 1200,
+          finalpri: 149,
+          disc: 46.3,
+          bmc: 10276,
+          tmc: 10276,
+          CostAdjustment: 4.68,
+          FinalTMC: 98.08,
+          tmcmar: 43.74,
+          tmcb: '30.3%',
+          gr: 29525,
+          grre: '-3%',
+          netre: 1445,
+          pti: 121.35,
+          ptipro: 23.18,
+          ptimar: '-16%'
+        },
+        {
+          id: '',
+          quarter: 'F3Q 18/19',
+          brand: 'Notebook',
+          brsum: 'Server Options',
+          subser: 'TP Hybrid USB-C Dock',
+          prono: '40AF0135CH',
+          prodesc: 'TP Hybrid USB-C Dock - CH',
+          vol: 5,
+          listpri: 277.47,
+          stndpri: 277.47,
+          RecommendationDiscount: '35%',
+          WalkawayDiscount: '45%',
+          respri: 149,
+          estpri: 1200,
+          finalpri: 149,
+          disc: 46.3,
+          tmc: 102.76,
+          CostAdjustment: 4.68,
+          FinalTMC: 98.08,
+          tmcmar: 43.74,
+          tmcb: '30.3%',
+          gr: 29525,
+          grre: '-3%',
+          netre: 1445,
+          pti: 121.35,
+          ptipro: 23.18,
+          ptimar: '-16%'
+        },
+        {
+          id: '',
+          quarter: 'F4Q 18/19',
+          brand: 'Notebook',
+          brsum: 'Server Options',
+          subser: 'TP Hybrid USB-C Dock',
+          prono: '40AF0135CH',
+          prodesc: 'TP Hybrid USB-C Dock - CH',
+          vol: 5,
+          listpri: 277.47,
+          stndpri: 277.47,
+          RecommendationDiscount: '35%',
+          WalkawayDiscount: '45%',
+          respri: 149,
+          estpri: 1200,
+          finalpri: 149,
+          disc: 46.3,
+          tmc: 102.76,
+          CostAdjustment: 4.68,
+          FinalTMC: 98.08,
+          tmcmar: 43.74,
+          tmcb: '30.3%',
+          gr: 29525,
+          grre: '-3%',
+          netre: 1445,
+          pti: 121.35,
+          ptipro: 23.18,
+          ptimar: '-16%'
+        }
+      ]
+      this.rowData = obj
     },
     calcGridHeight () {
       var screenHeight = window.innerHeight
