@@ -14,7 +14,7 @@
       <Divider type="vertical" />
       <!-- <a href="#" class="item" ><Icon class="icon" size=16 type="md-stats" />Accepted</a>
       <Divider type="vertical" /> -->
-      <a href="#" class="item" ><Icon class="icon" size=16 type="md-stats" />Recommendation Price</a>
+      <a href="#" class="item" @click="changeTableData"><Icon class="icon" size=16 type="md-stats" />Recommendation Price</a>
       <Divider type="vertical" />
       <a href="#" class="item" @click="HistoricalReport = true"><Icon class="icon" size=16 type="md-stats" />Historical Report</a>
       <Divider type="vertical" />
@@ -66,19 +66,19 @@
     <div class="SummaryInformation">
       <Row type="flex" justify="center">
         <Col span=5>
-          <strong>System Volume: </strong><span style="font-size: 14px; font-weight: bold;"></span>
+          <strong>System Volume: </strong><span style="font-size: 14px; font-weight: bold;">{{SummaryInforvalue.SystemVolume}}</span>
         </Col>
         <Col span=5>
-          <strong>Gross Revenue: </strong><span style="font-size: 14px; font-weight: bold;"></span>
+          <strong>Gross Revenue: </strong><span style="font-size: 14px; font-weight: bold;">{{SummaryInforvalue.GrossRevenue}}</span>
         </Col>
         <Col span=5>
-          <strong>Net Revenue: </strong><span style="font-size: 14px; font-weight: bold;"></span>
+          <strong>Net Revenue: </strong><span style="font-size: 14px; font-weight: bold;">{{SummaryInforvalue.NetRevenue}}</span>
         </Col>
         <Col span=5>
-          <strong>Total Cost Margin: </strong><span style="font-size: 14px; font-weight: bold;"></span>
+          <strong>Total Cost Margin: </strong><span style="font-size: 14px; font-weight: bold;">{{SummaryInforvalue.TotalCostMargin}}</span>
         </Col>
         <Col span=4>
-          <strong>Total Cost Margin %: </strong><span style="font-size: 14px; font-weight: bold;"></span>
+          <strong>Total Cost Margin %: </strong><span style="font-size: 14px; font-weight: bold;">{{SummaryInforvalue.TotalCostMarginPer}}</span>
         </Col>
       </Row>
     </div>
@@ -422,6 +422,13 @@ import costCQ from './costCQ.vue'
 export default {
   data () {
     return {
+      SummaryInforvalue: {
+        SystemVolume: '',
+        GrossRevenue: '',
+        NetRevenue: '',
+        TotalCostMargin: '',
+        TotalCostMarginPer: ''
+      },
       HistoricalReport: false,
       CLVReport: false,
       TrackingReport: false,
@@ -892,7 +899,7 @@ export default {
         {
           headerName: 'Recommendation Price',
           width: 180,
-          field: 'estpri',
+          field: 'RecommendationPrice',
           editable: false,
           // headerClass:'headerColor',
           cellStyle: {'text-align': 'left'}
@@ -2162,7 +2169,7 @@ export default {
           RecommendationDiscount: '51%',
           WalkawayDiscount: '59%',
           respri: 600,
-          estpri: 655,
+          RecommendationPrice: 655,
           finalpri: 0,
           disc: 65.6,
           tmc: 1079,
@@ -2191,7 +2198,7 @@ export default {
           RecommendationDiscount: '51%',
           WalkawayDiscount: '59%',
           respri: 600,
-          estpri: 655,
+          RecommendationPrice: 655,
           finalpri: 0,
           disc: 65.6,
           tmc: 1039.21,
@@ -2220,7 +2227,7 @@ export default {
           RecommendationDiscount: '51%',
           WalkawayDiscount: '59%',
           respri: 600,
-          estpri: 655,
+          RecommendationPrice: 655,
           finalpri: 0,
           disc: 65.6,
           tmc: 1014.65,
@@ -2249,7 +2256,7 @@ export default {
           RecommendationDiscount: '51%',
           WalkawayDiscount: '59%',
           respri: '600',
-          estpri: '655',
+          RecommendationPrice: '655',
           finalpri: '0',
           disc: '65.6',
           tmc: '1014.65',
@@ -2266,6 +2273,13 @@ export default {
         }
       ]
       this.rowData = obj
+      this.SummaryInforvalue = {
+        SystemVolume: 450,
+        GrossRevenue: 337100,
+        NetRevenue: 337100,
+        TotalCostMargin: 33323,
+        TotalCostMarginPer: 10.2
+      }
     },
     eighttips () {
       var obj = [
@@ -2283,7 +2297,7 @@ export default {
           RecommendationDiscount: '51%',
           WalkawayDiscount: '59%',
           respri: 600,
-          estpri: 655,
+          RecommendationPrice: 655,
           finalpri: 0,
           disc: 65.6,
           tmc: 1079,
@@ -2312,7 +2326,7 @@ export default {
           RecommendationDiscount: '51%',
           WalkawayDiscount: '59%',
           respri: 600,
-          estpri: 655,
+          RecommendationPrice: 655,
           finalpri: 0,
           disc: 65.6,
           tmc: 1039.21,
@@ -2341,7 +2355,7 @@ export default {
           RecommendationDiscount: '51%',
           WalkawayDiscount: '59%',
           respri: 600,
-          estpri: 655,
+          RecommendationPrice: 655,
           finalpri: 0,
           disc: 65.6,
           tmc: 1014.65,
@@ -2370,7 +2384,7 @@ export default {
           RecommendationDiscount: '51%',
           WalkawayDiscount: '59%',
           respri: '600',
-          estpri: '655',
+          RecommendationPrice: '655',
           finalpri: '0',
           disc: '65.6',
           tmc: '1014.65',
@@ -2399,7 +2413,7 @@ export default {
           RecommendationDiscount: '35%',
           WalkawayDiscount: '45%',
           respri: 149,
-          estpri: 1200,
+          RecommendationPrice: 1200,
           finalpri: 149,
           disc: 46.3,
           tmc: 10276,
@@ -2428,7 +2442,7 @@ export default {
           RecommendationDiscount: '35%',
           WalkawayDiscount: '45%',
           respri: 149,
-          estpri: 1200,
+          RecommendationPrice: 1200,
           finalpri: 149,
           disc: 46.3,
           bmc: 10276,
@@ -2458,7 +2472,7 @@ export default {
           RecommendationDiscount: '35%',
           WalkawayDiscount: '45%',
           respri: 149,
-          estpri: 1200,
+          RecommendationPrice: 1200,
           finalpri: 149,
           disc: 46.3,
           tmc: 102.76,
@@ -2487,7 +2501,7 @@ export default {
           RecommendationDiscount: '35%',
           WalkawayDiscount: '45%',
           respri: 149,
-          estpri: 1200,
+          RecommendationPrice: 1200,
           finalpri: 149,
           disc: 46.3,
           tmc: 102.76,
@@ -2504,6 +2518,13 @@ export default {
         }
       ]
       this.rowData = obj
+      this.SummaryInforvalue = {
+        SystemVolume: 450,
+        GrossRevenue: 337100,
+        NetRevenue: 337100,
+        TotalCostMargin: 33323,
+        TotalCostMarginPer: 10.2
+      }
     },
     calcGridHeight () {
       var screenHeight = window.innerHeight
@@ -2546,7 +2567,7 @@ export default {
         this.offset = 0.4
         this.tab1 = true
         this.tab2 = false
-      }else{
+      } else {
         this.pullFlag = true
         this.offset = 0.96
         this.tab1 = false
@@ -2555,6 +2576,274 @@ export default {
     },
     handleMoving (e) {
       console.log(e.atMin, e.atMax)
+    },
+    changeTableData () {
+      this.rowData = [
+        {
+          id: 1,
+          quarter: 'F1Q 18/19',
+          brand: 'ThinkPad Classic',
+          brsum: 'Notebook',
+          subser: 'X280',
+          prono: '20KECTO1WW',
+          prodesc: 'Notebook ThinkPad X280 20KECTO1WW Rx',
+          vol: 1,
+          listpri: 1905.72,
+          stndpri: 1905.72,
+          RecommendationDiscount: '51%',
+          WalkawayDiscount: '59%',
+          respri: 600,
+          RecommendationPrice: 655,
+          finalpri: 655,
+          disc: 65.6,
+          bmc: 1050.7,
+          netbmc: 1040.70,
+          CostAdjustment: 21.7,
+          FinalTMC: 1057.3,
+          tmc: 1079,
+          bmcmar: -374.2,
+          tmcmar: -402.5,
+          bmcb: '-57.1%',
+          tmcb: '-61.4%',
+          gr: 4875,
+          grre: 0,
+          netre: 655,
+          pti: 1149.86,
+          ptipro: -494.86,
+          ptimar: '-75.6%'
+        },
+        {
+          id: '',
+          quarter: 'F2Q 18/19',
+          brand: 'ThinkPad Classic',
+          brsum: 'Notebook',
+          subser: 'X280',
+          prono: '20KECTO1WW config',
+          prodesc: 'Notebook ThinkPad X280 20KECTO1WW Rx',
+          vol: 1,
+          listpri: 1905.72,
+          stndpri: 1905.72,
+          RecommendationDiscount: '51%',
+          WalkawayDiscount: '59%',
+          respri: 600,
+          RecommendationPrice: 655,
+          finalpri: 655,
+          disc: 65.6,
+          bmc: 1009.85,
+          netbmc: 999.85,
+          CostAdjustment: 21.7,
+          FinalTMC: 1017.51,
+          tmc: 1039.21,
+          bmcmar: -333.35,
+          tmcmar: -362.71,
+          bmcb: '-50.9%',
+          tmcb: '-55.4%',
+          gr: 4875,
+          grre: 0,
+          netre: 655,
+          pti: 1110.07,
+          ptipro: -455.06,
+          ptimar: '-69.5%'
+        },
+        {
+          id: '',
+          quarter: 'F3Q 18/19',
+          brand: 'ThinkPad Classic',
+          brsum: 'Notebook',
+          subser: 'X280',
+          prono: '20KECTO1WW config',
+          prodesc: 'Notebook ThinkPad X280 20KECTO1WW Rx',
+          vol: 1,
+          listpri: 1905.72,
+          stndpri: 1905.72,
+          RecommendationDiscount: '51%',
+          WalkawayDiscount: '59%',
+          respri: 600,
+          RecommendationPrice: 655,
+          finalpri: 655,
+          disc: 65.6,
+          bmc: 985.33,
+          netbmc: 975.33,
+          CostAdjustment: 21.7,
+          FinalTMC: 992.95,
+          tmc: 1014.65,
+          bmcmar: -308.83,
+          tmcmar: -338.15,
+          bmcb: '-47.2%',
+          tmcb: '-51.6%',
+          gr: 4875,
+          grre: 0,
+          netre: 655,
+          pti: 1085.51,
+          ptipro: -430.5,
+          ptimar: '-65.7%'
+        },
+        {
+          id: '',
+          quarter: 'F4Q 18/19',
+          brand: 'ThinkPad Classic',
+          brsum: 'Notebook',
+          subser: 'X280',
+          prono: '20KECTO1WW config',
+          prodesc: 'Notebook ThinkPad X280 20KECTO1WW Rx',
+          vol: 1,
+          listpri: 1905.72,
+          stndpri: 1905.72,
+          RecommendationDiscount: '51%',
+          WalkawayDiscount: '59%',
+          respri: 600,
+          RecommendationPrice: 655,
+          finalpri: 655,
+          disc: 65.6,
+          bmc: 980.95,
+          netbmc: 907.75,
+          CostAdjustment: 21.7,
+          FinalTMC: 992.95,
+          tmc: 1014.65,
+          bmcmar: -304.45,
+          tmcmar: -333.76,
+          bmcb: '-46.5%',
+          tmcb: '-51%',
+          gr: 4875,
+          grre: 0,
+          netre: 655,
+          pti: 1081.12,
+          ptipro: -426.12,
+          ptimar: '-65.1%'
+        },
+        {
+          id: 2,
+          quarter: 'F1Q 18/19',
+          brand: 'Notebook',
+          brsum: 'Server Options',
+          subser: 'TP Hybrid USB-C Dock',
+          prono: '40AF0135CH',
+          prodesc: 'TP Hybrid USB-C Dock - CH',
+          vol: '5',
+          listpri: '277.47',
+          stndpri: '277.47',
+          RecommendationDiscount: '35%',
+          WalkawayDiscount: '45%',
+          respri: 149,
+          RecommendationPrice: 1200,
+          finalpri: 1200,
+          disc: 46.3,
+          bmc: 10276,
+          netbmc: 10276,
+          CostAdjustment: 4.68,
+          FinalTMC: 98.08,
+          tmc: 10276,
+          bmcmar: 43.74,
+          tmcmar: 43.74,
+          bmcb: '30.3%',
+          tmcb: '30.3%',
+          gr: 29525,
+          grre: '-3%',
+          netre: 1445,
+          pti: 121.35,
+          ptipro: 23.18,
+          ptimar: '-16%'
+        },
+        {
+          id: '',
+          quarter: 'F2Q 18/19',
+          brand: 'Notebook',
+          brsum: 'Server Options',
+          subser: 'TP Hybrid USB-C Dock',
+          prono: '40AF0135CH',
+          prodesc: 'TP Hybrid USB-C Dock - CH',
+          vol: 5,
+          listpri: 277.47,
+          stndpri: 277.47,
+          RecommendationDiscount: '35%',
+          WalkawayDiscount: '45%',
+          respri: 149,
+          RecommendationPrice: 1200,
+          finalpri: 1200,
+          disc: 46.3,
+          bmc: 10276,
+          netbmc: 10277,
+          CostAdjustment: 4.68,
+          FinalTMC: 98.08,
+          tmc: 10276,
+          bmcmar: 43.74,
+          tmcmar: 43.74,
+          bmcb: '30.3%',
+          tmcb: '30.3%',
+          gr: 29525,
+          grre: '-3%',
+          netre: 1445,
+          pti: 121.35,
+          ptipro: 23.18,
+          ptimar: '-16%'
+        },
+        {
+          id: '',
+          quarter: 'F3Q 18/19',
+          brand: 'Notebook',
+          brsum: 'Server Options',
+          subser: 'TP Hybrid USB-C Dock',
+          prono: '40AF0135CH',
+          prodesc: 'TP Hybrid USB-C Dock - CH',
+          vol: 5,
+          listpri: 277.47,
+          stndpri: 277.47,
+          RecommendationDiscount: '35%',
+          WalkawayDiscount: '45%',
+          respri: '149',
+          RecommendationPrice: 1200,
+          finalpri: 1200,
+          disc: 46.3,
+          bmc: 10276,
+          netbmc: 10278,
+          CostAdjustment: 4.68,
+          FinalTMC: 98.08,
+          tmc: 102.76,
+          bmcmar: 43.74,
+          tmcmar: 43.74,
+          bmcb: '30.3%',
+          tmcb: '30.3%',
+          gr: 29525,
+          grre: '-3%',
+          netre: 1445,
+          pti: 121.35,
+          ptipro: 23.18,
+          ptimar: '-16%'
+        },
+        {
+          id: '',
+          quarter: 'F4Q 18/19',
+          brand: 'Notebook',
+          brsum: 'Server Options',
+          subser: 'TP Hybrid USB-C Dock',
+          prono: '40AF0135CH',
+          prodesc: 'TP Hybrid USB-C Dock - CH',
+          vol: 5,
+          listpri: 277.47,
+          stndpri: 277.47,
+          RecommendationDiscount: '35%',
+          WalkawayDiscount: '45%',
+          respri: 149,
+          RecommendationPrice: 1200,
+          finalpri: 1200,
+          disc: 46.3,
+          bmc: 10276,
+          netbmc: 10279,
+          CostAdjustment: 4.68,
+          FinalTMC: 98.08,
+          tmc: 102.76,
+          bmcmar: 43.74,
+          tmcmar: 43.74,
+          bmcb: '30.3%',
+          tmcb: '30.3%',
+          gr: 29525,
+          grre: '-3%',
+          netre: 1445,
+          pti: 121.35,
+          ptipro: 23.18,
+          ptimar: '-16%'
+        }
+      ]
     },
     toggleList () {
       let boxitem = document.getElementsByClassName('boxitem')[0]
