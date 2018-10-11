@@ -41,7 +41,7 @@
       </Form>
     </div>
   </div>
-  <h3 class="marginBottom" style="margin-bottom: 10px;"><Icon type="ios-podium" />Pricing Publish</h3>
+  <h3 class="marginBottom"><Icon type="ios-podium" />Pricing Publish</h3>
   <div class="agcontainer">
     <ag-grid-vue
       style="width: 100%; height:100%;"

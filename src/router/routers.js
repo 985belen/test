@@ -47,7 +47,7 @@ export default [
           import ('@/view/price/price.vue')
       },
       {
-        path: 'price_list',
+        path: 'list',
         name: 'price_list',
         meta: {
           icon: '',
@@ -65,7 +65,7 @@ export default [
         component: () => import('@/view/price/pricelist1.vue')
       },
       {
-        path: 'CTO_Config',
+        path: 'CTOConfig',
         name: 'CTO_Config',
         meta: {
           icon: '',
@@ -93,6 +93,16 @@ export default [
         },
         component: () =>
           import ('@/view/price/Publish.vue')
+      },
+      {
+        path: 'maintenance',
+        name: 'maintenance',
+        meta: {
+          icon: '',
+          title: 'Maitenance'
+        },
+        component: () =>
+          import ('@/view/price/Maintenance.vue')
       },
       {
         path: 'CTO_ListPrice',
@@ -216,7 +226,7 @@ export default [
     component: Main,
     children: [
       {
-        path: 'iframe_clv',
+        path: 'clv',
         name: 'iframe_clv',
         meta: {
           icon: '',
@@ -225,7 +235,7 @@ export default [
         component: () => import('@/view/iframe/clv.vue')
       },
       {
-        path: 'iframe_DealTracking',
+        path: 'dealTracking',
         name: 'iframe_DealTracking',
         meta: {
           icon: '',
@@ -234,7 +244,7 @@ export default [
         component: () => import('@/view/iframe/DealTracking.vue')
       },
       {
-        path: 'iframe_HistoricalSummary',
+        path: 'historicalSummary',
         name: 'iframe_HistoricalSummary',
         meta: {
           icon: '',
@@ -243,7 +253,7 @@ export default [
         component: () => import('@/view/iframe/HistoricalSummary.vue')
       },
       {
-        path: 'iframe_PricingProfitMargin',
+        path: 'pricingProfitMargin',
         name: 'iframe_PricingProfitMargin',
         meta: {
           icon: '',
@@ -252,7 +262,7 @@ export default [
         component: () => import('@/view/iframe/PricingProfitMargin.vue')
       },
       {
-        path: 'iframe_FinanceReview',
+        path: 'financeReview',
         name: 'iframe_FinanceReview',
         meta: {
           icon: '',
@@ -268,7 +278,7 @@ export default [
     component: Main,
     children: [
       {
-        path: 'FinDashboard',
+        path: 'finDashboard',
         name: 'FinDashboard',
         meta: {
           icon: '',
@@ -277,7 +287,7 @@ export default [
         component: () => import('@/view/dashboard/FinDashboard.vue')
       },
       {
-        path: 'CreateDashboard',
+        path: 'createDashboard',
         name: 'CreateDashboard',
         meta: {
           icon: '',
@@ -286,7 +296,7 @@ export default [
         component: () => import('@/view/dashboard/CreateDashboard.vue')
       },
       {
-        path: 'CreateNewDashboard',
+        path: 'createNewDashboard',
         name: 'CreateNewDashboard',
         meta: {
           icon: '',
