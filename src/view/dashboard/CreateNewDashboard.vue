@@ -58,12 +58,42 @@
       </Col>
       <Col span=2 offset=1>
         <FormItem>
-          <Button size="small" type="primary">Publish</Button>
+          <Button size="small" type="primary" @click="publicModal= true">Publish</Button>
           <Button size="small" type="primary">Download</Button>
         </FormItem>
       </Col>
     </Row>
   </Form>
+  <Modal
+    v-model="publicModal"
+    title="Public"
+    :styles="{width:'800px'}"
+    ok-text="OK"
+    cancel-text="Cancel">
+    <Form :model="publicForm" label-position="left" ref="publicForm" >
+      <Row type="flex" justify="center">
+        <Col span=12>
+          <Form-item label="Title" :label-width="60">
+            <Input v-model="publicForm.title" placeholder="Enter something..."/>
+          </Form-item>
+        </Col>
+      </Row>
+      <Row type="flex" justify="center">
+        <Col span=12>
+          <Form-item label="To" :label-width="60">
+            <Input v-model="publicForm.to" placeholder="Enter something..."/>
+          </Form-item>
+        </Col>
+      </Row>
+      <Row type="flex" justify="center">
+        <Col span=12>
+          <Form-item label="CC" :label-width="60">
+            <Input v-model="publicForm.cc" placeholder="Enter something..."/>
+          </Form-item>
+        </Col>
+      </Row>
+    </Form>
+  </Modal>
   <div v-show="lineshow" ref="lineGraph" style="width: 900px;height:300px;margin: 15px auto;background:#fafaf0"></div>
   <div v-show="barshow" ref="barchart" style="width: 900px;height:300px;margin: 15px auto;background:#fafefa"></div>
   <div v-show="barstackshow" ref="barstack" style="width: 900px;height:300px;margin: 15px auto;background:#f0fefa"></div>
@@ -79,12 +109,18 @@ export default {
       lineshow: false,
       barshow: false,
       barstackshow: false,
+      publicModal: false,
       FormItem: {
         Createdby: '',
         Keywords: ''
       },
       checkGraph: [],
-      checkData: []
+      checkData: [],
+      publicForm: {
+        title: '',
+        to: '',
+        cc: ''
+      }
     }
   },
   components: {
