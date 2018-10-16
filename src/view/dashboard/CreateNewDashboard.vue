@@ -66,9 +66,9 @@
   </Form>
   <Modal
     v-model="publicModal"
-    title="Public"
+    title="Publish"
     :styles="{width:'800px'}"
-    ok-text="OK"
+    ok-text="Publish"
     cancel-text="Cancel">
     <Form :model="publicForm" label-position="left" ref="publicForm" >
       <Row type="flex" justify="center">

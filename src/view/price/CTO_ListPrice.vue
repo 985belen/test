@@ -36,7 +36,7 @@ export default {
           // floatingFilter: false,
           checkboxSelection: true, width: 60},
         {headerName: 'Quotation ID', field: 'QuotationID', width: 120, cellStyle: {'text-align': 'left'},
-          cellRenderer: (params) => { return '<a href="#/iframe/iframe_FinanceReview">' + params.value + '</a>' }
+          cellRenderer: (params) => { return '<a href="#/iframe/financeReview">' + params.value + '</a>' }
         },
         {headerName: 'Opportunity', field: 'Opportunity', width: 120, cellStyle: {'text-align': 'left'},
           cellRenderer: (params) => {

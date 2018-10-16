@@ -263,10 +263,10 @@ export default [
       },
       {
         path: 'financeReview',
-        name: 'iframe_FinanceReview',
+        name: 'FinanceReview',
         meta: {
           icon: '',
-          title: 'iframe_FinanceReview'
+          title: 'FinanceReview'
         },
         component: () => import('@/view/iframe/FinanceReview.vue')
       }

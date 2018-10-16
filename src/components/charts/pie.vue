@@ -50,7 +50,7 @@ export default {
       // dom.title.on('click', params => {
       //   console.log(params)
       //   // this.$router.push({
-      //   //   path: '/iframe/iframe_FinanceReview'
+      //   //   path: '/iframe/financeReview'
       //   // })
       // })
       dom.setOption(option)
